@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { Outlet, useLocation } from "react-router-dom";
+import { Outlet, useLocation, useMatch } from "react-router-dom";
 import { AppSidebar } from "./AppSidebar";
 import { Menu } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
@@ -11,6 +11,7 @@ import { GlobalChat } from "@/components/GlobalChat";
 export function Layout() {
   const [sidebarOpen, setSidebarOpen] = useState(false);
   const location = useLocation();
+  const isBattlePage = location.pathname === "/battle";
   const setData = useDataStore((s) => s.setData);
   const loaded = useDataStore((s) => s.loaded);
 
@@ -73,7 +74,7 @@ export function Layout() {
           </AnimatePresence>
         </main>
       </div>
-      <GlobalChat />
+      {!isBattlePage && <GlobalChat />}
     </div>
   );
 }
