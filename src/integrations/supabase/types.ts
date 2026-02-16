@@ -126,6 +126,27 @@ export type Database = {
         }
         Relationships: []
       }
+      global_messages: {
+        Row: {
+          created_at: string
+          id: string
+          nickname: string
+          text: string
+        }
+        Insert: {
+          created_at?: string
+          id?: string
+          nickname: string
+          text: string
+        }
+        Update: {
+          created_at?: string
+          id?: string
+          nickname?: string
+          text?: string
+        }
+        Relationships: []
+      }
     }
     Views: {
       [_ in never]: never

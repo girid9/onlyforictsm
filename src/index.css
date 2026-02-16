@@ -54,53 +54,53 @@
   }
 
   .dark {
-    /* Dark Theme - Deep Emerald & Gold */
-    --background: 160 25% 8%;
-    --foreground: 150 10% 95%;
+    /* Dark Theme - Charcoal & Gold */
+    --background: 0 0% 8%;
+    --foreground: 40 10% 92%;
 
-    --card: 160 22% 12%;
-    --card-foreground: 150 10% 95%;
+    --card: 0 0% 11%;
+    --card-foreground: 40 10% 92%;
 
-    --popover: 160 22% 12%;
-    --popover-foreground: 150 10% 95%;
+    --popover: 0 0% 11%;
+    --popover-foreground: 40 10% 92%;
 
-    /* Bright Emerald */
-    --primary: 152 72% 50%;
-    --primary-foreground: 160 25% 5%;
+    /* Gold primary */
+    --primary: 42 90% 55%;
+    --primary-foreground: 0 0% 5%;
 
-    --secondary: 160 20% 18%;
-    --secondary-foreground: 150 10% 95%;
+    --secondary: 0 0% 16%;
+    --secondary-foreground: 40 10% 92%;
 
-    --muted: 160 15% 22%;
-    --muted-foreground: 150 10% 60%;
+    --muted: 0 0% 20%;
+    --muted-foreground: 40 5% 55%;
 
-    /* Gold accent */
-    --accent: 42 90% 55%;
-    --accent-foreground: 160 25% 5%;
+    /* Warm gold accent */
+    --accent: 32 85% 50%;
+    --accent-foreground: 0 0% 5%;
 
     --destructive: 0 84% 60%;
     --destructive-foreground: 0 0% 100%;
 
     --success: 152 72% 50%;
-    --success-foreground: 160 25% 5%;
+    --success-foreground: 0 0% 5%;
 
     --warning: 42 90% 55%;
-    --warning-foreground: 160 25% 5%;
+    --warning-foreground: 0 0% 5%;
 
-    --border: 160 18% 20%;
-    --input: 160 18% 20%;
-    --ring: 152 72% 50%;
+    --border: 0 0% 18%;
+    --input: 0 0% 18%;
+    --ring: 42 90% 55%;
 
     --radius: 0.875rem;
 
-    --sidebar-background: 160 25% 6%;
-    --sidebar-foreground: 150 10% 60%;
-    --sidebar-primary: 152 72% 50%;
-    --sidebar-primary-foreground: 160 25% 5%;
-    --sidebar-accent: 42 90% 55%;
-    --sidebar-accent-foreground: 160 25% 5%;
-    --sidebar-border: 160 18% 15%;
-    --sidebar-ring: 152 72% 50%;
+    --sidebar-background: 0 0% 6%;
+    --sidebar-foreground: 40 5% 55%;
+    --sidebar-primary: 42 90% 55%;
+    --sidebar-primary-foreground: 0 0% 5%;
+    --sidebar-accent: 32 85% 50%;
+    --sidebar-accent-foreground: 0 0% 5%;
+    --sidebar-border: 0 0% 14%;
+    --sidebar-ring: 42 90% 55%;
   }
 
   * {
