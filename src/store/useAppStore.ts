@@ -50,11 +50,13 @@ interface ProgressState {
   settings: {
     autoAdvance: boolean;
     autoAdvanceDelay: number;
+    rollerMode: boolean;
   };
   recordAnswer: (questionId: string, selectedIndex: number, correct: boolean) => void;
   toggleBookmark: (questionId: string) => void;
   setLastVisited: (info: ProgressState["lastVisited"]) => void;
   updateSettings: (settings: Partial<ProgressState["settings"]>) => void;
+  clearWrongAnswers: () => void;
   clearProgress: () => void;
 }
 
@@ -70,6 +72,7 @@ export const useProgressStore = create<ProgressState>()(
       settings: {
         autoAdvance: false,
         autoAdvanceDelay: 2,
+        rollerMode: false,
       },
       recordAnswer: (questionId, selectedIndex, correct) =>
         set((state) => {
@@ -107,6 +110,14 @@ export const useProgressStore = create<ProgressState>()(
         set((state) => ({
           settings: { ...state.settings, ...newSettings },
         })),
+      clearWrongAnswers: () =>
+        set((state) => {
+          const newAnswers = { ...state.answers };
+          for (const [id, answer] of Object.entries(newAnswers)) {
+            if (!answer.correct) delete newAnswers[id];
+          }
+          return { answers: newAnswers };
+        }),
       clearProgress: () => set({ answers: {}, bookmarkedIds: [], lastVisited: null }),
     }),
     { name: "mcq-app-progress" }

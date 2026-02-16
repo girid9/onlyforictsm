@@ -6,6 +6,7 @@ import { motion, AnimatePresence } from "framer-motion";
 import { useDataStore } from "@/store/useAppStore";
 import { loadAll } from "@/services/questionBank";
 import { ThemeToggle } from "@/components/ThemeToggle";
+import { GlobalChat } from "@/components/GlobalChat";
 
 export function Layout() {
   const [sidebarOpen, setSidebarOpen] = useState(false);
@@ -72,6 +73,7 @@ export function Layout() {
           </AnimatePresence>
         </main>
       </div>
+      <GlobalChat />
     </div>
   );
 }
