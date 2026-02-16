@@ -49,6 +49,7 @@ interface ProgressState {
   lastAnswerDate: string | null;
   settings: {
     autoAdvance: boolean;
+    autoAdvanceDelay: number;
   };
   recordAnswer: (questionId: string, selectedIndex: number, correct: boolean) => void;
   toggleBookmark: (questionId: string) => void;
@@ -68,6 +69,7 @@ export const useProgressStore = create<ProgressState>()(
       lastAnswerDate: null,
       settings: {
         autoAdvance: false,
+        autoAdvanceDelay: 2,
       },
       recordAnswer: (questionId, selectedIndex, correct) =>
         set((state) => {

@@ -77,7 +77,8 @@ export default {
         sm: "calc(var(--radius) - 4px)",
       },
       boxShadow: {
-        'electric-glow': '0 0 25px rgba(59, 130, 246, 0.25)',
+        'emerald-glow': '0 0 25px hsl(152 76% 42% / 0.25)',
+        'gold-glow': '0 0 20px hsl(42 92% 52% / 0.2)',
         'arctic-inner': 'inset 0 1px 1px rgba(255, 255, 255, 0.02)',
       },
       keyframes: {

@@ -4,93 +4,103 @@
 
 @layer base {
   :root {
-    /* Light Theme (default) */
-    --background: 220 40% 98%;
-    --foreground: 222 18% 10%;
+    /* Light Theme - Emerald & Gold */
+    --background: 150 20% 97%;
+    --foreground: 160 18% 10%;
 
     --card: 0 0% 100%;
-    --card-foreground: 222 18% 10%;
+    --card-foreground: 160 18% 10%;
 
     --popover: 0 0% 100%;
-    --popover-foreground: 222 18% 10%;
+    --popover-foreground: 160 18% 10%;
 
-    /* Electric-lime accent (matches the reference vibe) */
-    --primary: 84 90% 48%;
-    --primary-foreground: 220 18% 8%;
+    /* Emerald primary */
+    --primary: 152 76% 42%;
+    --primary-foreground: 0 0% 100%;
 
-    --secondary: 220 20% 94%;
-    --secondary-foreground: 222 18% 10%;
+    --secondary: 150 15% 93%;
+    --secondary-foreground: 160 18% 10%;
 
-    --muted: 220 18% 92%;
-    --muted-foreground: 222 10% 40%;
+    --muted: 150 12% 90%;
+    --muted-foreground: 160 10% 40%;
 
-    --accent: 200 90% 55%;
-    --accent-foreground: 220 18% 8%;
+    /* Gold accent */
+    --accent: 42 92% 52%;
+    --accent-foreground: 160 18% 8%;
 
     --destructive: 0 84% 60%;
-    --destructive-foreground: 210 40% 98%;
+    --destructive-foreground: 0 0% 100%;
 
-    --success: 142 70% 45%;
-    --success-foreground: 210 40% 98%;
+    --success: 152 76% 42%;
+    --success-foreground: 0 0% 100%;
 
-    --warning: 38 92% 50%;
-    --warning-foreground: 210 40% 98%;
+    --warning: 42 92% 52%;
+    --warning-foreground: 160 18% 8%;
 
-    --border: 220 16% 86%;
-    --input: 220 16% 86%;
-    --ring: 84 90% 48%;
+    --border: 150 14% 86%;
+    --input: 150 14% 86%;
+    --ring: 152 76% 42%;
 
-    --radius: 0.75rem;
+    --radius: 0.875rem;
 
-    --sidebar-background: 220 40% 97%;
-    --sidebar-foreground: 222 10% 40%;
-    --sidebar-primary: 84 90% 48%;
-    --sidebar-border: 220 16% 86%;
+    --sidebar-background: 150 20% 96%;
+    --sidebar-foreground: 160 10% 40%;
+    --sidebar-primary: 152 76% 42%;
+    --sidebar-primary-foreground: 0 0% 100%;
+    --sidebar-accent: 42 92% 52%;
+    --sidebar-accent-foreground: 160 18% 8%;
+    --sidebar-border: 150 14% 86%;
+    --sidebar-ring: 152 76% 42%;
   }
 
   .dark {
-    /* Professional Dark Theme - Minimal & High Contrast */
-    --background: 220 20% 10%;
-    --foreground: 220 10% 95%;
+    /* Dark Theme - Deep Emerald & Gold */
+    --background: 160 25% 8%;
+    --foreground: 150 10% 95%;
 
-    --card: 220 20% 13%;
-    --card-foreground: 220 10% 95%;
+    --card: 160 22% 12%;
+    --card-foreground: 150 10% 95%;
 
-    --popover: 220 20% 13%;
-    --popover-foreground: 220 10% 95%;
+    --popover: 160 22% 12%;
+    --popover-foreground: 150 10% 95%;
 
-    /* Clean Blue Accent */
-    --primary: 210 100% 60%;
-    --primary-foreground: 220 20% 5%;
+    /* Bright Emerald */
+    --primary: 152 72% 50%;
+    --primary-foreground: 160 25% 5%;
 
-    --secondary: 220 20% 18%;
-    --secondary-foreground: 220 10% 95%;
+    --secondary: 160 20% 18%;
+    --secondary-foreground: 150 10% 95%;
 
-    --muted: 220 15% 25%;
-    --muted-foreground: 220 10% 65%;
+    --muted: 160 15% 22%;
+    --muted-foreground: 150 10% 60%;
 
-    --accent: 210 100% 60%;
-    --accent-foreground: 220 20% 5%;
+    /* Gold accent */
+    --accent: 42 90% 55%;
+    --accent-foreground: 160 25% 5%;
 
     --destructive: 0 84% 60%;
-    --destructive-foreground: 210 40% 98%;
+    --destructive-foreground: 0 0% 100%;
 
-    --success: 142 70% 45%;
-    --success-foreground: 210 40% 98%;
+    --success: 152 72% 50%;
+    --success-foreground: 160 25% 5%;
 
-    --warning: 38 92% 50%;
-    --warning-foreground: 210 40% 98%;
+    --warning: 42 90% 55%;
+    --warning-foreground: 160 25% 5%;
 
-    --border: 220 20% 20%;
-    --input: 220 20% 20%;
-    --ring: 210 100% 60%;
+    --border: 160 18% 20%;
+    --input: 160 18% 20%;
+    --ring: 152 72% 50%;
 
-    --radius: 0.75rem;
+    --radius: 0.875rem;
 
-    --sidebar-background: 220 20% 8%;
-    --sidebar-foreground: 220 10% 65%;
-    --sidebar-primary: 210 100% 60%;
-    --sidebar-border: 220 20% 15%;
+    --sidebar-background: 160 25% 6%;
+    --sidebar-foreground: 150 10% 60%;
+    --sidebar-primary: 152 72% 50%;
+    --sidebar-primary-foreground: 160 25% 5%;
+    --sidebar-accent: 42 90% 55%;
+    --sidebar-accent-foreground: 160 25% 5%;
+    --sidebar-border: 160 18% 15%;
+    --sidebar-ring: 152 72% 50%;
   }
 
   * {
@@ -105,7 +115,6 @@
 }
 
 @layer utilities {
-  /* App-wide "reference-image" vibe: soft gradients + subtle plane watermark */
   .app-hero {
     background-image:
       radial-gradient(1200px 600px at 15% 10%, hsl(var(--primary) / 0.18), transparent 55%),
