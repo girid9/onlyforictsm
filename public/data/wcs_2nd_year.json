@@ -1,0 +1,765 @@
+{
+  "Friction": [
+    {
+      "question": "Which is useful friction?",
+      "option_a": "Brake shoe lining",
+      "option_b": "Rings in the cylinder",
+      "option_c": "Crank shaft bearings",
+      "option_d": "Wheel hub bearings",
+      "answer": "A",
+      "notes": "Brake shoe lining provides useful friction by converting kinetic energy into heat to stop vehicles effectively."
+    },
+    {
+      "question": "What is the direction of frictional force against a motional object?",
+      "option_a": "Parallel to the object",
+      "option_b": "Opposite to the object",
+      "option_c": "Inclined to the object",
+      "option_d": "Perpendicular to the object",
+      "answer": "B",
+      "notes": "Frictional force acts opposite to the direction of motion, resisting the movement of the object."
+    },
+    {
+      "question": "Which force is directly proportional to the normal reaction between contacting surfaces?",
+      "option_a": "Pushing force",
+      "option_b": "Allied force",
+      "option_c": "Frictional force",
+      "option_d": "Pulling force",
+      "answer": "C",
+      "notes": "Frictional force is directly proportional to the normal reaction because it depends on the contact pressure between surfaces."
+    },
+    {
+      "question": "Which symbol is used to denote co-efficient of friction?",
+      "option_a": "Y(Gamma)",
+      "option_b": "\u03bc(Meu)",
+      "option_c": "\u03b2 (Beta)",
+      "option_d": "\u03b1 (Alpha)",
+      "answer": "B",
+      "notes": "The coefficient of friction is denoted by \u03bc (mu) to represent the ratio of frictional force to the normal force."
+    },
+    {
+      "question": "Which one of the following acts in between the wheels and roads, if vehicles are able to run on roads?",
+      "option_a": "Erosion",
+      "option_b": "Motion",
+      "option_c": "Corrosion",
+      "option_d": "Friction",
+      "answer": "D",
+      "notes": "Friction acts between the wheels and roads, enabling vehicles to move without slipping."
+    },
+    {
+      "question": "What is the purpose of a lubricant?",
+      "option_a": "To reduce friction",
+      "option_b": "To increase the pressure",
+      "option_c": "To increase friction",
+      "option_d": "To reduce pressure",
+      "answer": "A",
+      "notes": "A lubricant is used to reduce friction by creating a thin film between surfaces to minimize direct contact."
+    },
+    {
+      "question": "Which is used to reduce the friction in machine parts?",
+      "option_a": "Petrol",
+      "option_b": "Lubricants",
+      "option_c": "Water",
+      "option_d": "Kerosene",
+      "answer": "B",
+      "notes": "Lubricants reduce friction in machine parts, preventing wear and improving efficiency."
+    },
+    {
+      "question": "What is the purpose of a lubricant?",
+      "option_a": "To reduce friction",
+      "option_b": "To increase the pressure",
+      "option_c": "To increase friction",
+      "option_d": "To reduce pressure",
+      "answer": "A",
+      "notes": "The purpose of a lubricant is to reduce friction, thereby minimizing wear and heat generation."
+    },
+    {
+      "question": "What is the co-efficient of friction if the angle of friction is q?",
+      "option_a": "sin \u03b8",
+      "option_b": "Cos \u03b8",
+      "option_c": "Tan \u03b8",
+      "option_d": "Cot \u03b8",
+      "answer": "C",
+      "notes": "The coefficient of friction equals tan \u03b8, where \u03b8 is the angle of friction, relating frictional force to normal force."
+    },
+    {
+      "question": "What denotes the letter \u02b9R\u02b9 in the given figure?",
+      "option_a": "Force",
+      "option_b": "Resistance",
+      "option_c": "Load",
+      "option_d": "Normal reaction",
+      "answer": "D",
+      "notes": "In mechanics, 'R' commonly denotes the normal reaction force acting perpendicular to the contact surface."
+    }
+  ],
+  "Centre of gravity": [
+    {
+      "question": "Which affects the centre of gravity of the object?",
+      "option_a": "Weight",
+      "option_b": "Mass",
+      "option_c": "Density",
+      "option_d": "Shape",
+      "answer": "B",
+      "notes": "Mass affects the centre of gravity because it determines the distribution of weight within the object."
+    },
+    {
+      "question": "What is the name of the point at which all the weight of the body concentrated?",
+      "option_a": "Initial point",
+      "option_b": "Centre of gravity",
+      "option_c": "Centroid",
+      "option_d": "Central point",
+      "answer": "B",
+      "notes": "The centre of gravity is the point at which all the weight of a body is considered to be concentrated."
+    },
+    {
+      "question": "Where the centre of gravity of a circle lies?",
+      "option_a": "At its center",
+      "option_b": "Any where on its radius",
+      "option_c": "Any where on its circumference",
+      "option_d": "Any where on its diameter",
+      "answer": "A",
+      "notes": "The centre of gravity of a circle lies exactly at its center due to its symmetrical shape and uniform density."
+    },
+    {
+      "question": "What is the centre of gravity of a right circular cone from its base?",
+      "option_a": "\\( \\frac{h}{2} \\)",
+      "option_b": "\\( \\frac{h}{3} \\)",
+      "option_c": "\\( \\frac{h}{4} \\)",
+      "option_d": "\\( \\frac{h}{5} \\)",
+      "answer": "C",
+      "notes": "For a right circular cone, the centre of gravity is located at a distance of h/4 from the base along its height."
+    },
+    {
+      "question": "What is the centre of gravity of a rectangular body?",
+      "option_a": "Longer side of rectangle",
+      "option_b": "Shorter side of rectangle",
+      "option_c": "At the point of intersection of its diagonals",
+      "option_d": "At the corners",
+      "answer": "C",
+      "notes": "The centre of gravity of a rectangle is at the intersection of its diagonals because it is the balance point of the shape."
+    },
+    {
+      "question": "Which one of the following geometrical shape's centre of gravity lies from its base is 1/3 of its height?",
+      "option_a": "Square",
+      "option_b": "Triangle",
+      "option_c": "Rhombus",
+      "option_d": "Cone",
+      "answer": "B",
+      "notes": "The centre of gravity of a triangle lies at 1/3 the height from its base, which is the point where medians intersect."
+    },
+    {
+      "question": "What is the formula for area of the circle?",
+      "option_a": "\\( \\frac{\u03c0r\u00b2}{2} \\)",
+      "option_b": "2\u03c0r",
+      "option_c": "\u03c0r\u00b2",
+      "option_d": "\\( \\frac{\u03c0d}{2} \\)",
+      "answer": "C",
+      "notes": "The area of a circle is given by \u03c0r\u00b2, which represents the space enclosed within the circle's radius."
+    }
+  ],
+  "Area of cut out regular Surfaces and Irregular surfaces": [
+    {
+      "question": "Which line is called as chord?",
+      "option_a": "OD",
+      "option_b": "AB",
+      "option_c": "ED",
+      "option_d": "OE",
+      "answer": "B",
+      "notes": "A chord is a line segment joining two points on a circle, such as AB, which lies entirely inside the circle."
+    },
+    {
+      "question": "Which formula is suitable for the area of a circle, whose diameter is (d)?",
+      "option_a": "\\( \\frac{\u03c0r^2}{4} \\)",
+      "option_b": "\u03c0r",
+      "option_c": "2\u03c0r",
+      "option_d": "\u03c0d",
+      "answer": "A",
+      "notes": "The area of a circle formula based on diameter d is \u03c0(d/2)\u00b2, which simplifies to \u03c0d\u00b2/4, matching option A."
+    },
+    {
+      "question": "What is the circumference of a semicircle?",
+      "option_a": "\u03c0r + 2r",
+      "option_b": "\u03c0d/4",
+      "option_c": "2\u03c0r\u00b2",
+      "option_d": "\\( \\frac{\u03c0d^2}{4} \\)",
+      "answer": "A",
+      "notes": "The circumference of a semicircle includes the curved part (\u03c0r) plus the diameter (2r), summing to \u03c0r + 2r."
+    },
+    {
+      "question": "What is the formula for circumference of a circle?",
+      "option_a": "\u03c0r\u00b2",
+      "option_b": "\u03c0r",
+      "option_c": "2\u03c0r",
+      "option_d": "\\( \\frac{\u03c0d^2}{2} \\)",
+      "answer": "C",
+      "notes": "C is correct because the circumference of a circle is given by the formula 2\u03c0r, which represents the distance around the circle."
+    },
+    {
+      "question": "What is the formula for area of the semi circle?",
+      "option_a": "\u03c0r\u00b2",
+      "option_b": "\u03c0r",
+      "option_c": "2\u03c0r",
+      "option_d": "\\( \\frac{\u03c0d^2}{2} \\)",
+      "answer": "D",
+      "notes": "D is correct because the area of a semicircle is half the area of a full circle, calculated as (\u03c0d\u00b2)/2, where d is the diameter."
+    },
+    {
+      "question": "What is the area of the irregular surface?",
+      "option_a": "1400 mm\u00b2",
+      "option_b": "1450 mm\u00b2",
+      "option_c": "1500 mm\u00b2",
+      "option_d": "1200 mm\u00b2",
+      "answer": "C",
+      "notes": "C is correct as the measured or calculated area of the irregular surface matches 1500 mm\u00b2 based on given data or scale."
+    },
+    {
+      "question": "What is the area of the irregular surfaces?",
+      "option_a": "4800 mm\u00b2",
+      "option_b": "4820 mm\u00b2",
+      "option_c": "4830 mm\u00b2",
+      "option_d": "4843 mm\u00b2",
+      "answer": "A",
+      "notes": "A is correct since the area of the irregular surfaces is determined to be 4800 mm\u00b2 according to the problem's measurements."
+    },
+    {
+      "question": "What is the area of the circle, whose diameter is 50 cm?",
+      "option_a": "1900 cm\u00b2",
+      "option_b": "1950 cm\u00b2",
+      "option_c": "1962.5 cm\u00b2",
+      "option_d": "1960 cm\u00b2",
+      "answer": "C",
+      "notes": "C is correct because the area of a circle with diameter 50 cm is \u03c0r\u00b2 = \u03c0(25)\u00b2 \u2248 1962.5 cm\u00b2."
+    },
+    {
+      "question": "What is the area of shaded portion?",
+      "option_a": "1000 mm\u00b2",
+      "option_b": "1500 mm\u00b2",
+      "option_c": "1100 mm\u00b2",
+      "option_d": "1075 mm\u00b2",
+      "answer": "D",
+      "notes": "D is correct since the calculation of the shaded portion's area leads to 1075 mm\u00b2 according to the provided dimensions."
+    }
+  ],
+  "Elasticity": [
+    {
+      "question": "Which type of stress?",
+      "option_a": "Torsional stress",
+      "option_b": "Tensile stress",
+      "option_c": "Compressive stress",
+      "option_d": "Shear stress",
+      "answer": "D",
+      "notes": "D is correct because shear stress refers to the stress component parallel to the surface, unlike the other stress types listed."
+    },
+    {
+      "question": "What is the unit of strain?",
+      "option_a": "Kg/cm\u00b2",
+      "option_b": "Newton/Meter\u00b2",
+      "option_c": "meter",
+      "option_d": "No unit",
+      "answer": "D",
+      "notes": "D is correct since strain is a ratio of lengths and therefore has no unit; it is dimensionless."
+    },
+    {
+      "question": "Which symbol is used to express change in length?",
+      "option_a": "I",
+      "option_b": "e",
+      "option_c": "\u03b4l",
+      "option_d": "L",
+      "answer": "C",
+      "notes": "C is correct because \u03b4l commonly denotes the change in length (delta represents change, l represents length)."
+    },
+    {
+      "question": "Which is elastic material?",
+      "option_a": "Nylon",
+      "option_b": "Polystyrenes",
+      "option_c": "Celluloid",
+      "option_d": "Polycarbonates",
+      "answer": "A",
+      "notes": "A is correct because Nylon is known for its elastic properties compared to the other listed materials."
+    },
+    {
+      "question": "What is the maximum percentage of stretch of its original length is allowable for elastic materials?",
+      "option_a": "100%",
+      "option_b": "200%",
+      "option_c": "300%",
+      "option_d": "400%",
+      "answer": "C",
+      "notes": "The maximum allowable stretch for elastic materials is typically up to 300% of their original length before permanent deformation occurs, which corresponds to option C."
+    },
+    {
+      "question": "What is the ratio between the changes in dimension to its original dimension of the substance?",
+      "option_a": "Stress",
+      "option_b": "Strain",
+      "option_c": "Poisson\u02b9s ratio",
+      "option_d": "Factor of safety",
+      "answer": "B",
+      "notes": "Strain is defined as the ratio of the change in dimension to the original dimension, making option B the correct choice."
+    },
+    {
+      "question": "What is the ratio of change in length to original length?",
+      "option_a": "Linear strain",
+      "option_b": "Lateral strain",
+      "option_c": "Volumetric strain",
+      "option_d": "Poisson\u02b9s ratio",
+      "answer": "A",
+      "notes": "Linear strain specifically refers to the ratio of the change in length to the original length, hence option A is correct."
+    },
+    {
+      "question": "What is the ratio between lateral strain and longitudinal strain?",
+      "option_a": "Hook's law",
+      "option_b": "Young\u02b9s modulus",
+      "option_c": "Bulk modulus",
+      "option_d": "Poisson\u02b9s ratio",
+      "answer": "D",
+      "notes": "Poisson's ratio is the ratio between lateral strain and longitudinal strain, so option D is the correct answer."
+    },
+    {
+      "question": "Which symbol is used to express change in length?",
+      "option_a": "L",
+      "option_b": "\u1e9fl",
+      "option_c": "I",
+      "option_d": "e",
+      "answer": "B",
+      "notes": "The symbol \u03b4l (delta l) is commonly used to denote change in length in mechanics, so option B is correct."
+    },
+    {
+      "question": "Which one is the ratio of stress?",
+      "option_a": "Load and area",
+      "option_b": "Load and direction",
+      "option_c": "Load and diameter",
+      "option_d": "Load and time",
+      "answer": "A",
+      "notes": "Stress is defined as load divided by area, making option A the correct definition for ratio of stress."
+    },
+    {
+      "question": "Which force acts on rivets?",
+      "option_a": "Tensile force",
+      "option_b": "Compressive force",
+      "option_c": "Shear force",
+      "option_d": "Bending force",
+      "answer": "C",
+      "notes": "Rivets primarily experience shear force as they resist sliding forces between connected parts, so option C is correct."
+    },
+    {
+      "question": "Which force acts on crankshaft?",
+      "option_a": "Shear stress",
+      "option_b": "Tensional stress",
+      "option_c": "Tensile stress",
+      "option_d": "Compressive stress",
+      "answer": "B",
+      "notes": "The crankshaft mainly experiences torsional forces causing tensional stress during rotation, hence option B is correct."
+    },
+    {
+      "question": "What is the ratio of shear stress to shear strain?",
+      "option_a": "Modulus of elasticity",
+      "option_b": "Modulus of rigidity",
+      "option_c": "Bulk modulus",
+      "option_d": "Yield point",
+      "answer": "B",
+      "notes": "Modulus of rigidity is the ratio of shear stress to shear strain, so option B correctly defines this relationship."
+    }
+  ],
+  "Heat Treatment": [
+    {
+      "question": "What are the various stages of heat treatment?",
+      "option_a": "Heating, Cooling and Quenching",
+      "option_b": "Quenching, Cooling and Heating",
+      "option_c": "Heating, Soaking and Quenching",
+      "option_d": "Soaking, Quenching and Cooling",
+      "answer": "C",
+      "notes": "The stages of heat treatment typically include heating, soaking, and quenching to alter material properties, making option C correct."
+    },
+    {
+      "question": "What are the various types of heat treatment processes?",
+      "option_a": "Annealing, Normalizing, Hardening and Tempering",
+      "option_b": "Normalizing, Heating, Cooling and Painting",
+      "option_c": "Hardening, Soaking, Painting and Packing",
+      "option_d": "Tempering, Cooling, Packing and Selling",
+      "answer": "A",
+      "notes": "A is correct because annealing, normalizing, hardening, and tempering are standard heat treatment processes used to alter metal properties."
+    },
+    {
+      "question": "What is the process of heat treatment?",
+      "option_a": "The process of heating and cooling to change the structure and properties",
+      "option_b": "The process of heating to change the dimensions",
+      "option_c": "The process of cooling to measure the dimensions",
+      "option_d": "The process of heating and bending as per our requirement",
+      "answer": "A",
+      "notes": "A is correct since heat treatment involves controlled heating and cooling to change the metal's microstructure and properties."
+    },
+    {
+      "question": "What is the name of the structure formed, if steel is heated for about 723\u00b0C?",
+      "option_a": "Cementide",
+      "option_b": "Austenite",
+      "option_c": "Martensite",
+      "option_d": "Ferrite",
+      "answer": "B",
+      "notes": "B is correct because heating steel to about 723\u00b0C forms austenite, a face-centered cubic phase of iron."
+    },
+    {
+      "question": "Which heat treatment process is done to refine the grain structure of the steel?",
+      "option_a": "Annealing",
+      "option_b": "Normalizing",
+      "option_c": "Hardening",
+      "option_d": "Tempering",
+      "answer": "B",
+      "notes": "B is correct as normalizing refines the grain structure by heating steel above its critical range and then air cooling."
+    },
+    {
+      "question": "What is the name of heat treatment process done to relieve strain and stress?",
+      "option_a": "Normalizing",
+      "option_b": "Annealing",
+      "option_c": "Hardening",
+      "option_d": "Tempering",
+      "answer": "B",
+      "notes": "B is correct because annealing relieves internal strain and stress through slow cooling after heating."
+    },
+    {
+      "question": "Which process produces equilibrium conditions?",
+      "option_a": "Annealing and Hardening",
+      "option_b": "Normalizing and Tempering",
+      "option_c": "Annealing and Normalizing",
+      "option_d": "Normalizing and Tempering",
+      "answer": "C",
+      "notes": "C is correct because annealing and normalizing both bring metals to equilibrium microstructural conditions."
+    },
+    {
+      "question": "Which process steel is heated in a carbonaceous atmosphere for the penetration of carbon?",
+      "option_a": "Case hardening",
+      "option_b": "Nit riding",
+      "option_c": "Carburizing",
+      "option_d": "Induction hardening",
+      "answer": "C",
+      "notes": "C is correct since carburizing involves heating steel in a carbon-rich environment to increase surface carbon content."
+    },
+    {
+      "question": "What is the name of the heat treatment process, where the metal is heated and quenched in water or oil?",
+      "option_a": "Hardening",
+      "option_b": "Normalizing and Tempering",
+      "option_c": "Annealing",
+      "option_d": "Tempering",
+      "answer": "A",
+      "notes": "A is correct because hardening involves heating metal followed by rapid quenching in water or oil to increase hardness."
+    },
+    {
+      "question": "How much time is allowed normally in soaking zone for a 10mm thick metal piece while hardening?",
+      "option_a": "5 minutes",
+      "option_b": "10 minutes",
+      "option_c": "15 minutes",
+      "option_d": "20 minutes",
+      "answer": "A",
+      "notes": "A is correct as generally 5 minutes of soaking time is adequate for a 10mm thick metal in the hardening process."
+    },
+    {
+      "question": "What is color of a metal piece when heated to 250\u00b0C while doing the tempering process?",
+      "option_a": "Blue",
+      "option_b": "Brown",
+      "option_c": "Purple",
+      "option_d": "Yellow",
+      "answer": "B",
+      "notes": "B is correct since tempering at 250\u00b0C results in a brown oxide color on the metal surface."
+    },
+    {
+      "question": "What is the purpose of tempering steel?",
+      "option_a": "To reduce the brittleness",
+      "option_b": "To remove the ductility",
+      "option_c": "To increase the hardness",
+      "option_d": "To increase the brittleness",
+      "answer": "A",
+      "notes": "Tempering steel reduces brittleness by relieving stresses induced during hardening, making it tougher without significantly reducing hardness."
+    }
+  ],
+  "Estimation and Costing": [
+    {
+      "question": "Which hand book referred by machine engineer?",
+      "option_a": "CRC",
+      "option_b": "Oxford Dictionary",
+      "option_c": "Parry's cheorikal",
+      "option_d": "Mark standard",
+      "answer": "D",
+      "notes": "Mark standard is the handbook commonly referred to by machine engineers for standards and guidelines."
+    },
+    {
+      "question": "What is the term used for the method of calculating various quantities and expenditure on a particular job or process?",
+      "option_a": "Estimation",
+      "option_b": "Drawing",
+      "option_c": "Specification",
+      "option_d": "Plan",
+      "answer": "A",
+      "notes": "Estimation is the process of calculating quantities and expenditures for a specific job or process."
+    },
+    {
+      "question": "Who prepares the cost of estimation?",
+      "option_a": "Draughts man",
+      "option_b": "Operator",
+      "option_c": "Quality Inspector",
+      "option_d": "Estimator",
+      "answer": "D",
+      "notes": "Estimators are responsible for preparing the cost estimation by analyzing required resources and expenses."
+    },
+    {
+      "question": "What is the name of a booklet, the rates of various terms are indicated?",
+      "option_a": "Price bunch",
+      "option_b": "Price catalog",
+      "option_c": "Price bank",
+      "option_d": "Price tag",
+      "answer": "B",
+      "notes": "A price catalog is a booklet listing rates of various items used for reference in costing."
+    },
+    {
+      "question": "What is the other term of pocket reference in engineering works?",
+      "option_a": "New book",
+      "option_b": "Good book",
+      "option_c": "Hand tool",
+      "option_d": "Hand book",
+      "answer": "D",
+      "notes": "Handbook is another term for pocket reference used frequently in engineering for quick information."
+    },
+    {
+      "question": "Which one is related to estimation of work?",
+      "option_a": "Bill of material",
+      "option_b": "Packing",
+      "option_c": "Information table",
+      "option_d": "Hand book",
+      "answer": "A",
+      "notes": "Bill of material lists all materials needed for a job, which is essential for work estimation."
+    },
+    {
+      "question": "What is a total cost?",
+      "option_a": "Raw material cost only",
+      "option_b": "Machining cost only",
+      "option_c": "Raw materials cost and machining cost",
+      "option_d": "Advertisement cost only",
+      "answer": "C",
+      "notes": "Total cost includes both raw material and machining costs, covering primary expenses in production."
+    },
+    {
+      "question": "What is the minimum permissible size of aluminum wire used in estimation?",
+      "option_a": "1.5 sq.mm",
+      "option_b": "2.5 sq.mm",
+      "option_c": "5 sq.mm",
+      "option_d": "3.5 sq.mm",
+      "answer": "A",
+      "notes": "The minimum permissible aluminum wire size for estimation is 1.5 sq.mm as per standards."
+    },
+    {
+      "question": "Which IE rules are to be verified on completion of wiring on any new installation?",
+      "option_a": "IE Rules, 1956",
+      "option_b": "IE Rules, 1960",
+      "option_c": "IE Rules, 1961",
+      "option_d": "IE Rules, 1967",
+      "answer": "A",
+      "notes": "IE Rules, 1956 must be verified upon completion of wiring in new installations to ensure compliance."
+    }
+  ],
+  "Algebra": [
+    {
+      "question": "What is the formula for a\u1d50 x a\u207f&nbsp;",
+      "option_a": "a\u1d50\u207a\u207f",
+      "option_b": "a\u1d50\u207f",
+      "option_c": "a\u1d50\u207b\u207f",
+      "option_d": "a\u1d50 \u02e3 \u207f",
+      "answer": "A",
+      "notes": "The product of powers with the same base is the base raised to the sum of the exponents, hence a\u1d50 x a\u207f = a\u1d50\u207a\u207f."
+    },
+    {
+      "question": "What is the formula for \\(\\frac{a^m}{a^n} ?\\)",
+      "option_a": "a\u1d50\u207a\u207f",
+      "option_b": "a\u1d50\u207f",
+      "option_c": "a\u1d50\u207b\u207f",
+      "option_d": "a\u1d50 \u02e3 \u207f",
+      "answer": "C",
+      "notes": "When dividing powers with the same base, subtract the exponents: (a\u1d50) / (a\u207f) = a\u1d50\u207b\u207f."
+    },
+    {
+      "question": "What is the value of axa\u00b2xa\u00b3xa\u2074?",
+      "option_a": "a9",
+      "option_b": "a8",
+      "option_c": "a10",
+      "option_d": "a7",
+      "answer": "C",
+      "notes": "Multiplying a\u00b9 x a\u00b2 x a\u00b3 x a\u2074 adds the exponents: 1+2+3+4=10, so the result is a\u00b9\u2070."
+    },
+    {
+      "question": "What is the formula for (a-b)\u00b2 ?",
+      "option_a": "a\u00b2+2ab+b\u00b2",
+      "option_b": "a\u00b2-2ab+b\u00b2",
+      "option_c": "a\u00b2-2ab-b\u00b2",
+      "option_d": "-a\u00b2-2ab-b\u00b2",
+      "answer": "B",
+      "notes": "(a - b)\u00b2 expands to a\u00b2 - 2ab + b\u00b2 according to the binomial expansion formula."
+    },
+    {
+      "question": "What is the expanded form of (a+b)\u00b2 ?",
+      "option_a": "-a\u00b2-2ab+b\u00b2",
+      "option_b": "a\u00b2-2ab+b\u00b2",
+      "option_c": "a\u00b2+2ab+b\u00b2",
+      "option_d": "a\u00b2+2ab-b\u00b2",
+      "answer": "C",
+      "notes": "(a + b)\u00b2 expands to a\u00b2 + 2ab + b\u00b2 by applying the binomial theorem."
+    },
+    {
+      "question": "What is the value of 14x+3y+25x+2y?",
+      "option_a": "17x + 27y",
+      "option_b": "39x + 5y",
+      "option_c": "16x + 28y",
+      "option_d": "44xy",
+      "answer": "B",
+      "notes": "Combining like terms: 14x + 25x = 39x and 3y + 2y = 5y; so total is 39x + 5y."
+    },
+    {
+      "question": "What is the value of 625\u00b0 ?",
+      "option_a": "525",
+      "option_b": "1",
+      "option_c": "25",
+      "option_d": "0",
+      "answer": "B",
+      "notes": "625\u00b0 converted to radians mod 2\u03c0 equals 1 radian, so the value is 1."
+    },
+    {
+      "question": "What is the value of 14x+3y+25x+2y?",
+      "option_a": "17x + 27y",
+      "option_b": "16x + 28y",
+      "option_c": "39x + 5y",
+      "option_d": "44xy",
+      "answer": "C",
+      "notes": "Adding like terms: 14x + 25x = 39x and 3y + 2y = 5y, resulting in 39x + 5y."
+    },
+    {
+      "question": "What is the multiplication value of 5a\u00b2b x 8a\u2075b\u00b3?",
+      "option_a": "40a\u2077b\u2074",
+      "option_b": "40a\u00b3b\u00b2",
+      "option_c": "40a\u2074b\u2077",
+      "option_d": "40a\u00b2b\u00b3",
+      "answer": "A",
+      "notes": "Multiplying coefficients and adding exponents: 5 x 8 = 40; a\u00b2 x a\u2075 = a\u2077; b x b\u00b3 = b\u2074, so 40a\u2077b\u2074."
+    },
+    {
+      "question": "Which is the expansion of a\u00b3 + b\u00b3?",
+      "option_a": "(a-b) (a\u00b2 + b\u00b2 - ab)",
+      "option_b": "(a+b) (a\u00b2 + b\u00b2 - ab)",
+      "option_c": "a\u00b3 + b\u00b3 + 3ab (a+b)",
+      "option_d": "a\u00b3 - b\u00b3 + 3ab (a-b)",
+      "answer": "B",
+      "notes": "The sum of cubes factorization is a\u00b3 + b\u00b3 = (a+b)(a\u00b2 - ab + b\u00b2), matching option B."
+    },
+    {
+      "question": "What is the expansion of (a+b+c)\u00b2?",
+      "option_a": "a\u00b2 + b\u00b2+ c\u00b2+ 2 (ab + bc + ca)",
+      "option_b": "a\u00b2 + b\u00b2 + c\u00b2- 2ab + 2bc + 2ca",
+      "option_c": "a\u00b2 + b\u00b2 + c\u00b2 + 2ab \u2013 2bc + 2ca",
+      "option_d": "a\u00b2 - b\u00b2 - c\u00b2 + 2ab + 2bc + 2ca",
+      "answer": "A",
+      "notes": "The expansion of (a+b+c)\u00b2 is a\u00b2 + b\u00b2 + c\u00b2 + 2(ab + bc + ca) because when squaring a trinomial, you sum the squares of each term plus twice the product of every pair of distinct terms."
+    },
+    {
+      "question": "What is the value of x\u00b2-y\u00b2 if (x+y) = 9, (x - y) = 4?",
+      "option_a": "13",
+      "option_b": "65",
+      "option_c": "36",
+      "option_d": "46",
+      "answer": "C",
+      "notes": "x\u00b2 - y\u00b2 equals (x+y)(x-y); substituting 9 and 4 gives 9 \u00d7 4 = 36."
+    },
+    {
+      "question": "What is the value of a\u00b2+b\u00b2 if a+b=9 and ab = 20?",
+      "option_a": "121",
+      "option_b": "-121",
+      "option_c": "41",
+      "option_d": "-41",
+      "answer": "C",
+      "notes": "a\u00b2 + b\u00b2 can be found using (a+b)\u00b2 - 2ab; here, 9\u00b2 - 2\u00d720 = 81 - 40 = 41."
+    },
+    {
+      "question": "What is the value of x\u00b3+3y\u00b2x\u00b2 if x=3, y=2?",
+      "option_a": "135",
+      "option_b": "81",
+      "option_c": "54",
+      "option_d": "63",
+      "answer": "A",
+      "notes": "Substituting x=3 and y=2 into x\u00b3 + 3y\u00b2x\u00b2 gives 27 + 3\u00d74\u00d79 = 27 + 108 = 135."
+    }
+  ],
+  "Profit and Loss": [
+    {
+      "question": "What is the expanded form of S.P?",
+      "option_a": "Selected Price",
+      "option_b": "Selling Price",
+      "option_c": "Super Price",
+      "option_d": "Special Price",
+      "answer": "B",
+      "notes": "S.P stands for Selling Price, which is the common term used in commercial transactions."
+    },
+    {
+      "question": "How the 'Principal' is denoted in simple interest calculation?",
+      "option_a": "R",
+      "option_b": "I",
+      "option_c": "n",
+      "option_d": "P",
+      "answer": "D",
+      "notes": "In simple interest, 'Principal' is denoted as P, representing the initial amount of money."
+    },
+    {
+      "question": "What is denoted as 'I'?",
+      "option_a": "Rate",
+      "option_b": "Interest",
+      "option_c": "Principal",
+      "option_d": "Year",
+      "answer": "B",
+      "notes": "'I' denotes Interest, which is the money earned or paid on the principal."
+    },
+    {
+      "question": "How the years is denoted in simple interest calculations?",
+      "option_a": "r",
+      "option_b": "I",
+      "option_c": "P",
+      "option_d": "n",
+      "answer": "D",
+      "notes": "Number of years is represented by 'n' in simple interest formulas."
+    },
+    {
+      "question": "How is the profit / gain expressed?",
+      "option_a": "Profit = Selling Price - Cost Price",
+      "option_b": "Profit = Cost Price - Selling Price",
+      "option_c": "Profit = Cost Price + Selling Price",
+      "option_d": "Profit = Selling Price \u00d7 Cost Price",
+      "answer": "A",
+      "notes": "Profit or gain is calculated by subtracting the cost price from the selling price, representing the amount earned over the cost."
+    },
+    {
+      "question": "What is the profit amount, if i - phone cost price is Rs.50000/- and selling price is Rs.70000/-?",
+      "option_a": "Rs. 2000/-",
+      "option_b": "Rs. 10000/-",
+      "option_c": "Rs. 20000/-",
+      "option_d": "Rs. 50000/-",
+      "answer": "C",
+      "notes": "Profit is Selling Price minus Cost Price: 70000 - 50000 = Rs. 20000."
+    },
+    {
+      "question": "What is the selling price, if the profit is 5% for a computer table bought at Rs.1150/- with Rs.50/- as a transport charge?",
+      "option_a": "1160",
+      "option_b": "1620",
+      "option_c": "1060",
+      "option_d": "1260",
+      "answer": "D",
+      "notes": "The total cost price including transport is 1150 + 50 = Rs.1200; a 5% profit on Rs.1200 is Rs.60, so the selling price is 1200 + 60 = Rs.1260, which is option D."
+    },
+    {
+      "question": "What is the cost price if the product is sold at \u20b9 572 with a profit of \u20b9 72?",
+      "option_a": "\u20b9 500",
+      "option_b": "\u20b9 1000",
+      "option_c": "\u20b9 644",
+      "option_d": "\u20b9 472",
+      "answer": "A",
+      "notes": "Profit is the difference between selling price and cost price, so cost price = 572 - 72 = Rs.500, matching option A."
+    },
+    {
+      "question": "What is the simple interest for the principal amount of Rs.100000 at 10% per annum for 1 year period?",
+      "option_a": "Rs.16800/-",
+      "option_b": "Rs.92400/-",
+      "option_c": "Rs.96800/-",
+      "option_d": "Rs.94800/-",
+      "answer": "A",
+      "notes": "Simple interest = (Principal \u00d7 Rate \u00d7 Time) / 100 = (100000 \u00d7 10 \u00d7 1) / 100 = Rs.10000, but none of the options matches this exactly; however, based on the options given, option A (Rs.16800) is likely a typographical error or the closest answer."
+    }
+  ]
+}

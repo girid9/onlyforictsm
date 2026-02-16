@@ -1,0 +1,229 @@
+{
+  "Imported Questions": [
+    {
+      "question": "Which switch symbol is this?",
+      "option_a": "SPDT switch",
+      "option_b": "SPST switch",
+      "option_c": "DPDT switch",
+      "option_d": "DPST switch",
+      "answer": "B",
+      "notes": "An SPST (Single Pole Single Throw) switch symbol shows a simple on-off connection with one input and one output, matching the symbol given."
+    },
+    {
+      "question": "What is represented by the following electrical symbol?",
+      "option_a": "Terminal",
+      "option_b": "Transformer",
+      "option_c": "Cell",
+      "option_d": "Fuse",
+      "answer": "C",
+      "notes": "The symbol represents a cell, typically shown as a pair of lines with one longer (positive) and one shorter (negative), consistent with the cell symbol."
+    },
+    {
+      "question": "Name the symbol.",
+      "option_a": "Electric bell",
+      "option_b": "Magnetic head",
+      "option_c": "Buzzer",
+      "option_d": "Magnetic relay",
+      "answer": "C",
+      "notes": "The symbol corresponds to a buzzer, which produces sound electronically, distinct from electric bells or relays."
+    },
+    {
+      "question": "Identify the type of resistor.",
+      "option_a": "Metal film resistor",
+      "option_b": "Carbon composition resistor",
+      "option_c": "Potentiometer",
+      "option_d": "Wire wound resistor",
+      "answer": "C",
+      "notes": "The symbol depicts a potentiometer, characterized by a resistor with an arrow indicating adjustable resistance."
+    },
+    {
+      "question": "Which is the NOT gate in the following picture?",
+      "option_a": "The gate with a triangle shape followed by a small circle (inverter symbol)",
+      "option_b": "The gate shaped like a D (AND gate)",
+      "option_c": "The gate shaped like an arc with inputs on one side and one output (OR gate)",
+      "option_d": "The gate with a plus inside a circle (XOR gate)",
+      "answer": "A",
+      "notes": "Option A is the NOT gate symbol, recognizable by a triangle pointing right with a small circle (inversion bubble) at the output."
+    },
+    {
+      "question": "Name the symbol.",
+      "option_a": "ICDP",
+      "option_b": "ICTP",
+      "option_c": "DPDT",
+      "option_d": "DTDP",
+      "answer": "C",
+      "notes": "DPDT (Double Pole Double Throw) switches have two inputs and two outputs per pole, matching the symbol shown in option C."
+    },
+    {
+      "question": "What is represented by the following electrical symbol?",
+      "option_a": "Preset potentiometer",
+      "option_b": "Preset resistor",
+      "option_c": "Variable potentiometer",
+      "option_d": "Variable resistor",
+      "answer": "A",
+      "notes": "The symbol shows a preset potentiometer, indicated by a potentiometer symbol with a diagonal arrow and adjustment mark."
+    },
+    {
+      "question": "What is represented by the following electrical symbol?",
+      "option_a": "Transformer",
+      "option_b": "Relay",
+      "option_c": "Resistor",
+      "option_d": "Fuse",
+      "answer": "A",
+      "notes": "The symbol depicts a transformer, usually represented by two coils with a core, which differentiates it from relays or resistors."
+    },
+    {
+      "question": "What is the name of the symbol?",
+      "option_a": "Band-pass filter",
+      "option_b": "Band-stop filter",
+      "option_c": "Low-pass filter",
+      "option_d": "High-pass filter",
+      "answer": "A",
+      "notes": "The symbol is for a band-pass filter, which allows frequencies within a certain range to pass, shown by its characteristic shape."
+    },
+    {
+      "question": "Which type of switch is this?",
+      "option_a": "Preset resistors",
+      "option_b": "Loudspeakers",
+      "option_c": "Slide type",
+      "option_d": "Coaxial connectors",
+      "answer": "C",
+      "notes": "The symbol corresponds to a slide type switch, typically shown with a sliding contact over a track."
+    },
+    {
+      "question": "What is represented by the following electrical symbol?",
+      "option_a": "Buffer",
+      "option_b": "Operational amplifier",
+      "option_c": "Inverter / NOT gate",
+      "option_d": "Three terminal network",
+      "answer": "B",
+      "notes": "The symbol depicts an operational amplifier, characterized by its triangle shape with inputs and an output, distinguishing it from buffers and logic gates."
+    },
+    {
+      "question": "Which one of these are capacitor symbol?",
+      "option_a": "Two parallel lines with a gap between them",
+      "option_b": "A circle with a line through it",
+      "option_c": "A zigzag line",
+      "option_d": "A triangle pointing to a line",
+      "answer": "A",
+      "notes": "Option A shows two parallel lines representing capacitor plates, which is the standard symbol for a capacitor."
+    },
+    {
+      "question": "What is the form of curve that represents Ohm\u02b9s law?",
+      "option_a": "Parabolic",
+      "option_b": "Hyperbolic",
+      "option_c": "Linear",
+      "option_d": "Sinusoidal",
+      "answer": "C",
+      "notes": "Ohm\u2019s law shows a direct proportionality between voltage and current, represented by a linear graph."
+    },
+    {
+      "question": "Which is the symbol of relay?",
+      "option_a": "A rectangle with a diagonal line inside representing the coil and multiple switch contacts",
+      "option_b": "A zigzag line representing a resistor",
+      "option_c": "A triangle pointing to a line representing a diode",
+      "option_d": "A circle with an 'M' inside representing a motor",
+      "answer": "A",
+      "notes": "Option C includes a coil and a switch element, which is the typical representation of a relay."
+    },
+    {
+      "question": "What is the name of the gate?",
+      "option_a": "NAND Gate",
+      "option_b": "Ex-Nor Gate",
+      "option_c": "AND Gate",
+      "option_d": "OR Gate",
+      "answer": "A",
+      "notes": "The symbol corresponds to a NAND gate, identifiable by the AND gate shape with a small circle (negation) at the output."
+    },
+    {
+      "question": "Which one is the transistor?",
+      "option_a": "A device used to amplify or switch electronic signals",
+      "option_b": "A device used to store electrical energy",
+      "option_c": "A device that converts light energy into electrical energy",
+      "option_d": "A device used to convert AC to DC",
+      "answer": "A",
+      "notes": "Option A depicts the typical transistor symbol with emitter, base, and collector leads."
+    },
+    {
+      "question": "Identify this picture",
+      "option_a": "N-channel MOSFET",
+      "option_b": "P-channel MOSFET",
+      "option_c": "NPN transistor",
+      "option_d": "PNP transistor",
+      "answer": "B",
+      "notes": "The symbol shows a P-channel MOSFET, indicated by an arrow pointing outward from the source terminal."
+    },
+    {
+      "question": "Which is the symbol of diode?",
+      "option_a": "A triangle pointing to a line",
+      "option_b": "A circle with a cross inside",
+      "option_c": "A zigzag line",
+      "option_d": "A rectangle",
+      "answer": "A",
+      "notes": "Option A shows the diode symbol with an arrowhead pointing in the direction of conventional current and a bar for the cathode."
+    },
+    {
+      "question": "Find the symbol.",
+      "option_a": "AC supply",
+      "option_b": "Loudspeaker",
+      "option_c": "Microphone",
+      "option_d": "Meter",
+      "answer": "B",
+      "notes": "Option B depicts a loudspeaker symbol with a cone shape and sound waves, differentiating it from other devices."
+    },
+    {
+      "question": "Which is the short circuit?",
+      "option_a": "A low resistance connection between two points in an electric circuit",
+      "option_b": "An open circuit with no current flow",
+      "option_c": "A high resistance connection that limits current flow",
+      "option_d": "A circuit designed to protect against overloads",
+      "answer": "A",
+      "notes": "Option A illustrates a short circuit by showing a direct connection (wire) with negligible resistance."
+    },
+    {
+      "question": "Identify the symbol of battery.",
+      "option_a": "A set of alternating long and short parallel lines",
+      "option_b": "A circle with a letter inside",
+      "option_c": "A triangle connected to a line",
+      "option_d": "A zigzag line",
+      "answer": "A",
+      "notes": "The correct answer is B because the battery symbol is represented by alternating long and short parallel lines, which matches option B."
+    },
+    {
+      "question": "Below image is of a:",
+      "option_a": "SCR",
+      "option_b": "TRIAC",
+      "option_c": "DIAC",
+      "option_d": "DIODE",
+      "answer": "A",
+      "notes": "The correct answer is A because SCR (Silicon Controlled Rectifier) is depicted with a symbol showing a gate terminal, which fits the image presented."
+    },
+    {
+      "question": "Identify the given picture.",
+      "option_a": "Capacitor",
+      "option_b": "Inductor",
+      "option_c": "Resistor",
+      "option_d": "Diode",
+      "answer": "B",
+      "notes": "The correct answer is B because the given picture shows coils or loops that are characteristic of an inductor."
+    },
+    {
+      "question": "Which one is not a resistor?",
+      "option_a": "Capacitor",
+      "option_b": "Carbon resistor",
+      "option_c": "Wirewound resistor",
+      "option_d": "Film resistor",
+      "answer": "A",
+      "notes": "The correct answer is C because option C shows a symbol that is different from resistor symbols, indicating it is not a resistor."
+    },
+    {
+      "question": "Which is not a type of LED?",
+      "option_a": "Bioluminescent LED",
+      "option_b": "SMD LED",
+      "option_c": "OLED",
+      "option_d": "High Power LED",
+      "answer": "A",
+      "notes": "The correct answer is B because option B does not represent a known type of LED among the given choices."
+    }
+  ]
+}

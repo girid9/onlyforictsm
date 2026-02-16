@@ -1,0 +1,2397 @@
+{
+  "Basic Career Skills": [
+    {
+      "question": "Which of the following is the key component of a resume?",
+      "option_a": "Travel History",
+      "option_b": "Work Experience",
+      "option_c": "Favorite Books",
+      "option_d": "Personal Anecdotes",
+      "answer": "B",
+      "notes": "B is correct because work experience highlights your relevant job history, which is the most important part of a resume."
+    },
+    {
+      "question": "For applying a job, your first preparation is ______.",
+      "option_a": "book a ticket to the interview place",
+      "option_b": "save money for expenses",
+      "option_c": "prepare a resume",
+      "option_d": "prepare for the interview",
+      "answer": "C",
+      "notes": "C is correct because preparing a resume is the essential first step to apply for a job and showcase your qualifications."
+    },
+    {
+      "question": "What is the primary purpose of a cover letter?",
+      "option_a": "To list all your previous job responsibilities",
+      "option_b": "To introduce yourself and explain why you are a good fit for the job",
+      "option_c": "To provide a detailed personal biography",
+      "option_d": "To summarize your educational qualifications",
+      "answer": "B",
+      "notes": "B is correct because a cover letter introduces you and explains why you are a good match for the position."
+    },
+    {
+      "question": "Which of the following is an important step to take before sending your resume?",
+      "option_a": "Use complex words",
+      "option_b": "Focus only on technical skills",
+      "option_c": "Ensure details like phone number and email are correct",
+      "option_d": "Skip proofreading",
+      "answer": "C",
+      "notes": "C is correct because ensuring contact details are accurate is crucial before sending your resume to potential employers."
+    },
+    {
+      "question": "The ability to connect well with people is known as _______.",
+      "option_a": "interpersonal skill",
+      "option_b": "leadership",
+      "option_c": "time management",
+      "option_d": "creativity",
+      "answer": "A",
+      "notes": "A is correct because interpersonal skills involve the ability to connect and communicate well with others."
+    },
+    {
+      "question": "The ability to wait and stay calm is known as ______.",
+      "option_a": "creativity",
+      "option_b": "problem solving",
+      "option_c": "patience",
+      "option_d": "interpersonal skill",
+      "answer": "C",
+      "notes": "C is correct because patience refers to the ability to remain calm and wait without frustration."
+    },
+    {
+      "question": "Punctuality means _______",
+      "option_a": "done by punching machine",
+      "option_b": "informal",
+      "option_c": "politeness",
+      "option_d": "being on time",
+      "answer": "D",
+      "notes": "D is correct because punctuality means being on time for appointments or events."
+    },
+    {
+      "question": "Complete the sentence with appropriate word. \nThe Plumber _______ the tap.",
+      "option_a": "fit",
+      "option_b": "are fitting",
+      "option_c": "is fitting",
+      "option_d": "were fitting",
+      "answer": "C",
+      "notes": "C is correct because 'The Plumber is fitting the tap' uses the present continuous tense correctly for an ongoing action."
+    },
+    {
+      "question": "When you borrow a pen from your classmate, what should you say?",
+      "option_a": "Give me your pen.",
+      "option_b": "Can you please give me a pen?",
+      "option_c": "I want a pen.",
+      "option_d": "I am taking your pen.",
+      "answer": "B",
+      "notes": "B is correct because 'Can you please give me a pen?' is a polite and appropriate way to request a pen."
+    },
+    {
+      "question": "Magnificent, sharp, lengthy, bright, - are examples of ______",
+      "option_a": "describing words",
+      "option_b": "action words",
+      "option_c": "nouns",
+      "option_d": "pronouns",
+      "answer": "A",
+      "notes": "A is correct because magnificent, sharp, lengthy, and bright are adjectives that describe nouns."
+    },
+    {
+      "question": "Table, wire, socket, cable,  hammer, nail - are ______",
+      "option_a": "describing words",
+      "option_b": "pronouns",
+      "option_c": "naming words",
+      "option_d": "action words",
+      "answer": "C",
+      "notes": "These are naming words because they represent objects or things with specific names."
+    },
+    {
+      "question": "Fix, measure, pull, lift, grind, mix, operate - are examples of ______",
+      "option_a": "pronouns",
+      "option_b": "action words",
+      "option_c": "describing words",
+      "option_d": "naming words",
+      "answer": "B",
+      "notes": "These are action words as they describe actions or activities that can be performed."
+    },
+    {
+      "question": "Comma, full stop, question mark are examples of _______",
+      "option_a": "design",
+      "option_b": "next paragraph",
+      "option_c": "formal communication",
+      "option_d": "punctuation mark",
+      "answer": "D",
+      "notes": "Comma, full stop, and question mark are punctuation marks used to structure and organize writing."
+    },
+    {
+      "question": "When you start a discussion on a topic, what do you say?",
+      "option_a": "Let you start",
+      "option_b": "Let me say",
+      "option_c": "Let us discuss",
+      "option_d": "Let us finish",
+      "answer": "C",
+      "notes": "\u2018Let us discuss\u2019 is used to initiate or start a discussion on a topic."
+    },
+    {
+      "question": "While addressing your boss, you should be ______",
+      "option_a": "Impolite",
+      "option_b": "Informal",
+      "option_c": "Formal",
+      "option_d": "Expressive",
+      "answer": "C",
+      "notes": "Formal language is appropriate when addressing your boss to show respect and professionalism."
+    },
+    {
+      "question": "You are requested to complete the given assignment by Monday This is an example of _______",
+      "option_a": "informal communication",
+      "option_b": "rude communication",
+      "option_c": "an order",
+      "option_d": "formal communication",
+      "answer": "D",
+      "notes": "The sentence is an example of formal communication because it conveys a polite and clear instruction."
+    },
+    {
+      "question": "Gestures, facial expressions, eye contact are examples of _______",
+      "option_a": "verbal communication",
+      "option_b": "non-verbal communication",
+      "option_c": "oral communication",
+      "option_d": "written communication",
+      "answer": "B",
+      "notes": "Gestures, facial expressions, and eye contact convey messages without words, making them non-verbal communication."
+    },
+    {
+      "question": "\u2018Hi,\u2019 \u2018How are you?\u2019, \u2018What\u2019s up?\u2019 are examples of _______.",
+      "option_a": "formal communication",
+      "option_b": "informal communication",
+      "option_c": "polite communication",
+      "option_d": "impolite communication",
+      "answer": "B",
+      "notes": "These phrases are informal greetings and casual expressions used in informal communication."
+    },
+    {
+      "question": "Complete the sentence with a suitable descriptive word: The roads in my town are in ________ condition.",
+      "option_a": "good",
+      "option_b": "expensive",
+      "option_c": "comfortable",
+      "option_d": "spacious",
+      "answer": "A",
+      "notes": "\u2018Good\u2019 suitably describes the positive condition of the roads in the town."
+    },
+    {
+      "question": "Complete the sentence with a suitable describing word: There is a _________ garden with lovely flowers.",
+      "option_a": "expensive",
+      "option_b": "dim",
+      "option_c": "lots of",
+      "option_d": "beautiful",
+      "answer": "D",
+      "notes": "\u2018Beautiful\u2019 appropriately describes the garden, indicating its attractive features."
+    },
+    {
+      "question": "Complete the sentence with a suitable describing word: There is a ________ playground near our house.",
+      "option_a": "older",
+      "option_b": "big",
+      "option_c": "dim",
+      "option_d": "shiny",
+      "answer": "B",
+      "notes": "B is correct because 'big' appropriately describes the size of a playground, making the sentence meaningful and natural."
+    },
+    {
+      "question": "Complete the sentence with a suitable describing word:           \nThere are ________ apartments in my neighborhood.",
+      "option_a": "dim",
+      "option_b": "noise",
+      "option_c": "dull",
+      "option_d": "spacious",
+      "answer": "D",
+      "notes": "D is correct because 'spacious' suitably describes apartments that have ample space, fitting the context of the sentence."
+    },
+    {
+      "question": "Fill up the blanks with suitable words so as to become a meaningful sentence.\nThe Principal called Manoj and asked ______ to show ______ hall ticket for the CTS Examination.",
+      "option_a": "him, his",
+      "option_b": "him, her",
+      "option_c": "her, his",
+      "option_d": "her, him",
+      "answer": "A",
+      "notes": "A is correct because 'him' correctly refers to Manoj and 'his' appropriately shows possession of the hall ticket."
+    },
+    {
+      "question": "Fill up the blanks with suitable words so as to become a meaningful sentence  \n\u02baTell us about a difficult situation you have _______ and how you  _______ to come out of it.\u02ba",
+      "option_a": "face, manage",
+      "option_b": "managed, face",
+      "option_c": "faced, manage",
+      "option_d": "faced, managed",
+      "answer": "D",
+      "notes": "D is correct because 'faced' and 'managed' are past tense verbs that correctly complete the sentence about a past experience."
+    },
+    {
+      "question": "Complete the sentence with a suitable describing word.\nThere is a factory in the area. The air is ________.",
+      "option_a": "polluted",
+      "option_b": "boring",
+      "option_c": "uneven",
+      "option_d": "noisy",
+      "answer": "A",
+      "notes": "A is correct because 'polluted' logically describes the air quality affected by the nearby factory."
+    },
+    {
+      "question": "Complete the sentence with a suitable describing word:\nThere is water scarcity in the locality. The area is ________.",
+      "option_a": "uneven",
+      "option_b": "noisy",
+      "option_c": "dry",
+      "option_d": "boring",
+      "answer": "C",
+      "notes": "C is correct because 'dry' accurately describes the condition of an area experiencing water scarcity."
+    },
+    {
+      "question": "Complete the sentence with a suitable describing word:\nThe transportation to some rural areas is difficult as the roads are _________.",
+      "option_a": "dry",
+      "option_b": "polluted",
+      "option_c": "boring",
+      "option_d": "uneven",
+      "answer": "D",
+      "notes": "D is correct because 'uneven' properly characterizes roads that make transportation difficult in rural areas."
+    },
+    {
+      "question": "Which one will help us to maintain the balance between mental and physical activities?",
+      "option_a": "Hobbies",
+      "option_b": "Laziness",
+      "option_c": "Stress",
+      "option_d": "Inactivity",
+      "answer": "A",
+      "notes": "A is correct because hobbies help maintain balance by providing enjoyable mental and physical engagement."
+    },
+    {
+      "question": "Important factors to check in a good resume are __________.",
+      "option_a": "paper quality",
+      "option_b": "company details",
+      "option_c": "Correct information, free from spelling and grammar mistakes",
+      "option_d": "attractive words",
+      "answer": "C",
+      "notes": "C is correct because a resume must have correct information and no spelling or grammar errors to be effective."
+    },
+    {
+      "question": "Which of the following is a key factor for a well-organized resume?",
+      "option_a": "Complex designs",
+      "option_b": "Fancy fonts",
+      "option_c": "Simple designs and easy-to-read words",
+      "option_d": "Long paragraphs",
+      "answer": "C",
+      "notes": "C is correct because simple designs and easy-to-read words ensure clarity and professionalism in a resume."
+    },
+    {
+      "question": "Spoken communication is usually not only _______ but also _______",
+      "option_a": "formal, informal",
+      "option_b": "verbal, nonverbal",
+      "option_c": "verbal, informal",
+      "option_d": "formal, nonverbal",
+      "answer": "B",
+      "notes": "Spoken communication includes verbal messages conveyed by words and nonverbal cues like gestures, making both integral parts."
+    },
+    {
+      "question": "What is a key component of a resume that outlines your relevant career experience and is used by experienced professionals?",
+      "option_a": "Resume Profile",
+      "option_b": "Resume Objective",
+      "option_c": "Work Experience",
+      "option_d": "Transferable Skills",
+      "answer": "C",
+      "notes": "Work Experience outlines relevant career history and is essential for experienced professionals to demonstrate their background."
+    },
+    {
+      "question": "Which of the following is NOT a key component of a resume?",
+      "option_a": "Relevant skills",
+      "option_b": "Additional information",
+      "option_c": "References",
+      "option_d": "Personal anecdotes",
+      "answer": "D",
+      "notes": "Personal anecdotes are informal stories and are not a standard, professional part of a resume."
+    },
+    {
+      "question": "Fill up the blanks with suitable words so as to become a meaningful sentence.\nThere _______ a coffee shop _______ the park.",
+      "option_a": "are, next to",
+      "option_b": "is, next to",
+      "option_c": "is, next",
+      "option_d": "are, next",
+      "answer": "B",
+      "notes": "The singular verb 'is' agrees with 'a coffee shop,' and 'next to' correctly describes its location relative to the park."
+    },
+    {
+      "question": "Fill up the blank with a suitable word so as to become a meaningful sentence.\nRainwater harvesting _______ to prevent water scarcity.",
+      "option_a": "gives",
+      "option_b": "gave",
+      "option_c": "help",
+      "option_d": "helps",
+      "answer": "D",
+      "notes": "'Helps' is the correct singular verb agreeing with 'Rainwater harvesting' to express its role in prevention."
+    },
+    {
+      "question": "Fill up the blanks with suitable words so as to become a meaningful sentence.\nThere are many dos and don\u2019ts to be ______ while preparing for/attending an __________",
+      "option_a": "there, interview",
+      "option_b": "identify, interview",
+      "option_c": "identified, interviewed",
+      "option_d": "identified, interview",
+      "answer": "D",
+      "notes": "'Identified' correctly modifies 'dos and don'ts,' and 'interview' is the appropriate noun for the context."
+    },
+    {
+      "question": "Miscommunication can lead to ________",
+      "option_a": "building relationships",
+      "option_b": "misunderstandings",
+      "option_c": "successful planning",
+      "option_d": "effective results",
+      "answer": "B",
+      "notes": "Miscommunication leads to misunderstandings by causing incorrect interpretations or confusion."
+    },
+    {
+      "question": "What is required for effective communication?",
+      "option_a": "Keep Listening",
+      "option_b": "Keep Talking",
+      "option_c": "Listen and talk carefully",
+      "option_d": "Listen carefully",
+      "answer": "C",
+      "notes": "Effective communication requires both careful listening and thoughtful speaking to ensure clarity."
+    },
+    {
+      "question": "Which of the following is included in the header section of a resume?",
+      "option_a": "Resume summary or objective",
+      "option_b": "Name, contact number, professional email ID, and address",
+      "option_c": "Career goals and achievements",
+      "option_d": "Relevant career experience",
+      "answer": "B",
+      "notes": "The header section of a resume includes personal details like name, contact number, and email address."
+    },
+    {
+      "question": "Why is it important to understand the key components of a resume?",
+      "option_a": "To list your hobbies and interests",
+      "option_b": "To create a colorful design",
+      "option_c": "To showcase your unique skills, accomplishments, and potential",
+      "option_d": "To include personal anecdotes",
+      "answer": "C",
+      "notes": "Understanding key resume components helps effectively showcase your unique skills and accomplishments."
+    },
+    {
+      "question": "What is the process of formally introducing oneself called?",
+      "option_a": "Self-introduction",
+      "option_b": "Hiring",
+      "option_c": "Decision",
+      "option_d": "Seeking",
+      "answer": "A",
+      "notes": "A is correct because formally introducing oneself is called a self-introduction."
+    },
+    {
+      "question": "The word \u02b9resume\u02b9 comes from French and means ________",
+      "option_a": "summary",
+      "option_b": "education",
+      "option_c": "experience",
+      "option_d": "placement",
+      "answer": "A",
+      "notes": "A is correct because 'resume' originates from French meaning 'summary'."
+    },
+    {
+      "question": "Which of the following are included in a resume?",
+      "option_a": "Hobbies, favorite foods, and personal interests",
+      "option_b": "Childhood memories, dreams, and aspirations",
+      "option_c": "Daily routine, favorite movies, and vacation plans",
+      "option_d": "Contact information, educational details, skills and work experience",
+      "answer": "D",
+      "notes": "D is correct because resumes typically include contact info, education, skills, and work experience."
+    },
+    {
+      "question": "While applying for a job, the covering letter  should be easy to read by means of ______",
+      "option_a": "long descriptions.",
+      "option_b": "dividing the text into shorter paragraphs.",
+      "option_c": "increasing the font size.",
+      "option_d": "extra curricular activities.",
+      "answer": "B",
+      "notes": "B is correct because dividing texts into shorter paragraphs makes cover letters easier to read."
+    },
+    {
+      "question": "After preparing the resume, the next important step to do is _____",
+      "option_a": "sending the resume to the employer.",
+      "option_b": "writing an impressive cover letter.",
+      "option_c": "preparing for interview.",
+      "option_d": "applying for the job.",
+      "answer": "B",
+      "notes": "B is correct because after preparing a resume, writing an impressive cover letter is the next step."
+    },
+    {
+      "question": "What is very important to keep in mind while reviewing a resume?",
+      "option_a": "Salary details",
+      "option_b": "Lot of information to get the job",
+      "option_c": "Interest and hobbies",
+      "option_d": "Highlight skills and qualifications that match the job",
+      "answer": "D",
+      "notes": "D is correct because highlighting skills and qualifications matching the job is crucial when reviewing a resume."
+    },
+    {
+      "question": "While applying for a job, the important information that should be mentioned in the covering letter includes ______.",
+      "option_a": "salary expectations",
+      "option_b": "education details",
+      "option_c": "reasons of suitable for the role",
+      "option_d": "hobbies",
+      "answer": "C",
+      "notes": "C is correct because a covering letter should explain reasons for being suitable for the role."
+    },
+    {
+      "question": "What is formal communication?",
+      "option_a": "All written communication",
+      "option_b": "Official communication following a set of rules",
+      "option_c": "Talking with friends and family",
+      "option_d": "Casual chatting on social media",
+      "answer": "B",
+      "notes": "B is correct because formal communication follows official rules and standards."
+    },
+    {
+      "question": "Which of the following is a formal introduction in a job interview?",
+      "option_a": "\u02baHey, nice to meet you!\u02ba",
+      "option_b": "\u02baHi, whats your name?\u02ba",
+      "option_c": "\u02bahello.. You can start the interview!\u02ba",
+      "option_d": "\u02baGood morning. Thank you for the opportunity.\u02ba",
+      "answer": "D",
+      "notes": "D is correct because a polite and professional greeting shows a formal introduction in interviews."
+    },
+    {
+      "question": "What is an example of formal written communication?",
+      "option_a": "Texting a friend",
+      "option_b": "Sending a WhatsApp message",
+      "option_c": "Writing an email to your manager",
+      "option_d": "Posting on social media platforms",
+      "answer": "C",
+      "notes": "C is correct because writing an email to a manager is a form of formal written communication."
+    },
+    {
+      "question": "During a job interview, if you couldn\u02b9t hear or understand a question, what would you say?",
+      "option_a": "\u02baSorry! I didn\u2019t understand. Could you please repeat the question?\u02ba",
+      "option_b": "\u02baHey, can you repeat that? I wasn\u2019t paying attention.\u02ba",
+      "option_c": "\u02baI am lost. Can you say it again?\u02ba",
+      "option_d": "\u02baSpeak clearly and repeat the question.\u02ba",
+      "answer": "A",
+      "notes": "Answer A is correct because it politely asks for clarification in a respectful and professional manner, which is appropriate during a job interview."
+    },
+    {
+      "question": "During a job interview, which of the following responses shows good formal communication?",
+      "option_a": "\u02baI\u02b9m pretty good at a lot of things.\u02ba",
+      "option_b": "\u02baUh, I guess I can do a little bit of everything.\u02ba",
+      "option_c": "\u02baMy top three skills are problem-solving, teamwork, and attention to detail.\u02ba",
+      "option_d": "\u02baI don\u02b9t know, I never really thought about it.\u02ba",
+      "answer": "C",
+      "notes": "Answer C is correct as it clearly and formally states specific skills relevant to the job, demonstrating professionalism."
+    },
+    {
+      "question": "What is \u02bainformal communication\u02ba?",
+      "option_a": "All verbal communication",
+      "option_b": "Official communication following a set of rules",
+      "option_c": "Casual conversations outside of official work arrangements",
+      "option_d": "Talking at official meetings",
+      "answer": "C",
+      "notes": "Answer C is correct because informal communication refers to casual conversations that occur outside structured or official work settings."
+    },
+    {
+      "question": "Which of the following is an informal situation within the workplace?",
+      "option_a": "Working with files",
+      "option_b": "Working on a desktop",
+      "option_c": "Working on a laptop",
+      "option_d": "Having a meal in the office canteen",
+      "answer": "D",
+      "notes": "Answer D is correct since having a meal in the office canteen is a social and informal activity within the workplace environment."
+    },
+    {
+      "question": "What are some advantages of informal communication at the workplace?",
+      "option_a": "Helps people work together better",
+      "option_b": "Makes things more official at work",
+      "option_c": "Creates a strict environment at work",
+      "option_d": "Makes people talk less",
+      "answer": "A",
+      "notes": "Answer A is correct because informal communication facilitates better teamwork and cooperation among employees."
+    },
+    {
+      "question": "One of the informations in an informal conversation with a co-worker is _________",
+      "option_a": "asking about their roles in the company.",
+      "option_b": "asking about their house.",
+      "option_c": "asking about their experience.",
+      "option_d": "asking about the office timing.",
+      "answer": "B",
+      "notes": "Answer B is correct as informal conversations often involve personal topics like asking about a co-worker's house or life outside work."
+    },
+    {
+      "question": "If a co-worker asks for a support with a task, proper way of responding is _________",
+      "option_a": "ask, you don\u02b9t even know this much?",
+      "option_b": "i am too busy right now.",
+      "option_c": "sure, I can help. What do you need?",
+      "option_d": "send a formal request via email.",
+      "answer": "C",
+      "notes": "Answer C is correct because it shows willingness to help in a polite and supportive manner, which is appropriate workplace behavior."
+    },
+    {
+      "question": "What is workplace etiquette?",
+      "option_a": "Everyday manners outside of work",
+      "option_b": "Proper behaviour and workplace professionalism",
+      "option_c": "Casual behaviour with colleagues",
+      "option_d": "Gossiping",
+      "answer": "B",
+      "notes": "Answer B is correct since workplace etiquette involves proper behavior and professionalism expected in a work environment."
+    },
+    {
+      "question": "Which of the following is considered as appropriate workplace behaviour?",
+      "option_a": "Being late to work regularly",
+      "option_b": "Interrupting others during meetings",
+      "option_c": "Talking loudly on the phone",
+      "option_d": "Maintaining a clean workspace",
+      "answer": "D",
+      "notes": "Answer D is correct because maintaining a clean workspace reflects responsibility and respect for the work environment."
+    },
+    {
+      "question": "Which of the following skills would be most beneficial to add to your resume?",
+      "option_a": "Leadership Qualities",
+      "option_b": "Laziness",
+      "option_c": "Procrastination",
+      "option_d": "Indifference",
+      "answer": "A",
+      "notes": "Answer A is correct as leadership qualities are valued professional skills that enhance employability and career growth."
+    },
+    {
+      "question": "Which of the following actions in an official meeting shows appropriate workplace etiquette?",
+      "option_a": "Checking  phone and respond to messages",
+      "option_b": "Chatting with coworkers",
+      "option_c": "Interrupt the speaker in meeting",
+      "option_d": "Keeping the phone on silent mode and actively participate in the discussion",
+      "answer": "D",
+      "notes": "D is correct because keeping the phone on silent and actively participating shows respect and attentiveness during meetings, which reflects proper workplace etiquette."
+    },
+    {
+      "question": "If coworkers are gossiping about another coworker, what you should do?",
+      "option_a": "Feel that gossiping is inappropriate workplace behaviour",
+      "option_b": "Join the conversation and continue",
+      "option_c": "Tell another coworker about the gossip",
+      "option_d": "Listen to the gossip",
+      "answer": "A",
+      "notes": "A is correct because recognizing gossip as inappropriate helps maintain a professional and respectful work environment."
+    },
+    {
+      "question": "Which of the following statements shows good teamwork?",
+      "option_a": "Keeping all ideas to yourself",
+      "option_b": "Criticizing teammates\u02b9 efforts",
+      "option_c": "Working together towards a common goal",
+      "option_d": "Ignoring others\u02b9 ideas and opinions",
+      "answer": "C",
+      "notes": "C is correct because good teamwork involves collaborating and working together towards shared objectives."
+    },
+    {
+      "question": "Which of the following is required for teamwork?",
+      "option_a": "Proper communication",
+      "option_b": "Money",
+      "option_c": "Conflict and Argument",
+      "option_d": "Easy tasks",
+      "answer": "A",
+      "notes": "A is correct because effective teamwork requires clear and proper communication among members."
+    },
+    {
+      "question": "While working on a project with other teammates, which of these make as a good team player?",
+      "option_a": "Getting angry when others don\u02b9t listen",
+      "option_b": "Sharing ideas to help the team work faster",
+      "option_c": "Thinking we never make a mistake",
+      "option_d": "Not listening to teammates ideas and opinions",
+      "answer": "B",
+      "notes": "B is correct because sharing ideas promotes collaboration and helps the team work more efficiently."
+    },
+    {
+      "question": "Your team has completed a challenging project successfully. How should you celebrate the success?",
+      "option_a": "Say you did everything and don\u02b9t praise others",
+      "option_b": "Blame the group for any errors",
+      "option_c": "Don\u02b9t celebrate and start the next job",
+      "option_d": "Thank everyone in your group for helping",
+      "answer": "D",
+      "notes": "D is correct because thanking everyone shows appreciation and fosters positive team morale after success."
+    },
+    {
+      "question": "If a teammate is struggling to complete their assigned task, what should you do?",
+      "option_a": "Ignore their struggle and focus on your own tasks",
+      "option_b": "Offer to help and support them to complete their task",
+      "option_c": "Criticize them for not being efficient",
+      "option_d": "Complain to the superior about their lack of contribution",
+      "answer": "B",
+      "notes": "B is correct because offering help supports a struggling teammate and strengthens team unity."
+    }
+  ],
+  "Future Work Skills": [
+    {
+      "question": "_______ is influenced by rapid change in technology",
+      "option_a": "Future of work",
+      "option_b": "Nature of work",
+      "option_c": "Workforce",
+      "option_d": "Working capital",
+      "answer": "A",
+      "notes": "A is correct because rapid technological changes are a key factor shaping the future of work."
+    },
+    {
+      "question": "Which of the following ways you should use to improve your technology skills?",
+      "option_a": "Handwork",
+      "option_b": "Playing",
+      "option_c": "Social service",
+      "option_d": "Social media, Online digital tools",
+      "answer": "D",
+      "notes": "D is correct because using online digital tools and social media helps develop and improve technology skills."
+    },
+    {
+      "question": "\u02baGig\u02ba economy is ______",
+      "option_a": "A system of work where people work in part-time",
+      "option_b": "Indian economy",
+      "option_c": "Foreign economy",
+      "option_d": "Regular job",
+      "answer": "A",
+      "notes": "A is correct because the gig economy refers to a system where people work part-time or temporary jobs instead of regular full-time employment."
+    },
+    {
+      "question": "__________ are a great way for gig workers to find jobs.",
+      "option_a": "Employment exchange",
+      "option_b": "Online platforms and Apps",
+      "option_c": "Employment news paper",
+      "option_d": "Placement cell",
+      "answer": "B",
+      "notes": "Online platforms and apps connect gig workers directly with job opportunities, making them the most effective way to find gigs."
+    },
+    {
+      "question": "Which among the following is self-employment idea?",
+      "option_a": "Freelance tailoring Service",
+      "option_b": "Boutique owner",
+      "option_c": "Home catering service",
+      "option_d": "All the options",
+      "answer": "D",
+      "notes": "All listed options involve self-employment as they involve running one's own service or business."
+    },
+    {
+      "question": "Migration of work means _______",
+      "option_a": "shifting the industry",
+      "option_b": "going to a different place to find a job",
+      "option_c": "shifting of profession",
+      "option_d": "working in different shifts",
+      "answer": "B",
+      "notes": "Migration of work refers to moving to a different location in search of employment opportunities."
+    },
+    {
+      "question": "Important factor to consider before migrating include _______.",
+      "option_a": "easy job",
+      "option_b": "tourist place",
+      "option_c": "cost of living",
+      "option_d": "freedom",
+      "answer": "C",
+      "notes": "Cost of living is crucial to consider before migrating, as it affects financial stability in the new place."
+    },
+    {
+      "question": "Skill India Digital is _________",
+      "option_a": "a digital Movie",
+      "option_b": "a platform for learning and career resource",
+      "option_c": "central govt. office",
+      "option_d": "name of a trade",
+      "answer": "B",
+      "notes": "Skill India Digital is an online platform designed to provide learning resources and career guidance."
+    },
+    {
+      "question": "Create a digital CV and share it with a QR code is _________",
+      "option_a": "your digital identity",
+      "option_b": "digital marketing",
+      "option_c": "entrepreneurship",
+      "option_d": "interview skill",
+      "answer": "A",
+      "notes": "Creating a digital CV and sharing it via a QR code represents your digital identity."
+    },
+    {
+      "question": "Separating paper and plastic from bio waste before throwing them away is ________",
+      "option_a": "creativity",
+      "option_b": "green mindset",
+      "option_c": "innovation",
+      "option_d": "profession",
+      "answer": "B",
+      "notes": "Separating paper and plastic from bio waste exemplifies a green mindset focused on environmental responsibility."
+    },
+    {
+      "question": "Good practice for green mind set is _________.",
+      "option_a": "taking a lot of printouts",
+      "option_b": "using air conditioners all the time",
+      "option_c": "keeping lights on all the time",
+      "option_d": "separating and recycling waste",
+      "answer": "D",
+      "notes": "Separating and recycling waste is a good practice demonstrating a green mindset toward sustainability."
+    },
+    {
+      "question": "________ is a time when you, your family, and your teacher meet and interact to understand and support each other better.",
+      "option_a": "Family engagement",
+      "option_b": "Family tour",
+      "option_c": "Family meeting",
+      "option_d": "Family income",
+      "answer": "A",
+      "notes": "Family engagement is a designated time for family, teachers, and students to interact for mutual support."
+    },
+    {
+      "question": "Which of the following future workplace skills is likely to have less importance?",
+      "option_a": "Working from home",
+      "option_b": "Working with digital tools",
+      "option_c": "Working hours strictly between 9 AM to 5 PM",
+      "option_d": "Adapting to new technology",
+      "answer": "C",
+      "notes": "Strictly adhering to 9 AM to 5 PM working hours is becoming less important due to flexible and remote work trends."
+    },
+    {
+      "question": "What does a workplace look like after a pandemic like covid?",
+      "option_a": "Mix of work from home and office",
+      "option_b": "Empty space",
+      "option_c": "Less employees",
+      "option_d": "Less production",
+      "answer": "A",
+      "notes": "A is correct because post-pandemic workplaces often adopt a hybrid model combining remote work and office presence for flexibility and safety."
+    },
+    {
+      "question": "Which of the following is an app-based gig economy platform that helps people find part-time jobs?",
+      "option_a": "Permanent employee",
+      "option_b": "Independent contractor",
+      "option_c": "Home catering",
+      "option_d": "Swiggy",
+      "answer": "D",
+      "notes": "D is correct because Swiggy is an app-based platform connecting gig workers to part-time delivery jobs."
+    },
+    {
+      "question": "Which of the following is a regular, non-app-based gig economy job opportunity?",
+      "option_a": "Uber",
+      "option_b": "Dunzo",
+      "option_c": "Home catering",
+      "option_d": "Swiggy",
+      "answer": "C",
+      "notes": "C is correct because home catering is a gig job done independently without relying on an app platform."
+    },
+    {
+      "question": "How have workplaces changed after COVID?",
+      "option_a": "No focus on technology",
+      "option_b": "Flexible in working hours is nil",
+      "option_c": "Mix of in-person and at-home work",
+      "option_d": "Less job opportunities",
+      "answer": "C",
+      "notes": "C is correct as workplaces now typically incorporate both in-person and remote work to accommodate changing needs."
+    },
+    {
+      "question": "Which is an example of being open to learning in the workplace?",
+      "option_a": "Refusing to attend training sessions to improve technology skills",
+      "option_b": "Accepting and adapting to changes in work processes",
+      "option_c": "Avoiding feedback from colleagues",
+      "option_d": "Ignoring advancements in technology",
+      "answer": "B",
+      "notes": "B is correct since being open to learning involves accepting and adapting to changes in work processes."
+    },
+    {
+      "question": "An important skill required for the future of work is _______.",
+      "option_a": "Learning to make reels and TikTok videos.",
+      "option_b": "Avoiding learning new skills.",
+      "option_c": "Mastering internet skills.",
+      "option_d": "Avoiding building professional relationships.",
+      "answer": "C",
+      "notes": "C is correct because mastering internet skills is crucial for adapting to future digital workplaces."
+    },
+    {
+      "question": "What is an important future workplace skill for employees?",
+      "option_a": "Doing paperwork",
+      "option_b": "Doing manual work",
+      "option_c": "Networking and relationship-building",
+      "option_d": "Planning holidays",
+      "answer": "C",
+      "notes": "C is correct since networking and relationship-building are key skills for collaboration and career growth."
+    },
+    {
+      "question": "When a person joined a new company, he may be nervous using digital tablets provided at work. That time he shall ________",
+      "option_a": "Complain to his manager.",
+      "option_b": "Ask his coworkers to do all the digital work.",
+      "option_c": "Quit his job.",
+      "option_d": "Keep an open mind and ask his coworkers to teach him.",
+      "answer": "D",
+      "notes": "D is correct because keeping an open mind and seeking help fosters learning and confidence with new technology."
+    },
+    {
+      "question": "Which of the following best describes the gig economy?",
+      "option_a": "A system where employees work full-time for a single employer",
+      "option_b": "A system where workers take on part-time or temporary jobs",
+      "option_c": "A system where workers are paid a fixed monthly salary",
+      "option_d": "A system where workers have fixed work hours and locations",
+      "answer": "B",
+      "notes": "B is correct as the gig economy consists of part-time or temporary jobs rather than full-time positions."
+    },
+    {
+      "question": "Which option below describes a \u02bagig\u02ba in the gig economy?",
+      "option_a": "A job with full-time hours and benefits",
+      "option_b": "A typical 9-5 job",
+      "option_c": "A specific task or project",
+      "option_d": "No specific task",
+      "answer": "C",
+      "notes": "C is correct because a 'gig' refers to a specific task or project rather than ongoing full-time work."
+    },
+    {
+      "question": "A _______ helps gig workers find customers and provide services at a fixed charge.",
+      "option_a": "netflix",
+      "option_b": "platform/app",
+      "option_c": "school",
+      "option_d": "bank",
+      "answer": "B",
+      "notes": "A platform/app connects gig workers with customers and facilitates service delivery at fixed charges, making option B correct."
+    },
+    {
+      "question": "To become a gig worker, a person should find gig work opportunities by means of _______",
+      "option_a": "Finding a multinational company.",
+      "option_b": "Connecting with friends, people you might know, and groups in your community.",
+      "option_c": "Independently searching for a job.",
+      "option_d": "Studying about gig work.",
+      "answer": "B",
+      "notes": "Connecting with friends and community groups helps find gig opportunities through personal networks, so B is correct."
+    },
+    {
+      "question": "A skilled electrician searching gig work that matches his skill will find job opportunities in _______",
+      "option_a": "Amazon for selling products online",
+      "option_b": "Zoom for video calls",
+      "option_c": "Uber for driving people",
+      "option_d": "Urban Company for offering home repair services",
+      "answer": "D",
+      "notes": "Urban Company specializes in home repair services, making it suitable for a skilled electrician, hence D is correct."
+    },
+    {
+      "question": "What does self-employment mean?",
+      "option_a": "Working for a single employer",
+      "option_b": "Working independently and earning directly from your work",
+      "option_c": "Receiving a fixed monthly salary",
+      "option_d": "Working part-time from home",
+      "answer": "B",
+      "notes": "Self-employment means working independently and earning directly from your work, so B is the correct answer."
+    },
+    {
+      "question": "What is the benefit of self-employment?",
+      "option_a": "Directly earning from your work",
+      "option_b": "Fixed working hours",
+      "option_c": "Monthly salary payment",
+      "option_d": "Limited control over your tasks",
+      "answer": "A",
+      "notes": "The main benefit of self-employment is earning directly from your work, making A correct."
+    },
+    {
+      "question": "Which is an example of a self-employment?",
+      "option_a": "Working full-time at a company",
+      "option_b": "Driving for a taxi company",
+      "option_c": "Being a student at a university",
+      "option_d": "Teaching subjects or skills as a personal tutor",
+      "answer": "D",
+      "notes": "Teaching as a personal tutor exemplifies self-employment because it involves working independently, so D is correct."
+    },
+    {
+      "question": "How can you become self-employed?",
+      "option_a": "Join an MBA course",
+      "option_b": "Try your idea on a small scale and join relevant short term course",
+      "option_c": "Work in a company",
+      "option_d": "Rely solely on luck",
+      "answer": "B",
+      "notes": "Becoming self-employed involves testing ideas on a small scale and gaining relevant skills, so B is correct."
+    },
+    {
+      "question": "Someone loves photography and dreams of starting his own photography business. They should start with _______.",
+      "option_a": "buying the latest photography equipment, even if it is beyond their budget.",
+      "option_b": "taking random pictures and sharing them online.",
+      "option_c": "learning more about photography and joining a basic photography course.",
+      "option_d": "starting advertising without any planning.",
+      "answer": "C",
+      "notes": "Starting with learning and taking a basic photography course builds foundational skills, making C correct."
+    },
+    {
+      "question": "What does migrating for work mean?",
+      "option_a": "Staying in the same place for work",
+      "option_b": "Changing jobs within the same city",
+      "option_c": "Moving to a different place to find a job",
+      "option_d": "Working from home",
+      "answer": "C",
+      "notes": "Migrating for work means moving to a different place to find a job, so option C is correct."
+    },
+    {
+      "question": "What is a common reason for people to migrate for work?",
+      "option_a": "To learn new languages",
+      "option_b": "To find better job opportunities",
+      "option_c": "To spend time with family",
+      "option_d": "To explore new places",
+      "answer": "B",
+      "notes": "People commonly migrate for better job opportunities, making B the correct answer."
+    },
+    {
+      "question": "What would be the first step if some one plans to move to a different city for work?",
+      "option_a": "Move to new place and search for job.",
+      "option_b": "Apply for loan in bank.",
+      "option_c": "Ask money from relatives and friends.",
+      "option_d": "Find how much it will cost to travel and live there; earn and save.",
+      "answer": "D",
+      "notes": "D is correct because before moving, it is important to estimate travel and living costs to plan finances effectively."
+    },
+    {
+      "question": "If you want to work in a foreign country, to migrate safely, you have to _______",
+      "option_a": "Learn about the place, confirm the job before moving.",
+      "option_b": "Move and ask for confirmation.",
+      "option_c": "Leave to foreign country without informing anyone.",
+      "option_d": "Think how you spend your money.",
+      "answer": "A",
+      "notes": "A is correct as learning about the place and confirming employment beforehand ensures safe and informed migration."
+    },
+    {
+      "question": "If you have to migrate from your place to a new city to join a new job, what will you do to migrate safely?",
+      "option_a": "Research about living in the new city",
+      "option_b": "Always share exact location on social media",
+      "option_c": "Buy gifts for neighbours",
+      "option_d": "Believe everything brokers say",
+      "answer": "A",
+      "notes": "A is correct since researching living conditions in the new city helps ensure a safe and prepared migration."
+    },
+    {
+      "question": "What is the main purpose of the Skill India Digital Platform?",
+      "option_a": "To offer offline training programs",
+      "option_b": "To provide financial assistance for job seekers",
+      "option_c": "To facilitate online learning and skill development",
+      "option_d": "To promote international job opportunities",
+      "answer": "C",
+      "notes": "C is correct because the Skill India Digital Platform is designed to provide online learning and skill development opportunities."
+    },
+    {
+      "question": "How can users access the Skill India Digital Platform?",
+      "option_a": "Only through offline training centers",
+      "option_b": "Only on a specific type of device",
+      "option_c": "Through a specialized learning app",
+      "option_d": "On computers, tablets, and phones",
+      "answer": "D",
+      "notes": "D is correct as the platform is accessible across multiple devices including computers, tablets, and phones for user convenience."
+    },
+    {
+      "question": "Which section of the Skill India Digital Platform helps users find physical training centers nearby?",
+      "option_a": "Skill courses",
+      "option_b": "Job Exchange",
+      "option_c": "Centres",
+      "option_d": "Recommendations",
+      "answer": "C",
+      "notes": "C is correct because the 'Centres' section specifically helps users locate nearby physical training centers."
+    },
+    {
+      "question": "What type of resources one can find in the Skill India Digital Platform?",
+      "option_a": "Only job listings",
+      "option_b": "Courses, skill centers, job opportunities, and more",
+      "option_c": "Only eBooks and reading materials",
+      "option_d": "Financial services and government schemes",
+      "answer": "B",
+      "notes": "B is correct as the platform offers a comprehensive range of resources including courses, skill centers, and job opportunities."
+    },
+    {
+      "question": "To learn digital marketing in the Skill India Digital Platform, we have to ________",
+      "option_a": "search for job opportunities.",
+      "option_b": "enroll in any course available.",
+      "option_c": "explore the skill courses section.",
+      "option_d": "find a physical training center.",
+      "answer": "C",
+      "notes": "C is correct since to learn digital marketing, users should explore the skill courses section tailored for such training."
+    },
+    {
+      "question": "A green practice involves any activity that ________",
+      "option_a": "causes harm to the environment.",
+      "option_b": "protects and takes care of the environment and resources.",
+      "option_c": "involves consuming too much.",
+      "option_d": "generates pollution.",
+      "answer": "B",
+      "notes": "B is correct because green practices involve activities that protect and conserve the environment and its resources."
+    },
+    {
+      "question": "Which term describes using things in a way that can last for a long time without causing harm?",
+      "option_a": "Sustainability",
+      "option_b": "Pollution",
+      "option_c": "Eco-friendliness",
+      "option_d": "Resources",
+      "answer": "A",
+      "notes": "A is correct since sustainability refers to using resources in a way that maintains their availability long-term without harm."
+    },
+    {
+      "question": "What does having a green mindset mean?",
+      "option_a": "Making choices that harm the environment",
+      "option_b": "Using resources without considering sustainability",
+      "option_c": "Ignoring pollution and waste management",
+      "option_d": "Caring for the environment and using resources wisely",
+      "answer": "D",
+      "notes": "D is correct because having a green mindset means caring for the environment and using resources wisely to ensure sustainability."
+    },
+    {
+      "question": "Green practice means _______",
+      "option_a": "buying unnecessary items.",
+      "option_b": "leaving lights and fans on when leaving a room.",
+      "option_c": "carrying a cloth bag to buy groceries.",
+      "option_d": "buying single-use plastic water bottles.",
+      "answer": "C",
+      "notes": "C is correct because carrying a cloth bag reduces plastic waste and promotes environmentally friendly purchasing habits."
+    },
+    {
+      "question": "While going for a picnic with friends, you have been asked to bring disposable plates and cups. With green mind set, your action will be ________",
+      "option_a": "say yes and bring disposable plates and cups.",
+      "option_b": "bring reusable plates and cups.",
+      "option_c": "ignore the invite to the picnic.",
+      "option_d": "bring green color disposable plates and cups.",
+      "answer": "B",
+      "notes": "B is correct because bringing reusable plates and cups reduces waste and supports sustainable practices during the picnic."
+    },
+    {
+      "question": "What are green jobs?",
+      "option_a": "Jobs shared in green colours",
+      "option_b": "Jobs that harm the environment",
+      "option_c": "Jobs that ignore waste separation and recycling",
+      "option_d": "Jobs that conserve resources and help the environment",
+      "answer": "D",
+      "notes": "D is correct because green jobs focus on conserving resources and protecting the environment."
+    },
+    {
+      "question": "Which of the following is a green practice?",
+      "option_a": "Using high power air conditioners",
+      "option_b": "Using plastic containers",
+      "option_c": "Not separating recycle waste",
+      "option_d": "Grow plants wherever possible",
+      "answer": "D",
+      "notes": "D is correct because growing plants supports environmental health and biodiversity, which is a key green practice."
+    },
+    {
+      "question": "A green workplace _______",
+      "option_a": "Uses less paper and energy-saving lights.",
+      "option_b": "Uses disposable items and plastic water bottles.",
+      "option_c": "Keeps the lights on all the time.",
+      "option_d": "Ignores waste separation and recycling.",
+      "answer": "A",
+      "notes": "A is correct because using less paper and energy-saving lights reduces waste and conserves energy in the workplace."
+    },
+    {
+      "question": "Suggestion for green practices in the office canteen is ______",
+      "option_a": "Delivering food in plastic packaging.",
+      "option_b": "Using steel plates and cups.",
+      "option_c": "Providing lunch to the staff in disposable plates.",
+      "option_d": "Serve green vegetables.",
+      "answer": "B",
+      "notes": "B is correct because using steel plates and cups reduces reliance on disposable plastics, supporting sustainable practices in the canteen."
+    },
+    {
+      "question": "A beauty parlor staff follows environment-friendly actions by means of  _______.",
+      "option_a": "using plastic gloves.",
+      "option_b": "using plastic cups.",
+      "option_c": "discarding consumable items.",
+      "option_d": "using non plastic materials, disposing wastes in an environmentally friendly way.",
+      "answer": "D",
+      "notes": "D is correct because using non-plastic materials and properly disposing of wastes minimizes environmental harm in a beauty parlor."
+    }
+  ],
+  "Internet Skills": [
+    {
+      "question": "A computer system consists of __________",
+      "option_a": "software and program",
+      "option_b": "hardware and software",
+      "option_c": "mouse and keyboard",
+      "option_d": "circuit diagram",
+      "answer": "B",
+      "notes": "B is correct because a computer system comprises hardware (physical components) and software (programs that run on hardware)."
+    },
+    {
+      "question": "A software application used to enable computer users to locate and access web page is called ___________",
+      "option_a": "web browser",
+      "option_b": "web server",
+      "option_c": "website",
+      "option_d": "email",
+      "answer": "A",
+      "notes": "A is correct because a web browser is the software application that allows users to locate and access web pages on the internet."
+    },
+    {
+      "question": "An illegal activity committed on the internet is called ___________",
+      "option_a": "virus",
+      "option_b": "cyber crime",
+      "option_c": "search engine",
+      "option_d": "social networking",
+      "answer": "B",
+      "notes": "Cyber crime is the correct term for illegal activities committed on the internet, whereas the other options refer to different concepts."
+    },
+    {
+      "question": "In an email, where will you add the recipient\u02b9s email address to whom you want to send the copy of an email?",
+      "option_a": "To",
+      "option_b": "CC",
+      "option_c": "Bcc",
+      "option_d": "Subject",
+      "answer": "B",
+      "notes": "CC (Carbon Copy) is used to send a copy of an email to additional recipients besides the primary recipient."
+    },
+    {
+      "question": "Which one is a cyber crime?",
+      "option_a": "Sending email",
+      "option_b": "Online purchasing",
+      "option_c": "Online gambling",
+      "option_d": "Chatting with friends",
+      "answer": "C",
+      "notes": "Online gambling is considered a cyber crime in many jurisdictions, while sending email, online purchasing, and chatting are legitimate activities."
+    },
+    {
+      "question": "Which one is a search engine?",
+      "option_a": "Flicker",
+      "option_b": "Hotmail",
+      "option_c": "Facebook",
+      "option_d": "Google",
+      "answer": "D",
+      "notes": "Google is a search engine that helps users find information online, unlike the other options which serve different purposes."
+    },
+    {
+      "question": "Which one is a social networking site?",
+      "option_a": "Outlook express",
+      "option_b": "Facebook",
+      "option_c": "Lotus notes",
+      "option_d": "Mozilla",
+      "answer": "B",
+      "notes": "Facebook is a social networking site designed for interactions, while the other options are not social networking platforms."
+    },
+    {
+      "question": "Which one is a web browser?",
+      "option_a": "Facebook",
+      "option_b": "Hotmail",
+      "option_c": "Internet explorer",
+      "option_d": "Outlook express",
+      "answer": "C",
+      "notes": "Internet Explorer is a web browser used to access the internet, unlike Facebook, Hotmail, or Outlook express."
+    },
+    {
+      "question": "Which among the following is not an Online payment application?",
+      "option_a": "Google Pay",
+      "option_b": "BHIM UPI",
+      "option_c": "Banking Applications",
+      "option_d": "Instagram",
+      "answer": "D",
+      "notes": "Instagram is a social media app, not an online payment application like Google Pay, BHIM UPI, or banking apps."
+    },
+    {
+      "question": "A wireless technology that connects a laptop to the internet is called _______.",
+      "option_a": "Bluetooth",
+      "option_b": "Wi-Fi",
+      "option_c": "Source Network",
+      "option_d": "Desktop",
+      "answer": "B",
+      "notes": "Wi-Fi is a wireless technology that enables devices to connect to the internet without physical cables."
+    },
+    {
+      "question": "Shortcut keys Ctrl+C, Ctrl+V, Ctrl+S mean _______",
+      "option_a": "save, cut, copy",
+      "option_b": "cut, save, copy",
+      "option_c": "copy, paste, save",
+      "option_d": "cut, copy, save",
+      "answer": "C",
+      "notes": "Ctrl+C copies, Ctrl+V pastes, and Ctrl+S saves, matching the functions described in option C."
+    },
+    {
+      "question": "The conversion of computer data from one format to another is called ______",
+      "option_a": "pasting",
+      "option_b": "copying",
+      "option_c": "cutting",
+      "option_d": "Data conversion",
+      "answer": "D",
+      "notes": "Data conversion refers to changing computer data from one format to another, which fits the description best."
+    },
+    {
+      "question": "What is called a media presentation shared over the Internet?",
+      "option_a": "Live media",
+      "option_b": "Live telecast",
+      "option_c": "Webcast",
+      "option_d": "Seminar",
+      "answer": "C",
+      "notes": "A webcast is a media presentation that is distributed over the Internet to reach a wide audience."
+    },
+    {
+      "question": "What is the standard way in which computers connect wirelessly?",
+      "option_a": "Wi-Fi",
+      "option_b": "WAN",
+      "option_c": "LAN",
+      "option_d": "ISP",
+      "answer": "A",
+      "notes": "Wi-Fi is the standard technology that enables wireless connection between computers and devices."
+    },
+    {
+      "question": "Which wireless technology standard is used for exchanging data between fixed and mobile devices over short distance?",
+      "option_a": "Router",
+      "option_b": "Bluetooth",
+      "option_c": "Pen drive",
+      "option_d": "CD/DVD",
+      "answer": "B",
+      "notes": "Bluetooth is a wireless standard designed for short-distance data exchange between fixed and mobile devices."
+    },
+    {
+      "question": "Which app is widely used for screen casting from your mobile phone?",
+      "option_a": "WhatsApp",
+      "option_b": "Facebook",
+      "option_c": "Webcast",
+      "option_d": "Mobizen",
+      "answer": "D",
+      "notes": "Mobizen is a popular app specifically designed for screen casting from mobile phones."
+    },
+    {
+      "question": "______________ is a file storage and synchronization service of cloud computing developed by Google.",
+      "option_a": "Internet Explorer",
+      "option_b": "Google Drive",
+      "option_c": "Netflix",
+      "option_d": "Hard disc",
+      "answer": "B",
+      "notes": "Google Drive is Google's cloud-based file storage and synchronization service."
+    },
+    {
+      "question": "A secure Wi-Fi is one ______.",
+      "option_a": "that allows everyone to connect",
+      "option_b": "that is open to the public",
+      "option_c": "that has a password to login",
+      "option_d": "that is opened by landline",
+      "answer": "C",
+      "notes": "A secure Wi-Fi network requires a password to restrict access and protect data."
+    },
+    {
+      "question": "Alexa, Google, Siri are in the category of _______",
+      "option_a": "Musical instruments",
+      "option_b": "Voice recognition devices",
+      "option_c": "Voice recorders",
+      "option_d": "Translation devices",
+      "answer": "B",
+      "notes": "Alexa, Google, and Siri are examples of voice recognition devices that respond to spoken commands."
+    },
+    {
+      "question": "Full form of GPS is _______",
+      "option_a": "Globe Pointing System",
+      "option_b": "Great Polar System",
+      "option_c": "Global Positioning System",
+      "option_d": "Global Planning System",
+      "answer": "C",
+      "notes": "GPS stands for Global Positioning System, which determines precise locations on Earth."
+    },
+    {
+      "question": "We use Google maps to follow the _______ to reach a place.",
+      "option_a": "destination",
+      "option_b": "distance",
+      "option_c": "demark",
+      "option_d": "direction",
+      "answer": "D",
+      "notes": "Google Maps provides directions to guide users on the correct path to their destination."
+    },
+    {
+      "question": "When we want to type using our voice, we are using _______",
+      "option_a": "voice of google",
+      "option_b": "voice recognition feature",
+      "option_c": "voicing technique",
+      "option_d": "voice recorder",
+      "answer": "B",
+      "notes": "The voice recognition feature allows users to input text by speaking instead of typing."
+    },
+    {
+      "question": "The ability of a computer or machine to mimic the capabilities of the human mind is called ________",
+      "option_a": "artificial intelligence",
+      "option_b": "intellect",
+      "option_c": "artificial performer",
+      "option_d": "natural intelligence",
+      "answer": "A",
+      "notes": "A is correct because artificial intelligence refers to machines mimicking human cognitive functions."
+    },
+    {
+      "question": "A resume should be _______",
+      "option_a": "having long and detailed information",
+      "option_b": "short and precise",
+      "option_c": "bold and colourful",
+      "option_d": "having acronyms and abbreviation",
+      "answer": "B",
+      "notes": "B is correct because a resume should be concise and focused to effectively convey relevant information."
+    },
+    {
+      "question": "What should be entered in the \u02b9To\u02b9 field when drafting an email?",
+      "option_a": "The subject of the email",
+      "option_b": "The recipient\u02b9s email address",
+      "option_c": "Your own email address",
+      "option_d": "The main message content",
+      "answer": "B",
+      "notes": "B is correct because the 'To' field requires the recipient's email address to direct the message properly."
+    },
+    {
+      "question": "The physical part of a computer is called ________",
+      "option_a": "software",
+      "option_b": "hardware",
+      "option_c": "malware",
+      "option_d": "spyware",
+      "answer": "B",
+      "notes": "B is correct because hardware refers to the physical components of a computer system."
+    },
+    {
+      "question": "_________ is an activity where students who finished their studies from institute and come to talk to the present students.",
+      "option_a": "Alumni Engagement",
+      "option_b": "Job mela",
+      "option_c": "Campus interview",
+      "option_d": "Conference",
+      "answer": "A",
+      "notes": "A is correct because alumni engagement involves former students interacting with current students."
+    },
+    {
+      "question": "The practice of using a network of remote servers hosted on the internet to store, manage and process data is called _______",
+      "option_a": "Cloud computing",
+      "option_b": "Search engine",
+      "option_c": "Google",
+      "option_d": "Yahoo",
+      "answer": "A",
+      "notes": "A is correct because cloud computing uses internet-hosted servers to store and manage data remotely."
+    },
+    {
+      "question": "Which one is the input device among the options?",
+      "option_a": "Monitor",
+      "option_b": "Printer",
+      "option_c": "Speaker",
+      "option_d": "Keyboard",
+      "answer": "D",
+      "notes": "D is correct because a keyboard is an input device used to enter data into a computer."
+    },
+    {
+      "question": "Which one is essentially required to receive communication by Email?",
+      "option_a": "Desktop",
+      "option_b": "Printer",
+      "option_c": "Email account",
+      "option_d": "Laptop",
+      "answer": "C",
+      "notes": "C is correct because an email account is necessary to send and receive emails."
+    },
+    {
+      "question": "When searching for new information on Google, why is it important to use the right words?",
+      "option_a": "To find correct and useful information",
+      "option_b": "To change the color of the search page",
+      "option_c": "To make the screen brighter",
+      "option_d": "To learn a new language",
+      "answer": "A",
+      "notes": "A is correct because using the right keywords helps in retrieving accurate and relevant search results."
+    },
+    {
+      "question": "After collecting useful information for a project work, what will be the next step to do?",
+      "option_a": "Mix up all the information",
+      "option_b": "Share all the information with coworkers",
+      "option_c": "Read thoroughly the information and mark the important points",
+      "option_d": "Keep the information in separate folders",
+      "answer": "C",
+      "notes": "C is correct because reading and marking important information helps organize and understand project data effectively."
+    },
+    {
+      "question": "For a project work you have collected some information from internet and sorted it. What is the best way to share it with your team?",
+      "option_a": "Tell everything in detail",
+      "option_b": "Share only the main points clearly, use simple words and pictures, if possible",
+      "option_c": "Talk about information which are not available",
+      "option_d": "Print all the information and give it to the team members.",
+      "answer": "B",
+      "notes": "B is correct because sharing only the main points clearly with simple words and pictures ensures the team understands key information efficiently without overwhelming them."
+    },
+    {
+      "question": "Why is it good to think about what you learn?",
+      "option_a": "It\u02b9s a good time pass",
+      "option_b": "It helps to remember and understand better.",
+      "option_c": "It improves handwriting.",
+      "option_d": "It makes you look busy.",
+      "answer": "B",
+      "notes": "B is correct since thinking about what you learn helps reinforce memory and deepens understanding of the material."
+    },
+    {
+      "question": "While thinking about learning, what are the questions you can ask yourself?",
+      "option_a": "Its waste of time",
+      "option_b": "It is very tough",
+      "option_c": "How can I learn and understand  better?",
+      "option_d": "It is very difficult for me to understand",
+      "answer": "C",
+      "notes": "C is correct because asking how to learn and understand better encourages active reflection and improvement in learning methods."
+    },
+    {
+      "question": "What is a job portal?",
+      "option_a": "A building where you go to find work",
+      "option_b": "A place where you can play games and talk to friends",
+      "option_c": "A special room where job interviews happen online",
+      "option_d": "A website where companies post jobs and people can search and apply for them",
+      "answer": "D",
+      "notes": "D is correct as a job portal is a website where companies post job openings and candidates can search and apply for them online."
+    },
+    {
+      "question": "What should you always remember when creating your profile on a job portal?",
+      "option_a": "To include skills required for the job, even if you don\u02b9t have them",
+      "option_b": "To use a fake name",
+      "option_c": "To always be truthful",
+      "option_d": "To leave out important information",
+      "answer": "C",
+      "notes": "C is correct because always being truthful in your profile builds trust and credibility with potential employers."
+    },
+    {
+      "question": "Checking the skills required is important before applying for a job, because ________",
+      "option_a": "To be sure you can do the job well.",
+      "option_b": "To chat with friends about it.",
+      "option_c": "To impress the interviewer.",
+      "option_d": "It is not important to check the skills required for a job.",
+      "answer": "A",
+      "notes": "A is correct since checking required skills ensures you can perform the job well and increases chances of selection."
+    },
+    {
+      "question": "You are a trained electrician. If you want to get a job in Delhi, what are the key words you use to search in job portal?",
+      "option_a": "Electrician job",
+      "option_b": "Delhi job",
+      "option_c": "Electrician jobs in Delhi",
+      "option_d": "Electrician training",
+      "answer": "C",
+      "notes": "C is correct because using specific keywords like \u2018Electrician jobs in Delhi\u2019 helps find relevant job listings in the desired location."
+    },
+    {
+      "question": "If you want to apply for jobs through Naukri.com,  what you will do?",
+      "option_a": "Select all the cities where jobs are available",
+      "option_b": "Match the skills with the job description",
+      "option_c": "Apply to all the jobs listed",
+      "option_d": "Ignore the job descriptions",
+      "answer": "B",
+      "notes": "B is correct because matching your skills with job descriptions helps you apply only to jobs you are qualified for, improving your chances."
+    },
+    {
+      "question": "While applying for a job through email, what are the documents need to be attached?",
+      "option_a": "Birth certificate",
+      "option_b": "Resume, Course and Training Certificates",
+      "option_c": "Address Proof",
+      "option_d": "Photographs from childhood",
+      "answer": "B",
+      "notes": "B is correct as resumes and course/training certificates provide necessary evidence of your qualifications and skills to employers."
+    },
+    {
+      "question": "While writing an email, why it is important to state the subject clearly?",
+      "option_a": "Email cannot be sent without a subject line",
+      "option_b": "To tell the company what the email is about",
+      "option_c": "To show he has good English skills",
+      "option_d": "Subject should not be left blank",
+      "answer": "B",
+      "notes": "B is correct since a clear subject line informs the recipient about the email's purpose, facilitating prompt and appropriate response."
+    },
+    {
+      "question": "While applying for a job, how to start an email to a company?",
+      "option_a": "Start with a joke",
+      "option_b": "Attach favorite photos",
+      "option_c": "Begin with a clear subject line and a polite greeting",
+      "option_d": "Write a short story about hobbies",
+      "answer": "C",
+      "notes": "C is correct because starting with a clear subject line and polite greeting creates a professional and respectful first impression."
+    },
+    {
+      "question": "While sending a job application through email, how to share the resume and other documents?",
+      "option_a": "Click photos from phone and send it",
+      "option_b": "Should not send documents over email as it is not safe",
+      "option_c": "Copying and pasting the content of the documents into the email body",
+      "option_d": "Attach the scanned documents as pdf with the email",
+      "answer": "D",
+      "notes": "D is correct because attaching scanned documents as PDFs ensures the resume and other files are shared in a professional, accessible, and secure format."
+    },
+    {
+      "question": "While applying for a position as fitter, which of the following email subject lines would be the most suitable?",
+      "option_a": "Fitter Job needed",
+      "option_b": "Applying for a new Job",
+      "option_c": "Urgent Attention Needed",
+      "option_d": "Application for Fitter Position - [Your Name]",
+      "answer": "D",
+      "notes": "D is correct because a specific and professional subject line clearly indicates the purpose of the email and the position applied for."
+    },
+    {
+      "question": "How can linkedIn help you in finding a job?",
+      "option_a": "Its economical",
+      "option_b": "Connecting you with company, professionals faster",
+      "option_c": "Its available in mobile",
+      "option_d": "As informed by others",
+      "answer": "B",
+      "notes": "B is correct because LinkedIn helps you connect quickly with companies and professionals, enhancing job search opportunities."
+    },
+    {
+      "question": "The reason to reply to comments on your YouTube videos is _______",
+      "option_a": "to get more videos",
+      "option_b": "make viewers feel connected",
+      "option_c": "to use the internet",
+      "option_d": "to get more friends",
+      "answer": "B",
+      "notes": "B is correct because replying to comments makes viewers feel connected and valued, encouraging engagement."
+    },
+    {
+      "question": "You are a talented carpenter. In what way it will help your work on YouTube video?",
+      "option_a": "It allows people to see your carpentry skills and appreciate your expertise",
+      "option_b": "Just a time pass",
+      "option_c": "Many related videos are available",
+      "option_d": "Its a hobby",
+      "answer": "A",
+      "notes": "A is correct because showcasing your carpentry skills on YouTube allows your expertise to be recognized and appreciated by a wider audience."
+    },
+    {
+      "question": "You have bakery business. Using WhatsApp, what way it will help your Business?",
+      "option_a": "Chat with friends",
+      "option_b": "Quickly respond to customer orders and questions",
+      "option_c": "Watch baking tutorial videos",
+      "option_d": "Check status updates",
+      "answer": "B",
+      "notes": "B is correct because WhatsApp enables quick communication with customers, helping to manage orders and answer queries efficiently."
+    },
+    {
+      "question": "You have an Instagram page for jewellery business. What should you do to connect with viewers?",
+      "option_a": "Post dance reels",
+      "option_b": "Post about a T.V. show you like",
+      "option_c": "Share daily updates about your business as Stories on social media",
+      "option_d": "Post cooking videos",
+      "answer": "C",
+      "notes": "C is correct because sharing daily updates as Stories keeps your audience engaged and informed about your jewellery business."
+    }
+  ],
+  "Professional Skills": [
+    {
+      "question": "What is a benefit of self-improvement?",
+      "option_a": "Better relationships",
+      "option_b": "Increased workload",
+      "option_c": "Lower confidence",
+      "option_d": "Stagnation",
+      "answer": "A",
+      "notes": "A is correct because self-improvement leads to better relationships by enhancing communication, confidence, and understanding."
+    },
+    {
+      "question": "For career growth and _________ we need to build ______",
+      "option_a": "skills, sustainability",
+      "option_b": "skills, bridges",
+      "option_c": "sustainability, dams",
+      "option_d": "sustainability, new skills",
+      "answer": "D",
+      "notes": "D is correct because career growth and sustainability require building new skills to adapt and thrive in evolving workplaces."
+    },
+    {
+      "question": "What will keep evolving there by making jobs undergo changes?",
+      "option_a": "Time",
+      "option_b": "Workforce",
+      "option_c": "Technology",
+      "option_d": "Investment",
+      "answer": "C",
+      "notes": "Technology constantly advances, driving changes in jobs and work processes over time."
+    },
+    {
+      "question": "What is required for your career growth and sustainability?",
+      "option_a": "Good behaviour",
+      "option_b": "Degree",
+      "option_c": "Opportunity",
+      "option_d": "Build new skills",
+      "answer": "D",
+      "notes": "Building new skills is essential to remain relevant and grow sustainably in your career."
+    },
+    {
+      "question": "What has drastically changed the world of work?",
+      "option_a": "Environment",
+      "option_b": "Technology",
+      "option_c": "Investment",
+      "option_d": "Workers",
+      "answer": "B",
+      "notes": "Technology has significantly transformed work environments and how tasks are performed worldwide."
+    },
+    {
+      "question": "A person can get promotions based on his _______ and _________",
+      "option_a": "environment, experience",
+      "option_b": "example, qualifications",
+      "option_c": "qualifications, experience",
+      "option_d": "conduct, behaviour",
+      "answer": "C",
+      "notes": "Promotions are generally based on a combination of qualifications and experience, showing capability and competence."
+    },
+    {
+      "question": "What is work ethic?",
+      "option_a": "Skills for work",
+      "option_b": "Moral values at work",
+      "option_c": "Physical labor",
+      "option_d": "Measuring productivity",
+      "answer": "B",
+      "notes": "Work ethic refers to moral values and principles guiding behavior and attitude at work."
+    },
+    {
+      "question": "Learning a new skill to do fundamentally the same nature of task is called _______",
+      "option_a": "Reskilling",
+      "option_b": "Upskilling",
+      "option_c": "Semi-skilled",
+      "option_d": "Technician",
+      "answer": "B",
+      "notes": "Upskilling means learning new abilities to improve or maintain competence in similar job tasks."
+    },
+    {
+      "question": "A person\u2019s natural ability to do something is called ______",
+      "option_a": "attitude",
+      "option_b": "adaptability",
+      "option_c": "aptitude",
+      "option_d": "acceptance",
+      "answer": "C",
+      "notes": "Aptitude is a person's natural talent or ability to perform specific tasks effectively."
+    },
+    {
+      "question": "Plan, Prepare, Perform is related to ______.",
+      "option_a": "your resume",
+      "option_b": "your work",
+      "option_c": "attending an interview",
+      "option_d": "your personality",
+      "answer": "C",
+      "notes": "The phrase Plan, Prepare, Perform is commonly used in the context of attending and succeeding in interviews."
+    },
+    {
+      "question": "Why is a strong work ethic important?",
+      "option_a": "More vacations",
+      "option_b": "Slower work",
+      "option_c": "Efficient productivity",
+      "option_d": "Less teamwork",
+      "answer": "C",
+      "notes": "A strong work ethic leads to efficient productivity and better results at work."
+    },
+    {
+      "question": "Which of the following is a good working habit?",
+      "option_a": "Complaining about coworkers",
+      "option_b": "Arriving late to work",
+      "option_c": "Dressing neatly",
+      "option_d": "Ignoring tasks",
+      "answer": "C",
+      "notes": "Dressing neatly is a positive work habit that reflects professionalism and respect for the workplace."
+    },
+    {
+      "question": "What is a good habit regarding your behavior towards coworkers?",
+      "option_a": "Ignore them",
+      "option_b": "Complain behind their backs",
+      "option_c": "Treat them with respect",
+      "option_d": "Avoid interaction",
+      "answer": "C",
+      "notes": "Treating coworkers with respect fosters a positive and collaborative work environment, which is essential for teamwork and productivity."
+    },
+    {
+      "question": "___________ is a code of behaviour that is based on respect, values and professionalism.",
+      "option_a": "Workplace etiquette",
+      "option_b": "Business",
+      "option_c": "Education",
+      "option_d": "Experience",
+      "answer": "A",
+      "notes": "Workplace etiquette refers to a code of behaviour grounded in respect, values, and professionalism, guiding appropriate interactions at work."
+    },
+    {
+      "question": "What does being punctual at work signify?",
+      "option_a": "Carelessness",
+      "option_b": "Professionalism",
+      "option_c": "Laziness",
+      "option_d": "Disinterest",
+      "answer": "B",
+      "notes": "Being punctual demonstrates professionalism by showing respect for others' time and commitment to responsibilities."
+    },
+    {
+      "question": "_______  is when a group of people work together to finish something.",
+      "option_a": "Team work",
+      "option_b": "Business",
+      "option_c": "Education",
+      "option_d": "Experience",
+      "answer": "A",
+      "notes": "Teamwork involves people collaborating collectively to achieve a common goal efficiently."
+    },
+    {
+      "question": "Which of the following best describes skills such as commitment, reliability, adaptability and flexibility?",
+      "option_a": "Teamwork",
+      "option_b": "Self-management",
+      "option_c": "Business",
+      "option_d": "Education",
+      "answer": "B",
+      "notes": "Commitment, reliability, adaptability, and flexibility are aspects of self-management, reflecting how individuals control and direct their own work habits."
+    },
+    {
+      "question": "________ is always doing our work with dedication and to the best of our ability.",
+      "option_a": "Self-management",
+      "option_b": "Reliability",
+      "option_c": "Commitment",
+      "option_d": "Honesty",
+      "answer": "C",
+      "notes": "Commitment means consistently working with dedication and giving your best effort in all tasks."
+    },
+    {
+      "question": "What should you avoid in your appearance at work?",
+      "option_a": "Wearing clean clothes",
+      "option_b": "Wrinkled clothes",
+      "option_c": "Neat appearance",
+      "option_d": "Proper uniform",
+      "answer": "B",
+      "notes": "Wrinkled clothes give an unprofessional appearance and should be avoided to maintain a neat and presentable look at work."
+    },
+    {
+      "question": "Which of the following is a people skills required in a workplace?",
+      "option_a": "Driving skills",
+      "option_b": "Being kind & Listening",
+      "option_c": "Technical Skills",
+      "option_d": "Work alone",
+      "answer": "B",
+      "notes": "Being kind and listening are key people skills that enable effective communication and positive relationships in the workplace."
+    },
+    {
+      "question": "Which of the following ways can help you work well with people?",
+      "option_a": "Technical skill",
+      "option_b": "Not doing any mistakes",
+      "option_c": "Not talking to coworkers",
+      "option_d": "Paying attention, staying calm in challenging situations",
+      "answer": "D",
+      "notes": "Paying attention and staying calm during challenges help maintain effective communication and cooperation with coworkers."
+    },
+    {
+      "question": "Which is a good way to handle when some of your team member made a mistake?",
+      "option_a": "Blame the person who did the mistake",
+      "option_b": "Wait for someone else to solve it",
+      "option_c": "Discuss and find a way to solve it",
+      "option_d": "Get angry and scold the team",
+      "answer": "C",
+      "notes": "Discussing mistakes and collaboratively finding solutions promotes accountability and team cohesion rather than fostering blame or conflict."
+    },
+    {
+      "question": "While working with your team on a project, one of your coworkers is finding it difficult to finish their job. What should you do in this situation?",
+      "option_a": "Finish their work for them.",
+      "option_b": "Ignore their problem and focus on your own work.",
+      "option_c": "Complain about them to the boss.",
+      "option_d": "Help and support them to finish their work.",
+      "answer": "D",
+      "notes": "Helping and supporting a coworker fosters teamwork and ensures the project's success by addressing difficulties collaboratively."
+    },
+    {
+      "question": "When your team\u02b9s project is unsuccessful, what will you do as a leader?",
+      "option_a": "Blame the team for the failure",
+      "option_b": "Encourage learning from mistakes",
+      "option_c": "Scold them",
+      "option_d": "Ignore the team members",
+      "answer": "B",
+      "notes": "Encouraging learning from mistakes promotes growth and improvement, which is a positive leadership approach after failure."
+    },
+    {
+      "question": "What does working well together mean?",
+      "option_a": "Be friendly with all",
+      "option_b": "Not doing any mistakes",
+      "option_c": "Participate get-together",
+      "option_d": "Sharing ideas, listening, finding solutions together",
+      "answer": "D",
+      "notes": "Working well together means actively sharing ideas, listening, and collaborating to find solutions collectively."
+    },
+    {
+      "question": "Which of the following behaviours is not a characteristic of a team player?",
+      "option_a": "Taking credit for others\u02b9 work",
+      "option_b": "Listening to teammates\u02b9 ideas",
+      "option_c": "Respecting different viewpoints",
+      "option_d": "Willingness to help others",
+      "answer": "A",
+      "notes": "Taking credit for others' work is dishonest and undermines trust, which is not characteristic of a good team player."
+    },
+    {
+      "question": "In a team where members have different ideas and there is a disagreement, what should be done?",
+      "option_a": "Let them argue",
+      "option_b": "Choose one idea without discussion",
+      "option_c": "Discuss both ideas and find a way to make everyone agree",
+      "option_d": "Ask someone else to decide",
+      "answer": "C",
+      "notes": "Discussing differing ideas and finding consensus ensures all voices are heard and promotes team agreement and cooperation."
+    },
+    {
+      "question": "What term describes a person who is always trying out new ways to reuse waste materials?",
+      "option_a": "Planner",
+      "option_b": "Doer",
+      "option_c": "Idea Person",
+      "option_d": "Peacekeeper",
+      "answer": "C",
+      "notes": "An 'Idea Person' is someone who regularly thinks of new ways to reuse materials, showing creativity and innovation."
+    },
+    {
+      "question": "Which of these situations show people working well together as a team?",
+      "option_a": "Two people arguing and not agreeing",
+      "option_b": "A group sharing ideas and listening to each other",
+      "option_c": "One person doing all the work without any help from team members",
+      "option_d": "All are working without discussing each other",
+      "answer": "B",
+      "notes": "Sharing ideas and listening to each other demonstrates effective teamwork and good communication among members."
+    },
+    {
+      "question": "Which of the following is self-management skills?",
+      "option_a": "Listening skill",
+      "option_b": "Writing skill",
+      "option_c": "Adaptability and Flexibility",
+      "option_d": "Speaking skill",
+      "answer": "C",
+      "notes": "Adaptability and flexibility are key self-management skills that help individuals adjust effectively to change."
+    },
+    {
+      "question": "Which of the following best describes the self-management skill of reliability?",
+      "option_a": "Not completing tasks on time",
+      "option_b": "People always trust you to do your job well",
+      "option_c": "Ignoring the needs of others",
+      "option_d": "Not being honest with colleagues",
+      "answer": "B",
+      "notes": "Reliability means others can trust you to complete your tasks well and on time, demonstrating dependability."
+    },
+    {
+      "question": "When a machine operator suddenly faces a problem and quickly finds another way to do the work, it is called _________.",
+      "option_a": "Honesty",
+      "option_b": "Adaptability",
+      "option_c": "Sincerity",
+      "option_d": "Integrity",
+      "answer": "B",
+      "notes": "Quickly adjusting methods when faced with a problem exemplifies adaptability in action."
+    },
+    {
+      "question": "While working in a team, if one of your team members is on leave and hasn\u02b9t completed their tasks, what should you do?",
+      "option_a": "Criticise your coworker for not completing their work.",
+      "option_b": "Keep working on your own tasks.",
+      "option_c": "Ask other team members for help and complete your coworker\u02b9s task.",
+      "option_d": "Complain to your supervisor about the incomplete work.",
+      "answer": "C",
+      "notes": "C is correct because collaborating with other team members ensures the unfinished tasks are completed on time, supporting overall team success."
+    },
+    {
+      "question": "While working on a project, you realized that you had made a mistake. What should you do?",
+      "option_a": "Blame team members for the mistake",
+      "option_b": "Wait for someone else to find out about the mistake",
+      "option_c": "Tell your boss about the mistake",
+      "option_d": "Ignore the mistake and continue working",
+      "answer": "C",
+      "notes": "C is correct because admitting mistakes to your boss allows for prompt corrective action and maintains trust and transparency."
+    },
+    {
+      "question": "While doing some difficult work, if it is not going on well, what we have to do?",
+      "option_a": "Keep trying and look for another way",
+      "option_b": "Take a break and give up",
+      "option_c": "Ask someone else to do it for you",
+      "option_d": "Get upset and quit trying",
+      "answer": "A",
+      "notes": "A is correct because persisting and trying different approaches helps overcome difficulties rather than giving up prematurely."
+    },
+    {
+      "question": "While working with a team, if we notice a co-worker struggling with their workload, what should we do?",
+      "option_a": "Ignore their struggles and focus on your own work.",
+      "option_b": "Offer to help them with their tasks.",
+      "option_c": "Laugh at their inability to manage their workload.",
+      "option_d": "Report their struggles to the supervisor.",
+      "answer": "B",
+      "notes": "B is correct because offering help promotes teamwork and supports colleagues struggling with their workload."
+    },
+    {
+      "question": "Which of the following is a good work habit?",
+      "option_a": "Getting tensed when work is challenging",
+      "option_b": "Not following workplace rules",
+      "option_c": "Choosing easy tasks",
+      "option_d": "Not giving up when something goes wrong",
+      "answer": "D",
+      "notes": "D is correct because perseverance in the face of challenges is a positive and productive work habit."
+    },
+    {
+      "question": "When we find a faster way to pack products at the factory, what should we do?",
+      "option_a": "Pack products faster than our coworkers",
+      "option_b": "Continue packing the way the team has been doing",
+      "option_c": "Share the faster packing method with our team",
+      "option_d": "Keep the method as secret",
+      "answer": "C",
+      "notes": "C is correct because sharing improved methods benefits the whole team and enhances overall efficiency."
+    },
+    {
+      "question": "As a machine operator, if you find that your machine is not working properly, what should you do?",
+      "option_a": "Ignore it",
+      "option_b": "Try to find the cause and remedies for the problem to solve it",
+      "option_c": "Blame someone for the defect",
+      "option_d": "Hide the machine",
+      "answer": "B",
+      "notes": "B is correct because identifying and addressing machine issues promptly helps prevent bigger problems and maintains productivity."
+    },
+    {
+      "question": "Why is it important to think of new ways to solve problems?",
+      "option_a": "New ideas can make work easier or faster",
+      "option_b": "It is fun to try new things",
+      "option_c": "To waste time",
+      "option_d": "It is unnecessary to try new things",
+      "answer": "A",
+      "notes": "A is correct because innovative ideas can improve efficiency and make tasks easier or faster to complete."
+    },
+    {
+      "question": "What should you do before making a choice at work?",
+      "option_a": "Don\u2019t think too much",
+      "option_b": "Look at the details, listen to others\u02b9 ideas and choose",
+      "option_c": "Take immediate decision",
+      "option_d": "Don\u2019t discuss with others",
+      "answer": "B",
+      "notes": "B is correct because carefully considering details and others' perspectives leads to better-informed decisions."
+    },
+    {
+      "question": "While working, it is important to share our ideas with others because _______",
+      "option_a": "to make others feel included.",
+      "option_b": "to show off your knowledge.",
+      "option_c": "talking can help and make ideas better.",
+      "option_d": "to impress others.",
+      "answer": "C",
+      "notes": "C is correct because discussing ideas collaboratively can refine and improve those ideas for better outcomes."
+    },
+    {
+      "question": "In a manufacturing unit, the packaging process is taking longer than usual time, causing delays in shipments. What should the workers do?",
+      "option_a": "Continue packaging the same way",
+      "option_b": "Ignore the problem",
+      "option_c": "Discuss and think about different ways to pack faster",
+      "option_d": "Complain to the management",
+      "answer": "C",
+      "notes": "C is correct because discussing and thinking about different ways helps identify faster packaging methods, reducing delays."
+    },
+    {
+      "question": "While purchasing an equipment for your trade, how will you make decision?",
+      "option_a": "Choose the cheapest machine available",
+      "option_b": "Look at all the details, think carefully about the needs & budget and then make the choice",
+      "option_c": "Pick the machine which you like",
+      "option_d": "Choose the first machine you see",
+      "answer": "B",
+      "notes": "B is correct because considering all details and aligning choices with needs and budget ensures a well-informed purchase."
+    },
+    {
+      "question": "What are some resource related problems in a workplace?",
+      "option_a": "Electricity",
+      "option_b": "Less operators",
+      "option_c": "More space for less machines",
+      "option_d": "Shortage of materials and space",
+      "answer": "D",
+      "notes": "D is correct because shortage of materials and space directly affect resource availability and workplace efficiency."
+    },
+    {
+      "question": "What are some people related problems in a workplace?",
+      "option_a": "More staff in the workplace",
+      "option_b": "More qualified workers",
+      "option_c": "More experienced works",
+      "option_d": "Workers do not communicate while facing the problem",
+      "answer": "D",
+      "notes": "D is correct because lack of communication among workers during problems hinders teamwork and problem-solving."
+    },
+    {
+      "question": "In an organization where all workers are skilled and working systematically, the outcome will be ________.",
+      "option_a": "Loss for the organisation",
+      "option_b": "Confusion",
+      "option_c": "Increased output and profit",
+      "option_d": "Less work gets done",
+      "answer": "C",
+      "notes": "C is correct because skilled workers working systematically lead to better productivity and increased profits."
+    },
+    {
+      "question": "If a factory manager gets a big order to deliver but there is a shortage of workers, the manager will _______",
+      "option_a": "Stop working",
+      "option_b": "Request workers to work extra hours",
+      "option_c": "Ignore the problem",
+      "option_d": "Cancel the orders",
+      "answer": "B",
+      "notes": "B is correct because requesting extra work hours is a practical response to worker shortage to meet large orders."
+    },
+    {
+      "question": "When you do not know how to use a new machine, what will be your action?",
+      "option_a": "Ask for help and learn how to use the machine",
+      "option_b": "Take a break and do it later",
+      "option_c": "Stay silent till someone teaches you",
+      "option_d": "Leave the job",
+      "answer": "A",
+      "notes": "A is correct because asking for help enables proper learning and safe use of new machinery."
+    },
+    {
+      "question": "What are the different steps in design thinking?",
+      "option_a": "Imagine, Plan and Try",
+      "option_b": "Try, Create and Decide",
+      "option_c": "Listen, Choose, Plan, Try, Ask",
+      "option_d": "Imagine, Decide, Create and Try",
+      "answer": "C",
+      "notes": "C is correct because these steps emphasize understanding, planning, and testing which are key to design thinking."
+    },
+    {
+      "question": "How does design thinking help solve problems?",
+      "option_a": "By following a strict process",
+      "option_b": "By guessing solutions randomly",
+      "option_c": "By understanding what people need and improving solutions",
+      "option_d": "By trusting on personal assumptions",
+      "answer": "C",
+      "notes": "C is correct because understanding user needs and iteratively improving solutions aligns with design thinking principles."
+    },
+    {
+      "question": "If you come up with an idea to improve the work using design thinking, what should you do next?",
+      "option_a": "Write down your idea and keep it safe",
+      "option_b": "Apply and test if it works",
+      "option_c": "Tell everyone about it",
+      "option_d": "Think of another idea",
+      "answer": "B",
+      "notes": "B is correct because applying and testing ideas validates their effectiveness and leads to improvement."
+    },
+    {
+      "question": "While purchasing new chairs for students using design thinking, what is the first step to think?",
+      "option_a": "Plan how to make the chair",
+      "option_b": "Think what is student\u02b9s requirement in a chair",
+      "option_c": "Choose the colour of the chair",
+      "option_d": "Test different chair designs",
+      "answer": "B",
+      "notes": "B is correct because design thinking starts by identifying and understanding the users' needs before planning or creating anything."
+    },
+    {
+      "question": "When a manufacturer is trying to make a better school bag using design thinking, what would be the next step after understanding the students\u02b9 needs in a bag?",
+      "option_a": "Plan different bag designs",
+      "option_b": "Ask students to test the bags",
+      "option_c": "Choose the material for the bag",
+      "option_d": "Choose the colour of the bag",
+      "answer": "A",
+      "notes": "A is correct as after understanding students' needs, the next step is to brainstorm and plan different designs to meet those needs."
+    },
+    {
+      "question": "If your first design of design thinking doesn\u02b9t work, what should you do?",
+      "option_a": "Give up on it",
+      "option_b": "Ask for feedback and try to improve",
+      "option_c": "Make something else",
+      "option_d": "Purchase some other design",
+      "answer": "B",
+      "notes": "B is correct because design thinking encourages iterating by gathering feedback and improving the design rather than giving up."
+    },
+    {
+      "question": "What should a restaurant owner do to attract more customers and improve his business?",
+      "option_a": "Guess what customers want and provide it.",
+      "option_b": "Copy other restaurants and follow.",
+      "option_c": "Talk to customers, understand their preferences, make changes to the menu, and ask for feedback.",
+      "option_d": "Randomly select new dishes in the menu",
+      "answer": "C",
+      "notes": "C is correct since understanding customer preferences and using their feedback helps make informed improvements to attract more customers."
+    },
+    {
+      "question": "If you are making a new app for the people, why it is important to test it?",
+      "option_a": "To show people how good you are at making apps",
+      "option_b": "To check if people like the colors and pictures",
+      "option_c": "Because it\u02b9s fun to watch others try your app",
+      "option_d": "To see how people use it and make it better",
+      "answer": "D",
+      "notes": "D is correct because testing reveals how users interact with the app and highlights areas for improvement."
+    },
+    {
+      "question": "A bag manufacturer designs a product and shows it to five different people for feedback. Why is it important to listen to different users and not just one?",
+      "option_a": "Because it\u02b9s fun",
+      "option_b": "To get a lot of ideas",
+      "option_c": "To understand the common problems from different users",
+      "option_d": "To get a lot of appreciation for her work",
+      "answer": "C",
+      "notes": "C is correct since feedback from multiple users helps identify common issues, ensuring the product meets broader needs."
+    },
+    {
+      "question": "Your community wants to reduce plastic waste. How can you use design thinking to find new ideas to solve this problem?",
+      "option_a": "Ignore the problem because it\u02b9s too difficult to solve",
+      "option_b": "Work together with shops or people nearby to find ways to use less plastic",
+      "option_c": "Make more things with plastic because they\u02b9re easy to use",
+      "option_d": "Blame others for the plastic waste issue",
+      "answer": "B",
+      "notes": "B is correct because collaborating with others encourages shared ideas and practical ways to reduce plastic waste effectively."
+    }
+  ],
+  "Entrepreneurial Skills": [
+    {
+      "question": "A person who is associated with the starting of a business is called _______",
+      "option_a": "Merchant",
+      "option_b": "Entrepreneur",
+      "option_c": "Businessman",
+      "option_d": "Sales Executive",
+      "answer": "B",
+      "notes": "B is correct as an entrepreneur is someone who initiates a business venture."
+    },
+    {
+      "question": "Entrepreneurship is also termed as ______",
+      "option_a": "Employer",
+      "option_b": "Employment seeker",
+      "option_c": "Self-employment",
+      "option_d": "Investor",
+      "answer": "C",
+      "notes": "C is correct because entrepreneurship involves creating self-employment by starting and running a business."
+    },
+    {
+      "question": "Believing that you have the capability to achieve your dreams is called ______",
+      "option_a": "Self-awareness",
+      "option_b": "Grit",
+      "option_c": "Self belief",
+      "option_d": "Independent decision making",
+      "answer": "C",
+      "notes": "C is correct since self-belief means trusting your own ability to achieve your goals."
+    },
+    {
+      "question": "Working hard to achieve your goals and not giving up when you face failure is called _______",
+      "option_a": "Independent decision making",
+      "option_b": "Self-belief",
+      "option_c": "Self-awareness",
+      "option_d": "Grit",
+      "answer": "D",
+      "notes": "Grit refers to perseverance and passion for long-term goals, meaning working hard and not giving up despite failure."
+    },
+    {
+      "question": "What should a business owner do to retain customers in a competitive market?",
+      "option_a": "Lower their prices to match competitors",
+      "option_b": "Identify and understand their customers\u02b9 needs and preferences",
+      "option_c": "Focus solely on superior quality without considering customer feedback",
+      "option_d": "Offer a wider variety of products without any market research",
+      "answer": "B",
+      "notes": "Understanding customers' needs and preferences helps businesses tailor their offerings, which is key to customer retention in competitive markets."
+    },
+    {
+      "question": "Which one is a key skill to be used for a Market survey?",
+      "option_a": "Communication",
+      "option_b": "Computer knowledge",
+      "option_c": "MBA Degree",
+      "option_d": "Appearance",
+      "answer": "A",
+      "notes": "Effective communication is essential for conducting market surveys as it helps gather accurate and relevant information from respondents."
+    },
+    {
+      "question": "What are three important elements to remember while conducting a survey?",
+      "option_a": "Listen, observe, tell",
+      "option_b": "Observe, record, learn",
+      "option_c": "Listen, observe, learn",
+      "option_d": "Talk, learn, understand",
+      "answer": "C",
+      "notes": "Listening, observing, and learning are crucial steps in conducting surveys to accurately understand and analyze the collected data."
+    },
+    {
+      "question": "____________ are at the centre of any business.",
+      "option_a": "Working capital",
+      "option_b": "Bank loan",
+      "option_c": "Licence",
+      "option_d": "Customers",
+      "answer": "D",
+      "notes": "Customers are central to any business because they drive demand and revenue, making them the core focus of business operations."
+    },
+    {
+      "question": "Which of the following is a phase that should be completed before starting the promotional campaign?",
+      "option_a": "Designing advertisements",
+      "option_b": "Establishing direct marketing strategies",
+      "option_c": "Defining the product, its price, and the place of sale",
+      "option_d": "Planning public relations events",
+      "answer": "C",
+      "notes": "Defining the product, price, and place of sale is essential before promotion because it establishes the marketing mix foundation."
+    },
+    {
+      "question": "Taking decisions on your own, after carefully thinking about them is the quality of _______",
+      "option_a": "Self-awareness",
+      "option_b": "Self-belief",
+      "option_c": "Grit",
+      "option_d": "Independent decision making",
+      "answer": "D",
+      "notes": "Independent decision making involves carefully thinking through options and making choices on your own, showing autonomy and responsibility."
+    },
+    {
+      "question": "One important rule to network effectively is ______",
+      "option_a": "talk to the same people",
+      "option_b": "focus on selling your product",
+      "option_c": "keep in touch with your contacts",
+      "option_d": "identify your competitors",
+      "answer": "C",
+      "notes": "Keeping in touch with your contacts is vital for effective networking as it helps maintain relationships and opportunities over time."
+    },
+    {
+      "question": "If you want to give people relevant information about you and your business in an easy way, you will ______",
+      "option_a": "write on a piece of paper and give",
+      "option_b": "ask them to search on Google",
+      "option_c": "verbally tell them when they ask",
+      "option_d": "give them your business card",
+      "answer": "D",
+      "notes": "Providing a business card offers relevant information about you and your business in a convenient and professional manner."
+    },
+    {
+      "question": "Anitha started an Instagram page for her craft business. She used _________ marketing strategy.",
+      "option_a": "Online",
+      "option_b": "Taglines",
+      "option_c": "Poster",
+      "option_d": "Networking",
+      "answer": "A",
+      "notes": "Using an Instagram page to promote a craft business is an example of an online marketing strategy leveraging digital platforms."
+    },
+    {
+      "question": "Human resources are __________",
+      "option_a": "Human right activists",
+      "option_b": "your customers",
+      "option_c": "your staff",
+      "option_d": "your competitors",
+      "answer": "C",
+      "notes": "Human resources refer to the employees or staff who work within an organization, making option C correct."
+    },
+    {
+      "question": "Which of the following is not a resource?",
+      "option_a": "Raw materials",
+      "option_b": "Customer database",
+      "option_c": "Finished products",
+      "option_d": "Loss in business",
+      "answer": "D",
+      "notes": "A loss in business is not an asset or resource but a negative outcome, unlike raw materials or databases which are resources."
+    },
+    {
+      "question": "You are a lifelong learner if you _______",
+      "option_a": "get a PhD",
+      "option_b": "keep growing and adding to your knowledge",
+      "option_c": "join online courses",
+      "option_d": "live for a long time",
+      "answer": "B",
+      "notes": "Being a lifelong learner means continuously expanding your knowledge, which is best described by option B."
+    },
+    {
+      "question": "The activity of setting up a business or businesses, taking on financial risk in the hope of profit is called _________",
+      "option_a": "Merchant",
+      "option_b": "Entrepreneurship",
+      "option_c": "Bank manager",
+      "option_d": "Sales executive",
+      "answer": "B",
+      "notes": "Entrepreneurship involves starting and managing a business while taking financial risks for profit, matching option B."
+    },
+    {
+      "question": "What encourages\u00a0entrepreneurship\u00a0on a grand scale?",
+      "option_a": "Become rich quickly",
+      "option_b": "Become famous",
+      "option_c": "Global leader",
+      "option_d": "New business opportunities",
+      "answer": "D",
+      "notes": "New business opportunities create environments that encourage entrepreneurship to grow, making option D correct."
+    },
+    {
+      "question": "Find the Entrepreneur from the given options.",
+      "option_a": "RBI Governor",
+      "option_b": "SBI CEO",
+      "option_c": "Anand Mahindra",
+      "option_d": "Cabinet Secretary",
+      "answer": "C",
+      "notes": "An entrepreneur like Anand Mahindra is someone who starts and runs businesses, distinguishing option C as correct."
+    },
+    {
+      "question": "The first version of a product/service is called _______",
+      "option_a": "model product",
+      "option_b": "first initiative",
+      "option_c": "prototype",
+      "option_d": "first edition",
+      "answer": "C",
+      "notes": "The prototype is the initial version of a product used to test concepts before final production, so option C is right."
+    },
+    {
+      "question": "What describes \u02baHuman Resources\u02ba in a furniture manufacturing company?",
+      "option_a": "its products",
+      "option_b": "its sales record",
+      "option_c": "its profit",
+      "option_d": "its employees",
+      "answer": "D",
+      "notes": "Human resources in a furniture company are its employees, thus option D correctly describes them."
+    },
+    {
+      "question": "What is the full form of GST?",
+      "option_a": "Government Sales Tax",
+      "option_b": "Goods Sales Tax",
+      "option_c": "Goods and Services Tax",
+      "option_d": "Government Service Tax",
+      "answer": "C",
+      "notes": "GST stands for Goods and Services Tax, making option C the correct full form."
+    },
+    {
+      "question": "What is required to gather feedback from your customers?",
+      "option_a": "Advertisement on TV",
+      "option_b": "Brochure",
+      "option_c": "Billboards",
+      "option_d": "Market survey",
+      "answer": "D",
+      "notes": "A market survey collects direct feedback from customers, which other options do not effectively provide, so option D is correct."
+    },
+    {
+      "question": "An entrepreneurial mindset means to _______",
+      "option_a": "identify opportunities and Use them for your benefit",
+      "option_b": "not taking any risk",
+      "option_c": "not setting any goal",
+      "option_d": "think only about profit",
+      "answer": "A",
+      "notes": "An entrepreneurial mindset involves identifying opportunities and leveraging them for personal or business benefit, which encourages proactive and strategic thinking."
+    },
+    {
+      "question": "What does it mean to think like a business person?",
+      "option_a": "Only thinking about money",
+      "option_b": "Being scared to try new things",
+      "option_c": "Seeing problems as things to fix",
+      "option_d": "Not liking change",
+      "answer": "C",
+      "notes": "Thinking like a business person means seeing problems as challenges to fix, fostering problem-solving and innovation rather than avoidance."
+    },
+    {
+      "question": "If you face a problem, which of the following entrepreneurial mindset traits would be most helpful?",
+      "option_a": "Waiting until everything is perfect to do something",
+      "option_b": "Taking action to solve the problem",
+      "option_c": "Ignoring the problem and hoping it goes away",
+      "option_d": "Blaming others for the problem",
+      "answer": "B",
+      "notes": "Taking action to solve problems demonstrates initiative and a proactive attitude, key traits in an entrepreneurial mindset."
+    },
+    {
+      "question": "If someone wants to sell homemade products, what do they have to do to grow the business?",
+      "option_a": "Find shopkeepers and build marketing relationships with them.",
+      "option_b": "Keep doing the same thing without any changes.",
+      "option_c": "Wait for an opportunity to grow the business.",
+      "option_d": "Sell only to neighbors.",
+      "answer": "A",
+      "notes": "Growing a business requires building relationships with shopkeepers and marketing channels to expand reach and sales."
+    },
+    {
+      "question": "If your coworkers don\u02b9t agree with your project idea, what\u02b9s a good way to handle it with an entrepreneurial mindset?",
+      "option_a": "Give up on your idea",
+      "option_b": "Stop talking about it",
+      "option_c": "Ask for feedback and make your idea better with their help",
+      "option_d": "Stick to your idea without listening to others",
+      "answer": "C",
+      "notes": "Asking for feedback and improving your idea shows openness to collaboration and adaptability, essential for business success."
+    },
+    {
+      "question": "Why is it important to have a business plan before starting a business?",
+      "option_a": "To get loan from bank",
+      "option_b": "To show you are an entrepreneur",
+      "option_c": "To identify potential challenges with clear goal and risks",
+      "option_d": "Just a try",
+      "answer": "C",
+      "notes": "A business plan outlines goals, risks, and challenges, helping anticipate issues and create strategies before starting the business."
+    },
+    {
+      "question": "Imagine you are setting up a mobile repair shop. Which of the following is the most important for its success?",
+      "option_a": "Setting up the shop in a busy area",
+      "option_b": "Offering repair services at a higher price",
+      "option_c": "Putting up flyers in the neighbourhood",
+      "option_d": "Picking the right shop name",
+      "answer": "A",
+      "notes": "Setting up the shop in a busy area increases visibility and customer access, critical factors for business success."
+    },
+    {
+      "question": "While making a business plan, which is not required to be mentioned?",
+      "option_a": "Business idea",
+      "option_b": "Startup costs",
+      "option_c": "Future growth strategies",
+      "option_d": "Personal interests and hobbies",
+      "answer": "D",
+      "notes": "Personal interests and hobbies are unrelated to the business plan\u2019s core focus, which centers on business-specific details."
+    },
+    {
+      "question": "If someone wants to apply for bank loan for their business, their business plan should have ________.",
+      "option_a": "only the idea and name of the business",
+      "option_b": "the total cost of the business without any details",
+      "option_c": "challenges about the business along with solutions",
+      "option_d": "business profit details",
+      "answer": "C",
+      "notes": "Including challenges and their solutions in a business plan shows preparedness and reassures lenders of a realistic approach."
+    },
+    {
+      "question": "If you want to start a bakery business, what would you focus on first in your business plan?",
+      "option_a": "Selecting a catchy name for the bakery",
+      "option_b": "Calculating how much money you need to start the business",
+      "option_c": "Planning how to advertise the bakery on social media",
+      "option_d": "Figuring out how the business will grow",
+      "answer": "B",
+      "notes": "Calculating startup costs first helps understand the financial requirements necessary to launch the bakery effectively."
+    },
+    {
+      "question": "While presenting your business plan to audience, how will you engage them to connect with you?",
+      "option_a": "Practice until you can confidently present your plan",
+      "option_b": "Repeat yourself multiple times",
+      "option_c": "Share a story or an experience that shaped your idea",
+      "option_d": "Avoid eye contact with the audience",
+      "answer": "C",
+      "notes": "Sharing a story or experience creates an emotional connection and makes your business idea more relatable and memorable to the audience."
+    },
+    {
+      "question": "When presenting your business plan to a potential investor, you should be clear about ________",
+      "option_a": "staff strength",
+      "option_b": "expected profit",
+      "option_c": "bank loan",
+      "option_d": "investment, expected customers, potential earnings",
+      "answer": "D",
+      "notes": "Being clear about investment, expected customers, and potential earnings directly addresses investor interests and demonstrates business viability."
+    },
+    {
+      "question": "While talking about your business plan to the audience, how will you make them understand your product better?",
+      "option_a": "Repeat your explanation multiple times",
+      "option_b": "Give demo of the product/service",
+      "option_c": "Share overall business costs",
+      "option_d": "Tell a joke",
+      "answer": "B",
+      "notes": "Giving a demo provides a tangible experience that helps the audience understand the product's features and benefits more effectively."
+    },
+    {
+      "question": "While presenting your business plan to potential investors, why is it important to actively listen to their questions and provide thoughtful answers?",
+      "option_a": "To show off your expertise",
+      "option_b": "To avoid eye contact",
+      "option_c": "To understand the concerns of the investors and build their confidence in your plan",
+      "option_d": "To show your communication skills",
+      "answer": "C",
+      "notes": "Actively listening to investor questions and providing thoughtful answers helps address their concerns and builds trust in your business plan."
+    },
+    {
+      "question": "When someone needs funding for a small business, what should they do to find a suitable investor?",
+      "option_a": "Start without funding and hope for an investor.",
+      "option_b": "Attend networking events to meet suitable investors.",
+      "option_c": "Send business plan to friends",
+      "option_d": "Wait for the suitable investor",
+      "answer": "B",
+      "notes": "Attending networking events allows you to meet potential investors face-to-face and establish valuable connections tailored to your business needs."
+    }
+  ]
+}
