@@ -1,16 +1,6 @@
 import { useState, useEffect, useCallback, useRef } from "react";
-import {
-  db,
-  ref,
-  set,
-  get,
-  update,
-  remove,
-  onValue,
-  push,
-  onDisconnect,
-} from "@/services/firebase";
-import type { RoomData, RoomSettings, ChatMessage, RoomPlayer } from "@/types/multiplayer";
+import { supabase } from "@/integrations/supabase/client";
+import type { RoomData, RoomSettings, ChatMessage, RoomPlayer, RoomGame } from "@/types/multiplayer";
 
 function generateRoomCode(): string {
   const chars = "ABCDEFGHJKLMNPQRSTUVWXYZ23456789";
@@ -26,7 +16,7 @@ function generatePlayerId(): string {
 export function useMultiplayer() {
   const [roomCode, setRoomCode] = useState<string | null>(null);
   const [roomData, setRoomData] = useState<RoomData | null>(null);
-  const [playerId, setPlayerId] = useState<string>(() => {
+  const [playerId] = useState<string>(() => {
     const stored = sessionStorage.getItem("battle-player-id");
     if (stored) return stored;
     const id = generatePlayerId();
@@ -35,7 +25,8 @@ export function useMultiplayer() {
   });
   const [error, setError] = useState<string | null>(null);
   const [loading, setLoading] = useState(false);
-  const unsubRef = useRef<(() => void) | null>(null);
+  const channelRef = useRef<ReturnType<typeof supabase.channel> | null>(null);
+  const roomIdRef = useRef<string | null>(null);
 
   const isHost = roomData?.hostId === playerId;
   const players = roomData?.players || {};
@@ -44,23 +35,92 @@ export function useMultiplayer() {
   const myPlayer = players[playerId] || null;
   const opponentPlayer = opponentId ? players[opponentId] : null;
 
-  // Subscribe to room changes
+  // Fetch full room state from DB
+  const fetchRoomState = useCallback(async (code: string) => {
+    const { data: room } = await supabase
+      .from("battle_rooms")
+      .select("*")
+      .eq("code", code)
+      .single();
+
+    if (!room) {
+      setRoomData(null);
+      setRoomCode(null);
+      return;
+    }
+
+    const { data: dbPlayers } = await supabase
+      .from("battle_players")
+      .select("*")
+      .eq("room_id", room.id);
+
+    const { data: dbMessages } = await supabase
+      .from("battle_messages")
+      .select("*")
+      .eq("room_id", room.id)
+      .order("created_at", { ascending: true });
+
+    const playersMap: Record<string, RoomPlayer> = {};
+    (dbPlayers || []).forEach((p) => {
+      playersMap[p.player_id] = {
+        name: p.name,
+        ready: p.ready,
+        connected: p.connected,
+        score: p.score,
+        speedBonus: p.speed_bonus,
+        answers: (p.answers as Record<string, any>) || {},
+      };
+    });
+
+    const chatMap: Record<string, ChatMessage> = {};
+    (dbMessages || []).forEach((m) => {
+      chatMap[m.id] = {
+        id: m.id,
+        senderId: m.sender_id,
+        senderName: m.sender_name,
+        text: m.text,
+        createdAt: new Date(m.created_at).getTime(),
+      };
+    });
+
+    roomIdRef.current = room.id;
+
+    setRoomData({
+      code: room.code,
+      hostId: room.host_id,
+      createdAt: new Date(room.created_at).getTime(),
+      status: room.status as RoomData["status"],
+      players: playersMap,
+      settings: room.settings as unknown as RoomSettings | undefined,
+      seed: room.seed ?? undefined,
+      game: room.game as unknown as RoomGame | undefined,
+      chat: Object.keys(chatMap).length > 0 ? chatMap : undefined,
+    });
+  }, []);
+
+  // Subscribe to realtime changes
   const subscribeToRoom = useCallback(
-    (code: string) => {
-      if (unsubRef.current) unsubRef.current();
-      const roomRef = ref(db, `rooms/${code}`);
-      const unsub = onValue(roomRef, (snapshot) => {
-        const data = snapshot.val() as RoomData | null;
-        if (data) {
-          setRoomData(data);
-        } else {
-          setRoomData(null);
-          setRoomCode(null);
-        }
-      });
-      unsubRef.current = unsub;
+    (code: string, dbRoomId: string) => {
+      if (channelRef.current) {
+        supabase.removeChannel(channelRef.current);
+      }
+
+      const channel = supabase
+        .channel(`room-${code}`)
+        .on("postgres_changes", { event: "*", schema: "public", table: "battle_rooms", filter: `id=eq.${dbRoomId}` }, () => {
+          fetchRoomState(code);
+        })
+        .on("postgres_changes", { event: "*", schema: "public", table: "battle_players", filter: `room_id=eq.${dbRoomId}` }, () => {
+          fetchRoomState(code);
+        })
+        .on("postgres_changes", { event: "*", schema: "public", table: "battle_messages", filter: `room_id=eq.${dbRoomId}` }, () => {
+          fetchRoomState(code);
+        })
+        .subscribe();
+
+      channelRef.current = channel;
     },
-    []
+    [fetchRoomState]
   );
 
   // Create room
@@ -70,47 +130,46 @@ export function useMultiplayer() {
       setError(null);
       try {
         const code = generateRoomCode();
-        const roomRef = ref(db, `rooms/${code}`);
 
-        // Check if code exists
-        const existing = await get(roomRef);
-        if (existing.exists()) {
-          // Extremely unlikely collision, just try once more
-          return createRoom(nickname);
-        }
+        // Check collision
+        const { data: existing } = await supabase
+          .from("battle_rooms")
+          .select("id")
+          .eq("code", code)
+          .single();
 
-        const room: RoomData = {
-          code,
-          hostId: playerId,
-          createdAt: Date.now(),
-          status: "lobby",
-          players: {
-            [playerId]: {
-              name: nickname,
-              ready: false,
-              connected: true,
-              score: 0,
-              speedBonus: 0,
-              answers: {},
-            },
-          },
-        };
+        if (existing) return createRoom(nickname);
 
-        await set(roomRef, room);
+        const { data: room, error: roomErr } = await supabase
+          .from("battle_rooms")
+          .insert({ code, host_id: playerId, status: "lobby" })
+          .select()
+          .single();
 
-        // Set up disconnect handler
-        const playerRef = ref(db, `rooms/${code}/players/${playerId}/connected`);
-        onDisconnect(playerRef).set(false);
+        if (roomErr || !room) throw new Error(roomErr?.message || "Failed to create room");
 
+        await supabase.from("battle_players").insert({
+          room_id: room.id,
+          player_id: playerId,
+          name: nickname,
+          ready: false,
+          connected: true,
+          score: 0,
+          speed_bonus: 0,
+          answers: {},
+        });
+
+        roomIdRef.current = room.id;
         setRoomCode(code);
-        subscribeToRoom(code);
+        await fetchRoomState(code);
+        subscribeToRoom(code, room.id);
       } catch (err: any) {
         setError(err.message || "Failed to create room");
       } finally {
         setLoading(false);
       }
     },
-    [playerId, subscribeToRoom]
+    [playerId, fetchRoomState, subscribeToRoom]
   );
 
   // Join room
@@ -120,201 +179,226 @@ export function useMultiplayer() {
       setError(null);
       try {
         const upperCode = code.toUpperCase().trim();
-        const roomRef = ref(db, `rooms/${upperCode}`);
-        const snapshot = await get(roomRef);
+        const { data: room } = await supabase
+          .from("battle_rooms")
+          .select("*")
+          .eq("code", upperCode)
+          .single();
 
-        if (!snapshot.exists()) {
+        if (!room) {
           setError("Room not found");
           setLoading(false);
           return;
         }
 
-        const room = snapshot.val() as RoomData;
-        const playerCount = Object.keys(room.players || {}).length;
+        const { data: existingPlayers } = await supabase
+          .from("battle_players")
+          .select("*")
+          .eq("room_id", room.id);
 
-        if (playerCount >= 2) {
-          // Check if we're reconnecting
-          if (room.players[playerId]) {
-            await update(ref(db, `rooms/${upperCode}/players/${playerId}`), {
-              connected: true,
-            });
-          } else {
-            setError("Room is full");
-            setLoading(false);
-            return;
-          }
+        const playerCount = existingPlayers?.length || 0;
+        const alreadyIn = existingPlayers?.find((p) => p.player_id === playerId);
+
+        if (playerCount >= 2 && !alreadyIn) {
+          setError("Room is full");
+          setLoading(false);
+          return;
+        }
+
+        if (alreadyIn) {
+          await supabase
+            .from("battle_players")
+            .update({ connected: true })
+            .eq("room_id", room.id)
+            .eq("player_id", playerId);
         } else {
-          const newPlayer: RoomPlayer = {
+          await supabase.from("battle_players").insert({
+            room_id: room.id,
+            player_id: playerId,
             name: nickname,
             ready: false,
             connected: true,
             score: 0,
-            speedBonus: 0,
+            speed_bonus: 0,
             answers: {},
-          };
-          await update(ref(db, `rooms/${upperCode}/players/${playerId}`), newPlayer);
+          });
         }
 
-        // Set up disconnect handler
-        const playerConnRef = ref(db, `rooms/${upperCode}/players/${playerId}/connected`);
-        onDisconnect(playerConnRef).set(false);
-
+        roomIdRef.current = room.id;
         setRoomCode(upperCode);
-        subscribeToRoom(upperCode);
+        await fetchRoomState(upperCode);
+        subscribeToRoom(upperCode, room.id);
       } catch (err: any) {
         setError(err.message || "Failed to join room");
       } finally {
         setLoading(false);
       }
     },
-    [playerId, subscribeToRoom]
+    [playerId, fetchRoomState, subscribeToRoom]
   );
 
   // Update settings (host only)
   const updateSettings = useCallback(
     async (settings: RoomSettings) => {
-      if (!roomCode || !isHost) return;
-      await update(ref(db, `rooms/${roomCode}`), { settings });
+      if (!roomIdRef.current || !isHost) return;
+      await supabase
+        .from("battle_rooms")
+        .update({ settings: settings as any })
+        .eq("id", roomIdRef.current);
     },
-    [roomCode, isHost]
+    [isHost]
   );
 
   // Set ready
   const setReady = useCallback(
     async (ready: boolean) => {
-      if (!roomCode) return;
-      await update(ref(db, `rooms/${roomCode}/players/${playerId}`), { ready });
+      if (!roomIdRef.current) return;
+      await supabase
+        .from("battle_players")
+        .update({ ready })
+        .eq("room_id", roomIdRef.current)
+        .eq("player_id", playerId);
     },
-    [roomCode, playerId]
+    [playerId]
   );
 
   // Start game (host only)
   const startGame = useCallback(async () => {
-    if (!roomCode || !isHost) return;
+    if (!roomIdRef.current || !isHost) return;
     const seed = Math.floor(Math.random() * 2147483647);
-    await update(ref(db, `rooms/${roomCode}`), {
-      status: "playing",
-      seed,
-      game: {
-        questionIndex: 0,
-        questionStartedAt: Date.now(),
-      },
-    });
-    // Reset player answers and scores
-    for (const pid of playerIds) {
-      await update(ref(db, `rooms/${roomCode}/players/${pid}`), {
-        score: 0,
-        speedBonus: 0,
-        answers: {},
-        ready: false,
-      });
-    }
-  }, [roomCode, isHost, playerIds]);
+    await supabase
+      .from("battle_rooms")
+      .update({
+        status: "playing",
+        seed,
+        game: { questionIndex: 0, questionStartedAt: Date.now() } as any,
+      })
+      .eq("id", roomIdRef.current);
+
+    // Reset player state
+    await supabase
+      .from("battle_players")
+      .update({ score: 0, speed_bonus: 0, answers: {} as any, ready: false })
+      .eq("room_id", roomIdRef.current);
+  }, [isHost]);
 
   // Submit answer
   const submitAnswer = useCallback(
     async (questionIndex: number, selected: number, correct: boolean, timeRemaining: number) => {
-      if (!roomCode) return;
+      if (!roomIdRef.current) return;
       const bonus = correct ? Math.min(5, Math.floor(timeRemaining / 3)) : 0;
       const points = correct ? 10 + bonus : 0;
 
-      const answerData = {
-        selected,
-        correct,
-        answeredAt: Date.now(),
+      const { data: player } = await supabase
+        .from("battle_players")
+        .select("score, speed_bonus, answers")
+        .eq("room_id", roomIdRef.current)
+        .eq("player_id", playerId)
+        .single();
+
+      if (!player) return;
+
+      const currentAnswers = (player.answers as Record<string, any>) || {};
+      const newAnswers = {
+        ...currentAnswers,
+        [questionIndex]: { selected, correct, answeredAt: Date.now() },
       };
 
-      // Get current player data to compute new totals
-      const playerRef = ref(db, `rooms/${roomCode}/players/${playerId}`);
-      const snap = await get(playerRef);
-      const current = snap.val() as RoomPlayer;
-
-      await update(playerRef, {
-        [`answers/${questionIndex}`]: answerData,
-        score: (current?.score || 0) + points,
-        speedBonus: (current?.speedBonus || 0) + bonus,
-      });
+      await supabase
+        .from("battle_players")
+        .update({
+          answers: newAnswers as any,
+          score: (player.score || 0) + points,
+          speed_bonus: (player.speed_bonus || 0) + bonus,
+        })
+        .eq("room_id", roomIdRef.current)
+        .eq("player_id", playerId);
     },
-    [roomCode, playerId]
+    [playerId]
   );
 
   // Advance to next question (host only)
   const advanceQuestion = useCallback(
     async (nextIndex: number) => {
-      if (!roomCode || !isHost) return;
-      const totalQuestions = roomData?.settings?.questionCount || 10;
+      if (!roomIdRef.current || !isHost) return;
+      const totalQuestions = (roomData?.settings as RoomSettings | undefined)?.questionCount || 10;
       if (nextIndex >= totalQuestions) {
-        await update(ref(db, `rooms/${roomCode}`), { status: "finished" });
+        await supabase
+          .from("battle_rooms")
+          .update({ status: "finished" })
+          .eq("id", roomIdRef.current);
       } else {
-        await update(ref(db, `rooms/${roomCode}/game`), {
-          questionIndex: nextIndex,
-          questionStartedAt: Date.now(),
-        });
+        await supabase
+          .from("battle_rooms")
+          .update({
+            game: { questionIndex: nextIndex, questionStartedAt: Date.now() } as any,
+          })
+          .eq("id", roomIdRef.current);
       }
     },
-    [roomCode, isHost, roomData?.settings?.questionCount]
+    [isHost, roomData?.settings]
   );
 
   // Send chat message
   const sendMessage = useCallback(
     async (text: string) => {
-      if (!roomCode || !text.trim()) return;
-      const chatRef = ref(db, `rooms/${roomCode}/chat`);
-      const newMsg = push(chatRef);
-      const msg: ChatMessage = {
-        id: newMsg.key || "",
-        senderId: playerId,
-        senderName: myPlayer?.name || "Unknown",
+      if (!roomIdRef.current || !text.trim()) return;
+      await supabase.from("battle_messages").insert({
+        room_id: roomIdRef.current,
+        sender_id: playerId,
+        sender_name: myPlayer?.name || "Unknown",
         text: text.trim(),
-        createdAt: Date.now(),
-      };
-      await set(newMsg, msg);
+      });
     },
-    [roomCode, playerId, myPlayer?.name]
+    [playerId, myPlayer?.name]
   );
 
   // Play again (host only)
   const playAgain = useCallback(async () => {
-    if (!roomCode || !isHost) return;
+    if (!roomIdRef.current || !isHost) return;
     const seed = Math.floor(Math.random() * 2147483647);
-    await update(ref(db, `rooms/${roomCode}`), {
-      status: "playing",
-      seed,
-      game: {
-        questionIndex: 0,
-        questionStartedAt: Date.now(),
-      },
-    });
-    for (const pid of playerIds) {
-      await update(ref(db, `rooms/${roomCode}/players/${pid}`), {
-        score: 0,
-        speedBonus: 0,
-        answers: {},
-        ready: false,
-      });
-    }
-  }, [roomCode, isHost, playerIds]);
+    await supabase
+      .from("battle_rooms")
+      .update({
+        status: "playing",
+        seed,
+        game: { questionIndex: 0, questionStartedAt: Date.now() } as any,
+      })
+      .eq("id", roomIdRef.current);
+
+    await supabase
+      .from("battle_players")
+      .update({ score: 0, speed_bonus: 0, answers: {} as any, ready: false })
+      .eq("room_id", roomIdRef.current);
+  }, [isHost]);
 
   // Leave room
   const leaveRoom = useCallback(async () => {
-    if (!roomCode) return;
-    if (unsubRef.current) {
-      unsubRef.current();
-      unsubRef.current = null;
+    if (!roomIdRef.current) return;
+    if (channelRef.current) {
+      supabase.removeChannel(channelRef.current);
+      channelRef.current = null;
     }
     if (isHost) {
-      await remove(ref(db, `rooms/${roomCode}`));
+      await supabase.from("battle_rooms").delete().eq("id", roomIdRef.current);
     } else {
-      await remove(ref(db, `rooms/${roomCode}/players/${playerId}`));
+      await supabase
+        .from("battle_players")
+        .delete()
+        .eq("room_id", roomIdRef.current)
+        .eq("player_id", playerId);
     }
+    roomIdRef.current = null;
     setRoomCode(null);
     setRoomData(null);
-  }, [roomCode, isHost, playerId]);
+  }, [isHost, playerId]);
 
   // Cleanup on unmount
   useEffect(() => {
     return () => {
-      if (unsubRef.current) unsubRef.current();
+      if (channelRef.current) {
+        supabase.removeChannel(channelRef.current);
+      }
     };
   }, []);
 

@@ -14,7 +14,118 @@ export type Database = {
   }
   public: {
     Tables: {
-      [_ in never]: never
+      battle_messages: {
+        Row: {
+          created_at: string
+          id: string
+          room_id: string
+          sender_id: string
+          sender_name: string
+          text: string
+        }
+        Insert: {
+          created_at?: string
+          id?: string
+          room_id: string
+          sender_id: string
+          sender_name: string
+          text: string
+        }
+        Update: {
+          created_at?: string
+          id?: string
+          room_id?: string
+          sender_id?: string
+          sender_name?: string
+          text?: string
+        }
+        Relationships: [
+          {
+            foreignKeyName: "battle_messages_room_id_fkey"
+            columns: ["room_id"]
+            isOneToOne: false
+            referencedRelation: "battle_rooms"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
+      battle_players: {
+        Row: {
+          answers: Json
+          connected: boolean
+          id: string
+          name: string
+          player_id: string
+          ready: boolean
+          room_id: string
+          score: number
+          speed_bonus: number
+        }
+        Insert: {
+          answers?: Json
+          connected?: boolean
+          id?: string
+          name: string
+          player_id: string
+          ready?: boolean
+          room_id: string
+          score?: number
+          speed_bonus?: number
+        }
+        Update: {
+          answers?: Json
+          connected?: boolean
+          id?: string
+          name?: string
+          player_id?: string
+          ready?: boolean
+          room_id?: string
+          score?: number
+          speed_bonus?: number
+        }
+        Relationships: [
+          {
+            foreignKeyName: "battle_players_room_id_fkey"
+            columns: ["room_id"]
+            isOneToOne: false
+            referencedRelation: "battle_rooms"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
+      battle_rooms: {
+        Row: {
+          code: string
+          created_at: string
+          game: Json | null
+          host_id: string
+          id: string
+          seed: number | null
+          settings: Json | null
+          status: string
+        }
+        Insert: {
+          code: string
+          created_at?: string
+          game?: Json | null
+          host_id: string
+          id?: string
+          seed?: number | null
+          settings?: Json | null
+          status?: string
+        }
+        Update: {
+          code?: string
+          created_at?: string
+          game?: Json | null
+          host_id?: string
+          id?: string
+          seed?: number | null
+          settings?: Json | null
+          status?: string
+        }
+        Relationships: []
+      }
     }
     Views: {
       [_ in never]: never

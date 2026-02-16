@@ -1,10 +1,11 @@
 import { useState, useEffect, useMemo, useCallback } from "react";
 import { useParams, useNavigate } from "react-router-dom";
-import { Bookmark, BookmarkCheck, ChevronLeft, ChevronRight, Settings, Info } from "lucide-react";
+import { Bookmark, BookmarkCheck, ChevronLeft, ChevronRight, Settings, Info, Timer } from "lucide-react";
 import { useDataStore, useProgressStore } from "@/store/useAppStore";
 import { Popover, PopoverContent, PopoverTrigger } from "@/components/ui/popover";
 import { Switch } from "@/components/ui/switch";
 import { Label } from "@/components/ui/label";
+import { Slider } from "@/components/ui/slider";
 import { Breadcrumbs } from "@/components/Breadcrumbs";
 import { seededShuffle, shuffleOptions } from "@/utils/shuffle";
 import { Question } from "@/types/question";
@@ -99,10 +100,11 @@ const Practice = () => {
 
   useEffect(() => {
     if (revealed && settings.autoAdvance && currentIndex < questions.length - 1) {
-      const timer = setTimeout(() => { handleNext(); }, 1200);
+      const delay = (settings.autoAdvanceDelay || 2) * 1000;
+      const timer = setTimeout(() => { handleNext(); }, delay);
       return () => clearTimeout(timer);
     }
-  }, [revealed, settings.autoAdvance, currentIndex, questions.length, handleNext]);
+  }, [revealed, settings.autoAdvance, settings.autoAdvanceDelay, currentIndex, questions.length, handleNext]);
 
   useEffect(() => {
     const handler = (e: KeyboardEvent) => {
@@ -147,11 +149,34 @@ const Practice = () => {
                 <Settings size={18} />
               </button>
             </PopoverTrigger>
-            <PopoverContent className="w-64 p-4">
+            <PopoverContent className="w-72 p-4 space-y-4">
               <div className="flex items-center justify-between">
                 <Label htmlFor="auto-advance" className="text-xs font-medium">Auto-advance</Label>
                 <Switch id="auto-advance" checked={settings.autoAdvance} onCheckedChange={(checked) => updateSettings({ autoAdvance: checked })} />
               </div>
+              {settings.autoAdvance && (
+                <div className="space-y-2">
+                  <div className="flex items-center justify-between">
+                    <Label className="text-xs font-medium flex items-center gap-1.5">
+                      <Timer size={12} /> Delay
+                    </Label>
+                    <span className="text-xs font-bold text-primary">{settings.autoAdvanceDelay || 2}s</span>
+                  </div>
+                  <Slider
+                    value={[settings.autoAdvanceDelay || 2]}
+                    onValueChange={([val]) => updateSettings({ autoAdvanceDelay: val })}
+                    min={1}
+                    max={5}
+                    step={1}
+                    className="w-full"
+                  />
+                  <div className="flex justify-between text-[10px] text-muted-foreground">
+                    <span>1s</span>
+                    <span>3s</span>
+                    <span>5s</span>
+                  </div>
+                </div>
+              )}
             </PopoverContent>
           </Popover>
         </div>
