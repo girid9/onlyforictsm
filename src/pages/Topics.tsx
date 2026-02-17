@@ -3,6 +3,10 @@ import { Link, useParams } from "react-router-dom";
 import { Play, ArrowRight, Download } from "lucide-react";
 import { useDataStore, useProgressStore } from "@/store/useAppStore";
 import { Breadcrumbs } from "@/components/Breadcrumbs";
+import { motion } from "framer-motion";
+
+const stagger = { hidden: {}, show: { transition: { staggerChildren: 0.06 } } };
+const fadeUp = { hidden: { opacity: 0, y: 12 }, show: { opacity: 1, y: 0, transition: { duration: 0.35, ease: [0.4, 0, 0.2, 1] as const } } };
 
 const Topics = () => {
   const { subjectId } = useParams<{ subjectId: string }>();
@@ -58,41 +62,49 @@ const Topics = () => {
       <Breadcrumbs items={[{ label: "Home", to: "/" }, { label: "Subjects", to: "/subjects" }, { label: subject.name }]} />
       <h1 className="text-2xl font-bold mb-2">{subject.name}</h1>
       <p className="text-muted-foreground mb-6">{topics.length} topics · {subject.questionCount} questions</p>
-      <div className="space-y-3">
+      <motion.div variants={stagger} initial="hidden" animate="show" className="space-y-3">
         {topicsWithProgress.map((t) => (
-          <Link key={t.id} to={`/practice/${subjectId}/${t.id}`} className="glass-card p-5 flex items-center gap-5 hover:border-primary/40 transition-all group block">
-            <div className="h-12 w-12 rounded-xl bg-primary/10 flex items-center justify-center shrink-0 group-hover:bg-primary group-hover:text-primary-foreground transition-all duration-300">
-              <Play size={20} className="text-primary group-hover:text-primary-foreground ml-1" />
-            </div>
-            <div className="flex-1 min-w-0">
-              <div className="flex items-center justify-between mb-1">
-                <h3 className="font-bold truncate group-hover:text-primary transition-colors">{t.name}</h3>
-                <span className="text-[10px] font-bold text-muted-foreground uppercase tracking-widest">{t.questionCount} Qs</span>
+          <motion.div key={t.id} variants={fadeUp}>
+            <Link to={`/practice/${subjectId}/${t.id}`} className="glass-card p-5 flex items-center gap-5 group block focus-ring" aria-label={`Practice ${t.name}`}>
+              <div className="h-12 w-12 rounded-xl bg-primary/10 flex items-center justify-center shrink-0 group-hover:bg-primary group-hover:text-primary-foreground group-hover:shadow-glow transition-all duration-300">
+                <Play size={20} className="text-primary group-hover:text-primary-foreground ml-1 transition-colors" />
               </div>
-              <div className="flex items-center gap-3">
-                <div className="flex-1 h-1.5 bg-secondary rounded-full overflow-hidden">
-                  <div className="h-full bg-primary rounded-full transition-all duration-500" style={{ width: `${(t.answered / t.questionCount) * 100}%` }} />
+              <div className="flex-1 min-w-0">
+                <div className="flex items-center justify-between mb-1">
+                  <h3 className="font-bold truncate group-hover:text-primary transition-colors">{t.name}</h3>
+                  <span className="text-[10px] font-bold text-muted-foreground uppercase tracking-widest">{t.questionCount} Qs</span>
                 </div>
-                {t.answered > 0 && (
-                  <span className={`text-[10px] font-bold px-1.5 py-0.5 rounded ${t.pct >= 70 ? 'bg-success/10 text-success' : 'bg-warning/10 text-warning'}`}>
-                    {t.pct}% Acc
-                  </span>
-                )}
+                <div className="flex items-center gap-3">
+                  <div className="flex-1 h-1.5 bg-secondary rounded-full overflow-hidden">
+                    <motion.div
+                      className="h-full progress-gradient"
+                      initial={{ width: 0 }}
+                      animate={{ width: `${(t.answered / t.questionCount) * 100}%` }}
+                      transition={{ duration: 0.6, ease: "easeOut" }}
+                    />
+                  </div>
+                  {t.answered > 0 && (
+                    <span className={`text-[10px] font-bold px-1.5 py-0.5 rounded ${t.pct >= 70 ? 'bg-success/10 text-success' : 'bg-warning/10 text-warning'}`}>
+                      {t.pct}% Acc
+                    </span>
+                  )}
+                </div>
               </div>
-            </div>
-            <div className="flex items-center gap-2 shrink-0">
-              <button
-                onClick={(e) => { e.preventDefault(); e.stopPropagation(); handleDownloadPdf(t.id, t.name); }}
-                className="p-2 hover:bg-primary/10 rounded-md transition-colors z-10"
-                title="Download questions"
-              >
-                <Download size={16} className="text-muted-foreground hover:text-primary" />
-              </button>
-              <ArrowRight size={18} className="text-muted-foreground group-hover:text-primary group-hover:translate-x-1 transition-all shrink-0" />
-            </div>
-          </Link>
+              <div className="flex items-center gap-2 shrink-0">
+                <button
+                  onClick={(e) => { e.preventDefault(); e.stopPropagation(); handleDownloadPdf(t.id, t.name); }}
+                  className="p-2 hover:bg-primary/10 rounded-lg transition-all duration-200 z-10 focus-ring"
+                  title="Download questions"
+                  aria-label={`Download ${t.name} questions`}
+                >
+                  <Download size={16} className="text-muted-foreground hover:text-primary transition-colors" />
+                </button>
+                <ArrowRight size={18} className="text-muted-foreground group-hover:text-primary group-hover:translate-x-1 transition-all shrink-0" />
+              </div>
+            </Link>
+          </motion.div>
         ))}
-      </div>
+      </motion.div>
     </div>
   );
 };

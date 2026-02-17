@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { Outlet, useLocation, useMatch } from "react-router-dom";
+import { Outlet, useLocation } from "react-router-dom";
 import { AppSidebar } from "./AppSidebar";
 import { Menu } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
@@ -33,7 +33,7 @@ export function Layout() {
     return (
       <div className="flex items-center justify-center min-h-screen bg-background">
         <div className="flex flex-col items-center gap-6">
-          <div className="h-16 w-16 rounded-full neu-flat flex items-center justify-center">
+          <div className="h-16 w-16 rounded-2xl glass flex items-center justify-center animate-pulse-glow">
             <div className="h-8 w-8 border-4 border-primary border-t-transparent rounded-full animate-spin" />
           </div>
           <p className="text-primary font-black uppercase tracking-[0.4em] text-xs animate-pulse">Initializing Data</p>
@@ -52,7 +52,11 @@ export function Layout() {
       </aside>
       <div className="flex-1 flex flex-col min-h-screen w-full pb-safe">
         <header className="sticky top-0 z-20 h-16 flex items-center px-6 glass pt-safe">
-          <button onClick={() => setSidebarOpen(!sidebarOpen)} className="h-12 w-12 rounded-2xl arctic-btn flex items-center justify-center md:hidden">
+          <button
+            onClick={() => setSidebarOpen(!sidebarOpen)}
+            className="h-12 w-12 rounded-2xl arctic-btn flex items-center justify-center md:hidden focus-ring"
+            aria-label="Toggle navigation menu"
+          >
             <Menu size={24} strokeWidth={1.5} />
           </button>
           <span className="ml-4 font-light text-sm tracking-[0.2em] text-primary uppercase">Quest Ace</span>
@@ -60,14 +64,14 @@ export function Layout() {
             <ThemeToggle />
           </div>
         </header>
-        <main className="flex-1 overflow-x-hidden">
+        <main className="flex-1 overflow-x-hidden" role="main">
           <AnimatePresence mode="wait">
-            <motion.div 
-              key={location.pathname} 
-              initial={{ opacity: 0, x: 20 }} 
-              animate={{ opacity: 1, x: 0 }} 
-              exit={{ opacity: 0, x: -20 }} 
-              transition={{ duration: 0.4, ease: [0.4, 0, 0.2, 1] }}
+            <motion.div
+              key={location.pathname}
+              initial={{ opacity: 0, x: 20 }}
+              animate={{ opacity: 1, x: 0 }}
+              exit={{ opacity: 0, x: -20 }}
+              transition={{ duration: 0.4, ease: [0.4, 0, 0.2, 1] as const }}
               className="h-full"
             >
               <Outlet />
