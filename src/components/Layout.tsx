@@ -7,6 +7,7 @@ import { useDataStore, useProgressStore } from "@/store/useAppStore";
 import { loadAll } from "@/services/questionBank";
 import { ThemeToggle } from "@/components/ThemeToggle";
 import { GlobalChat } from "@/components/GlobalChat";
+import { TutorChat } from "@/components/TutorChat";
 
 export function Layout() {
   const [sidebarOpen, setSidebarOpen] = useState(false);
@@ -80,6 +81,7 @@ export function Layout() {
         </main>
       </div>
       {!isBattlePage && showGlobalChat && <GlobalChat />}
+      <TutorChat />
     </div>
   );
 }
