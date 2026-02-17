@@ -1,6 +1,6 @@
 import { useMemo, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
-import { BookOpen, Swords, ArrowRight, Target, TrendingUp, Search, Zap, Clock, Sparkles, CheckCircle2, XCircle, AlertTriangle } from "lucide-react";
+import { BookOpen, Swords, ArrowRight, Target, TrendingUp, Search, Zap, Clock, Sparkles, CheckCircle2, XCircle, AlertTriangle, BookOpenCheck } from "lucide-react";
 import { useDataStore, useProgressStore } from "@/store/useAppStore";
 import { motion } from "framer-motion";
 import { Area, AreaChart, ResponsiveContainer, Tooltip } from "recharts";
@@ -255,10 +255,11 @@ const Home = () => {
         </motion.div>
 
         {/* Secondary Links */}
-        <motion.div variants={fadeUp} className="grid grid-cols-2 sm:grid-cols-3 gap-4">
+        <motion.div variants={fadeUp} className="grid grid-cols-2 sm:grid-cols-4 gap-4">
           {[
             { to: "/subjects", icon: BookOpen, label: "Subjects" },
             { to: "/battle", icon: Swords, label: "Battle" },
+            { to: "/study", icon: BookOpenCheck, label: "Study Room" },
             { to: "/bookmarks", icon: Target, label: "Bookmarks" },
           ].map(({ to, icon: Icon, label }) => (
             <motion.div key={to} whileHover={{ y: -2 }} whileTap={{ scale: 0.97 }}>

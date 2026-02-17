@@ -12,6 +12,7 @@ import Results from "./pages/Results";
 import Bookmarks from "./pages/Bookmarks";
 import WrongAnswers from "./pages/WrongAnswers";
 import Battle from "./pages/Battle";
+import StudyRoom from "./pages/StudyRoom";
 import NotFound from "./pages/NotFound";
 import { ThemeProvider } from "@/components/ThemeProvider";
 
@@ -34,6 +35,7 @@ const App = () => (
               <Route path="/bookmarks" element={<Bookmarks />} />
               <Route path="/wrong" element={<WrongAnswers />} />
               <Route path="/battle" element={<Battle />} />
+              <Route path="/study" element={<StudyRoom />} />
             </Route>
             <Route path="*" element={<NotFound />} />
           </Routes>
