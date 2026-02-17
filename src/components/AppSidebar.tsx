@@ -7,14 +7,13 @@ import {
   Swords,
   X,
   Zap,
-  Clock,
   Palette,
   Check,
   RotateCcw,
   BarChart3,
   Brain,
   Flame,
-  Bot
+  MessageCircle
 } from "lucide-react";
 import { useProgressStore } from "@/store/useAppStore";
 import { useTheme } from "@/components/ThemeProvider";
@@ -37,7 +36,7 @@ interface Props {
 }
 
 export function AppSidebar({ onClose }: Props) {
-  const { streak, xp } = useProgressStore();
+  const { streak, xp, settings, updateSettings } = useProgressStore();
   const { colorTheme, setColorTheme } = useTheme();
   const [themesOpen, setThemesOpen] = useState(false);
 
@@ -101,8 +100,19 @@ export function AppSidebar({ onClose }: Props) {
           </NavLink>
         ))}
 
-        {/* Theme Section */}
-        <div className="pt-3 mt-3 border-t border-border/50">
+        {/* Chat & Theme Section */}
+        <div className="pt-3 mt-3 border-t border-border/50 space-y-1">
+          {/* Global Chat Toggle */}
+          <button
+            onClick={() => updateSettings({ showGlobalChat: !settings.showGlobalChat })}
+            className="flex items-center gap-3 px-4 py-2.5 rounded-xl text-xs font-bold uppercase tracking-wider transition-all duration-200 w-full text-muted-foreground hover:bg-muted hover:text-foreground"
+          >
+            <MessageCircle size={16} />
+            <span className="flex-1 text-left">Chat</span>
+            <span className={`h-2.5 w-5 rounded-full transition-colors duration-200 ${settings.showGlobalChat ? 'bg-primary' : 'bg-muted-foreground/30'}`} />
+          </button>
+
+          {/* Themes */}
           <button
             onClick={() => setThemesOpen(!themesOpen)}
             className="flex items-center gap-3 px-4 py-2.5 rounded-xl text-xs font-bold uppercase tracking-wider transition-all duration-200 w-full text-muted-foreground hover:bg-muted hover:text-foreground"
