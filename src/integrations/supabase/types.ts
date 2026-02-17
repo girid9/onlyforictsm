@@ -147,6 +147,106 @@ export type Database = {
         }
         Relationships: []
       }
+      study_room_members: {
+        Row: {
+          answers: Json
+          connected: boolean
+          id: string
+          name: string
+          player_id: string
+          room_id: string
+          score: number
+        }
+        Insert: {
+          answers?: Json
+          connected?: boolean
+          id?: string
+          name: string
+          player_id: string
+          room_id: string
+          score?: number
+        }
+        Update: {
+          answers?: Json
+          connected?: boolean
+          id?: string
+          name?: string
+          player_id?: string
+          room_id?: string
+          score?: number
+        }
+        Relationships: [
+          {
+            foreignKeyName: "study_room_members_room_id_fkey"
+            columns: ["room_id"]
+            isOneToOne: false
+            referencedRelation: "study_rooms"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
+      study_room_messages: {
+        Row: {
+          created_at: string
+          id: string
+          room_id: string
+          sender_id: string
+          sender_name: string
+          text: string
+        }
+        Insert: {
+          created_at?: string
+          id?: string
+          room_id: string
+          sender_id: string
+          sender_name: string
+          text: string
+        }
+        Update: {
+          created_at?: string
+          id?: string
+          room_id?: string
+          sender_id?: string
+          sender_name?: string
+          text?: string
+        }
+        Relationships: [
+          {
+            foreignKeyName: "study_room_messages_room_id_fkey"
+            columns: ["room_id"]
+            isOneToOne: false
+            referencedRelation: "study_rooms"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
+      study_rooms: {
+        Row: {
+          code: string
+          created_at: string
+          host_id: string
+          id: string
+          settings: Json | null
+          status: string
+        }
+        Insert: {
+          code: string
+          created_at?: string
+          host_id: string
+          id?: string
+          settings?: Json | null
+          status?: string
+        }
+        Update: {
+          code?: string
+          created_at?: string
+          host_id?: string
+          id?: string
+          settings?: Json | null
+          status?: string
+        }
+        Relationships: []
+      }
     }
     Views: {
       [_ in never]: never
