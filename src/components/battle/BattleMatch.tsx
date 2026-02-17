@@ -90,7 +90,7 @@ export function BattleMatch({
   useEffect(() => {
     if (!isHost || advancedRef.current) return;
 
-    const shouldAdvance = bothAnswered || timeLeft <= 0;
+    const shouldAdvance = bothAnswered || (timeLeft <= 0 && hasAnswered);
     if (shouldAdvance) {
       advancedRef.current = true;
       // Small delay so players see results
@@ -100,7 +100,14 @@ export function BattleMatch({
       }, delay);
       return () => clearTimeout(t);
     }
-  }, [isHost, bothAnswered, timeLeft, currentQIndex, onAdvanceQuestion]);
+  }, [isHost, bothAnswered, timeLeft, hasAnswered, currentQIndex, onAdvanceQuestion]);
+
+  // Manual next for host when stuck
+  const handleManualNext = useCallback(() => {
+    if (!isHost) return;
+    advancedRef.current = true;
+    onAdvanceQuestion(currentQIndex + 1);
+  }, [isHost, currentQIndex, onAdvanceQuestion]);
 
   // Auto-submit unanswered when timer expires
   useEffect(() => {
@@ -238,6 +245,18 @@ export function BattleMatch({
               <p className="text-sm text-muted-foreground">
                 ⏳ Waiting for opponent to answer…
               </p>
+            </div>
+          )}
+
+          {/* Manual next button for host when stuck */}
+          {isHost && hasAnswered && !advancedRef.current && timeLeft <= 0 && (
+            <div className="mt-6 text-center">
+              <button
+                onClick={handleManualNext}
+                className="px-6 py-3 bg-primary text-primary-foreground rounded-lg font-bold text-sm hover:opacity-90 transition-all"
+              >
+                Next Question →
+              </button>
             </div>
           )}
 

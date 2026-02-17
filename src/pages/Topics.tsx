@@ -1,6 +1,6 @@
-import { useMemo } from "react";
+import { useMemo, useCallback } from "react";
 import { Link, useParams } from "react-router-dom";
-import { Play, ArrowRight } from "lucide-react";
+import { Play, ArrowRight, Download } from "lucide-react";
 import { useDataStore, useProgressStore } from "@/store/useAppStore";
 import { Breadcrumbs } from "@/components/Breadcrumbs";
 
@@ -10,6 +10,33 @@ const Topics = () => {
   const { answers } = useProgressStore();
   const subject = subjects.find((s) => s.id === subjectId);
   const topics = topicsBySubject[subjectId || ""] || [];
+
+  const handleDownloadPdf = useCallback((topicId: string, topicName: string) => {
+    if (!subjectId) return;
+    const qs = questionsBySubjectTopic[subjectId]?.[topicId] || [];
+    if (qs.length === 0) return;
+    const lines: string[] = [];
+    lines.push(`${subject?.name || subjectId} - ${topicName}`);
+    lines.push("=".repeat(50));
+    lines.push("");
+    qs.forEach((q, i) => {
+      lines.push(`Q${i + 1}. ${q.question}`);
+      q.options.forEach((opt, j) => {
+        const label = String.fromCharCode(65 + j);
+        const marker = j === q.answerIndex ? " ✓" : "";
+        lines.push(`   ${label}) ${opt}${marker}`);
+      });
+      if (q.notes) lines.push(`   📝 ${q.notes}`);
+      lines.push("");
+    });
+    const blob = new Blob([lines.join("\n")], { type: "text/plain" });
+    const url = URL.createObjectURL(blob);
+    const a = document.createElement("a");
+    a.href = url;
+    a.download = `${topicName.replace(/[^a-zA-Z0-9]/g, "_")}.txt`;
+    a.click();
+    URL.revokeObjectURL(url);
+  }, [subjectId, questionsBySubjectTopic, subject]);
 
   const topicsWithProgress = useMemo(() => {
     if (!subjectId) return [];
@@ -53,7 +80,16 @@ const Topics = () => {
                 )}
               </div>
             </div>
-            <ArrowRight size={18} className="text-muted-foreground group-hover:text-primary group-hover:translate-x-1 transition-all shrink-0" />
+            <div className="flex items-center gap-2 shrink-0">
+              <button
+                onClick={(e) => { e.preventDefault(); e.stopPropagation(); handleDownloadPdf(t.id, t.name); }}
+                className="p-2 hover:bg-primary/10 rounded-md transition-colors z-10"
+                title="Download questions"
+              >
+                <Download size={16} className="text-muted-foreground hover:text-primary" />
+              </button>
+              <ArrowRight size={18} className="text-muted-foreground group-hover:text-primary group-hover:translate-x-1 transition-all shrink-0" />
+            </div>
           </Link>
         ))}
       </div>
