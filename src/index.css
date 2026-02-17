@@ -4,103 +4,103 @@
 
 @layer base {
   :root {
-    /* Light Theme - Teal & Cream */
-    --background: 40 30% 96%;
-    --foreground: 190 25% 12%;
+    /* Light Theme - Blue & White Neumorphism */
+    --background: 220 20% 94%;
+    --foreground: 220 30% 15%;
 
-    --card: 40 25% 99%;
-    --card-foreground: 190 25% 12%;
+    --card: 220 20% 96%;
+    --card-foreground: 220 30% 15%;
 
-    --popover: 40 25% 99%;
-    --popover-foreground: 190 25% 12%;
+    --popover: 220 20% 97%;
+    --popover-foreground: 220 30% 15%;
 
-    /* Teal primary */
-    --primary: 174 72% 38%;
+    /* Blue primary */
+    --primary: 217 91% 60%;
     --primary-foreground: 0 0% 100%;
 
-    --secondary: 40 20% 92%;
-    --secondary-foreground: 190 25% 12%;
+    --secondary: 220 15% 90%;
+    --secondary-foreground: 220 30% 15%;
 
-    --muted: 40 15% 89%;
-    --muted-foreground: 190 12% 42%;
+    --muted: 220 12% 86%;
+    --muted-foreground: 220 10% 45%;
 
-    /* Warm cream accent */
-    --accent: 28 80% 56%;
-    --accent-foreground: 190 25% 10%;
+    /* Soft blue accent */
+    --accent: 200 80% 55%;
+    --accent-foreground: 0 0% 100%;
 
     --destructive: 0 84% 60%;
     --destructive-foreground: 0 0% 100%;
 
-    --success: 174 72% 38%;
+    --success: 152 60% 45%;
     --success-foreground: 0 0% 100%;
 
     --warning: 38 90% 52%;
-    --warning-foreground: 190 25% 10%;
+    --warning-foreground: 220 30% 12%;
 
-    --border: 40 18% 85%;
-    --input: 40 18% 85%;
-    --ring: 174 72% 38%;
+    --border: 220 15% 87%;
+    --input: 220 15% 87%;
+    --ring: 217 91% 60%;
 
-    --radius: 0.875rem;
+    --radius: 1rem;
 
-    --sidebar-background: 40 25% 95%;
-    --sidebar-foreground: 190 12% 42%;
-    --sidebar-primary: 174 72% 38%;
+    --sidebar-background: 220 20% 92%;
+    --sidebar-foreground: 220 10% 45%;
+    --sidebar-primary: 217 91% 60%;
     --sidebar-primary-foreground: 0 0% 100%;
-    --sidebar-accent: 28 80% 56%;
-    --sidebar-accent-foreground: 190 25% 10%;
-    --sidebar-border: 40 18% 85%;
-    --sidebar-ring: 174 72% 38%;
+    --sidebar-accent: 200 80% 55%;
+    --sidebar-accent-foreground: 0 0% 100%;
+    --sidebar-border: 220 15% 87%;
+    --sidebar-ring: 217 91% 60%;
   }
 
   .dark {
-    /* Dark Theme - Charcoal & Gold */
-    --background: 0 0% 8%;
-    --foreground: 40 10% 92%;
+    /* Dark Theme - Blue & Slate Neumorphism */
+    --background: 222 25% 11%;
+    --foreground: 215 20% 90%;
 
-    --card: 0 0% 11%;
-    --card-foreground: 40 10% 92%;
+    --card: 222 22% 14%;
+    --card-foreground: 215 20% 90%;
 
-    --popover: 0 0% 11%;
-    --popover-foreground: 40 10% 92%;
+    --popover: 222 22% 14%;
+    --popover-foreground: 215 20% 90%;
 
-    /* Gold primary */
-    --primary: 42 90% 55%;
-    --primary-foreground: 0 0% 5%;
+    /* Bright blue primary */
+    --primary: 217 91% 65%;
+    --primary-foreground: 222 25% 8%;
 
-    --secondary: 0 0% 16%;
-    --secondary-foreground: 40 10% 92%;
+    --secondary: 222 18% 20%;
+    --secondary-foreground: 215 20% 90%;
 
-    --muted: 0 0% 20%;
-    --muted-foreground: 40 5% 55%;
+    --muted: 222 14% 24%;
+    --muted-foreground: 215 10% 55%;
 
-    /* Warm gold accent */
-    --accent: 32 85% 50%;
-    --accent-foreground: 0 0% 5%;
+    /* Electric blue accent */
+    --accent: 200 85% 58%;
+    --accent-foreground: 222 25% 8%;
 
     --destructive: 0 84% 60%;
     --destructive-foreground: 0 0% 100%;
 
-    --success: 152 72% 50%;
-    --success-foreground: 0 0% 5%;
+    --success: 152 60% 50%;
+    --success-foreground: 222 25% 8%;
 
     --warning: 42 90% 55%;
-    --warning-foreground: 0 0% 5%;
+    --warning-foreground: 222 25% 8%;
 
-    --border: 0 0% 18%;
-    --input: 0 0% 18%;
-    --ring: 42 90% 55%;
+    --border: 222 14% 22%;
+    --input: 222 14% 22%;
+    --ring: 217 91% 65%;
 
-    --radius: 0.875rem;
+    --radius: 1rem;
 
-    --sidebar-background: 0 0% 6%;
-    --sidebar-foreground: 40 5% 55%;
-    --sidebar-primary: 42 90% 55%;
-    --sidebar-primary-foreground: 0 0% 5%;
-    --sidebar-accent: 32 85% 50%;
-    --sidebar-accent-foreground: 0 0% 5%;
-    --sidebar-border: 0 0% 14%;
-    --sidebar-ring: 42 90% 55%;
+    --sidebar-background: 222 25% 9%;
+    --sidebar-foreground: 215 10% 55%;
+    --sidebar-primary: 217 91% 65%;
+    --sidebar-primary-foreground: 222 25% 8%;
+    --sidebar-accent: 200 85% 58%;
+    --sidebar-accent-foreground: 222 25% 8%;
+    --sidebar-border: 222 14% 18%;
+    --sidebar-ring: 217 91% 65%;
   }
 
   * {
@@ -117,9 +117,9 @@
 @layer utilities {
   .app-hero {
     background-image:
-      radial-gradient(1200px 600px at 15% 10%, hsl(var(--primary) / 0.18), transparent 55%),
-      radial-gradient(900px 520px at 85% 20%, hsl(var(--accent) / 0.16), transparent 55%),
-      radial-gradient(700px 380px at 50% 92%, hsl(var(--primary) / 0.08), transparent 60%),
+      radial-gradient(1200px 600px at 15% 10%, hsl(var(--primary) / 0.12), transparent 55%),
+      radial-gradient(900px 520px at 85% 20%, hsl(var(--accent) / 0.10), transparent 55%),
+      radial-gradient(700px 380px at 50% 92%, hsl(var(--primary) / 0.06), transparent 60%),
       url('/plane.svg');
     background-repeat: no-repeat;
     background-size: cover, cover, cover, 900px;
@@ -127,33 +127,49 @@
   }
 
   .glass {
-    @apply bg-background/60 backdrop-blur-xl border border-border/60 shadow-sm;
+    @apply bg-card rounded-2xl;
+    box-shadow: 6px 6px 14px hsl(var(--border) / 0.7), -6px -6px 14px hsl(var(--background));
   }
 
   .glass-card {
-    @apply bg-card/80 backdrop-blur-lg border border-border rounded-lg shadow-sm;
+    @apply bg-card rounded-2xl;
+    box-shadow: 5px 5px 12px hsl(var(--border) / 0.6), -5px -5px 12px hsl(var(--background));
   }
 
   .neu-flat {
-    @apply bg-card border border-border shadow-sm;
+    @apply bg-card rounded-2xl;
+    box-shadow: 4px 4px 10px hsl(var(--border) / 0.5), -4px -4px 10px hsl(var(--background));
   }
 
   .arctic-btn {
-    @apply glass hover:bg-background/70 active:scale-[0.98] transition;
+    @apply bg-card rounded-2xl hover:brightness-105 active:scale-[0.97] transition;
+    box-shadow: 3px 3px 8px hsl(var(--border) / 0.6), -3px -3px 8px hsl(var(--background));
+  }
+  .arctic-btn:active {
+    box-shadow: inset 2px 2px 5px hsl(var(--border) / 0.5), inset -2px -2px 5px hsl(var(--background));
   }
 
   .compact-card {
-    @apply bg-card border border-border rounded-lg shadow-sm;
+    @apply bg-card rounded-2xl;
+    box-shadow: 4px 4px 10px hsl(var(--border) / 0.5), -4px -4px 10px hsl(var(--background));
   }
 
   .compact-btn {
-    @apply px-4 py-2 rounded-md border border-border bg-secondary/50 hover:bg-secondary hover:border-primary/50 transition-all duration-200 text-sm font-medium;
+    @apply px-4 py-2 rounded-xl bg-card hover:bg-secondary hover:text-primary transition-all duration-200 text-sm font-medium;
+    box-shadow: 3px 3px 8px hsl(var(--border) / 0.6), -3px -3px 8px hsl(var(--background));
+  }
+  .compact-btn:active {
+    box-shadow: inset 2px 2px 5px hsl(var(--border) / 0.5), inset -2px -2px 5px hsl(var(--background));
   }
 
   .option-btn {
-    @apply w-full text-left px-4 py-3 rounded-md border border-border
-           bg-secondary/30 hover:bg-secondary hover:border-primary/40
+    @apply w-full text-left px-4 py-3 rounded-xl bg-card
+           hover:bg-secondary hover:text-primary
            transition-all duration-150 flex items-center gap-3;
+    box-shadow: 3px 3px 8px hsl(var(--border) / 0.5), -3px -3px 8px hsl(var(--background));
+  }
+  .option-btn:active {
+    box-shadow: inset 2px 2px 5px hsl(var(--border) / 0.5), inset -2px -2px 5px hsl(var(--background));
   }
 
   .option-btn-correct {
