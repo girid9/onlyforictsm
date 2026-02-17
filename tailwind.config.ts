@@ -77,9 +77,9 @@ export default {
         sm: "calc(var(--radius) - 4px)",
       },
       boxShadow: {
-        'emerald-glow': '0 0 25px hsl(152 76% 42% / 0.25)',
-        'gold-glow': '0 0 20px hsl(42 92% 52% / 0.2)',
-        'arctic-inner': 'inset 0 1px 1px rgba(255, 255, 255, 0.02)',
+        'neu': '5px 5px 12px hsl(220 15% 80% / 0.5), -5px -5px 12px hsl(220 20% 100%)',
+        'neu-dark': '5px 5px 12px hsl(222 25% 6%), -5px -5px 12px hsl(222 22% 18%)',
+        'neu-inset': 'inset 3px 3px 6px hsl(220 15% 80% / 0.5), inset -3px -3px 6px hsl(220 20% 100%)',
       },
       keyframes: {
         "accordion-down": {
