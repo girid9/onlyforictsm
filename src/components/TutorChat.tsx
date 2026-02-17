@@ -1,4 +1,4 @@
-import { useState, useRef, useEffect, useCallback } from "react";
+import { useState, useRef, useEffect, useCallback, forwardRef, useImperativeHandle } from "react";
 import { MessageCircle, X, Send, Bot, User, Loader2, Sparkles } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
 import ReactMarkdown from "react-markdown";
@@ -7,13 +7,45 @@ type Msg = { role: "user" | "assistant"; content: string };
 
 const CHAT_URL = `${import.meta.env.VITE_SUPABASE_URL}/functions/v1/tutor-chat`;
 
-export function TutorChat() {
+export interface TutorChatHandle {
+  sendMessage: (msg: string) => void;
+  open: () => void;
+}
+
+export const TutorChat = forwardRef<TutorChatHandle>(function TutorChat(_, ref) {
   const [open, setOpen] = useState(false);
   const [messages, setMessages] = useState<Msg[]>([]);
   const [input, setInput] = useState("");
   const [isLoading, setIsLoading] = useState(false);
   const scrollRef = useRef<HTMLDivElement>(null);
   const inputRef = useRef<HTMLInputElement>(null);
+
+  const sendProgrammatic = useCallback(async (text: string) => {
+    const userMsg: Msg = { role: "user", content: text };
+    setMessages(prev => {
+      const updated = [...prev, userMsg];
+      // trigger stream in next tick
+      setTimeout(async () => {
+        setIsLoading(true);
+        try {
+          await streamChatRef.current(updated);
+        } catch (e) {
+          console.error("Tutor chat error:", e);
+          setMessages(p => [...p, { role: "assistant", content: `Error: ${e instanceof Error ? e.message : "Please try again."}` }]);
+        } finally {
+          setIsLoading(false);
+        }
+      }, 0);
+      return updated;
+    });
+  }, []);
+
+  const streamChatRef = useRef(async (_msgs: Msg[]) => {});
+
+  useImperativeHandle(ref, () => ({
+    sendMessage: (msg: string) => sendProgrammatic(msg),
+    open: () => setOpen(true),
+  }), [sendProgrammatic]);
 
   useEffect(() => {
     if (scrollRef.current) {
@@ -113,6 +145,9 @@ export function TutorChat() {
       }
     }
   }, []);
+
+  // Keep ref in sync
+  streamChatRef.current = streamChat;
 
   const send = async () => {
     const trimmed = input.trim();
@@ -272,4 +307,4 @@ export function TutorChat() {
       </AnimatePresence>
     </>
   );
-}
+});

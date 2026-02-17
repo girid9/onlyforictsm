@@ -444,3 +444,8 @@
   0% { background-position: -200% 0; }
   100% { background-position: 200% 0; }
 }
+
+@keyframes micPulse {
+  0%, 100% { transform: scale(1); box-shadow: 0 0 0 0 hsl(var(--destructive) / 0.4); }
+  50% { transform: scale(1.08); box-shadow: 0 0 0 8px hsl(var(--destructive) / 0); }
+}

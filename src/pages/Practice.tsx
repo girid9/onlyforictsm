@@ -1,4 +1,4 @@
-import { useState, useEffect, useMemo, useCallback } from "react";
+import { useState, useEffect, useMemo, useCallback, useRef } from "react";
 import { useParams, useNavigate } from "react-router-dom";
 import { Bookmark, BookmarkCheck, ChevronLeft, ChevronRight, Settings, Info, Timer, Mic, MicOff } from "lucide-react";
 import { useDataStore, useProgressStore } from "@/store/useAppStore";
@@ -11,6 +11,7 @@ import { seededShuffle, shuffleOptions } from "@/utils/shuffle";
 import { RollerOptionPicker } from "@/components/RollerOptionPicker";
 import { Question } from "@/types/question";
 import { useVoiceAnswer } from "@/hooks/useVoiceAnswer";
+import { TutorChat, TutorChatHandle } from "@/components/TutorChat";
 
 const OPTION_LABELS = ["A", "B", "C", "D"];
 
@@ -65,8 +66,21 @@ const Practice = () => {
     recordAnswer(currentQuestion.id, optionIndex, correct);
   }, [revealed, currentQuestion, currentIndex, recordAnswer, shuffledAnswerIndex]);
 
+  const tutorRef = useRef<TutorChatHandle | null>(null);
+
+  const handleTutorCommand = useCallback((command: string) => {
+    if (tutorRef.current) {
+      tutorRef.current.open();
+      const context = currentQuestion
+        ? `Question: "${currentQuestion.question}" Options: ${shuffledOptions.map((o, i) => `${OPTION_LABELS[i]}) ${o}`).join(", ")}. Correct: ${OPTION_LABELS[shuffledAnswerIndex]}.`
+        : "";
+      tutorRef.current.sendMessage(`${command}\n\n${context}`);
+    }
+  }, [currentQuestion, shuffledOptions, shuffledAnswerIndex]);
+
   const voice = useVoiceAnswer({
     onAnswer: handleSelect,
+    onTutorCommand: handleTutorCommand,
     enabled: true,
     disabled: revealed,
   });
@@ -152,7 +166,8 @@ const Practice = () => {
           {voice.supported && (
             <button
               onClick={voice.toggle}
-              className={`p-2 rounded-md transition-all ${voice.listening ? 'text-destructive bg-destructive/10 animate-pulse' : 'hover:bg-muted text-muted-foreground'}`}
+              className={`p-2 rounded-md transition-all duration-200 ${voice.listening ? 'text-destructive bg-destructive/10' : 'hover:bg-muted text-muted-foreground'}`}
+              style={voice.listening ? { animation: 'micPulse 1.5s ease-in-out infinite' } : undefined}
               aria-label={voice.listening ? "Stop voice input" : "Start voice input"}
               title={voice.listening ? "Listening... say A, B, C, or D" : "Tap to answer by voice"}
             >
@@ -286,6 +301,14 @@ const Practice = () => {
           </button>
         </div>
       </div>
+      {/* Voice hint when revealed */}
+      {revealed && voice.listening && voice.supported && (
+        <div className="fixed bottom-24 left-1/2 -translate-x-1/2 z-40 px-4 py-2 rounded-xl bg-card/90 border border-border/50 text-xs text-muted-foreground backdrop-blur-md">
+          🎤 Say <span className="text-primary font-bold">"Explain this"</span> or <span className="text-primary font-bold">"Why is B correct?"</span>
+        </div>
+      )}
+
+      {settings.showTutor !== false && <TutorChat ref={tutorRef} />}
     </div>
   );
 };

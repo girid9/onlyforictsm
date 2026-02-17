@@ -2,43 +2,78 @@ import { useState, useEffect, useCallback, useRef } from "react";
 
 interface UseVoiceAnswerOptions {
   onAnswer: (optionIndex: number) => void;
+  onTutorCommand?: (command: string) => void;
   enabled: boolean;
   disabled: boolean;
 }
 
-export function useVoiceAnswer({ onAnswer, enabled, disabled }: UseVoiceAnswerOptions) {
+export function useVoiceAnswer({ onAnswer, onTutorCommand, enabled, disabled }: UseVoiceAnswerOptions) {
   const [listening, setListening] = useState(false);
   const [transcript, setTranscript] = useState("");
   const recognitionRef = useRef<any>(null);
   const onAnswerRef = useRef(onAnswer);
+  const onTutorCommandRef = useRef(onTutorCommand);
   onAnswerRef.current = onAnswer;
+  onTutorCommandRef.current = onTutorCommand;
 
   const optionMap: Record<string, number> = {
-    a: 0, ay: 0, hey: 0, eh: 0, alpha: 0,
-    b: 1, be: 1, bee: 1, bravo: 1,
-    c: 2, see: 2, sea: 2, si: 2, charlie: 2,
-    d: 3, de: 3, dee: 3, delta: 3,
+    a: 0, ay: 0, hey: 0, eh: 0, alpha: 0, "option a": 0,
+    b: 1, be: 1, bee: 1, bravo: 1, "option b": 1,
+    c: 2, see: 2, sea: 2, si: 2, charlie: 2, "option c": 2,
+    d: 3, de: 3, dee: 3, delta: 3, "option d": 3,
     "1": 0, "2": 1, "3": 2, "4": 3,
     one: 0, two: 1, three: 2, four: 3,
     first: 0, second: 1, third: 2, fourth: 3,
   };
 
+  // Tutor trigger phrases
+  const tutorPatterns = [
+    { pattern: /explain\s*this/i, command: "Explain this question and the correct answer" },
+    { pattern: /why\s*is\s*([abcd])\s*correct/i, command: (m: RegExpMatchArray) => `Why is option ${m[1].toUpperCase()} the correct answer?` },
+    { pattern: /why\s*(?:is\s*)?(?:that|it)\s*(?:correct|right)/i, command: "Why is that the correct answer?" },
+    { pattern: /help\s*(?:me)?/i, command: "Help me understand this question" },
+  ];
+
   const processTranscript = useCallback((text: string) => {
     const normalized = text.trim().toLowerCase();
     setTranscript(normalized);
-    for (const word of normalized.split(/\s+/)) {
-      if (word in optionMap) {
-        onAnswerRef.current(optionMap[word]);
+
+    // Check tutor commands first (only when answer is revealed / disabled)
+    if (disabled && onTutorCommandRef.current) {
+      for (const { pattern, command } of tutorPatterns) {
+        const match = normalized.match(pattern);
+        if (match) {
+          const cmd = typeof command === "function" ? command(match) : command;
+          onTutorCommandRef.current(cmd);
+          return true;
+        }
+      }
+    }
+
+    // Check "option X" phrases first
+    for (const phrase of ["option a", "option b", "option c", "option d"]) {
+      if (normalized.includes(phrase) && !disabled) {
+        onAnswerRef.current(optionMap[phrase]);
         return true;
       }
     }
-    // Also check single-char matches (speech API sometimes gives just the letter)
-    if (normalized.length === 1 && normalized in optionMap) {
-      onAnswerRef.current(optionMap[normalized]);
-      return true;
+
+    // Then single-word matches
+    if (!disabled) {
+      for (const word of normalized.split(/\s+/)) {
+        if (word in optionMap) {
+          onAnswerRef.current(optionMap[word]);
+          return true;
+        }
+      }
+      // Single-char match
+      if (normalized.length === 1 && normalized in optionMap) {
+        onAnswerRef.current(optionMap[normalized]);
+        return true;
+      }
     }
     return false;
-  }, []);
+  }, [disabled]);
 
   const startListening = useCallback(() => {
     const SpeechRecognition = (window as any).SpeechRecognition || (window as any).webkitSpeechRecognition;
@@ -61,7 +96,6 @@ export function useVoiceAnswer({ onAnswer, enabled, disabled }: UseVoiceAnswerOp
       }
     };
     recognition.onend = () => {
-      // Auto-restart if still supposed to be listening
       if (recognitionRef.current === recognition) {
         try { recognition.start(); } catch { setListening(false); }
       }
@@ -91,13 +125,8 @@ export function useVoiceAnswer({ onAnswer, enabled, disabled }: UseVoiceAnswerOp
 
   const toggle = useCallback(() => {
     if (listening) stopListening();
-    else if (!disabled) startListening();
-  }, [listening, disabled, startListening, stopListening]);
-
-  // Stop when disabled (answered)
-  useEffect(() => {
-    if (disabled && listening) stopListening();
-  }, [disabled, listening, stopListening]);
+    else startListening();
+  }, [listening, startListening, stopListening]);
 
   // Cleanup
   useEffect(() => {
