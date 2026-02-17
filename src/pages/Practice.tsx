@@ -11,7 +11,6 @@ import { seededShuffle, shuffleOptions } from "@/utils/shuffle";
 import { RollerOptionPicker } from "@/components/RollerOptionPicker";
 import { Question } from "@/types/question";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
-import { motion, AnimatePresence } from "framer-motion";
 
 const OPTION_LABELS = ["A", "B", "C", "D"];
 
@@ -35,7 +34,6 @@ const Practice = () => {
   const [sessionAnswers, setSessionAnswers] = useState<Record<number, { selected: number; correct: boolean }>>({});
   const [startTime] = useState(Date.now());
 
-  // Exam timer state
   const [examMode, setExamMode] = useState(false);
   const [examDuration, setExamDuration] = useState(30);
   const [timeRemaining, setTimeRemaining] = useState(0);
@@ -54,21 +52,18 @@ const Practice = () => {
     }
   }, [rawQuestions, subjectId, topicId, subjects, setLastVisited]);
 
-  // Start exam timer
   useEffect(() => {
     if (examMode) {
       setTimeRemaining(examDuration * 60);
     }
   }, [examMode, examDuration]);
 
-  // Countdown
   useEffect(() => {
     if (!examMode || timeRemaining <= 0) return;
     const interval = setInterval(() => {
       setTimeRemaining((prev) => {
         if (prev <= 1) {
           clearInterval(interval);
-          // Auto-submit
           handleFinish();
           return 0;
         }
@@ -154,7 +149,6 @@ const Practice = () => {
     return () => window.removeEventListener("keydown", handler);
   }, [handleSelect, handleNext, handlePrev, currentQuestion, toggleBookmark, revealed, settings.rollerMode]);
 
-  // Timer formatting
   const timerMinutes = Math.floor(timeRemaining / 60);
   const timerSeconds = timeRemaining % 60;
   const timerPct = examMode ? (timeRemaining / (examDuration * 60)) * 100 : 100;
@@ -166,9 +160,9 @@ const Practice = () => {
   return (
     <div className="flex flex-col h-screen bg-background overflow-hidden">
       {/* Compact Header */}
-      <div className="border-b border-border/50 px-4 py-3 flex items-center justify-between shrink-0" style={{ background: 'hsl(var(--card) / 0.6)', backdropFilter: 'blur(20px)', WebkitBackdropFilter: 'blur(20px)' }}>
+      <div className="border-b border-border/50 px-4 py-3 flex items-center justify-between shrink-0 bg-card">
         <div className="flex items-center gap-4">
-          <button onClick={() => navigate(-1)} className="p-2 hover:bg-muted rounded-md transition-colors">
+          <button onClick={() => navigate(-1)} className="p-2 hover:bg-muted rounded-md">
             <ChevronLeft size={20} />
           </button>
           <div className="hidden sm:block">
@@ -177,7 +171,6 @@ const Practice = () => {
           </div>
         </div>
         <div className="flex items-center gap-2">
-          {/* Exam Timer */}
           {examMode && (
             <div className={`px-3 py-1 rounded text-[11px] font-bold flex items-center gap-1.5 ${timerPct <= 20 ? 'text-destructive bg-destructive/10' : timerPct <= 50 ? 'text-warning bg-warning/10' : 'text-success bg-success/10'}`}>
               <Timer size={12} />
@@ -188,12 +181,12 @@ const Practice = () => {
             {currentIndex + 1} / {questions.length}
           </div>
           <div className="h-4 w-[1px] bg-border mx-1" />
-          <button onClick={() => toggleBookmark(currentQuestion.id)} className={`p-2 rounded-md transition-colors ${isBookmarked ? 'text-primary bg-primary/10' : 'hover:bg-muted'}`}>
+          <button onClick={() => toggleBookmark(currentQuestion.id)} className={`p-2 rounded-md ${isBookmarked ? 'text-primary bg-primary/10' : 'hover:bg-muted'}`}>
             {isBookmarked ? <BookmarkCheck size={18} /> : <Bookmark size={18} />}
           </button>
           <Popover>
             <PopoverTrigger asChild>
-              <button className="p-2 hover:bg-muted rounded-md transition-colors">
+              <button className="p-2 hover:bg-muted rounded-md">
                 <Settings size={18} />
               </button>
             </PopoverTrigger>
@@ -259,11 +252,11 @@ const Practice = () => {
       {/* Progress Bar + Timer Bar */}
       <div className="shrink-0">
         <div className="h-1 w-full bg-muted">
-          <div className="h-full bg-primary transition-all duration-300" style={{ width: `${((currentIndex + 1) / questions.length) * 100}%` }} />
+          <div className="h-full bg-primary" style={{ width: `${((currentIndex + 1) / questions.length) * 100}%` }} />
         </div>
         {examMode && (
           <div className="h-1 w-full bg-muted">
-            <div className={`h-full ${timerColor} transition-all duration-1000`} style={{ width: `${timerPct}%` }} />
+            <div className={`h-full ${timerColor}`} style={{ width: `${timerPct}%` }} />
           </div>
         )}
       </div>
@@ -281,11 +274,7 @@ const Practice = () => {
 
             {/* Concept Mode: Theory hint before question */}
             {conceptMode && currentQuestion.notes && !revealed && (
-              <motion.div
-                initial={{ opacity: 0, height: 0 }}
-                animate={{ opacity: 1, height: "auto" }}
-                className="mb-4 p-3 bg-accent/5 border border-accent/20 rounded-lg"
-              >
+              <div className="mb-4 p-3 bg-accent/5 border border-accent/20 rounded-lg">
                 <div className="flex items-center gap-1.5 mb-1.5">
                   <BookOpen size={12} className="text-accent" />
                   <span className="text-[10px] font-bold text-accent uppercase">Concept Hint</span>
@@ -293,7 +282,7 @@ const Practice = () => {
                 <p className="text-xs text-foreground/70 leading-relaxed">
                   💡 {currentQuestion.notes.split('.').slice(0, 2).join('.')}...
                 </p>
-              </motion.div>
+              </div>
             )}
 
             <h2 className="text-lg md:text-xl font-semibold leading-relaxed text-foreground">
@@ -332,55 +321,45 @@ const Practice = () => {
             </div>
           )}
 
-          {/* Enhanced Explanation Panel */}
-          <AnimatePresence>
-            {revealed && (
-              <motion.div
-                initial={{ opacity: 0, y: 12 }}
-                animate={{ opacity: 1, y: 0 }}
-                exit={{ opacity: 0, y: -8 }}
-                transition={{ duration: 0.35, ease: [0.4, 0, 0.2, 1] }}
-                className="mt-6 space-y-3"
-              >
-                {/* Correct/Incorrect Banner */}
-                <div className={`flex items-center gap-3 p-4 rounded-lg border ${selectedOption === shuffledAnswerIndex ? 'bg-success/10 border-success/30' : 'bg-destructive/10 border-destructive/30'}`}>
-                  {selectedOption === shuffledAnswerIndex ? (
-                    <CheckCircle2 size={20} className="text-success shrink-0" />
-                  ) : (
-                    <AlertTriangle size={20} className="text-destructive shrink-0" />
-                  )}
-                  <div>
-                    <p className={`text-sm font-bold ${selectedOption === shuffledAnswerIndex ? 'text-success' : 'text-destructive'}`}>
-                      {selectedOption === shuffledAnswerIndex ? "Correct! 🎉" : "Incorrect"}
-                    </p>
-                    {selectedOption !== shuffledAnswerIndex && (
-                      <p className="text-xs text-muted-foreground mt-0.5">
-                        The correct answer is <span className="text-success font-bold">{OPTION_LABELS[shuffledAnswerIndex]}. {shuffledOptions[shuffledAnswerIndex]}</span>
-                      </p>
-                    )}
-                  </div>
-                </div>
-
-                {/* Explanation Notes */}
-                {currentQuestion.notes && (
-                  <div className="p-4 bg-muted/30 border border-border rounded-lg">
-                    <div className="flex items-center gap-2 mb-2 text-muted-foreground">
-                      <Info size={14} />
-                      <span className="text-[10px] font-bold uppercase tracking-wider">Why this is correct</span>
-                    </div>
-                    <p className="text-sm text-foreground/80 leading-relaxed">
-                      {currentQuestion.notes}
-                    </p>
-                  </div>
+          {/* Explanation Panel */}
+          {revealed && (
+            <div className="mt-6 space-y-3">
+              <div className={`flex items-center gap-3 p-4 rounded-lg border ${selectedOption === shuffledAnswerIndex ? 'bg-success/10 border-success/30' : 'bg-destructive/10 border-destructive/30'}`}>
+                {selectedOption === shuffledAnswerIndex ? (
+                  <CheckCircle2 size={20} className="text-success shrink-0" />
+                ) : (
+                  <AlertTriangle size={20} className="text-destructive shrink-0" />
                 )}
-              </motion.div>
-            )}
-          </AnimatePresence>
+                <div>
+                  <p className={`text-sm font-bold ${selectedOption === shuffledAnswerIndex ? 'text-success' : 'text-destructive'}`}>
+                    {selectedOption === shuffledAnswerIndex ? "Correct! 🎉" : "Incorrect"}
+                  </p>
+                  {selectedOption !== shuffledAnswerIndex && (
+                    <p className="text-xs text-muted-foreground mt-0.5">
+                      The correct answer is <span className="text-success font-bold">{OPTION_LABELS[shuffledAnswerIndex]}. {shuffledOptions[shuffledAnswerIndex]}</span>
+                    </p>
+                  )}
+                </div>
+              </div>
+
+              {currentQuestion.notes && (
+                <div className="p-4 bg-muted/30 border border-border rounded-lg">
+                  <div className="flex items-center gap-2 mb-2 text-muted-foreground">
+                    <Info size={14} />
+                    <span className="text-[10px] font-bold uppercase tracking-wider">Why this is correct</span>
+                  </div>
+                  <p className="text-sm text-foreground/80 leading-relaxed">
+                    {currentQuestion.notes}
+                  </p>
+                </div>
+              )}
+            </div>
+          )}
         </div>
       </div>
 
       {/* Compact Footer Navigation */}
-      <div className="border-t border-border/50 p-4 shrink-0" style={{ background: 'hsl(var(--card) / 0.6)', backdropFilter: 'blur(20px)', WebkitBackdropFilter: 'blur(20px)' }}>
+      <div className="border-t border-border/50 p-4 shrink-0 bg-card">
         <div className="max-w-3xl mx-auto flex items-center justify-between gap-4">
           <button onClick={handlePrev} disabled={currentIndex === 0} className="compact-btn flex items-center gap-2 disabled:opacity-30">
             <ChevronLeft size={16} /> Previous
@@ -388,7 +367,7 @@ const Practice = () => {
           <div className="hidden sm:flex items-center gap-1 text-[10px] font-bold text-muted-foreground uppercase tracking-widest">
             {settings.rollerMode ? "Swipe up/down to browse" : "Keys 1-4 to select"}
           </div>
-          <button onClick={handleNext} disabled={!revealed} className="px-6 py-2 bg-primary text-primary-foreground rounded-md text-sm font-bold hover:opacity-90 transition-all disabled:opacity-30">
+          <button onClick={handleNext} disabled={!revealed} className="px-6 py-2 bg-primary text-primary-foreground rounded-md text-sm font-bold hover:opacity-90 disabled:opacity-30">
             {currentIndex === questions.length - 1 ? "Finish" : "Next Question"}
           </button>
         </div>

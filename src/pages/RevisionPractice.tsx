@@ -6,7 +6,6 @@ import { seededShuffle, shuffleOptions } from "@/utils/shuffle";
 import { RollerOptionPicker } from "@/components/RollerOptionPicker";
 import { Question } from "@/types/question";
 import { getTopicStats, getSpacedRepetitionDue } from "@/utils/analytics";
-import { motion, AnimatePresence } from "framer-motion";
 
 const OPTION_LABELS = ["A", "B", "C", "D"];
 
@@ -18,7 +17,6 @@ const RevisionPractice = () => {
 
   const mode = sessionStorage.getItem("revision-mode") || "wrong";
 
-  // Build question set based on mode
   const allQuestions = useMemo(() => {
     const all: Question[] = [];
     for (const topics of Object.values(questionsBySubjectTopic)) {
@@ -28,20 +26,14 @@ const RevisionPractice = () => {
   }, [questionsBySubjectTopic]);
 
   const filteredQuestions = useMemo(() => {
-    if (mode === "srs") {
-      return getSpacedRepetitionDue(answers, questionsBySubjectTopic);
-    }
-    if (mode === "wrong") {
-      return allQuestions.filter((q) => answers[q.id] && !answers[q.id].correct);
-    }
+    if (mode === "srs") return getSpacedRepetitionDue(answers, questionsBySubjectTopic);
+    if (mode === "wrong") return allQuestions.filter((q) => answers[q.id] && !answers[q.id].correct);
     if (mode === "hard") {
       const stats = getTopicStats(answers, questionsBySubjectTopic);
       const hardTopics = new Set(stats.filter((t) => t.accuracy < 50 && t.attempted >= 2).map((t) => `${t.subjectId}-${t.topicId}`));
       return allQuestions.filter((q) => hardTopics.has(`${q.subjectId}-${q.topicId}`));
     }
-    // fast20
-    const shuffled = seededShuffle(allQuestions, Date.now());
-    return shuffled.slice(0, 20);
+    return seededShuffle(allQuestions, Date.now()).slice(0, 20);
   }, [mode, allQuestions, answers, questionsBySubjectTopic]);
 
   const [sessionSeed] = useState(() => Math.floor(Math.random() * 2147483647));
@@ -52,9 +44,8 @@ const RevisionPractice = () => {
   const [sessionAnswers, setSessionAnswers] = useState<Record<number, { selected: number; correct: boolean }>>({});
   const [startTime] = useState(Date.now());
 
-  // Fast 20 timer
   const isTimed = mode === "fast20";
-  const [timeRemaining, setTimeRemaining] = useState(600); // 10 minutes
+  const [timeRemaining, setTimeRemaining] = useState(600);
 
   useEffect(() => {
     if (filteredQuestions.length > 0) {
@@ -62,16 +53,11 @@ const RevisionPractice = () => {
     }
   }, [filteredQuestions, sessionSeed, mode]);
 
-  // Countdown for fast20
   useEffect(() => {
     if (!isTimed || timeRemaining <= 0) return;
     const interval = setInterval(() => {
       setTimeRemaining((prev) => {
-        if (prev <= 1) {
-          clearInterval(interval);
-          handleFinish();
-          return 0;
-        }
+        if (prev <= 1) { clearInterval(interval); handleFinish(); return 0; }
         return prev - 1;
       });
     }, 1000);
@@ -102,7 +88,7 @@ const RevisionPractice = () => {
       allAnswers[currentIndex] = { selected: selectedOption, correct: selectedOption === shuffledAnswerIndex };
     }
     const correct = Object.values(allAnswers).filter((a) => a.correct).length;
-    const modeLabel = mode === "wrong" ? "Wrong Questions" : mode === "hard" ? "Hard Topics" : "Fast 20";
+    const modeLabel = mode === "wrong" ? "Wrong Questions" : mode === "hard" ? "Hard Topics" : mode === "srs" ? "Spaced Repetition" : "Fast 20";
     setSessionResult({
       subjectName: "Revision", topicName: modeLabel,
       subjectId: "revision", topicId: mode,
@@ -151,9 +137,9 @@ const RevisionPractice = () => {
   return (
     <div className="flex flex-col h-screen bg-background overflow-hidden">
       {/* Header */}
-      <div className="border-b border-border/50 px-4 py-3 flex items-center justify-between shrink-0" style={{ background: 'hsl(var(--card) / 0.6)', backdropFilter: 'blur(20px)', WebkitBackdropFilter: 'blur(20px)' }}>
+      <div className="border-b border-border/50 px-4 py-3 flex items-center justify-between shrink-0 bg-card">
         <div className="flex items-center gap-4">
-          <button onClick={() => navigate("/revision")} className="p-2 hover:bg-muted rounded-md transition-colors">
+          <button onClick={() => navigate("/revision")} className="p-2 hover:bg-muted rounded-md">
             <ChevronLeft size={20} />
           </button>
           <span className="text-xs font-bold text-primary uppercase">{modeTitle}</span>
@@ -168,7 +154,7 @@ const RevisionPractice = () => {
           <div className="px-3 py-1 bg-muted rounded text-[11px] font-bold">
             {currentIndex + 1} / {questions.length}
           </div>
-          <button onClick={() => toggleBookmark(currentQuestion.id)} className={`p-2 rounded-md transition-colors ${isBookmarked ? 'text-primary bg-primary/10' : 'hover:bg-muted'}`}>
+          <button onClick={() => toggleBookmark(currentQuestion.id)} className={`p-2 rounded-md ${isBookmarked ? 'text-primary bg-primary/10' : 'hover:bg-muted'}`}>
             {isBookmarked ? <BookmarkCheck size={18} /> : <Bookmark size={18} />}
           </button>
         </div>
@@ -177,11 +163,11 @@ const RevisionPractice = () => {
       {/* Progress */}
       <div className="shrink-0">
         <div className="h-1 w-full bg-muted">
-          <div className="h-full bg-primary transition-all duration-300" style={{ width: `${((currentIndex + 1) / questions.length) * 100}%` }} />
+          <div className="h-full bg-primary" style={{ width: `${((currentIndex + 1) / questions.length) * 100}%` }} />
         </div>
         {isTimed && (
           <div className="h-1 w-full bg-muted">
-            <div className={`h-full transition-all duration-1000 ${timerPct > 50 ? 'bg-success' : timerPct > 20 ? 'bg-warning' : 'bg-destructive'}`} style={{ width: `${timerPct}%` }} />
+            <div className={`h-full ${timerPct > 50 ? 'bg-success' : timerPct > 20 ? 'bg-warning' : 'bg-destructive'}`} style={{ width: `${timerPct}%` }} />
           </div>
         )}
       </div>
@@ -219,44 +205,42 @@ const RevisionPractice = () => {
             </div>
           )}
 
-          <AnimatePresence>
-            {revealed && (
-              <motion.div initial={{ opacity: 0, y: 12 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0, y: -8 }} transition={{ duration: 0.35 }} className="mt-6 space-y-3">
-                <div className={`flex items-center gap-3 p-4 rounded-lg border ${selectedOption === shuffledAnswerIndex ? 'bg-success/10 border-success/30' : 'bg-destructive/10 border-destructive/30'}`}>
-                  {selectedOption === shuffledAnswerIndex ? <CheckCircle2 size={20} className="text-success shrink-0" /> : <AlertTriangle size={20} className="text-destructive shrink-0" />}
-                  <div>
-                    <p className={`text-sm font-bold ${selectedOption === shuffledAnswerIndex ? 'text-success' : 'text-destructive'}`}>
-                      {selectedOption === shuffledAnswerIndex ? "Correct! 🎉" : "Incorrect"}
+          {revealed && (
+            <div className="mt-6 space-y-3">
+              <div className={`flex items-center gap-3 p-4 rounded-lg border ${selectedOption === shuffledAnswerIndex ? 'bg-success/10 border-success/30' : 'bg-destructive/10 border-destructive/30'}`}>
+                {selectedOption === shuffledAnswerIndex ? <CheckCircle2 size={20} className="text-success shrink-0" /> : <AlertTriangle size={20} className="text-destructive shrink-0" />}
+                <div>
+                  <p className={`text-sm font-bold ${selectedOption === shuffledAnswerIndex ? 'text-success' : 'text-destructive'}`}>
+                    {selectedOption === shuffledAnswerIndex ? "Correct! 🎉" : "Incorrect"}
+                  </p>
+                  {selectedOption !== shuffledAnswerIndex && (
+                    <p className="text-xs text-muted-foreground mt-0.5">
+                      Correct: <span className="text-success font-bold">{OPTION_LABELS[shuffledAnswerIndex]}. {shuffledOptions[shuffledAnswerIndex]}</span>
                     </p>
-                    {selectedOption !== shuffledAnswerIndex && (
-                      <p className="text-xs text-muted-foreground mt-0.5">
-                        Correct: <span className="text-success font-bold">{OPTION_LABELS[shuffledAnswerIndex]}. {shuffledOptions[shuffledAnswerIndex]}</span>
-                      </p>
-                    )}
-                  </div>
+                  )}
                 </div>
-                {currentQuestion.notes && (
-                  <div className="p-4 bg-muted/30 border border-border rounded-lg">
-                    <div className="flex items-center gap-2 mb-2 text-muted-foreground">
-                      <Info size={14} />
-                      <span className="text-[10px] font-bold uppercase tracking-wider">Why this is correct</span>
-                    </div>
-                    <p className="text-sm text-foreground/80 leading-relaxed">{currentQuestion.notes}</p>
+              </div>
+              {currentQuestion.notes && (
+                <div className="p-4 bg-muted/30 border border-border rounded-lg">
+                  <div className="flex items-center gap-2 mb-2 text-muted-foreground">
+                    <Info size={14} />
+                    <span className="text-[10px] font-bold uppercase tracking-wider">Why this is correct</span>
                   </div>
-                )}
-              </motion.div>
-            )}
-          </AnimatePresence>
+                  <p className="text-sm text-foreground/80 leading-relaxed">{currentQuestion.notes}</p>
+                </div>
+              )}
+            </div>
+          )}
         </div>
       </div>
 
       {/* Footer */}
-      <div className="border-t border-border/50 p-4 shrink-0" style={{ background: 'hsl(var(--card) / 0.6)', backdropFilter: 'blur(20px)', WebkitBackdropFilter: 'blur(20px)' }}>
+      <div className="border-t border-border/50 p-4 shrink-0 bg-card">
         <div className="max-w-3xl mx-auto flex items-center justify-between gap-4">
           <button onClick={handlePrev} disabled={currentIndex === 0} className="compact-btn flex items-center gap-2 disabled:opacity-30">
             <ChevronLeft size={16} /> Previous
           </button>
-          <button onClick={handleNext} disabled={!revealed} className="px-6 py-2 bg-primary text-primary-foreground rounded-md text-sm font-bold hover:opacity-90 transition-all disabled:opacity-30">
+          <button onClick={handleNext} disabled={!revealed} className="px-6 py-2 bg-primary text-primary-foreground rounded-md text-sm font-bold hover:opacity-90 disabled:opacity-30">
             {currentIndex === questions.length - 1 ? "Finish" : "Next"}
           </button>
         </div>
