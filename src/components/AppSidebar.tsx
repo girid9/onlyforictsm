@@ -7,10 +7,15 @@ import {
   Swords,
   X,
   Zap,
-  Clock
+  Clock,
+  Palette,
+  Check,
+  RotateCcw
 } from "lucide-react";
 import { useProgressStore } from "@/store/useAppStore";
-import { motion } from "framer-motion";
+import { useTheme } from "@/components/ThemeProvider";
+import { THEMES, THEME_NAMES, ThemeName } from "@/config/themes";
+import { useState } from "react";
 
 const links = [
   { to: "/", icon: Home, label: "Dashboard" },
@@ -26,6 +31,8 @@ interface Props {
 
 export function AppSidebar({ onClose }: Props) {
   const { streak, xp } = useProgressStore();
+  const { colorTheme, setColorTheme } = useTheme();
+  const [themesOpen, setThemesOpen] = useState(false);
 
   return (
     <div className="w-64 h-full flex flex-col border-r border-border/50" style={{ background: 'hsl(var(--sidebar-background) / 0.85)', backdropFilter: 'blur(24px) saturate(1.4)', WebkitBackdropFilter: 'blur(24px) saturate(1.4)' }}>
@@ -85,6 +92,55 @@ export function AppSidebar({ onClose }: Props) {
             {label}
           </NavLink>
         ))}
+
+        {/* Theme Section */}
+        <div className="pt-3 mt-3 border-t border-border/50">
+          <button
+            onClick={() => setThemesOpen(!themesOpen)}
+            className="flex items-center gap-3 px-4 py-2.5 rounded-xl text-xs font-bold uppercase tracking-wider transition-all duration-200 w-full text-muted-foreground hover:bg-muted hover:text-foreground"
+          >
+            <Palette size={16} />
+            <span className="flex-1 text-left">Themes</span>
+            <span
+              className="h-3 w-3 rounded-full border border-border/50"
+              style={{ backgroundColor: THEMES[colorTheme].dot }}
+            />
+          </button>
+
+          {themesOpen && (
+            <div className="mt-1 ml-2 mr-2 p-2 rounded-xl bg-muted/30 border border-border/50 space-y-1">
+              {THEME_NAMES.map((key) => {
+                const theme = THEMES[key];
+                const isActive = colorTheme === key;
+                return (
+                  <button
+                    key={key}
+                    onClick={() => setColorTheme(key)}
+                    className={`flex items-center gap-3 w-full px-3 py-2 rounded-lg text-xs font-medium transition-all ${
+                      isActive
+                        ? "bg-primary/10 text-primary"
+                        : "text-muted-foreground hover:bg-muted hover:text-foreground"
+                    }`}
+                  >
+                    <span
+                      className="h-4 w-4 rounded-full border border-border/50 shrink-0"
+                      style={{ backgroundColor: theme.dot }}
+                    />
+                    <span className="flex-1 text-left">{theme.name}</span>
+                    {isActive && <Check size={14} className="text-primary" />}
+                  </button>
+                );
+              })}
+              <button
+                onClick={() => setColorTheme("midnight")}
+                className="flex items-center gap-2 w-full px-3 py-1.5 rounded-lg text-[10px] font-medium text-muted-foreground hover:text-foreground transition-colors mt-1"
+              >
+                <RotateCcw size={12} />
+                Reset to Default
+              </button>
+            </div>
+          )}
+        </div>
       </nav>
 
       {/* Footer */}

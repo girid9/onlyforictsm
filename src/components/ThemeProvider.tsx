@@ -1,55 +1,39 @@
 import { createContext, useContext, useEffect, useMemo, useState } from "react";
-
-type Theme = "light" | "dark" | "system";
+import { ThemeName, THEMES } from "@/config/themes";
 
 type ThemeContextValue = {
-  theme: Theme;
-  resolvedTheme: "light" | "dark";
-  setTheme: (t: Theme) => void;
-  toggle: () => void;
+  colorTheme: ThemeName;
+  setColorTheme: (t: ThemeName) => void;
 };
 
 const ThemeContext = createContext<ThemeContextValue | null>(null);
 
-const STORAGE_KEY = "quest-ace-theme";
-
-function getSystemTheme(): "light" | "dark" {
-  if (typeof window === "undefined") return "dark";
-  return window.matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light";
-}
+const STORAGE_KEY = "quest-ace-color-theme";
 
 export function ThemeProvider({ children }: { children: React.ReactNode }) {
-  const [theme, setThemeState] = useState<Theme>(() => {
+  const [colorTheme, setColorThemeState] = useState<ThemeName>(() => {
     const saved = typeof window !== "undefined" ? localStorage.getItem(STORAGE_KEY) : null;
-    if (saved === "light" || saved === "dark" || saved === "system") return saved;
-    return "system";
+    if (saved && saved in THEMES) return saved as ThemeName;
+    return "midnight";
   });
-
-  const [systemTheme, setSystemTheme] = useState<"light" | "dark">(() => getSystemTheme());
-
-  useEffect(() => {
-    const mq = window.matchMedia("(prefers-color-scheme: dark)");
-    const onChange = () => setSystemTheme(mq.matches ? "dark" : "light");
-    onChange();
-    mq.addEventListener?.("change", onChange);
-    return () => mq.removeEventListener?.("change", onChange);
-  }, []);
-
-  const resolvedTheme = theme === "system" ? systemTheme : theme;
 
   useEffect(() => {
     const root = document.documentElement;
-    root.classList.toggle("dark", resolvedTheme === "dark");
-  }, [resolvedTheme]);
+    // Remove old theme classes
+    root.removeAttribute("data-color-theme");
+    root.setAttribute("data-color-theme", colorTheme);
 
-  const setTheme = (t: Theme) => {
-    setThemeState(t);
+    // Set dark/light class based on theme
+    const isDark = THEMES[colorTheme].isDark;
+    root.classList.toggle("dark", isDark);
+  }, [colorTheme]);
+
+  const setColorTheme = (t: ThemeName) => {
+    setColorThemeState(t);
     localStorage.setItem(STORAGE_KEY, t);
   };
 
-  const toggle = () => setTheme(resolvedTheme === "dark" ? "light" : "dark");
-
-  const value = useMemo<ThemeContextValue>(() => ({ theme, resolvedTheme, setTheme, toggle }), [theme, resolvedTheme]);
+  const value = useMemo<ThemeContextValue>(() => ({ colorTheme, setColorTheme }), [colorTheme]);
 
   return <ThemeContext.Provider value={value}>{children}</ThemeContext.Provider>;
 }

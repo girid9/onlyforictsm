@@ -1,7 +1,8 @@
 import { Link, useNavigate } from "react-router-dom";
 import { useDataStore } from "@/store/useAppStore";
-import { CheckCircle2, XCircle, Clock, RotateCcw, Home, Trophy, Target, Award } from "lucide-react";
+import { CheckCircle2, XCircle, Clock, RotateCcw, Home, Trophy, Target, Award, Download } from "lucide-react";
 import { motion } from "framer-motion";
+import { generateResultsPDF } from "@/utils/pdfExport";
 
 const OPTION_LABELS = ["A", "B", "C", "D"];
 
@@ -68,6 +69,13 @@ const Results = () => {
           aria-label="Retry this quiz"
         >
           <RotateCcw size={16} /> Retry
+        </button>
+        <button
+          onClick={() => generateResultsPDF(sessionResult)}
+          className="flex-1 flex items-center justify-center gap-2 px-4 py-3 rounded-xl bg-primary text-primary-foreground font-medium hover:opacity-90 transition-colors text-sm focus-ring"
+          aria-label="Download results as PDF"
+        >
+          <Download size={16} /> Download PDF
         </button>
         <Link to="/" className="flex-1 flex items-center justify-center gap-2 px-4 py-3 rounded-xl bg-secondary text-secondary-foreground font-medium hover:bg-muted transition-colors text-sm focus-ring">
           <Home size={16} /> Home
