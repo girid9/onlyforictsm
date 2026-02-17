@@ -1,8 +1,13 @@
 import { useMemo, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
-import { BookOpen, Swords, ArrowRight, Target, TrendingUp, Search, Zap, Clock, Sparkles } from "lucide-react";
+import { BookOpen, Swords, ArrowRight, Target, TrendingUp, Search, Zap, Clock, Sparkles, CheckCircle2, XCircle, AlertTriangle } from "lucide-react";
 import { useDataStore, useProgressStore } from "@/store/useAppStore";
 import { motion } from "framer-motion";
+import { Area, AreaChart, ResponsiveContainer, Tooltip } from "recharts";
+import ProgressRing from "@/components/ProgressRing";
+import { getWeakTopics, getSubjectProgress, getRecentActivity, getAccuracyTrend } from "@/utils/analytics";
+import { Badge } from "@/components/ui/badge";
+import { formatDistanceToNow } from "date-fns";
 
 const stagger = {
   hidden: {},
@@ -11,6 +16,12 @@ const stagger = {
 const fadeUp = {
   hidden: { opacity: 0, y: 16 },
   show: { opacity: 1, y: 0, transition: { duration: 0.4, ease: [0.4, 0, 0.2, 1] as const } },
+};
+
+const difficultyColor: Record<string, string> = {
+  Easy: "bg-success/15 text-success border-success/30",
+  Medium: "bg-warning/15 text-warning border-warning/30",
+  Hard: "bg-destructive/15 text-destructive border-destructive/30",
 };
 
 const Home = () => {
@@ -28,6 +39,23 @@ const Home = () => {
     const accuracy = answered > 0 ? Math.round((correct / answered) * 100) : 0;
     return { total, answered, correct, accuracy, bookmarks: bookmarkedIds.length, streak, xp };
   }, [questionsBySubjectTopic, answers, bookmarkedIds, streak, xp]);
+
+  const weakTopics = useMemo(
+    () => getWeakTopics(answers, questionsBySubjectTopic),
+    [answers, questionsBySubjectTopic]
+  );
+
+  const subjectProgress = useMemo(
+    () => getSubjectProgress(answers, questionsBySubjectTopic, subjects),
+    [answers, questionsBySubjectTopic, subjects]
+  );
+
+  const recentActivity = useMemo(
+    () => getRecentActivity(answers, questionsBySubjectTopic),
+    [answers, questionsBySubjectTopic]
+  );
+
+  const trendData = useMemo(() => getAccuracyTrend(answers), [answers]);
 
   const statItems = [
     { label: "Accuracy", value: `${stats.accuracy}%`, icon: TrendingUp, gradient: "from-primary/20 to-primary/5" },
@@ -82,21 +110,123 @@ const Home = () => {
           />
         </motion.div>
 
+        {/* Recommended Topics */}
+        {weakTopics.length > 0 && (
+          <motion.div variants={fadeUp} className="mb-8">
+            <div className="flex items-center gap-2 mb-4">
+              <AlertTriangle size={16} className="text-accent" />
+              <h2 className="text-sm font-bold uppercase tracking-wider text-foreground">Recommended for You</h2>
+            </div>
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+              {weakTopics.map((topic) => (
+                <motion.div key={`${topic.subjectId}-${topic.topicId}`} whileHover={{ y: -2 }} whileTap={{ scale: 0.98 }}>
+                  <Link
+                    to={`/practice/${topic.subjectId}/${topic.topicId}`}
+                    className="glass-card p-4 flex items-center justify-between group"
+                    aria-label={`Practice ${topic.topicName}`}
+                  >
+                    <div className="min-w-0 flex-1">
+                      <p className="text-xs font-bold text-foreground truncate">{topic.topicName}</p>
+                      <p className="text-[10px] text-muted-foreground uppercase font-bold mt-0.5">{topic.subjectName}</p>
+                      <div className="flex items-center gap-2 mt-2">
+                        <span className="text-[10px] font-bold text-primary">{topic.accuracy}% accuracy</span>
+                        <Badge variant="outline" className={`text-[9px] px-1.5 py-0 h-4 border ${difficultyColor[topic.difficulty]}`}>
+                          {topic.difficulty}
+                        </Badge>
+                      </div>
+                    </div>
+                    <div className="h-9 w-9 rounded-lg bg-accent/10 flex items-center justify-center group-hover:bg-accent group-hover:shadow-glow transition-all duration-300 ml-3 shrink-0">
+                      <ArrowRight size={16} className="text-accent group-hover:text-accent-foreground group-hover:translate-x-0.5 transition-all" />
+                    </div>
+                  </Link>
+                </motion.div>
+              ))}
+            </div>
+          </motion.div>
+        )}
+
+        {/* Subject Progress & Recent Activity */}
+        <motion.div variants={fadeUp} className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-8">
+          {/* Subject Progress Rings */}
+          <div className="glass-card p-5">
+            <h2 className="text-sm font-bold uppercase tracking-wider text-foreground mb-4">Subject Progress</h2>
+            {subjectProgress.length > 0 ? (
+              <div className="flex flex-wrap gap-4 justify-center">
+                {subjectProgress.map((sub) => (
+                  <Link key={sub.subjectId} to={`/subjects`} className="flex flex-col items-center gap-1 group" aria-label={`${sub.subjectName} progress`}>
+                    <ProgressRing value={sub.completion} size={56} strokeWidth={4} />
+                    <span className="text-[9px] text-muted-foreground font-bold uppercase tracking-wider text-center max-w-[72px] truncate group-hover:text-primary transition-colors">
+                      {sub.subjectName.split(" ")[0]}
+                    </span>
+                  </Link>
+                ))}
+              </div>
+            ) : (
+              <p className="text-xs text-muted-foreground italic text-center py-4">Start practising to see progress</p>
+            )}
+          </div>
+
+          {/* Recent Activity */}
+          <div className="glass-card p-5">
+            <h2 className="text-sm font-bold uppercase tracking-wider text-foreground mb-4">Recent Activity</h2>
+            {recentActivity.length > 0 ? (
+              <div className="space-y-3">
+                {recentActivity.map((entry, i) => (
+                  <div key={entry.questionId} className="flex items-center gap-3">
+                    {entry.correct ? (
+                      <CheckCircle2 size={14} className="text-success shrink-0" />
+                    ) : (
+                      <XCircle size={14} className="text-destructive shrink-0" />
+                    )}
+                    <div className="min-w-0 flex-1">
+                      <p className="text-xs font-medium text-foreground truncate">{entry.topicName}</p>
+                      <p className="text-[10px] text-muted-foreground">{entry.subjectName}</p>
+                    </div>
+                    <span className="text-[10px] text-muted-foreground shrink-0">
+                      {formatDistanceToNow(new Date(entry.answeredAt), { addSuffix: true })}
+                    </span>
+                  </div>
+                ))}
+              </div>
+            ) : (
+              <p className="text-xs text-muted-foreground italic text-center py-4">No recent activity</p>
+            )}
+          </div>
+        </motion.div>
+
+        {/* Accuracy Trend */}
+        {trendData.length >= 2 && (
+          <motion.div variants={fadeUp} className="glass-card p-5 mb-8">
+            <h2 className="text-sm font-bold uppercase tracking-wider text-foreground mb-3">Accuracy Trend</h2>
+            <div className="h-24">
+              <ResponsiveContainer width="100%" height="100%">
+                <AreaChart data={trendData}>
+                  <defs>
+                    <linearGradient id="trendGrad" x1="0" y1="0" x2="0" y2="1">
+                      <stop offset="0%" stopColor="hsl(var(--primary))" stopOpacity={0.3} />
+                      <stop offset="100%" stopColor="hsl(var(--primary))" stopOpacity={0} />
+                    </linearGradient>
+                  </defs>
+                  <Tooltip
+                    contentStyle={{ background: "hsl(var(--card))", border: "1px solid hsl(var(--border))", borderRadius: "0.75rem", fontSize: "11px" }}
+                    labelFormatter={() => ""}
+                    formatter={(val: number) => [`${val}%`, "Accuracy"]}
+                  />
+                  <Area type="monotone" dataKey="accuracy" stroke="hsl(var(--primary))" fill="url(#trendGrad)" strokeWidth={2} dot={false} />
+                </AreaChart>
+              </ResponsiveContainer>
+            </div>
+          </motion.div>
+        )}
+
         {/* Quick Actions */}
         <motion.div variants={fadeUp} className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-8">
-          <motion.div
-            whileHover={{ y: -3 }}
-            className="glass-card p-6 flex flex-col justify-between"
-          >
+          <motion.div whileHover={{ y: -3 }} className="glass-card p-6 flex flex-col justify-between">
             <div>
               <h2 className="text-lg font-bold mb-2">Start Practice</h2>
               <p className="text-xs text-muted-foreground mb-6">Select a subject and begin your simulation session.</p>
             </div>
-            <button
-              onClick={() => navigate('/subjects')}
-              className="gradient-btn w-full py-3 text-xs uppercase tracking-widest"
-              aria-label="Browse all subjects"
-            >
+            <button onClick={() => navigate('/subjects')} className="gradient-btn w-full py-3 text-xs uppercase tracking-widest" aria-label="Browse all subjects">
               Browse Subjects
             </button>
           </motion.div>
