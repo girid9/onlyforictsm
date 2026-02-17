@@ -1,66 +1,90 @@
 
-# Personalised Dashboard
 
-Enhance the existing dashboard (Index.tsx) with intelligent, performance-based recommendations that help learners focus on their weak areas and track improvement over time.
+# Phase 1: Core Upgrade - Score Machine Foundation
 
-## What You'll Get
+## Overview
+Remove broken voice/tutor features, then add the most impactful scoring features: instant explanations, mock test timer, performance dashboard, streak calendar, and smart revision modes.
 
-- **Weak Topics Section**: A "Recommended for You" area highlighting topics where your accuracy is lowest, so you always know what to study next
-- **Subject Progress Rings**: Visual circular progress indicators for each subject showing completion percentage at a glance
-- **Recent Activity Feed**: A timeline of your last few practice sessions with scores, replacing the single "Resume Last Session" card
-- **Performance Trend**: A small sparkline chart showing your accuracy trend over your last 10 answered batches
-- **Adaptive Difficulty Badge**: Each recommended topic shows a difficulty tag (Easy / Medium / Hard) based on your historical accuracy on that topic
+## What gets removed
+- Voice answer hook (`useVoiceAnswer.ts`) and all mic button UI from Practice page
+- AI Tutor chat component (`TutorChat.tsx`) and its FAB button from Practice page
+- Related settings toggles (AI Tutor, Global Chat toggles in Practice settings)
+- Voice hint overlay at bottom of Practice page
 
-## How It Works
+## What gets built
 
-All recommendations are computed locally from your existing answer history (the `answers` record in the progress store). No backend changes or new database tables are needed -- everything derives from the data already stored in localStorage.
+### 1. Instant Explanation After Answer
+When a user selects an option and the answer is revealed:
+- Show a clear "Correct!" or "Incorrect" label with color coding
+- Display the existing `notes` field as "Why this is correct"
+- For wrong answers, highlight what the user picked and why the correct answer is right
+- Smooth fade-in animation for the explanation panel
 
----
+### 2. Smart Revision Modes (new page `/revision`)
+Add a Revision page accessible from the sidebar with 3 modes:
+- **Wrong Questions Only** - pulls all incorrectly answered questions for re-practice
+- **Hard Questions Only** - questions from topics where accuracy is below 50%
+- **Fast 20 Challenge** - random 20 questions with a 10-minute countdown timer
+Each mode launches the existing Practice component with a filtered question set.
+
+### 3. Timed Mock Test Mode
+Add a timer option to the Practice page settings panel:
+- Toggle "Exam Mode" on/off
+- Set time limit (15, 30, 45, 60 minutes)
+- Countdown timer displayed in the header
+- Auto-submit when time runs out (navigates to Results)
+- Timer bar changes color as time runs low (green to amber to red)
+
+### 4. Performance Dashboard (new page `/dashboard`)
+A dedicated analytics page showing:
+- Overall accuracy percentage (big number)
+- Strong topics (top 3 by accuracy, green badges)
+- Weak topics (bottom 3 by accuracy, red badges)
+- Speed rating (average time per question)
+- Accuracy trend line chart using Recharts (already installed)
+- Recent activity feed
+
+### 5. Streak Calendar + XP Levels
+Enhance the existing streak/XP system in the sidebar and dashboard:
+- Calendar heatmap showing practice days (last 30 days)
+- Level system: Beginner (0-99 XP), Learner (100-499), Skilled (500-999), Expert (1000-2499), Master (2500+)
+- Level badge displayed in sidebar next to XP
+- Streak fire icon with day count
 
 ## Technical Details
 
-### 1. New utility: `src/utils/analytics.ts`
-A pure-function module that takes the `answers` record and the question data, and computes:
-- Per-topic accuracy (correct / attempted)
-- Per-subject completion percentage (attempted / total)
-- Weakest N topics sorted by accuracy ascending
-- Recent activity timeline from answer timestamps (requires a small store change)
-- Accuracy trend buckets
+### Files to delete
+- `src/hooks/useVoiceAnswer.ts`
+- `src/components/TutorChat.tsx`
 
-### 2. Store update: `src/store/useAppStore.ts`
-- Add `answeredAt: string` (ISO timestamp) to the `AnswerRecord` interface so we can build a recent activity feed and accuracy trend
-- Existing answers without `answeredAt` will gracefully default (treated as "no timestamp")
+### Files to modify
+- `src/pages/Practice.tsx` - Remove voice/tutor imports and UI, add exam timer, enhance explanation panel
+- `src/components/AppSidebar.tsx` - Add Revision and Dashboard nav links, add level badge
+- `src/App.tsx` - Add routes for `/revision` and `/dashboard`
+- `src/store/useAppStore.ts` - Add exam mode settings (timer enabled, duration)
+- `src/utils/analytics.ts` - Add speed rating calculation, daily activity heatmap data
+- `src/pages/Index.tsx` - Add streak calendar widget and level display
 
-### 3. Dashboard redesign: `src/pages/Index.tsx`
-Restructure the page into sections:
+### New files to create
+- `src/pages/Revision.tsx` - Revision mode selector with 3 cards
+- `src/pages/Dashboard.tsx` - Full performance dashboard with charts
+- `src/components/StreakCalendar.tsx` - 30-day heatmap grid component
+- `src/components/LevelBadge.tsx` - XP level indicator component
 
-```text
-+----------------------------------+
-| Dashboard Header + Stats Grid    |
-+----------------------------------+
-| Recommended Topics (weak areas)  |
-|  [Topic Card] [Topic Card] ...   |
-+----------------------------------+
-| Subject Progress    | Recent     |
-|  [Ring] [Ring] ...  | Activity   |
-|                     | Feed       |
-+----------------------------------+
-| Accuracy Trend (sparkline)       |
-+----------------------------------+
-| Quick Actions (Subjects/Battle)  |
-+----------------------------------+
-```
+### Data flow
+- All analytics derived from the existing `answers` record in the persisted store (no database changes needed)
+- Mock test timer state kept in Practice component local state
+- Streak calendar computed from `answeredAt` timestamps already stored in answer records
 
-- **Recommended Topics**: Up to 4 cards showing weakest topics with accuracy %, question count, difficulty badge, and a "Practice" link. Uses glass-card styling with accent gradient strip.
-- **Subject Progress Rings**: SVG-based circular progress for each subject. Animated on mount with framer-motion.
-- **Recent Activity**: Last 5 answered topics with score, displayed as a compact timeline.
-- **Accuracy Trend**: Uses the existing `recharts` dependency to render a tiny area/line chart of accuracy over recent batches.
+## Sequence
+1. Remove voice + tutor code
+2. Enhance Practice page (better explanations + exam timer)
+3. Build analytics utilities
+4. Create Dashboard page
+5. Create Revision page
+6. Add StreakCalendar and LevelBadge components
+7. Update sidebar navigation and routes
 
-### 4. New component: `src/components/ProgressRing.tsx`
-A reusable SVG circular progress indicator component accepting `value` (0-100), `size`, and `color` props. Animated with framer-motion's `motion.circle` for the stroke-dashoffset.
-
-### Files Modified
-1. `src/store/useAppStore.ts` -- add `answeredAt` to AnswerRecord
-2. `src/utils/analytics.ts` -- new file with analytics computation functions
-3. `src/components/ProgressRing.tsx` -- new reusable progress ring component
-4. `src/pages/Index.tsx` -- redesigned dashboard with all new sections
+## Future Phases (not in this plan)
+- Phase 2: Spaced repetition system, concept mode, keyword tooltips
+- Phase 3: Multiplayer upgrades, AI mentor, simple/technical language toggle
