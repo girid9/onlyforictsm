@@ -1,6 +1,6 @@
 import { useState, useEffect, useMemo, useCallback } from "react";
 import { useParams, useNavigate } from "react-router-dom";
-import { Bookmark, BookmarkCheck, ChevronLeft, ChevronRight, Settings, Info, Timer } from "lucide-react";
+import { Bookmark, BookmarkCheck, ChevronLeft, ChevronRight, Settings, Info, Timer, Mic, MicOff } from "lucide-react";
 import { useDataStore, useProgressStore } from "@/store/useAppStore";
 import { Popover, PopoverContent, PopoverTrigger } from "@/components/ui/popover";
 import { Switch } from "@/components/ui/switch";
@@ -10,6 +10,7 @@ import { Breadcrumbs } from "@/components/Breadcrumbs";
 import { seededShuffle, shuffleOptions } from "@/utils/shuffle";
 import { RollerOptionPicker } from "@/components/RollerOptionPicker";
 import { Question } from "@/types/question";
+import { useVoiceAnswer } from "@/hooks/useVoiceAnswer";
 
 const OPTION_LABELS = ["A", "B", "C", "D"];
 
@@ -63,6 +64,12 @@ const Practice = () => {
     setSessionAnswers((prev) => ({ ...prev, [currentIndex]: { selected: optionIndex, correct } }));
     recordAnswer(currentQuestion.id, optionIndex, correct);
   }, [revealed, currentQuestion, currentIndex, recordAnswer, shuffledAnswerIndex]);
+
+  const voice = useVoiceAnswer({
+    onAnswer: handleSelect,
+    enabled: true,
+    disabled: revealed,
+  });
 
   const handleNext = useCallback(() => {
     if (currentIndex < questions.length - 1) {
@@ -142,6 +149,16 @@ const Practice = () => {
           <button onClick={() => toggleBookmark(currentQuestion.id)} className={`p-2 rounded-md transition-colors ${isBookmarked ? 'text-primary bg-primary/10' : 'hover:bg-muted'}`}>
             {isBookmarked ? <BookmarkCheck size={18} /> : <Bookmark size={18} />}
           </button>
+          {voice.supported && (
+            <button
+              onClick={voice.toggle}
+              className={`p-2 rounded-md transition-all ${voice.listening ? 'text-destructive bg-destructive/10 animate-pulse' : 'hover:bg-muted text-muted-foreground'}`}
+              aria-label={voice.listening ? "Stop voice input" : "Start voice input"}
+              title={voice.listening ? "Listening... say A, B, C, or D" : "Tap to answer by voice"}
+            >
+              {voice.listening ? <Mic size={18} /> : <MicOff size={18} />}
+            </button>
+          )}
           <Popover>
             <PopoverTrigger asChild>
               <button className="p-2 hover:bg-muted rounded-md transition-colors">
@@ -262,7 +279,7 @@ const Practice = () => {
             <ChevronLeft size={16} /> Previous
           </button>
           <div className="hidden sm:flex items-center gap-1 text-[10px] font-bold text-muted-foreground uppercase tracking-widest">
-            {settings.rollerMode ? "Swipe up/down to browse" : "Use keys 1-4 to select"}
+            {settings.rollerMode ? "Swipe up/down to browse" : voice.listening ? "🎤 Say A, B, C, or D" : "Keys 1-4 or 🎤 mic"}
           </div>
           <button onClick={handleNext} disabled={!revealed} className="px-6 py-2 bg-primary text-primary-foreground rounded-md text-sm font-bold hover:opacity-90 transition-all disabled:opacity-30">
             {currentIndex === questions.length - 1 ? "Finish" : "Next Question"}
