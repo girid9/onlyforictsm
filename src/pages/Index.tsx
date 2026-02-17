@@ -1,10 +1,10 @@
 import { useMemo } from "react";
 import { Link, useNavigate } from "react-router-dom";
-import { BookOpen, ArrowRight, ChevronRight, Sparkles } from "lucide-react";
+import { BookOpen, ArrowRight, ChevronRight, Sparkles, AlertTriangle } from "lucide-react";
 import { useDataStore, useProgressStore } from "@/store/useAppStore";
 import { motion } from "framer-motion";
 import ProgressRing from "@/components/ProgressRing";
-import { getWeakTopics, getSubjectProgress } from "@/utils/analytics";
+import { getWeakTopics, getSubjectProgress, getWeakAreaSuggestion, getSpacedRepetitionDue } from "@/utils/analytics";
 import { Progress } from "@/components/ui/progress";
 
 const stagger = {
@@ -39,6 +39,16 @@ const Home = () => {
   const subjectProgress = useMemo(
     () => getSubjectProgress(answers, questionsBySubjectTopic, subjects),
     [answers, questionsBySubjectTopic, subjects]
+  );
+
+  const weakSuggestion = useMemo(
+    () => getWeakAreaSuggestion(answers, questionsBySubjectTopic),
+    [answers, questionsBySubjectTopic]
+  );
+
+  const srsDueCount = useMemo(
+    () => getSpacedRepetitionDue(answers, questionsBySubjectTopic).length,
+    [answers, questionsBySubjectTopic]
   );
 
   const motivationalText = stats.completion >= 70 ? "Amazing work!" : stats.completion >= 40 ? "Keep it up!" : "Let's get started!";
@@ -106,7 +116,42 @@ const Home = () => {
           </div>
         </motion.div>
 
-        {/* Recommended for You / Resume */}
+        {/* Smart Suggestions */}
+        {(weakSuggestion || srsDueCount > 0) && (
+          <motion.div variants={fadeUp} className="space-y-3">
+            {srsDueCount > 0 && (
+              <button
+                onClick={() => { sessionStorage.setItem("revision-mode", "srs"); navigate("/revision/practice"); }}
+                className="glass-card p-4 w-full text-left flex items-center gap-4 group"
+              >
+                <div className="h-10 w-10 rounded-xl bg-primary/10 flex items-center justify-center shrink-0">
+                  <span className="text-lg">📅</span>
+                </div>
+                <div className="flex-1">
+                  <p className="text-sm font-bold text-foreground">Spaced Repetition Due</p>
+                  <p className="text-[10px] text-muted-foreground">{srsDueCount} questions ready for review</p>
+                </div>
+                <span className="gradient-btn px-3 py-1.5 text-[10px] shrink-0">Review Now</span>
+              </button>
+            )}
+            {weakSuggestion && (
+              <button
+                onClick={() => navigate(`/practice/${weakSuggestion.subjectId}/${weakSuggestion.topicId}`)}
+                className="glass-card p-4 w-full text-left flex items-center gap-4 group"
+              >
+                <div className="h-10 w-10 rounded-xl bg-destructive/10 flex items-center justify-center shrink-0">
+                  <AlertTriangle size={20} className="text-destructive" />
+                </div>
+                <div className="flex-1">
+                  <p className="text-sm font-bold text-foreground">Weak Area Detected</p>
+                  <p className="text-[10px] text-muted-foreground">{weakSuggestion.message}</p>
+                </div>
+                <span className="gradient-btn px-3 py-1.5 text-[10px] shrink-0">Practice</span>
+              </button>
+            )}
+          </motion.div>
+        )}
+
         <motion.div variants={fadeUp}>
           <div className="flex items-center justify-between mb-3">
             <h2 className="text-base font-bold text-foreground">Recommended for You</h2>
