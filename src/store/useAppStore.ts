@@ -2,9 +2,10 @@ import { create } from "zustand";
 import { persist } from "zustand/middleware";
 import { Subject, Topic, Question, ParsedData, SessionResult } from "@/types/question";
 
-interface AnswerRecord {
+export interface AnswerRecord {
   selectedIndex: number;
   correct: boolean;
+  answeredAt?: string;
 }
 
 // Separate non-persisted store for question data
@@ -97,7 +98,7 @@ export const useProgressStore = create<ProgressState>()(
           }
 
           return {
-            answers: { ...state.answers, [questionId]: { selectedIndex, correct } },
+            answers: { ...state.answers, [questionId]: { selectedIndex, correct, answeredAt: new Date().toISOString() } },
             xp: newXP,
             streak: newStreak,
             lastAnswerDate: today,
