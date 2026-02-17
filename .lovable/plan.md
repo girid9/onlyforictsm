@@ -1,87 +1,66 @@
 
+# Personalised Dashboard
 
-# Theme and UI Redesign: Frosted Glass / Steel Blue
+Enhance the existing dashboard (Index.tsx) with intelligent, performance-based recommendations that help learners focus on their weak areas and track improvement over time.
 
-Based on the reference image, the app will shift from the current Blue & White Neumorphism to a **Frosted Glassmorphism** style with a cool **steel-blue and soft gray** palette.
+## What You'll Get
 
-## Visual Direction (from reference)
-- **Light mode**: Pale gray-blue background, white frosted-glass cards with blur/transparency, subtle borders
-- **Dark mode**: Deep navy/slate background, translucent dark cards with blue tint, frosted blur
-- Rounded corners (2xl), soft shadows, no hard neumorphic raised/pressed effects
-- Clean typography, generous spacing
-- Accent color: soft teal-blue for primary actions, coral/red for small highlights
+- **Weak Topics Section**: A "Recommended for You" area highlighting topics where your accuracy is lowest, so you always know what to study next
+- **Subject Progress Rings**: Visual circular progress indicators for each subject showing completion percentage at a glance
+- **Recent Activity Feed**: A timeline of your last few practice sessions with scores, replacing the single "Resume Last Session" card
+- **Performance Trend**: A small sparkline chart showing your accuracy trend over your last 10 answered batches
+- **Adaptive Difficulty Badge**: Each recommended topic shows a difficulty tag (Easy / Medium / Hard) based on your historical accuracy on that topic
 
----
+## How It Works
 
-## Changes
-
-### 1. Color Palette Update (`src/index.css`)
-- **Light mode**: Background shifts to cool pale blue-gray (`hsl(215, 20%, 95%)`), cards become white with slight transparency, primary becomes a muted steel-blue (`hsl(215, 60%, 55%)`)
-- **Dark mode**: Background becomes deep navy (`hsl(220, 30%, 10%)`), cards become translucent dark slate, primary becomes lighter steel-blue
-- Accent: soft coral/salmon for small highlights
-- Muted tones for secondary elements
-
-### 2. Glassmorphism Utility Classes (`src/index.css`)
-- Replace neumorphic `box-shadow` effects with `backdrop-filter: blur()` and semi-transparent backgrounds
-- `.glass` and `.glass-card`: white/dark with ~60-80% opacity + blur(20px) + subtle border
-- `.compact-card`: frosted glass treatment
-- `.arctic-btn` / `.compact-btn`: transparent backgrounds with hover glow instead of inset shadows
-- `.option-btn`: frosted glass with soft border, no raised shadow
-
-### 3. Tailwind Config (`tailwind.config.ts`)
-- Remove neumorphic shadow definitions (`neu`, `neu-dark`, `neu-inset`)
-- Add glass-related shadows: soft drop shadows with low opacity
-- Keep existing animations
-
-### 4. Hero Background (`src/index.css`)
-- Update `.app-hero` gradients to use the new steel-blue tones
-
-### 5. Page-Level UI Tweaks
-- **Index.tsx (Dashboard)**: Update stat cards and action cards to use frosted glass classes, add `backdrop-blur` styling
-- **Subjects.tsx**: Update subject cards to frosted glass style with softer gradient strips
-- **Topics.tsx**: Update topic list items to use glass styling
-- **Practice.tsx**: Update header/footer bars to frosted translucent style
-- **AppSidebar.tsx**: Apply frosted glass background to sidebar
+All recommendations are computed locally from your existing answer history (the `answers` record in the progress store). No backend changes or new database tables are needed -- everything derives from the data already stored in localStorage.
 
 ---
 
 ## Technical Details
 
-### New CSS Variables (Light)
-```
---background: 215 20% 95%
---card: 0 0% 100%  (used with opacity)
---primary: 215 60% 55%
---accent: 12 80% 62%  (coral)
---border: 215 15% 88%
+### 1. New utility: `src/utils/analytics.ts`
+A pure-function module that takes the `answers` record and the question data, and computes:
+- Per-topic accuracy (correct / attempted)
+- Per-subject completion percentage (attempted / total)
+- Weakest N topics sorted by accuracy ascending
+- Recent activity timeline from answer timestamps (requires a small store change)
+- Accuracy trend buckets
+
+### 2. Store update: `src/store/useAppStore.ts`
+- Add `answeredAt: string` (ISO timestamp) to the `AnswerRecord` interface so we can build a recent activity feed and accuracy trend
+- Existing answers without `answeredAt` will gracefully default (treated as "no timestamp")
+
+### 3. Dashboard redesign: `src/pages/Index.tsx`
+Restructure the page into sections:
+
+```text
++----------------------------------+
+| Dashboard Header + Stats Grid    |
++----------------------------------+
+| Recommended Topics (weak areas)  |
+|  [Topic Card] [Topic Card] ...   |
++----------------------------------+
+| Subject Progress    | Recent     |
+|  [Ring] [Ring] ...  | Activity   |
+|                     | Feed       |
++----------------------------------+
+| Accuracy Trend (sparkline)       |
++----------------------------------+
+| Quick Actions (Subjects/Battle)  |
++----------------------------------+
 ```
 
-### New CSS Variables (Dark)
-```
---background: 220 30% 10%
---card: 220 25% 16%  (used with opacity)
---primary: 215 70% 62%
---accent: 12 80% 65%
---border: 220 20% 20%
-```
+- **Recommended Topics**: Up to 4 cards showing weakest topics with accuracy %, question count, difficulty badge, and a "Practice" link. Uses glass-card styling with accent gradient strip.
+- **Subject Progress Rings**: SVG-based circular progress for each subject. Animated on mount with framer-motion.
+- **Recent Activity**: Last 5 answered topics with score, displayed as a compact timeline.
+- **Accuracy Trend**: Uses the existing `recharts` dependency to render a tiny area/line chart of accuracy over recent batches.
 
-### Glass Utility Example
-```css
-.glass-card {
-  background: hsl(var(--card) / 0.65);
-  backdrop-filter: blur(20px);
-  border: 1px solid hsl(var(--border) / 0.5);
-  border-radius: 1.25rem;
-  box-shadow: 0 4px 24px hsl(var(--border) / 0.15);
-}
-```
+### 4. New component: `src/components/ProgressRing.tsx`
+A reusable SVG circular progress indicator component accepting `value` (0-100), `size`, and `color` props. Animated with framer-motion's `motion.circle` for the stroke-dashoffset.
 
 ### Files Modified
-1. `src/index.css` -- color variables + utility classes
-2. `tailwind.config.ts` -- shadow cleanup
-3. `src/pages/Index.tsx` -- dashboard card styling
-4. `src/pages/Subjects.tsx` -- subject card styling
-5. `src/pages/Topics.tsx` -- topic list styling
-6. `src/pages/Practice.tsx` -- header/footer glass treatment
-7. `src/components/AppSidebar.tsx` -- sidebar glass background
-
+1. `src/store/useAppStore.ts` -- add `answeredAt` to AnswerRecord
+2. `src/utils/analytics.ts` -- new file with analytics computation functions
+3. `src/components/ProgressRing.tsx` -- new reusable progress ring component
+4. `src/pages/Index.tsx` -- redesigned dashboard with all new sections
