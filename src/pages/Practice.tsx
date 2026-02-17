@@ -180,6 +180,10 @@ const Practice = () => {
                 <Label htmlFor="roller-mode" className="text-xs font-medium">Roller Mode</Label>
                 <Switch id="roller-mode" checked={settings.rollerMode || false} onCheckedChange={(checked) => updateSettings({ rollerMode: checked })} />
               </div>
+              <div className="border-t border-border pt-3 flex items-center justify-between">
+                <Label htmlFor="global-chat" className="text-xs font-medium">Global Chat</Label>
+                <Switch id="global-chat" checked={settings.showGlobalChat ?? true} onCheckedChange={(checked) => updateSettings({ showGlobalChat: checked })} />
+              </div>
             </PopoverContent>
           </Popover>
         </div>

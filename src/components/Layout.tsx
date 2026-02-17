@@ -3,7 +3,7 @@ import { Outlet, useLocation, useMatch } from "react-router-dom";
 import { AppSidebar } from "./AppSidebar";
 import { Menu } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
-import { useDataStore } from "@/store/useAppStore";
+import { useDataStore, useProgressStore } from "@/store/useAppStore";
 import { loadAll } from "@/services/questionBank";
 import { ThemeToggle } from "@/components/ThemeToggle";
 import { GlobalChat } from "@/components/GlobalChat";
@@ -14,6 +14,7 @@ export function Layout() {
   const isBattlePage = location.pathname === "/battle";
   const setData = useDataStore((s) => s.setData);
   const loaded = useDataStore((s) => s.loaded);
+  const showGlobalChat = useProgressStore((s) => s.settings.showGlobalChat ?? true);
 
   useEffect(() => {
     let cancelled = false;
@@ -74,7 +75,7 @@ export function Layout() {
           </AnimatePresence>
         </main>
       </div>
-      {!isBattlePage && <GlobalChat />}
+      {!isBattlePage && showGlobalChat && <GlobalChat />}
     </div>
   );
 }
