@@ -2,19 +2,9 @@ import { useMemo } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { BookOpen, ArrowRight, ChevronRight, Sparkles, AlertTriangle } from "lucide-react";
 import { useDataStore, useProgressStore } from "@/store/useAppStore";
-import { motion } from "framer-motion";
 import ProgressRing from "@/components/ProgressRing";
 import { getWeakTopics, getSubjectProgress, getWeakAreaSuggestion, getSpacedRepetitionDue } from "@/utils/analytics";
 import { Progress } from "@/components/ui/progress";
-
-const stagger = {
-  hidden: {},
-  show: { transition: { staggerChildren: 0.08 } },
-};
-const fadeUp = {
-  hidden: { opacity: 0, y: 16 },
-  show: { opacity: 1, y: 0, transition: { duration: 0.4, ease: [0.4, 0, 0.2, 1] as const } },
-};
 
 const Home = () => {
   const { subjects, questionsBySubjectTopic } = useDataStore();
@@ -55,17 +45,17 @@ const Home = () => {
 
   return (
     <div className="p-4 md:p-8 max-w-lg mx-auto min-h-screen">
-      <motion.div variants={stagger} initial="hidden" animate="show" className="space-y-6">
+      <div className="space-y-6">
         {/* Welcome Header */}
-        <motion.div variants={fadeUp}>
+        <div>
           <h1 className="text-2xl md:text-3xl font-bold text-foreground">
             Welcome Back! 👋
           </h1>
           <p className="text-sm text-muted-foreground mt-1">Ready to learn something new?</p>
-        </motion.div>
+        </div>
 
         {/* Pick a Subject Section */}
-        <motion.div variants={fadeUp}>
+        <div>
           <div className="flex items-center justify-between mb-3">
             <h2 className="text-base font-bold text-foreground">Pick a Subject to Start</h2>
             <Link to="/subjects" className="text-xs text-primary font-semibold flex items-center gap-0.5 hover:underline">
@@ -76,32 +66,31 @@ const Home = () => {
             {subjectProgress.slice(0, 4).map((sub) => {
               const topicCount = Object.keys(questionsBySubjectTopic[sub.subjectId] ?? {}).length;
               return (
-                <motion.div key={sub.subjectId} whileHover={{ y: -2 }} whileTap={{ scale: 0.97 }}>
-                  <Link
-                    to={`/subjects`}
-                    className="glass-card p-4 flex flex-col gap-2 group"
-                    aria-label={sub.subjectName}
-                  >
-                    <div className="h-10 w-10 rounded-xl bg-primary/10 flex items-center justify-center mb-1">
-                      <BookOpen size={20} className="text-primary" />
-                    </div>
-                    <p className="text-sm font-bold text-foreground truncate">{sub.subjectName}</p>
-                    <div className="text-[10px] text-muted-foreground space-y-0.5">
-                      <p>{topicCount} Topics</p>
-                      <p>{sub.total} Questions</p>
-                    </div>
-                    <div className="flex items-center gap-1 text-xs text-primary font-semibold mt-1 group-hover:underline">
-                      View All <ChevronRight size={12} />
-                    </div>
-                  </Link>
-                </motion.div>
+                <Link
+                  key={sub.subjectId}
+                  to={`/subjects`}
+                  className="glass-card p-4 flex flex-col gap-2 group"
+                  aria-label={sub.subjectName}
+                >
+                  <div className="h-10 w-10 rounded-xl bg-primary/10 flex items-center justify-center mb-1">
+                    <BookOpen size={20} className="text-primary" />
+                  </div>
+                  <p className="text-sm font-bold text-foreground truncate">{sub.subjectName}</p>
+                  <div className="text-[10px] text-muted-foreground space-y-0.5">
+                    <p>{topicCount} Topics</p>
+                    <p>{sub.total} Questions</p>
+                  </div>
+                  <div className="flex items-center gap-1 text-xs text-primary font-semibold mt-1 group-hover:underline">
+                    View All <ChevronRight size={12} />
+                  </div>
+                </Link>
               );
             })}
           </div>
-        </motion.div>
+        </div>
 
         {/* Daily Progress */}
-        <motion.div variants={fadeUp}>
+        <div>
           <div className="glass-card p-5">
             <h2 className="text-base font-bold text-foreground mb-4">Daily Progress</h2>
             <div className="flex items-center gap-6">
@@ -114,11 +103,11 @@ const Home = () => {
               </div>
             </div>
           </div>
-        </motion.div>
+        </div>
 
         {/* Smart Suggestions */}
         {(weakSuggestion || srsDueCount > 0) && (
-          <motion.div variants={fadeUp} className="space-y-3">
+          <div className="space-y-3">
             {srsDueCount > 0 && (
               <button
                 onClick={() => { sessionStorage.setItem("revision-mode", "srs"); navigate("/revision/practice"); }}
@@ -149,17 +138,16 @@ const Home = () => {
                 <span className="gradient-btn px-3 py-1.5 text-[10px] shrink-0">Practice</span>
               </button>
             )}
-          </motion.div>
+          </div>
         )}
 
-        <motion.div variants={fadeUp}>
+        <div>
           <div className="flex items-center justify-between mb-3">
             <h2 className="text-base font-bold text-foreground">Recommended for You</h2>
             <ChevronRight size={16} className="text-muted-foreground" />
           </div>
 
           <div className="space-y-3">
-            {/* Resume last session card */}
             {lastVisited && (
               <Link
                 to={`/practice/${lastVisited.subjectId}/${lastVisited.topicId}`}
@@ -179,7 +167,6 @@ const Home = () => {
               </Link>
             )}
 
-            {/* Weak topics */}
             {weakTopics.slice(0, 3).map((topic) => (
               <Link
                 key={`${topic.subjectId}-${topic.topicId}`}
@@ -197,8 +184,8 @@ const Home = () => {
                   </p>
                   <Progress value={topic.accuracy} className="h-1.5 mt-2" />
                 </div>
-                <div className="h-9 w-9 rounded-lg bg-accent/10 flex items-center justify-center group-hover:bg-accent transition-all shrink-0">
-                  <ArrowRight size={16} className="text-accent group-hover:text-accent-foreground transition-colors" />
+                <div className="h-9 w-9 rounded-lg bg-accent/10 flex items-center justify-center shrink-0">
+                  <ArrowRight size={16} className="text-accent" />
                 </div>
               </Link>
             ))}
@@ -212,8 +199,8 @@ const Home = () => {
               </div>
             )}
           </div>
-        </motion.div>
-      </motion.div>
+        </div>
+      </div>
     </div>
   );
 };

@@ -3,13 +3,9 @@ import { useDataStore, useProgressStore } from "@/store/useAppStore";
 import { getTopicStats, getSubjectProgress, getRecentActivity, getAccuracyTrend } from "@/utils/analytics";
 import { StreakCalendar } from "@/components/StreakCalendar";
 import { LevelBadge } from "@/components/LevelBadge";
-import { motion } from "framer-motion";
 import { Target, TrendingUp, TrendingDown, Zap, Clock, CheckCircle2, XCircle, Flame } from "lucide-react";
 import { LineChart, Line, XAxis, YAxis, CartesianGrid, ResponsiveContainer, Tooltip } from "recharts";
 import { Progress } from "@/components/ui/progress";
-
-const fadeUp = { hidden: { opacity: 0, y: 16 }, show: { opacity: 1, y: 0, transition: { duration: 0.4 } } };
-const stagger = { hidden: {}, show: { transition: { staggerChildren: 0.08 } } };
 
 const Dashboard = () => {
   const { subjects, questionsBySubjectTopic } = useDataStore();
@@ -27,7 +23,6 @@ const Dashboard = () => {
   const strongTopics = useMemo(() => topicStats.filter((t) => t.attempted >= 3).sort((a, b) => b.accuracy - a.accuracy).slice(0, 3), [topicStats]);
   const weakTopics = useMemo(() => topicStats.filter((t) => t.attempted >= 2).sort((a, b) => a.accuracy - b.accuracy).slice(0, 3), [topicStats]);
 
-  // Average speed (questions per minute)
   const avgSpeed = useMemo(() => {
     const withTime = Object.values(answers).filter((a) => a.answeredAt);
     if (withTime.length < 2) return null;
@@ -38,12 +33,12 @@ const Dashboard = () => {
   }, [answers]);
 
   return (
-    <motion.div variants={stagger} initial="hidden" animate="show" className="p-4 md:p-8 max-w-4xl mx-auto min-h-screen">
-      <motion.h1 variants={fadeUp} className="text-2xl font-bold text-foreground mb-1">Performance Dashboard</motion.h1>
-      <motion.p variants={fadeUp} className="text-sm text-muted-foreground mb-6">Track your progress and identify areas to improve</motion.p>
+    <div className="p-4 md:p-8 max-w-4xl mx-auto min-h-screen">
+      <h1 className="text-2xl font-bold text-foreground mb-1">Performance Dashboard</h1>
+      <p className="text-sm text-muted-foreground mb-6">Track your progress and identify areas to improve</p>
 
       {/* Top Stats */}
-      <motion.div variants={fadeUp} className="grid grid-cols-2 md:grid-cols-4 gap-3 mb-6">
+      <div className="grid grid-cols-2 md:grid-cols-4 gap-3 mb-6">
         {[
           { label: "Accuracy", value: `${overallAccuracy}%`, icon: Target, color: overallAccuracy >= 70 ? "text-success" : "text-warning" },
           { label: "Streak", value: `${streak}d`, icon: Flame, color: "text-warning" },
@@ -58,10 +53,10 @@ const Dashboard = () => {
             <p className={`text-xl font-bold ${stat.color}`}>{stat.value}</p>
           </div>
         ))}
-      </motion.div>
+      </div>
 
       {/* Level + Streak */}
-      <motion.div variants={fadeUp} className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-6">
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-6">
         <div className="glass-card p-5">
           <h3 className="text-xs font-bold text-muted-foreground uppercase mb-3">Your Level</h3>
           <LevelBadge xp={xp} />
@@ -70,11 +65,11 @@ const Dashboard = () => {
           <h3 className="text-xs font-bold text-muted-foreground uppercase mb-3">Activity (30 Days)</h3>
           <StreakCalendar answers={answers} />
         </div>
-      </motion.div>
+      </div>
 
       {/* Accuracy Trend */}
       {trend.length > 1 && (
-        <motion.div variants={fadeUp} className="glass-card p-5 mb-6">
+        <div className="glass-card p-5 mb-6">
           <h3 className="text-xs font-bold text-muted-foreground uppercase mb-4">Accuracy Trend</h3>
           <div className="h-48">
             <ResponsiveContainer width="100%" height="100%">
@@ -87,11 +82,11 @@ const Dashboard = () => {
               </LineChart>
             </ResponsiveContainer>
           </div>
-        </motion.div>
+        </div>
       )}
 
       {/* Strong + Weak */}
-      <motion.div variants={fadeUp} className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-6">
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-6">
         <div className="glass-card p-5">
           <div className="flex items-center gap-2 mb-3">
             <TrendingUp size={14} className="text-success" />
@@ -134,10 +129,10 @@ const Dashboard = () => {
             </div>
           )}
         </div>
-      </motion.div>
+      </div>
 
       {/* Subject Progress */}
-      <motion.div variants={fadeUp} className="glass-card p-5 mb-6">
+      <div className="glass-card p-5 mb-6">
         <h3 className="text-xs font-bold text-muted-foreground uppercase mb-4">Subject Progress</h3>
         <div className="space-y-4">
           {subjectProgress.map((s) => (
@@ -153,10 +148,10 @@ const Dashboard = () => {
             </div>
           ))}
         </div>
-      </motion.div>
+      </div>
 
       {/* Recent Activity */}
-      <motion.div variants={fadeUp} className="glass-card p-5">
+      <div className="glass-card p-5">
         <h3 className="text-xs font-bold text-muted-foreground uppercase mb-3">Recent Activity</h3>
         {recentActivity.length === 0 ? (
           <p className="text-xs text-muted-foreground">No activity yet. Start practising!</p>
@@ -176,8 +171,8 @@ const Dashboard = () => {
             ))}
           </div>
         )}
-      </motion.div>
-    </motion.div>
+      </div>
+    </div>
   );
 };
 
