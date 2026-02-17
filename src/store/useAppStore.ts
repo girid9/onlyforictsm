@@ -52,6 +52,7 @@ interface ProgressState {
     autoAdvanceDelay: number;
     rollerMode: boolean;
     showGlobalChat: boolean;
+    showTutor: boolean;
   };
   recordAnswer: (questionId: string, selectedIndex: number, correct: boolean) => void;
   toggleBookmark: (questionId: string) => void;
@@ -75,6 +76,7 @@ export const useProgressStore = create<ProgressState>()(
         autoAdvanceDelay: 2,
         rollerMode: false,
         showGlobalChat: true,
+        showTutor: true,
       },
       recordAnswer: (questionId, selectedIndex, correct) =>
         set((state) => {

@@ -184,6 +184,10 @@ const Practice = () => {
                 <Label htmlFor="global-chat" className="text-xs font-medium">Global Chat</Label>
                 <Switch id="global-chat" checked={settings.showGlobalChat ?? true} onCheckedChange={(checked) => updateSettings({ showGlobalChat: checked })} />
               </div>
+              <div className="border-t border-border pt-3 flex items-center justify-between">
+                <Label htmlFor="ai-tutor" className="text-xs font-medium">AI Tutor</Label>
+                <Switch id="ai-tutor" checked={settings.showTutor ?? true} onCheckedChange={(checked) => updateSettings({ showTutor: checked })} />
+              </div>
             </PopoverContent>
           </Popover>
         </div>

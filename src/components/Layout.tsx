@@ -16,6 +16,7 @@ export function Layout() {
   const setData = useDataStore((s) => s.setData);
   const loaded = useDataStore((s) => s.loaded);
   const showGlobalChat = useProgressStore((s) => s.settings.showGlobalChat ?? true);
+  const showTutor = useProgressStore((s) => s.settings.showTutor ?? true);
 
   useEffect(() => {
     let cancelled = false;
@@ -81,7 +82,7 @@ export function Layout() {
         </main>
       </div>
       {!isBattlePage && showGlobalChat && <GlobalChat />}
-      <TutorChat />
+      {showTutor && <TutorChat />}
     </div>
   );
 }
