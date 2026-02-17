@@ -124,7 +124,7 @@ const Practice = () => {
   return (
     <div className="flex flex-col h-screen bg-background overflow-hidden">
       {/* Compact Header */}
-      <div className="border-b border-border bg-card/50 px-4 py-3 flex items-center justify-between shrink-0">
+      <div className="border-b border-border/50 px-4 py-3 flex items-center justify-between shrink-0" style={{ background: 'hsl(var(--card) / 0.6)', backdropFilter: 'blur(20px)', WebkitBackdropFilter: 'blur(20px)' }}>
         <div className="flex items-center gap-4">
           <button onClick={() => navigate(-1)} className="p-2 hover:bg-muted rounded-md transition-colors">
             <ChevronLeft size={20} />
@@ -252,7 +252,7 @@ const Practice = () => {
       </div>
 
       {/* Compact Footer Navigation */}
-      <div className="border-t border-border bg-card/50 p-4 shrink-0">
+      <div className="border-t border-border/50 p-4 shrink-0" style={{ background: 'hsl(var(--card) / 0.6)', backdropFilter: 'blur(20px)', WebkitBackdropFilter: 'blur(20px)' }}>
         <div className="max-w-3xl mx-auto flex items-center justify-between gap-4">
           <button onClick={handlePrev} disabled={currentIndex === 0} className="compact-btn flex items-center gap-2 disabled:opacity-30">
             <ChevronLeft size={16} /> Previous

@@ -4,28 +4,28 @@
 
 @layer base {
   :root {
-    /* Light Theme - Blue & White Neumorphism */
-    --background: 220 20% 94%;
-    --foreground: 220 30% 15%;
+    /* Light Theme - Frosted Glass / Steel Blue */
+    --background: 215 20% 95%;
+    --foreground: 220 25% 12%;
 
-    --card: 220 20% 96%;
-    --card-foreground: 220 30% 15%;
+    --card: 0 0% 100%;
+    --card-foreground: 220 25% 12%;
 
-    --popover: 220 20% 97%;
-    --popover-foreground: 220 30% 15%;
+    --popover: 0 0% 100%;
+    --popover-foreground: 220 25% 12%;
 
-    /* Blue primary */
-    --primary: 217 91% 60%;
+    /* Steel blue primary */
+    --primary: 215 60% 55%;
     --primary-foreground: 0 0% 100%;
 
-    --secondary: 220 15% 90%;
-    --secondary-foreground: 220 30% 15%;
+    --secondary: 215 15% 90%;
+    --secondary-foreground: 220 25% 12%;
 
-    --muted: 220 12% 86%;
-    --muted-foreground: 220 10% 45%;
+    --muted: 215 12% 88%;
+    --muted-foreground: 215 10% 45%;
 
-    /* Soft blue accent */
-    --accent: 200 80% 55%;
+    /* Coral accent */
+    --accent: 12 80% 62%;
     --accent-foreground: 0 0% 100%;
 
     --destructive: 0 84% 60%;
@@ -35,72 +35,72 @@
     --success-foreground: 0 0% 100%;
 
     --warning: 38 90% 52%;
-    --warning-foreground: 220 30% 12%;
+    --warning-foreground: 220 25% 12%;
 
-    --border: 220 15% 87%;
-    --input: 220 15% 87%;
-    --ring: 217 91% 60%;
+    --border: 215 15% 88%;
+    --input: 215 15% 88%;
+    --ring: 215 60% 55%;
 
     --radius: 1rem;
 
-    --sidebar-background: 220 20% 92%;
-    --sidebar-foreground: 220 10% 45%;
-    --sidebar-primary: 217 91% 60%;
+    --sidebar-background: 215 18% 97%;
+    --sidebar-foreground: 215 10% 45%;
+    --sidebar-primary: 215 60% 55%;
     --sidebar-primary-foreground: 0 0% 100%;
-    --sidebar-accent: 200 80% 55%;
+    --sidebar-accent: 12 80% 62%;
     --sidebar-accent-foreground: 0 0% 100%;
-    --sidebar-border: 220 15% 87%;
-    --sidebar-ring: 217 91% 60%;
+    --sidebar-border: 215 15% 90%;
+    --sidebar-ring: 215 60% 55%;
   }
 
   .dark {
-    /* Dark Theme - Blue & Slate Neumorphism */
-    --background: 222 25% 11%;
+    /* Dark Theme - Frosted Glass / Deep Navy */
+    --background: 220 30% 10%;
     --foreground: 215 20% 90%;
 
-    --card: 222 22% 14%;
+    --card: 220 25% 16%;
     --card-foreground: 215 20% 90%;
 
-    --popover: 222 22% 14%;
+    --popover: 220 25% 16%;
     --popover-foreground: 215 20% 90%;
 
-    /* Bright blue primary */
-    --primary: 217 91% 65%;
-    --primary-foreground: 222 25% 8%;
+    /* Lighter steel blue */
+    --primary: 215 70% 62%;
+    --primary-foreground: 220 30% 8%;
 
-    --secondary: 222 18% 20%;
+    --secondary: 220 20% 20%;
     --secondary-foreground: 215 20% 90%;
 
-    --muted: 222 14% 24%;
+    --muted: 220 16% 24%;
     --muted-foreground: 215 10% 55%;
 
-    /* Electric blue accent */
-    --accent: 200 85% 58%;
-    --accent-foreground: 222 25% 8%;
+    /* Coral accent */
+    --accent: 12 80% 65%;
+    --accent-foreground: 220 30% 8%;
 
     --destructive: 0 84% 60%;
     --destructive-foreground: 0 0% 100%;
 
     --success: 152 60% 50%;
-    --success-foreground: 222 25% 8%;
+    --success-foreground: 220 30% 8%;
 
     --warning: 42 90% 55%;
-    --warning-foreground: 222 25% 8%;
+    --warning-foreground: 220 30% 8%;
 
-    --border: 222 14% 22%;
-    --input: 222 14% 22%;
-    --ring: 217 91% 65%;
+    --border: 220 20% 20%;
+    --input: 220 20% 20%;
+    --ring: 215 70% 62%;
 
     --radius: 1rem;
 
-    --sidebar-background: 222 25% 9%;
+    --sidebar-background: 220 30% 8%;
     --sidebar-foreground: 215 10% 55%;
-    --sidebar-primary: 217 91% 65%;
-    --sidebar-primary-foreground: 222 25% 8%;
-    --sidebar-accent: 200 85% 58%;
-    --sidebar-accent-foreground: 222 25% 8%;
-    --sidebar-border: 222 14% 18%;
-    --sidebar-ring: 217 91% 65%;
+    --sidebar-primary: 215 70% 62%;
+    --sidebar-primary-foreground: 220 30% 8%;
+    --sidebar-accent: 12 80% 65%;
+    --sidebar-accent-foreground: 220 30% 8%;
+    --sidebar-border: 220 20% 18%;
+    --sidebar-ring: 215 70% 62%;
   }
 
   * {
@@ -117,9 +117,9 @@
 @layer utilities {
   .app-hero {
     background-image:
-      radial-gradient(1200px 600px at 15% 10%, hsl(var(--primary) / 0.12), transparent 55%),
-      radial-gradient(900px 520px at 85% 20%, hsl(var(--accent) / 0.10), transparent 55%),
-      radial-gradient(700px 380px at 50% 92%, hsl(var(--primary) / 0.06), transparent 60%),
+      radial-gradient(1200px 600px at 15% 10%, hsl(var(--primary) / 0.10), transparent 55%),
+      radial-gradient(900px 520px at 85% 20%, hsl(var(--accent) / 0.08), transparent 55%),
+      radial-gradient(700px 380px at 50% 92%, hsl(var(--primary) / 0.05), transparent 60%),
       url('/plane.svg');
     background-repeat: no-repeat;
     background-size: cover, cover, cover, 900px;
@@ -127,49 +127,76 @@
   }
 
   .glass {
-    @apply bg-card rounded-2xl;
-    box-shadow: 6px 6px 14px hsl(var(--border) / 0.7), -6px -6px 14px hsl(var(--background));
+    background: hsl(var(--card) / 0.6);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border: 1px solid hsl(var(--border) / 0.5);
+    border-radius: 1.25rem;
+    box-shadow: 0 4px 24px hsl(var(--border) / 0.15);
   }
 
   .glass-card {
-    @apply bg-card rounded-2xl;
-    box-shadow: 5px 5px 12px hsl(var(--border) / 0.6), -5px -5px 12px hsl(var(--background));
+    background: hsl(var(--card) / 0.65);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border: 1px solid hsl(var(--border) / 0.5);
+    border-radius: 1.25rem;
+    box-shadow: 0 4px 24px hsl(var(--border) / 0.12);
   }
 
   .neu-flat {
-    @apply bg-card rounded-2xl;
-    box-shadow: 4px 4px 10px hsl(var(--border) / 0.5), -4px -4px 10px hsl(var(--background));
+    background: hsl(var(--card) / 0.55);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    border: 1px solid hsl(var(--border) / 0.4);
+    border-radius: 1rem;
+    box-shadow: 0 2px 16px hsl(var(--border) / 0.1);
   }
 
   .arctic-btn {
-    @apply bg-card rounded-2xl hover:brightness-105 active:scale-[0.97] transition;
-    box-shadow: 3px 3px 8px hsl(var(--border) / 0.6), -3px -3px 8px hsl(var(--background));
+    @apply rounded-2xl hover:brightness-105 active:scale-[0.97] transition;
+    background: hsl(var(--card) / 0.5);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border: 1px solid hsl(var(--border) / 0.4);
+    box-shadow: 0 2px 12px hsl(var(--border) / 0.1);
   }
-  .arctic-btn:active {
-    box-shadow: inset 2px 2px 5px hsl(var(--border) / 0.5), inset -2px -2px 5px hsl(var(--background));
+  .arctic-btn:hover {
+    box-shadow: 0 4px 20px hsl(var(--primary) / 0.15);
   }
 
   .compact-card {
-    @apply bg-card rounded-2xl;
-    box-shadow: 4px 4px 10px hsl(var(--border) / 0.5), -4px -4px 10px hsl(var(--background));
+    background: hsl(var(--card) / 0.65);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border: 1px solid hsl(var(--border) / 0.5);
+    border-radius: 1.25rem;
+    box-shadow: 0 4px 20px hsl(var(--border) / 0.12);
   }
 
   .compact-btn {
-    @apply px-4 py-2 rounded-xl bg-card hover:bg-secondary hover:text-primary transition-all duration-200 text-sm font-medium;
-    box-shadow: 3px 3px 8px hsl(var(--border) / 0.6), -3px -3px 8px hsl(var(--background));
+    @apply px-4 py-2 rounded-xl hover:text-primary transition-all duration-200 text-sm font-medium;
+    background: hsl(var(--card) / 0.5);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border: 1px solid hsl(var(--border) / 0.4);
   }
-  .compact-btn:active {
-    box-shadow: inset 2px 2px 5px hsl(var(--border) / 0.5), inset -2px -2px 5px hsl(var(--background));
+  .compact-btn:hover {
+    box-shadow: 0 4px 16px hsl(var(--primary) / 0.12);
   }
 
   .option-btn {
-    @apply w-full text-left px-4 py-3 rounded-xl bg-card
-           hover:bg-secondary hover:text-primary
+    @apply w-full text-left px-4 py-3 rounded-xl
+           hover:text-primary
            transition-all duration-150 flex items-center gap-3;
-    box-shadow: 3px 3px 8px hsl(var(--border) / 0.5), -3px -3px 8px hsl(var(--background));
+    background: hsl(var(--card) / 0.55);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border: 1px solid hsl(var(--border) / 0.4);
   }
-  .option-btn:active {
-    box-shadow: inset 2px 2px 5px hsl(var(--border) / 0.5), inset -2px -2px 5px hsl(var(--background));
+  .option-btn:hover {
+    box-shadow: 0 4px 16px hsl(var(--primary) / 0.1);
+    border-color: hsl(var(--primary) / 0.3);
   }
 
   .option-btn-correct {
