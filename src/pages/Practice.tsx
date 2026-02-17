@@ -1,6 +1,6 @@
 import { useState, useEffect, useMemo, useCallback } from "react";
 import { useParams, useNavigate } from "react-router-dom";
-import { Bookmark, BookmarkCheck, ChevronLeft, ChevronRight, Settings, Info, Timer, AlertTriangle, CheckCircle2 } from "lucide-react";
+import { Bookmark, BookmarkCheck, ChevronLeft, ChevronRight, Settings, Info, Timer, AlertTriangle, CheckCircle2, BookOpen } from "lucide-react";
 import { useDataStore, useProgressStore } from "@/store/useAppStore";
 import { Popover, PopoverContent, PopoverTrigger } from "@/components/ui/popover";
 import { Switch } from "@/components/ui/switch";
@@ -37,8 +37,9 @@ const Practice = () => {
 
   // Exam timer state
   const [examMode, setExamMode] = useState(false);
-  const [examDuration, setExamDuration] = useState(30); // minutes
-  const [timeRemaining, setTimeRemaining] = useState(0); // seconds
+  const [examDuration, setExamDuration] = useState(30);
+  const [timeRemaining, setTimeRemaining] = useState(0);
+  const [conceptMode, setConceptMode] = useState(false);
 
   useEffect(() => {
     if (rawQuestions.length > 0) {
@@ -220,6 +221,12 @@ const Practice = () => {
                 <Label htmlFor="roller-mode" className="text-xs font-medium">Roller Mode</Label>
                 <Switch id="roller-mode" checked={settings.rollerMode || false} onCheckedChange={(checked) => updateSettings({ rollerMode: checked })} />
               </div>
+              <div className="border-t border-border pt-3 flex items-center justify-between">
+                <Label htmlFor="concept-mode" className="text-xs font-medium flex items-center gap-1.5">
+                  <BookOpen size={12} /> Concept Mode
+                </Label>
+                <Switch id="concept-mode" checked={conceptMode} onCheckedChange={setConceptMode} />
+              </div>
               <div className="border-t border-border pt-3 space-y-3">
                 <div className="flex items-center justify-between">
                   <Label htmlFor="exam-mode" className="text-xs font-medium flex items-center gap-1.5">
@@ -267,7 +274,28 @@ const Practice = () => {
           <div className="mb-8">
             <div className="flex items-center gap-2 mb-4">
               <span className="px-2 py-0.5 bg-primary/10 text-primary text-[10px] font-bold rounded uppercase">Question {currentIndex + 1}</span>
+              {conceptMode && (
+                <span className="px-2 py-0.5 bg-accent/10 text-accent text-[10px] font-bold rounded uppercase">📘 Concept Mode</span>
+              )}
             </div>
+
+            {/* Concept Mode: Theory hint before question */}
+            {conceptMode && currentQuestion.notes && !revealed && (
+              <motion.div
+                initial={{ opacity: 0, height: 0 }}
+                animate={{ opacity: 1, height: "auto" }}
+                className="mb-4 p-3 bg-accent/5 border border-accent/20 rounded-lg"
+              >
+                <div className="flex items-center gap-1.5 mb-1.5">
+                  <BookOpen size={12} className="text-accent" />
+                  <span className="text-[10px] font-bold text-accent uppercase">Concept Hint</span>
+                </div>
+                <p className="text-xs text-foreground/70 leading-relaxed">
+                  💡 {currentQuestion.notes.split('.').slice(0, 2).join('.')}...
+                </p>
+              </motion.div>
+            )}
+
             <h2 className="text-lg md:text-xl font-semibold leading-relaxed text-foreground">
               {currentQuestion.question}
             </h2>

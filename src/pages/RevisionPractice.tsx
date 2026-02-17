@@ -5,7 +5,7 @@ import { useDataStore, useProgressStore } from "@/store/useAppStore";
 import { seededShuffle, shuffleOptions } from "@/utils/shuffle";
 import { RollerOptionPicker } from "@/components/RollerOptionPicker";
 import { Question } from "@/types/question";
-import { getTopicStats } from "@/utils/analytics";
+import { getTopicStats, getSpacedRepetitionDue } from "@/utils/analytics";
 import { motion, AnimatePresence } from "framer-motion";
 
 const OPTION_LABELS = ["A", "B", "C", "D"];
@@ -28,6 +28,9 @@ const RevisionPractice = () => {
   }, [questionsBySubjectTopic]);
 
   const filteredQuestions = useMemo(() => {
+    if (mode === "srs") {
+      return getSpacedRepetitionDue(answers, questionsBySubjectTopic);
+    }
     if (mode === "wrong") {
       return allQuestions.filter((q) => answers[q.id] && !answers[q.id].correct);
     }
@@ -143,7 +146,7 @@ const RevisionPractice = () => {
   }
   if (!currentQuestion) return null;
 
-  const modeTitle = mode === "wrong" ? "🔁 Wrong Questions" : mode === "hard" ? "🧠 Hard Topics" : "⚡ Fast 20";
+  const modeTitle = mode === "srs" ? "📅 Spaced Repetition" : mode === "wrong" ? "🔁 Wrong Questions" : mode === "hard" ? "🧠 Hard Topics" : "⚡ Fast 20";
 
   return (
     <div className="flex flex-col h-screen bg-background overflow-hidden">

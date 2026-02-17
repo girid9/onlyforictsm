@@ -129,7 +129,6 @@ export function getRecentActivity(
   questionsBySubjectTopic: Record<string, Record<string, Question[]>>,
   count = 5
 ): ActivityEntry[] {
-  // Build a lookup: questionId -> { subjectName, topicName }
   const lookup: Record<string, { subjectName: string; topicName: string }> = {};
   for (const topics of Object.values(questionsBySubjectTopic)) {
     for (const questions of Object.values(topics)) {
@@ -173,4 +172,58 @@ export function getAccuracyTrend(
   }
 
   return points.slice(-buckets);
+}
+
+// Spaced Repetition: Get questions due for review
+// Schedule: wrong → 1 day, then 3 days, then 7 days
+const SRS_INTERVALS = [1, 3, 7]; // days
+
+export function getSpacedRepetitionDue(
+  answers: Record<string, AnswerRecord>,
+  questionsBySubjectTopic: Record<string, Record<string, Question[]>>
+): Question[] {
+  const now = Date.now();
+  const allQuestions: Question[] = [];
+  for (const topics of Object.values(questionsBySubjectTopic)) {
+    for (const qs of Object.values(topics)) allQuestions.push(...qs);
+  }
+
+  const due: Question[] = [];
+
+  for (const q of allQuestions) {
+    const answer = answers[q.id];
+    if (!answer || answer.correct) continue; // Only wrong answers
+    if (!answer.answeredAt) continue;
+
+    const answeredAt = new Date(answer.answeredAt).getTime();
+    const daysSince = (now - answeredAt) / (1000 * 60 * 60 * 24);
+
+    // Check if it's due based on any SRS interval
+    for (const interval of SRS_INTERVALS) {
+      if (daysSince >= interval) {
+        due.push(q);
+        break;
+      }
+    }
+  }
+
+  return due;
+}
+
+// Get weak area suggestions
+export function getWeakAreaSuggestion(
+  answers: Record<string, AnswerRecord>,
+  questionsBySubjectTopic: Record<string, Record<string, Question[]>>
+): { message: string; subjectId: string; topicId: string } | null {
+  const stats = getTopicStats(answers, questionsBySubjectTopic);
+  const weakest = stats.filter((t) => t.attempted >= 3 && t.accuracy < 50).sort((a, b) => a.accuracy - b.accuracy)[0];
+
+  if (!weakest) return null;
+
+  const remaining = weakest.total - weakest.attempted;
+  return {
+    message: `You're weak in "${weakest.topicName}" (${weakest.accuracy}% accuracy). ${remaining > 0 ? `Practice ${Math.min(10, remaining)} more!` : "Review your mistakes!"}`,
+    subjectId: weakest.subjectId,
+    topicId: weakest.topicId,
+  };
 }

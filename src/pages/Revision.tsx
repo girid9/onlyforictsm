@@ -1,9 +1,9 @@
 import { useMemo } from "react";
 import { useNavigate } from "react-router-dom";
 import { useDataStore, useProgressStore } from "@/store/useAppStore";
-import { getTopicStats } from "@/utils/analytics";
+import { getTopicStats, getSpacedRepetitionDue } from "@/utils/analytics";
 import { motion } from "framer-motion";
-import { RotateCcw, Brain, Zap, AlertTriangle } from "lucide-react";
+import { RotateCcw, Brain, Zap, AlertTriangle, CalendarClock } from "lucide-react";
 
 const fadeUp = { hidden: { opacity: 0, y: 16 }, show: { opacity: 1, y: 0, transition: { duration: 0.4 } } };
 const stagger = { hidden: {}, show: { transition: { staggerChildren: 0.1 } } };
@@ -16,6 +16,7 @@ const Revision = () => {
   const wrongCount = useMemo(() => Object.values(answers).filter((a) => !a.correct).length, [answers]);
   const topicStats = useMemo(() => getTopicStats(answers, questionsBySubjectTopic), [answers, questionsBySubjectTopic]);
   const hardTopicCount = useMemo(() => topicStats.filter((t) => t.accuracy < 50 && t.attempted >= 2).length, [topicStats]);
+  const srsDue = useMemo(() => getSpacedRepetitionDue(answers, questionsBySubjectTopic), [answers, questionsBySubjectTopic]);
 
   const totalQuestions = useMemo(() => {
     let count = 0;
@@ -26,6 +27,16 @@ const Revision = () => {
   }, [questionsBySubjectTopic]);
 
   const modes = [
+    {
+      id: "srs",
+      title: "Spaced Repetition",
+      description: "Questions you got wrong resurface after 1, 3, and 7 days. Science-backed memory boost!",
+      icon: CalendarClock,
+      color: "text-primary",
+      bgColor: "bg-primary/10",
+      stat: `${srsDue.length} due now`,
+      disabled: srsDue.length === 0,
+    },
     {
       id: "wrong",
       title: "Wrong Questions Only",
@@ -51,15 +62,14 @@ const Revision = () => {
       title: "Fast 20 Challenge",
       description: "Random 20 questions with a 10-minute timer. Test your speed!",
       icon: Zap,
-      color: "text-primary",
-      bgColor: "bg-primary/10",
+      color: "text-success",
+      bgColor: "bg-success/10",
       stat: `${Math.min(20, totalQuestions)} questions`,
       disabled: totalQuestions === 0,
     },
   ];
 
   const handleStart = (modeId: string) => {
-    // Store revision mode in session storage and navigate to a special practice route
     sessionStorage.setItem("revision-mode", modeId);
     navigate("/revision/practice");
   };
@@ -92,7 +102,7 @@ const Revision = () => {
         ))}
       </div>
 
-      {wrongCount === 0 && hardTopicCount === 0 && (
+      {wrongCount === 0 && hardTopicCount === 0 && srsDue.length === 0 && (
         <motion.div variants={fadeUp} className="glass-card p-6 text-center mt-6">
           <AlertTriangle size={24} className="text-warning mx-auto mb-2" />
           <p className="text-sm text-muted-foreground">Start practising first to unlock revision modes!</p>

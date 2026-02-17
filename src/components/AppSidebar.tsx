@@ -13,7 +13,8 @@ import {
   RotateCcw,
   BarChart3,
   Brain,
-  Flame
+  Flame,
+  Bot
 } from "lucide-react";
 import { useProgressStore } from "@/store/useAppStore";
 import { useTheme } from "@/components/ThemeProvider";
