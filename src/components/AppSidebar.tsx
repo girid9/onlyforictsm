@@ -27,7 +27,7 @@ export function AppSidebar({ onClose }: Props) {
   const { streak, xp } = useProgressStore();
 
   return (
-    <div className="w-64 h-full bg-card flex flex-col border-r border-border">
+    <div className="w-64 h-full flex flex-col border-r border-border/50" style={{ background: 'hsl(var(--sidebar-background) / 0.8)', backdropFilter: 'blur(20px)', WebkitBackdropFilter: 'blur(20px)' }}>
       {/* Logo Section */}
       <div className="h-16 flex items-center justify-between px-6 border-b border-border">
         <div className="flex items-center gap-2">
