@@ -13,6 +13,9 @@ import Bookmarks from "./pages/Bookmarks";
 import WrongAnswers from "./pages/WrongAnswers";
 import Battle from "./pages/Battle";
 import StudyRoom from "./pages/StudyRoom";
+import Dashboard from "./pages/Dashboard";
+import Revision from "./pages/Revision";
+import RevisionPractice from "./pages/RevisionPractice";
 import NotFound from "./pages/NotFound";
 import { ThemeProvider } from "@/components/ThemeProvider";
 
@@ -36,6 +39,9 @@ const App = () => (
               <Route path="/wrong" element={<WrongAnswers />} />
               <Route path="/battle" element={<Battle />} />
               <Route path="/study" element={<StudyRoom />} />
+              <Route path="/dashboard" element={<Dashboard />} />
+              <Route path="/revision" element={<Revision />} />
+              <Route path="/revision/practice" element={<RevisionPractice />} />
             </Route>
             <Route path="*" element={<NotFound />} />
           </Routes>

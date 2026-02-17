@@ -10,16 +10,22 @@ import {
   Clock,
   Palette,
   Check,
-  RotateCcw
+  RotateCcw,
+  BarChart3,
+  Brain,
+  Flame
 } from "lucide-react";
 import { useProgressStore } from "@/store/useAppStore";
 import { useTheme } from "@/components/ThemeProvider";
 import { THEMES, THEME_NAMES, ThemeName } from "@/config/themes";
 import { useState } from "react";
+import { LevelBadge } from "@/components/LevelBadge";
 
 const links = [
-  { to: "/", icon: Home, label: "Dashboard" },
+  { to: "/", icon: Home, label: "Home" },
   { to: "/subjects", icon: BookOpen, label: "Subjects" },
+  { to: "/dashboard", icon: BarChart3, label: "Dashboard" },
+  { to: "/revision", icon: Brain, label: "Revision" },
   { to: "/bookmarks", icon: Bookmark, label: "Bookmarks" },
   { to: "/wrong", icon: XCircle, label: "Review" },
   { to: "/battle", icon: Swords, label: "Battle" },
@@ -54,14 +60,14 @@ export function AppSidebar({ onClose }: Props) {
       </div>
 
       {/* Stats Summary */}
-      <div className="p-4 border-b border-border">
+      <div className="p-4 border-b border-border space-y-3">
         <div className="grid grid-cols-2 gap-2">
           <div className="bg-muted/30 p-2 rounded-lg border border-border/50">
             <div className="flex items-center gap-1.5 mb-1">
-              <Clock size={10} className="text-warning" />
+              <Flame size={10} className="text-warning" />
               <span className="text-[9px] font-bold text-muted-foreground uppercase">Streak</span>
             </div>
-            <p className="text-xs font-bold">{streak}d</p>
+            <p className="text-xs font-bold">{streak}d 🔥</p>
           </div>
           <div className="bg-muted/30 p-2 rounded-lg border border-border/50">
             <div className="flex items-center gap-1.5 mb-1">
@@ -71,6 +77,7 @@ export function AppSidebar({ onClose }: Props) {
             <p className="text-xs font-bold">{xp}</p>
           </div>
         </div>
+        <LevelBadge xp={xp} />
       </div>
 
       {/* Navigation */}

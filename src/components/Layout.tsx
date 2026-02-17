@@ -7,7 +7,6 @@ import { useDataStore, useProgressStore } from "@/store/useAppStore";
 import { loadAll } from "@/services/questionBank";
 import { ThemeToggle } from "@/components/ThemeToggle";
 import { GlobalChat } from "@/components/GlobalChat";
-import { TutorChat } from "@/components/TutorChat";
 
 export function Layout() {
   const [sidebarOpen, setSidebarOpen] = useState(false);
@@ -16,7 +15,7 @@ export function Layout() {
   const setData = useDataStore((s) => s.setData);
   const loaded = useDataStore((s) => s.loaded);
   const showGlobalChat = useProgressStore((s) => s.settings.showGlobalChat ?? true);
-  const showTutor = useProgressStore((s) => s.settings.showTutor ?? true);
+  
 
   useEffect(() => {
     let cancelled = false;
@@ -82,7 +81,6 @@ export function Layout() {
         </main>
       </div>
       {!isBattlePage && showGlobalChat && <GlobalChat />}
-      {showTutor && <TutorChat />}
     </div>
   );
 }

@@ -1,6 +1,6 @@
-import { useState, useEffect, useMemo, useCallback, useRef } from "react";
+import { useState, useEffect, useMemo, useCallback } from "react";
 import { useParams, useNavigate } from "react-router-dom";
-import { Bookmark, BookmarkCheck, ChevronLeft, ChevronRight, Settings, Info, Timer, Mic, MicOff } from "lucide-react";
+import { Bookmark, BookmarkCheck, ChevronLeft, ChevronRight, Settings, Info, Timer, AlertTriangle, CheckCircle2 } from "lucide-react";
 import { useDataStore, useProgressStore } from "@/store/useAppStore";
 import { Popover, PopoverContent, PopoverTrigger } from "@/components/ui/popover";
 import { Switch } from "@/components/ui/switch";
@@ -10,8 +10,8 @@ import { Breadcrumbs } from "@/components/Breadcrumbs";
 import { seededShuffle, shuffleOptions } from "@/utils/shuffle";
 import { RollerOptionPicker } from "@/components/RollerOptionPicker";
 import { Question } from "@/types/question";
-import { useVoiceAnswer } from "@/hooks/useVoiceAnswer";
-import { TutorChat, TutorChatHandle } from "@/components/TutorChat";
+import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
+import { motion, AnimatePresence } from "framer-motion";
 
 const OPTION_LABELS = ["A", "B", "C", "D"];
 
@@ -35,6 +35,11 @@ const Practice = () => {
   const [sessionAnswers, setSessionAnswers] = useState<Record<number, { selected: number; correct: boolean }>>({});
   const [startTime] = useState(Date.now());
 
+  // Exam timer state
+  const [examMode, setExamMode] = useState(false);
+  const [examDuration, setExamDuration] = useState(30); // minutes
+  const [timeRemaining, setTimeRemaining] = useState(0); // seconds
+
   useEffect(() => {
     if (rawQuestions.length > 0) {
       setQuestions(seededShuffle(rawQuestions, sessionSeed));
@@ -47,6 +52,30 @@ const Practice = () => {
       setLastVisited({ subjectId, topicId, subjectName: subject?.name || subjectId, topicName: rawQuestions[0]?.topicName || topicId });
     }
   }, [rawQuestions, subjectId, topicId, subjects, setLastVisited]);
+
+  // Start exam timer
+  useEffect(() => {
+    if (examMode) {
+      setTimeRemaining(examDuration * 60);
+    }
+  }, [examMode, examDuration]);
+
+  // Countdown
+  useEffect(() => {
+    if (!examMode || timeRemaining <= 0) return;
+    const interval = setInterval(() => {
+      setTimeRemaining((prev) => {
+        if (prev <= 1) {
+          clearInterval(interval);
+          // Auto-submit
+          handleFinish();
+          return 0;
+        }
+        return prev - 1;
+      });
+    }, 1000);
+    return () => clearInterval(interval);
+  }, [examMode, timeRemaining > 0]);
 
   const currentQuestion = questions[currentIndex];
   const isBookmarked = currentQuestion ? bookmarkedIds.includes(currentQuestion.id) : false;
@@ -66,24 +95,20 @@ const Practice = () => {
     recordAnswer(currentQuestion.id, optionIndex, correct);
   }, [revealed, currentQuestion, currentIndex, recordAnswer, shuffledAnswerIndex]);
 
-  const tutorRef = useRef<TutorChatHandle | null>(null);
-
-  const handleTutorCommand = useCallback((command: string) => {
-    if (tutorRef.current) {
-      tutorRef.current.open();
-      const context = currentQuestion
-        ? `Question: "${currentQuestion.question}" Options: ${shuffledOptions.map((o, i) => `${OPTION_LABELS[i]}) ${o}`).join(", ")}. Correct: ${OPTION_LABELS[shuffledAnswerIndex]}.`
-        : "";
-      tutorRef.current.sendMessage(`${command}\n\n${context}`);
+  const handleFinish = useCallback(() => {
+    const allAnswers = { ...sessionAnswers };
+    if (selectedOption !== null && currentQuestion) {
+      allAnswers[currentIndex] = { selected: selectedOption, correct: selectedOption === shuffledAnswerIndex };
     }
-  }, [currentQuestion, shuffledOptions, shuffledAnswerIndex]);
-
-  const voice = useVoiceAnswer({
-    onAnswer: handleSelect,
-    onTutorCommand: handleTutorCommand,
-    enabled: true,
-    disabled: revealed,
-  });
+    const correct = Object.values(allAnswers).filter((a) => a.correct).length;
+    setSessionResult({
+      subjectName: currentQuestion?.subjectName || "", topicName: currentQuestion?.topicName || "",
+      subjectId: subjectId || "", topicId: topicId || "",
+      total: questions.length, correct, timeTaken: Math.round((Date.now() - startTime) / 1000),
+      questionResults: questions.map((q, i) => ({ question: q, selectedIndex: allAnswers[i]?.selected ?? -1, correct: allAnswers[i]?.correct ?? false })),
+    });
+    navigate("/results");
+  }, [sessionAnswers, selectedOption, currentQuestion, currentIndex, subjectId, topicId, questions, startTime, navigate, setSessionResult, shuffledAnswerIndex]);
 
   const handleNext = useCallback(() => {
     if (currentIndex < questions.length - 1) {
@@ -92,20 +117,9 @@ const Practice = () => {
       const prev = sessionAnswers[nextIdx];
       if (prev) { setSelectedOption(prev.selected); setRevealed(true); } else { setSelectedOption(null); setRevealed(false); }
     } else {
-      const allAnswers = { ...sessionAnswers };
-      if (selectedOption !== null && currentQuestion) {
-        allAnswers[currentIndex] = { selected: selectedOption, correct: selectedOption === shuffledAnswerIndex };
-      }
-      const correct = Object.values(allAnswers).filter((a) => a.correct).length;
-      setSessionResult({
-        subjectName: currentQuestion?.subjectName || "", topicName: currentQuestion?.topicName || "",
-        subjectId: subjectId || "", topicId: topicId || "",
-        total: questions.length, correct, timeTaken: Math.round((Date.now() - startTime) / 1000),
-        questionResults: questions.map((q, i) => ({ question: q, selectedIndex: allAnswers[i]?.selected ?? -1, correct: allAnswers[i]?.correct ?? false })),
-      });
-      navigate("/results");
+      handleFinish();
     }
-  }, [currentIndex, questions, sessionAnswers, selectedOption, currentQuestion, subjectId, topicId, startTime, navigate, setSessionResult, shuffledAnswerIndex]);
+  }, [currentIndex, questions, sessionAnswers, handleFinish]);
 
   const handlePrev = useCallback(() => {
     if (currentIndex > 0) {
@@ -139,6 +153,12 @@ const Practice = () => {
     return () => window.removeEventListener("keydown", handler);
   }, [handleSelect, handleNext, handlePrev, currentQuestion, toggleBookmark, revealed, settings.rollerMode]);
 
+  // Timer formatting
+  const timerMinutes = Math.floor(timeRemaining / 60);
+  const timerSeconds = timeRemaining % 60;
+  const timerPct = examMode ? (timeRemaining / (examDuration * 60)) * 100 : 100;
+  const timerColor = timerPct > 50 ? "bg-success" : timerPct > 20 ? "bg-warning" : "bg-destructive";
+
   if (questions.length === 0) return <div className="p-4 text-center"><p className="text-muted-foreground">No questions available.</p></div>;
   if (!currentQuestion) return null;
 
@@ -156,6 +176,13 @@ const Practice = () => {
           </div>
         </div>
         <div className="flex items-center gap-2">
+          {/* Exam Timer */}
+          {examMode && (
+            <div className={`px-3 py-1 rounded text-[11px] font-bold flex items-center gap-1.5 ${timerPct <= 20 ? 'text-destructive bg-destructive/10' : timerPct <= 50 ? 'text-warning bg-warning/10' : 'text-success bg-success/10'}`}>
+              <Timer size={12} />
+              {timerMinutes}:{timerSeconds.toString().padStart(2, '0')}
+            </div>
+          )}
           <div className="px-3 py-1 bg-muted rounded text-[11px] font-bold">
             {currentIndex + 1} / {questions.length}
           </div>
@@ -163,17 +190,6 @@ const Practice = () => {
           <button onClick={() => toggleBookmark(currentQuestion.id)} className={`p-2 rounded-md transition-colors ${isBookmarked ? 'text-primary bg-primary/10' : 'hover:bg-muted'}`}>
             {isBookmarked ? <BookmarkCheck size={18} /> : <Bookmark size={18} />}
           </button>
-          {voice.supported && (
-            <button
-              onClick={voice.toggle}
-              className={`p-2 rounded-md transition-all duration-200 ${voice.listening ? 'text-destructive bg-destructive/10' : 'hover:bg-muted text-muted-foreground'}`}
-              style={voice.listening ? { animation: 'micPulse 1.5s ease-in-out infinite' } : undefined}
-              aria-label={voice.listening ? "Stop voice input" : "Start voice input"}
-              title={voice.listening ? "Listening... say A, B, C, or D" : "Tap to answer by voice"}
-            >
-              {voice.listening ? <Mic size={18} /> : <MicOff size={18} />}
-            </button>
-          )}
           <Popover>
             <PopoverTrigger asChild>
               <button className="p-2 hover:bg-muted rounded-md transition-colors">
@@ -196,38 +212,53 @@ const Practice = () => {
                   <Slider
                     value={[settings.autoAdvanceDelay || 2]}
                     onValueChange={([val]) => updateSettings({ autoAdvanceDelay: val })}
-                    min={1}
-                    max={5}
-                    step={1}
-                    className="w-full"
+                    min={1} max={5} step={1} className="w-full"
                   />
-                  <div className="flex justify-between text-[10px] text-muted-foreground">
-                    <span>1s</span>
-                    <span>3s</span>
-                    <span>5s</span>
-                  </div>
                 </div>
               )}
               <div className="border-t border-border pt-3 flex items-center justify-between">
                 <Label htmlFor="roller-mode" className="text-xs font-medium">Roller Mode</Label>
                 <Switch id="roller-mode" checked={settings.rollerMode || false} onCheckedChange={(checked) => updateSettings({ rollerMode: checked })} />
               </div>
-              <div className="border-t border-border pt-3 flex items-center justify-between">
-                <Label htmlFor="global-chat" className="text-xs font-medium">Global Chat</Label>
-                <Switch id="global-chat" checked={settings.showGlobalChat ?? true} onCheckedChange={(checked) => updateSettings({ showGlobalChat: checked })} />
-              </div>
-              <div className="border-t border-border pt-3 flex items-center justify-between">
-                <Label htmlFor="ai-tutor" className="text-xs font-medium">AI Tutor</Label>
-                <Switch id="ai-tutor" checked={settings.showTutor ?? true} onCheckedChange={(checked) => updateSettings({ showTutor: checked })} />
+              <div className="border-t border-border pt-3 space-y-3">
+                <div className="flex items-center justify-between">
+                  <Label htmlFor="exam-mode" className="text-xs font-medium flex items-center gap-1.5">
+                    <Timer size={12} /> Exam Mode
+                  </Label>
+                  <Switch id="exam-mode" checked={examMode} onCheckedChange={setExamMode} />
+                </div>
+                {examMode && (
+                  <div className="flex items-center justify-between">
+                    <Label className="text-xs font-medium">Time Limit</Label>
+                    <Select value={String(examDuration)} onValueChange={(v) => setExamDuration(Number(v))}>
+                      <SelectTrigger className="w-24 h-8 text-xs">
+                        <SelectValue />
+                      </SelectTrigger>
+                      <SelectContent>
+                        <SelectItem value="15">15 min</SelectItem>
+                        <SelectItem value="30">30 min</SelectItem>
+                        <SelectItem value="45">45 min</SelectItem>
+                        <SelectItem value="60">60 min</SelectItem>
+                      </SelectContent>
+                    </Select>
+                  </div>
+                )}
               </div>
             </PopoverContent>
           </Popover>
         </div>
       </div>
 
-      {/* Progress Bar */}
-      <div className="h-1 w-full bg-muted shrink-0">
-        <div className="h-full bg-primary transition-all duration-300" style={{ width: `${((currentIndex + 1) / questions.length) * 100}%` }} />
+      {/* Progress Bar + Timer Bar */}
+      <div className="shrink-0">
+        <div className="h-1 w-full bg-muted">
+          <div className="h-full bg-primary transition-all duration-300" style={{ width: `${((currentIndex + 1) / questions.length) * 100}%` }} />
+        </div>
+        {examMode && (
+          <div className="h-1 w-full bg-muted">
+            <div className={`h-full ${timerColor} transition-all duration-1000`} style={{ width: `${timerPct}%` }} />
+          </div>
+        )}
       </div>
 
       {/* Main Content */}
@@ -273,17 +304,50 @@ const Practice = () => {
             </div>
           )}
 
-          {revealed && currentQuestion.notes && (
-            <div className="mt-8 p-4 bg-muted/30 border border-border rounded-lg">
-              <div className="flex items-center gap-2 mb-2 text-muted-foreground">
-                <Info size={14} />
-                <span className="text-[10px] font-bold uppercase tracking-wider">Explanation</span>
-              </div>
-              <p className="text-sm text-foreground/80 leading-relaxed">
-                {currentQuestion.notes}
-              </p>
-            </div>
-          )}
+          {/* Enhanced Explanation Panel */}
+          <AnimatePresence>
+            {revealed && (
+              <motion.div
+                initial={{ opacity: 0, y: 12 }}
+                animate={{ opacity: 1, y: 0 }}
+                exit={{ opacity: 0, y: -8 }}
+                transition={{ duration: 0.35, ease: [0.4, 0, 0.2, 1] }}
+                className="mt-6 space-y-3"
+              >
+                {/* Correct/Incorrect Banner */}
+                <div className={`flex items-center gap-3 p-4 rounded-lg border ${selectedOption === shuffledAnswerIndex ? 'bg-success/10 border-success/30' : 'bg-destructive/10 border-destructive/30'}`}>
+                  {selectedOption === shuffledAnswerIndex ? (
+                    <CheckCircle2 size={20} className="text-success shrink-0" />
+                  ) : (
+                    <AlertTriangle size={20} className="text-destructive shrink-0" />
+                  )}
+                  <div>
+                    <p className={`text-sm font-bold ${selectedOption === shuffledAnswerIndex ? 'text-success' : 'text-destructive'}`}>
+                      {selectedOption === shuffledAnswerIndex ? "Correct! 🎉" : "Incorrect"}
+                    </p>
+                    {selectedOption !== shuffledAnswerIndex && (
+                      <p className="text-xs text-muted-foreground mt-0.5">
+                        The correct answer is <span className="text-success font-bold">{OPTION_LABELS[shuffledAnswerIndex]}. {shuffledOptions[shuffledAnswerIndex]}</span>
+                      </p>
+                    )}
+                  </div>
+                </div>
+
+                {/* Explanation Notes */}
+                {currentQuestion.notes && (
+                  <div className="p-4 bg-muted/30 border border-border rounded-lg">
+                    <div className="flex items-center gap-2 mb-2 text-muted-foreground">
+                      <Info size={14} />
+                      <span className="text-[10px] font-bold uppercase tracking-wider">Why this is correct</span>
+                    </div>
+                    <p className="text-sm text-foreground/80 leading-relaxed">
+                      {currentQuestion.notes}
+                    </p>
+                  </div>
+                )}
+              </motion.div>
+            )}
+          </AnimatePresence>
         </div>
       </div>
 
@@ -294,21 +358,13 @@ const Practice = () => {
             <ChevronLeft size={16} /> Previous
           </button>
           <div className="hidden sm:flex items-center gap-1 text-[10px] font-bold text-muted-foreground uppercase tracking-widest">
-            {settings.rollerMode ? "Swipe up/down to browse" : voice.listening ? "🎤 Say A, B, C, or D" : "Keys 1-4 or 🎤 mic"}
+            {settings.rollerMode ? "Swipe up/down to browse" : "Keys 1-4 to select"}
           </div>
           <button onClick={handleNext} disabled={!revealed} className="px-6 py-2 bg-primary text-primary-foreground rounded-md text-sm font-bold hover:opacity-90 transition-all disabled:opacity-30">
             {currentIndex === questions.length - 1 ? "Finish" : "Next Question"}
           </button>
         </div>
       </div>
-      {/* Voice hint when revealed */}
-      {revealed && voice.listening && voice.supported && (
-        <div className="fixed bottom-24 left-1/2 -translate-x-1/2 z-40 px-4 py-2 rounded-xl bg-card/90 border border-border/50 text-xs text-muted-foreground backdrop-blur-md">
-          🎤 Say <span className="text-primary font-bold">"Explain this"</span> or <span className="text-primary font-bold">"Why is B correct?"</span>
-        </div>
-      )}
-
-      {settings.showTutor !== false && <TutorChat ref={tutorRef} />}
     </div>
   );
 };
