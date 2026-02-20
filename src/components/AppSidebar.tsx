@@ -41,7 +41,7 @@ export function AppSidebar({ onClose }: Props) {
   const [themesOpen, setThemesOpen] = useState(false);
 
   return (
-    <div className="w-64 h-full flex flex-col border-r border-border/50" style={{ background: 'hsl(var(--sidebar-background) / 0.85)', backdropFilter: 'blur(24px) saturate(1.4)', WebkitBackdropFilter: 'blur(24px) saturate(1.4)' }}>
+    <div className="w-64 h-full flex flex-col border-r border-border/30" style={{ background: 'hsl(var(--sidebar-background) / 0.75)', backdropFilter: 'blur(24px) saturate(1.4)', WebkitBackdropFilter: 'blur(24px) saturate(1.4)' }}>
       {/* Logo Section */}
       <div className="h-16 flex items-center justify-between px-6 border-b border-border">
         <div className="flex items-center gap-2">
