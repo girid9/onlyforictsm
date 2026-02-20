@@ -23,37 +23,40 @@ const Topics = () => {
   }, [topics, questionsBySubjectTopic, answers, subjectId]);
 
   if (!subject) {
-    return (<div className="p-6 max-w-4xl mx-auto"><p className="text-muted-foreground">Subject not found.</p><Link to="/subjects" className="text-primary hover:underline mt-2 inline-block">Back to subjects</Link></div>);
+    return (
+      <div className="p-4 max-w-lg mx-auto">
+        <p className="text-muted-foreground">Subject not found.</p>
+        <Link to="/subjects" className="text-primary hover:underline mt-2 inline-block text-sm">← Back</Link>
+      </div>
+    );
   }
 
   return (
-    <div className="p-6 max-w-4xl mx-auto">
+    <div className="p-4 md:p-6 max-w-lg mx-auto pb-8">
       <Breadcrumbs items={[{ label: "Home", to: "/" }, { label: "Subjects", to: "/subjects" }, { label: subject.name }]} />
-      <h1 className="text-2xl font-bold mb-2">{subject.name}</h1>
-      <p className="text-muted-foreground mb-6">{topics.length} topics · {subject.questionCount} questions</p>
-      <div className="space-y-3">
+      <h1 className="text-xl font-bold mb-1">{subject.name}</h1>
+      <p className="text-[10px] text-muted-foreground mb-5 uppercase tracking-wider">{topics.length} topics · {subject.questionCount} questions</p>
+      <div className="space-y-2.5">
         {topicsWithProgress.map((t) => (
-          <Link key={t.id} to={`/practice/${subjectId}/${t.id}`} className="glass-card p-5 flex items-center gap-5 group block focus-ring" aria-label={`Practice ${t.name}`}>
-            <div className="h-12 w-12 rounded-xl bg-primary/10 flex items-center justify-center shrink-0">
-              <Play size={20} className="text-primary ml-1" />
+          <Link key={t.id} to={`/practice/${subjectId}/${t.id}`} className="glass-card px-4 py-3.5 flex items-center gap-3.5 group focus-ring">
+            <div className="h-10 w-10 rounded-lg bg-primary/8 flex items-center justify-center shrink-0">
+              <Play size={16} className="text-primary ml-0.5" />
             </div>
             <div className="flex-1 min-w-0">
-              <div className="flex items-center justify-between mb-1">
-                <h3 className="font-bold truncate">{t.name}</h3>
-                <span className="text-[10px] font-bold text-muted-foreground uppercase tracking-widest">{t.questionCount} Qs</span>
-              </div>
-              <div className="flex items-center gap-3">
-                <div className="flex-1 h-1.5 bg-secondary rounded-full overflow-hidden">
+              <h3 className="text-xs font-bold text-foreground truncate">{t.name}</h3>
+              <div className="flex items-center gap-2 mt-1">
+                <div className="flex-1 h-1 bg-secondary rounded-full overflow-hidden">
                   <div className="h-full progress-gradient" style={{ width: `${(t.answered / t.questionCount) * 100}%` }} />
                 </div>
-                {t.answered > 0 && (
-                  <span className={`text-[10px] font-bold px-1.5 py-0.5 rounded ${t.pct >= 70 ? 'bg-success/10 text-success' : 'bg-warning/10 text-warning'}`}>
-                    {t.pct}% Acc
-                  </span>
-                )}
+                <span className="text-[9px] text-muted-foreground font-medium">{t.questionCount} Qs</span>
               </div>
             </div>
-            <ArrowRight size={18} className="text-muted-foreground shrink-0" />
+            {t.answered > 0 && (
+              <span className={`text-[10px] font-bold px-2 py-0.5 rounded-full ${t.pct >= 70 ? 'bg-success/10 text-success' : 'bg-warning/10 text-warning'}`}>
+                {t.pct}%
+              </span>
+            )}
+            <ArrowRight size={14} className="text-muted-foreground shrink-0" />
           </Link>
         ))}
       </div>
