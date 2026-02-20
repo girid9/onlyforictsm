@@ -1,7 +1,5 @@
-import { motion } from "framer-motion";
-
 interface ProgressRingProps {
-  value: number; // 0-100
+  value: number;
   size?: number;
   strokeWidth?: number;
   className?: string;
@@ -24,7 +22,7 @@ const ProgressRing = ({ value, size = 64, strokeWidth = 5, className = "", label
           stroke="hsl(var(--muted))"
           strokeWidth={strokeWidth}
         />
-        <motion.circle
+        <circle
           cx={size / 2}
           cy={size / 2}
           r={radius}
@@ -33,9 +31,8 @@ const ProgressRing = ({ value, size = 64, strokeWidth = 5, className = "", label
           strokeWidth={strokeWidth}
           strokeLinecap="round"
           strokeDasharray={circumference}
-          initial={{ strokeDashoffset: circumference }}
-          animate={{ strokeDashoffset: offset }}
-          transition={{ duration: 1, ease: [0.4, 0, 0.2, 1], delay: 0.2 }}
+          strokeDashoffset={offset}
+          style={{ transition: 'stroke-dashoffset 0.6s ease' }}
         />
       </svg>
       <div className="absolute inset-0 flex flex-col items-center justify-center">
