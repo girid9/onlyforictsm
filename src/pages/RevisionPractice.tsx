@@ -135,9 +135,9 @@ const RevisionPractice = () => {
   const modeTitle = mode === "srs" ? "📅 Spaced Repetition" : mode === "wrong" ? "🔁 Wrong Questions" : mode === "hard" ? "🧠 Hard Topics" : "⚡ Fast 20";
 
   return (
-    <div className="flex flex-col h-screen bg-background overflow-hidden">
+    <div className="flex flex-col h-screen overflow-hidden" style={{ background: 'var(--gradient-surface)' }}>
       {/* Header */}
-      <div className="border-b border-border/50 px-4 py-3 flex items-center justify-between shrink-0 bg-card">
+      <div className="border-b border-border/30 px-4 py-2.5 flex items-center justify-between shrink-0 glass">
         <div className="flex items-center gap-4">
           <button onClick={() => navigate("/revision")} className="p-2 hover:bg-muted rounded-md">
             <ChevronLeft size={20} />
@@ -235,12 +235,12 @@ const RevisionPractice = () => {
       </div>
 
       {/* Footer */}
-      <div className="border-t border-border/50 p-4 shrink-0 bg-card">
-        <div className="max-w-3xl mx-auto flex items-center justify-between gap-4">
-          <button onClick={handlePrev} disabled={currentIndex === 0} className="compact-btn flex items-center gap-2 disabled:opacity-30">
-            <ChevronLeft size={16} /> Previous
+      <div className="border-t border-border/30 p-3 shrink-0 glass">
+        <div className="max-w-3xl mx-auto flex items-center justify-between gap-3">
+          <button onClick={handlePrev} disabled={currentIndex === 0} className="compact-btn flex items-center gap-1.5 text-xs disabled:opacity-30">
+            <ChevronLeft size={14} /> Prev
           </button>
-          <button onClick={handleNext} disabled={!revealed} className="px-6 py-2 bg-primary text-primary-foreground rounded-md text-sm font-bold hover:opacity-90 disabled:opacity-30">
+          <button onClick={handleNext} disabled={!revealed} className="gradient-btn px-5 py-2 text-xs disabled:opacity-30">
             {currentIndex === questions.length - 1 ? "Finish" : "Next"}
           </button>
         </div>
