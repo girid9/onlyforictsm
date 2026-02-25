@@ -23,10 +23,10 @@ const Revision = () => {
   }, [questionsBySubjectTopic]);
 
   const modes = [
-    { id: "srs", title: "Spaced Repetition", desc: "Review after 1, 3, and 7 days", icon: CalendarClock, color: "text-primary", bg: "bg-primary/10", stat: `${srsDue.length} due`, disabled: srsDue.length === 0 },
-    { id: "wrong", title: "Wrong Answers", desc: "Re-practice your mistakes", icon: RotateCcw, color: "text-destructive", bg: "bg-destructive/10", stat: `${wrongCount} Qs`, disabled: wrongCount === 0 },
-    { id: "hard", title: "Hard Topics", desc: "Accuracy below 50%", icon: Brain, color: "text-warning", bg: "bg-warning/10", stat: `${hardTopicCount} topics`, disabled: hardTopicCount === 0 },
-    { id: "fast20", title: "Fast 20", desc: "Timed random challenge", icon: Zap, color: "text-success", bg: "bg-success/10", stat: `${Math.min(20, totalQuestions)} Qs`, disabled: totalQuestions === 0 },
+    { id: "srs", title: "Spaced Repetition", desc: "Review after 1, 3, and 7 days", icon: CalendarClock, color: "text-primary", bg: "bg-primary/15", stat: `${srsDue.length} due`, disabled: srsDue.length === 0 },
+    { id: "wrong", title: "Wrong Answers", desc: "Re-practice your mistakes", icon: RotateCcw, color: "text-destructive", bg: "bg-destructive/15", stat: `${wrongCount} Qs`, disabled: wrongCount === 0 },
+    { id: "hard", title: "Hard Topics", desc: "Accuracy below 50%", icon: Brain, color: "text-warning", bg: "bg-warning/15", stat: `${hardTopicCount} topics`, disabled: hardTopicCount === 0 },
+    { id: "fast20", title: "Fast 20", desc: "Timed random challenge", icon: Zap, color: "text-success", bg: "bg-success/15", stat: `${Math.min(20, totalQuestions)} Qs`, disabled: totalQuestions === 0 },
   ];
 
   const handleStart = (modeId: string) => {
@@ -45,7 +45,7 @@ const Revision = () => {
             key={mode.id}
             onClick={() => handleStart(mode.id)}
             disabled={mode.disabled}
-            className="bg-card rounded-2xl px-4 py-4 w-full text-left flex items-center gap-4 shadow-sm border border-border/30 disabled:opacity-35 disabled:cursor-not-allowed active:scale-[0.99] transition-transform"
+            className="glass-card px-4 py-4 w-full text-left flex items-center gap-4 disabled:opacity-35 disabled:cursor-not-allowed active:scale-[0.99] transition-transform"
           >
             <div className={`h-11 w-11 rounded-xl ${mode.bg} flex items-center justify-center shrink-0`}>
               <mode.icon size={20} className={mode.color} />
@@ -63,10 +63,10 @@ const Revision = () => {
       </div>
 
       {wrongCount === 0 && hardTopicCount === 0 && srsDue.length === 0 && (
-        <div className="bg-card rounded-2xl p-8 text-center mt-6 shadow-sm border border-border/30">
+        <div className="glass-card p-8 text-center mt-6">
           <AlertTriangle size={24} className="text-warning mx-auto mb-3" />
           <p className="text-sm text-muted-foreground mb-4">Start practising to unlock revision modes</p>
-          <button onClick={() => navigate('/subjects')} className="bg-primary text-primary-foreground rounded-xl px-6 py-2.5 text-sm font-semibold active:scale-[0.98] transition-transform">Browse Subjects</button>
+          <button onClick={() => navigate('/subjects')} className="gradient-btn px-6 py-2.5 text-sm active:scale-[0.98] transition-transform">Browse Subjects</button>
         </div>
       )}
     </div>

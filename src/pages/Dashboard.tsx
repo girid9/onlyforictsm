@@ -40,7 +40,7 @@ const Dashboard = () => {
       </div>
 
       {/* Main Stats Card */}
-      <div className="bg-card rounded-2xl p-5 shadow-sm border border-border/30 flex items-center gap-5">
+      <div className="glass-card p-5 flex items-center gap-5">
         <ProgressRing value={overallAccuracy} size={72} strokeWidth={6} label="Accuracy" />
         <div className="flex-1 grid grid-cols-3 gap-3">
           {[
@@ -58,26 +58,26 @@ const Dashboard = () => {
       </div>
 
       {/* Level */}
-      <div className="bg-card rounded-2xl p-4 shadow-sm border border-border/30">
+      <div className="glass-card p-4">
         <LevelBadge xp={xp} />
       </div>
 
       {/* Streak Calendar */}
-      <div className="bg-card rounded-2xl p-4 shadow-sm border border-border/30">
+      <div className="glass-card p-4">
         <p className="text-xs font-semibold text-muted-foreground uppercase tracking-wider mb-3">30-Day Activity</p>
         <StreakCalendar answers={answers} />
       </div>
 
       {/* Accuracy Trend */}
       {trend.length > 1 && (
-        <div className="bg-card rounded-2xl p-4 shadow-sm border border-border/30">
+        <div className="glass-card p-4">
           <p className="text-xs font-semibold text-muted-foreground uppercase tracking-wider mb-3">Trend</p>
           <div className="h-36">
             <ResponsiveContainer width="100%" height="100%">
               <LineChart data={trend}>
-                <XAxis dataKey="label" tick={{ fontSize: 10 }} stroke="hsl(var(--muted-foreground))" />
-                <YAxis domain={[0, 100]} tick={{ fontSize: 10 }} stroke="hsl(var(--muted-foreground))" width={28} />
-                <Tooltip contentStyle={{ background: 'hsl(var(--card))', border: '1px solid hsl(var(--border))', borderRadius: 16, fontSize: 12 }} />
+                <XAxis dataKey="label" tick={{ fontSize: 10, fill: "hsl(var(--muted-foreground))" }} stroke="transparent" />
+                <YAxis domain={[0, 100]} tick={{ fontSize: 10, fill: "hsl(var(--muted-foreground))" }} stroke="transparent" width={28} />
+                <Tooltip contentStyle={{ background: 'hsl(var(--background))', border: '1px solid hsl(var(--glass-border) / 0.15)', borderRadius: 16, fontSize: 12, color: 'hsl(var(--foreground))' }} />
                 <Line type="monotone" dataKey="accuracy" stroke="hsl(var(--primary))" strokeWidth={2} dot={{ r: 3, fill: "hsl(var(--primary))" }} />
               </LineChart>
             </ResponsiveContainer>
@@ -91,7 +91,7 @@ const Dashboard = () => {
           { title: "Strong", icon: TrendingUp, items: strongTopics, color: "text-success", barColor: "bg-success" },
           { title: "Weak", icon: TrendingDown, items: weakTopics, color: "text-destructive", barColor: "bg-destructive" },
         ].map((section) => (
-          <div key={section.title} className="bg-card rounded-2xl p-4 shadow-sm border border-border/30">
+          <div key={section.title} className="glass-card p-4">
             <div className="flex items-center gap-1.5 mb-3">
               <section.icon size={14} className={section.color} />
               <p className="text-xs font-semibold text-muted-foreground">{section.title}</p>
@@ -104,7 +104,7 @@ const Dashboard = () => {
                   <p className="text-xs font-medium text-foreground truncate mr-2">{t.topicName}</p>
                   <span className={`text-xs font-bold ${section.color}`}>{t.accuracy}%</span>
                 </div>
-                <div className="h-1.5 bg-secondary rounded-full mt-1 overflow-hidden">
+                <div className="h-1.5 rounded-full mt-1 overflow-hidden" style={{ background: "hsl(var(--glass-bg) / 0.1)" }}>
                   <div className={`h-full ${section.barColor} rounded-full`} style={{ width: `${t.accuracy}%` }} />
                 </div>
               </div>
@@ -114,7 +114,7 @@ const Dashboard = () => {
       </div>
 
       {/* Subject Progress */}
-      <div className="bg-card rounded-2xl p-4 shadow-sm border border-border/30">
+      <div className="glass-card p-4">
         <p className="text-xs font-semibold text-muted-foreground uppercase tracking-wider mb-3">Subjects</p>
         <div className="space-y-3">
           {subjectProgress.map((s) => (
@@ -123,8 +123,8 @@ const Dashboard = () => {
                 <p className="text-sm font-medium text-foreground truncate">{s.subjectName}</p>
                 <span className="text-xs text-muted-foreground font-semibold">{s.completion}%</span>
               </div>
-              <div className="h-1.5 bg-secondary rounded-full overflow-hidden">
-                <div className="h-full bg-primary rounded-full transition-all duration-500" style={{ width: `${s.completion}%` }} />
+              <div className="h-1.5 rounded-full overflow-hidden" style={{ background: "hsl(var(--glass-bg) / 0.1)" }}>
+                <div className="h-full progress-gradient transition-all duration-500" style={{ width: `${s.completion}%` }} />
               </div>
             </div>
           ))}
@@ -132,7 +132,7 @@ const Dashboard = () => {
       </div>
 
       {/* Recent */}
-      <div className="bg-card rounded-2xl p-4 shadow-sm border border-border/30">
+      <div className="glass-card p-4">
         <p className="text-xs font-semibold text-muted-foreground uppercase tracking-wider mb-3">Recent Activity</p>
         {recentActivity.length === 0 ? (
           <p className="text-xs text-muted-foreground">No activity yet</p>

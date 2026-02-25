@@ -40,21 +40,21 @@ const Topics = () => {
         {topicsWithProgress.map((t) => {
           const progressPct = Math.round((t.answered / t.questionCount) * 100);
           return (
-            <Link key={t.id} to={`/practice/${subjectId}/${t.id}`} className="bg-card rounded-2xl px-4 py-4 flex items-center gap-3.5 shadow-sm border border-border/30 active:scale-[0.99] transition-transform">
-              <div className="h-10 w-10 rounded-xl bg-primary/10 flex items-center justify-center shrink-0">
+            <Link key={t.id} to={`/practice/${subjectId}/${t.id}`} className="glass-card px-4 py-4 flex items-center gap-3.5 active:scale-[0.99] transition-transform block">
+              <div className="h-10 w-10 rounded-xl bg-primary/15 flex items-center justify-center shrink-0">
                 <Play size={16} className="text-primary ml-0.5" />
               </div>
               <div className="flex-1 min-w-0">
                 <h3 className="text-sm font-semibold text-foreground truncate">{t.name}</h3>
                 <div className="flex items-center gap-2 mt-1.5">
-                  <div className="flex-1 h-1.5 bg-secondary rounded-full overflow-hidden">
-                    <div className="h-full bg-primary rounded-full transition-all duration-500" style={{ width: `${progressPct}%` }} />
+                  <div className="flex-1 h-1.5 rounded-full overflow-hidden" style={{ background: "hsl(var(--glass-bg) / 0.1)" }}>
+                    <div className="h-full progress-gradient transition-all duration-500" style={{ width: `${progressPct}%` }} />
                   </div>
                   <span className="text-[10px] text-muted-foreground font-medium shrink-0">{t.questionCount} Qs</span>
                 </div>
               </div>
               {t.answered > 0 && (
-                <span className={`text-xs font-bold px-2.5 py-1 rounded-full ${t.pct >= 70 ? 'bg-success/10 text-success' : 'bg-warning/10 text-warning'}`}>
+                <span className={`text-xs font-bold px-2.5 py-1 rounded-full ${t.pct >= 70 ? 'bg-success/15 text-success' : 'bg-warning/15 text-warning'}`}>
                   {t.pct}%
                 </span>
               )}

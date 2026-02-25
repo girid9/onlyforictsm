@@ -159,11 +159,11 @@ const Practice = () => {
   const progressPct = ((currentIndex + 1) / questions.length) * 100;
 
   return (
-    <div className="flex flex-col h-screen overflow-hidden bg-background">
+    <div className="flex flex-col h-screen overflow-hidden">
       {/* Header */}
-      <div className="px-4 py-3 flex items-center justify-between shrink-0 bg-card border-b border-border/30">
+      <div className="px-4 py-3 flex items-center justify-between shrink-0" style={{ background: "hsl(var(--glass-bg) / 0.06)", backdropFilter: "blur(24px)", WebkitBackdropFilter: "blur(24px)", borderBottom: "1px solid hsl(var(--glass-border) / 0.1)" }}>
         <div className="flex items-center gap-3">
-          <button onClick={() => navigate(-1)} className="h-9 w-9 rounded-xl bg-secondary/50 flex items-center justify-center active:scale-95 transition-transform">
+          <button onClick={() => navigate(-1)} className="h-9 w-9 rounded-xl flex items-center justify-center active:scale-95 transition-transform text-foreground/70" style={{ background: "hsl(var(--glass-bg) / 0.1)" }}>
             <ChevronLeft size={18} />
           </button>
           <div className="hidden sm:block">
@@ -173,20 +173,20 @@ const Practice = () => {
         </div>
         <div className="flex items-center gap-2">
           {examMode && (
-            <div className={`px-3 py-1.5 rounded-full text-xs font-bold flex items-center gap-1.5 ${timerPct <= 20 ? 'text-destructive bg-destructive/10' : timerPct <= 50 ? 'text-warning bg-warning/10' : 'text-success bg-success/10'}`}>
+            <div className={`px-3 py-1.5 rounded-full text-xs font-bold flex items-center gap-1.5 ${timerPct <= 20 ? 'text-destructive bg-destructive/15' : timerPct <= 50 ? 'text-warning bg-warning/15' : 'text-success bg-success/15'}`}>
               <Timer size={12} />
               {timerMinutes}:{timerSeconds.toString().padStart(2, '0')}
             </div>
           )}
-          <span className="px-3 py-1.5 bg-secondary/50 rounded-full text-xs font-semibold text-foreground">
+          <span className="px-3 py-1.5 rounded-full text-xs font-semibold text-foreground" style={{ background: "hsl(var(--glass-bg) / 0.1)" }}>
             {currentIndex + 1}/{questions.length}
           </span>
-          <button onClick={() => toggleBookmark(currentQuestion.id)} className={`h-9 w-9 rounded-xl flex items-center justify-center active:scale-95 transition-transform ${isBookmarked ? 'text-primary bg-primary/10' : 'bg-secondary/50'}`}>
+          <button onClick={() => toggleBookmark(currentQuestion.id)} className={`h-9 w-9 rounded-xl flex items-center justify-center active:scale-95 transition-transform ${isBookmarked ? 'text-primary bg-primary/15' : 'text-foreground/60'}`} style={!isBookmarked ? { background: "hsl(var(--glass-bg) / 0.1)" } : {}}>
             {isBookmarked ? <BookmarkCheck size={16} /> : <Bookmark size={16} />}
           </button>
           <Popover>
             <PopoverTrigger asChild>
-              <button className="h-9 w-9 rounded-xl bg-secondary/50 flex items-center justify-center active:scale-95 transition-transform">
+              <button className="h-9 w-9 rounded-xl flex items-center justify-center active:scale-95 transition-transform text-foreground/60" style={{ background: "hsl(var(--glass-bg) / 0.1)" }}>
                 <Settings size={16} />
               </button>
             </PopoverTrigger>
@@ -204,15 +204,15 @@ const Practice = () => {
                   <Slider value={[settings.autoAdvanceDelay || 2]} onValueChange={([val]) => updateSettings({ autoAdvanceDelay: val })} min={1} max={5} step={1} className="w-full" />
                 </div>
               )}
-              <div className="border-t border-border pt-3 flex items-center justify-between">
+              <div className="border-t border-border/15 pt-3 flex items-center justify-between">
                 <Label htmlFor="roller-mode" className="text-xs font-medium">Roller Mode</Label>
                 <Switch id="roller-mode" checked={settings.rollerMode || false} onCheckedChange={(checked) => updateSettings({ rollerMode: checked })} />
               </div>
-              <div className="border-t border-border pt-3 flex items-center justify-between">
+              <div className="border-t border-border/15 pt-3 flex items-center justify-between">
                 <Label htmlFor="concept-mode" className="text-xs font-medium flex items-center gap-1.5"><BookOpen size={12} /> Concept Mode</Label>
                 <Switch id="concept-mode" checked={conceptMode} onCheckedChange={setConceptMode} />
               </div>
-              <div className="border-t border-border pt-3 space-y-3">
+              <div className="border-t border-border/15 pt-3 space-y-3">
                 <div className="flex items-center justify-between">
                   <Label htmlFor="exam-mode" className="text-xs font-medium flex items-center gap-1.5"><Timer size={12} /> Exam Mode</Label>
                   <Switch id="exam-mode" checked={examMode} onCheckedChange={setExamMode} />
@@ -239,11 +239,11 @@ const Practice = () => {
 
       {/* Progress Bar */}
       <div className="shrink-0">
-        <div className="h-1 w-full bg-secondary">
-          <div className="h-full bg-primary rounded-r-full transition-all duration-300" style={{ width: `${progressPct}%` }} />
+        <div className="h-1 w-full" style={{ background: "hsl(var(--glass-bg) / 0.08)" }}>
+          <div className="h-full progress-gradient rounded-r-full transition-all duration-300" style={{ width: `${progressPct}%` }} />
         </div>
         {examMode && (
-          <div className="h-1 w-full bg-secondary">
+          <div className="h-1 w-full" style={{ background: "hsl(var(--glass-bg) / 0.08)" }}>
             <div className={`h-full ${timerColor} rounded-r-full transition-all duration-300`} style={{ width: `${timerPct}%` }} />
           </div>
         )}
@@ -254,14 +254,14 @@ const Practice = () => {
         <div className="max-w-2xl mx-auto">
           <div className="mb-8">
             <div className="flex items-center gap-2 mb-4">
-              <span className="px-2.5 py-1 bg-primary/10 text-primary text-[11px] font-semibold rounded-full">Q{currentIndex + 1}</span>
+              <span className="px-2.5 py-1 bg-primary/15 text-primary text-[11px] font-semibold rounded-full">Q{currentIndex + 1}</span>
               {conceptMode && (
-                <span className="px-2.5 py-1 bg-accent/10 text-accent text-[11px] font-semibold rounded-full">📘 Concept</span>
+                <span className="px-2.5 py-1 bg-accent/15 text-accent text-[11px] font-semibold rounded-full">📘 Concept</span>
               )}
             </div>
 
             {conceptMode && currentQuestion.notes && !revealed && (
-              <div className="mb-5 p-4 bg-accent/5 border border-accent/20 rounded-2xl">
+              <div className="mb-5 glass-card p-4">
                 <div className="flex items-center gap-1.5 mb-2">
                   <BookOpen size={12} className="text-accent" />
                   <span className="text-[11px] font-semibold text-accent">Concept Hint</span>
@@ -283,25 +283,26 @@ const Practice = () => {
             <div className="space-y-3">
               {shuffledOptions.map((option, i) => {
                 if (!option.trim()) return null;
-                let styles = "bg-card border border-border/40 shadow-sm";
+                let bgStyle: React.CSSProperties = { background: "hsl(var(--glass-bg) / 0.06)", border: "1px solid hsl(var(--glass-border) / 0.1)" };
                 if (revealed) {
-                  if (i === shuffledAnswerIndex) styles = "bg-success/10 border-success/40";
-                  else if (i === selectedOption) styles = "bg-destructive/10 border-destructive/40";
-                  else styles = "bg-card border border-border/20 opacity-50";
+                  if (i === shuffledAnswerIndex) bgStyle = { background: "hsl(var(--success) / 0.15)", border: "1px solid hsl(var(--success) / 0.4)" };
+                  else if (i === selectedOption) bgStyle = { background: "hsl(var(--destructive) / 0.15)", border: "1px solid hsl(var(--destructive) / 0.4)" };
+                  else bgStyle = { background: "hsl(var(--glass-bg) / 0.03)", border: "1px solid hsl(var(--glass-border) / 0.05)", opacity: 0.5 };
                 }
                 return (
                   <button
                     key={i}
                     onClick={() => handleSelect(i)}
                     disabled={revealed}
-                    className={`w-full text-left px-4 py-4 rounded-2xl flex items-center gap-3 active:scale-[0.99] transition-all ${styles}`}
+                    className="w-full text-left px-4 py-4 rounded-2xl flex items-center gap-3 active:scale-[0.99] transition-all"
+                    style={bgStyle}
                   >
                     <span className={`h-9 w-9 rounded-xl flex items-center justify-center text-xs font-bold shrink-0 ${
-                      revealed && i === shuffledAnswerIndex ? 'bg-success text-success-foreground' : 'bg-secondary/60 text-foreground'
-                    }`}>
+                      revealed && i === shuffledAnswerIndex ? 'bg-success text-success-foreground' : 'text-foreground'
+                    }`} style={!(revealed && i === shuffledAnswerIndex) ? { background: "hsl(var(--glass-bg) / 0.1)" } : {}}>
                       {OPTION_LABELS[i]}
                     </span>
-                    <span className="text-sm md:text-base font-medium">{option}</span>
+                    <span className="text-sm md:text-base font-medium text-foreground">{option}</span>
                   </button>
                 );
               })}
@@ -311,7 +312,7 @@ const Practice = () => {
           {/* Explanation */}
           {revealed && (
             <div className="mt-6 space-y-3">
-              <div className={`flex items-center gap-3 p-4 rounded-2xl border ${selectedOption === shuffledAnswerIndex ? 'bg-success/10 border-success/30' : 'bg-destructive/10 border-destructive/30'}`}>
+              <div className={`flex items-center gap-3 p-4 rounded-2xl ${selectedOption === shuffledAnswerIndex ? 'bg-success/15' : 'bg-destructive/15'}`} style={{ border: `1px solid hsl(var(--${selectedOption === shuffledAnswerIndex ? 'success' : 'destructive'}) / 0.3)` }}>
                 {selectedOption === shuffledAnswerIndex ? (
                   <CheckCircle2 size={20} className="text-success shrink-0" />
                 ) : (
@@ -330,7 +331,7 @@ const Practice = () => {
               </div>
 
               {currentQuestion.notes && (
-                <div className="p-4 bg-card border border-border/30 rounded-2xl shadow-sm">
+                <div className="glass-card p-4">
                   <div className="flex items-center gap-2 mb-2 text-muted-foreground">
                     <Info size={14} />
                     <span className="text-[11px] font-semibold uppercase tracking-wider">Explanation</span>
@@ -344,15 +345,15 @@ const Practice = () => {
       </div>
 
       {/* Footer */}
-      <div className="px-4 py-3 shrink-0 bg-card border-t border-border/30">
+      <div className="px-4 py-3 shrink-0" style={{ background: "hsl(var(--glass-bg) / 0.06)", backdropFilter: "blur(24px)", WebkitBackdropFilter: "blur(24px)", borderTop: "1px solid hsl(var(--glass-border) / 0.1)" }}>
         <div className="max-w-2xl mx-auto flex items-center justify-between gap-3">
-          <button onClick={handlePrev} disabled={currentIndex === 0} className="h-10 px-4 rounded-xl bg-secondary/50 text-sm font-medium flex items-center gap-1.5 disabled:opacity-30 active:scale-95 transition-transform">
+          <button onClick={handlePrev} disabled={currentIndex === 0} className="h-10 px-4 rounded-xl text-sm font-medium flex items-center gap-1.5 disabled:opacity-30 active:scale-95 transition-transform text-foreground" style={{ background: "hsl(var(--glass-bg) / 0.1)" }}>
             <ChevronLeft size={14} /> Prev
           </button>
           <p className="text-xs text-muted-foreground hidden sm:block">
             {settings.rollerMode ? "Swipe to browse" : "Keys 1-4 to select"}
           </p>
-          <button onClick={handleNext} disabled={!revealed} className="h-10 px-6 rounded-xl bg-primary text-primary-foreground text-sm font-semibold disabled:opacity-30 active:scale-95 transition-transform">
+          <button onClick={handleNext} disabled={!revealed} className="h-10 px-6 rounded-xl gradient-btn text-sm disabled:opacity-30 active:scale-95 transition-transform">
             {currentIndex === questions.length - 1 ? "Finish" : "Next →"}
           </button>
         </div>

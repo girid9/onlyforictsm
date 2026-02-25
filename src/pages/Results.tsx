@@ -26,7 +26,7 @@ const Results = () => {
   return (
     <div className="p-5 md:p-8 max-w-xl mx-auto pb-10 space-y-5">
       {/* Hero Result */}
-      <div className="bg-card rounded-2xl p-6 text-center shadow-sm border border-border/30">
+      <div className="glass-card p-6 text-center">
         <div className="inline-flex items-center justify-center mb-4">
           {pct >= 70 ? <Trophy size={32} className="text-warning" /> : pct >= 40 ? <Award size={32} className="text-primary" /> : <Target size={32} className="text-destructive" />}
         </div>
@@ -40,12 +40,12 @@ const Results = () => {
           {pct >= 90 ? "Mastery Achieved! 🎉" : pct >= 70 ? "Great Job! 👏" : pct >= 40 ? "Keep Practicing 💪" : "Needs Improvement 📚"}
         </p>
 
-        <div className="flex items-center justify-center gap-8 mt-5 pt-4 border-t border-border/30">
+        <div className="flex items-center justify-center gap-8 mt-5 pt-4" style={{ borderTop: "1px solid hsl(var(--glass-border) / 0.1)" }}>
           <div className="text-center">
             <p className="text-xl font-bold text-foreground">{correct}/{total}</p>
             <p className="text-xs text-muted-foreground mt-0.5">Score</p>
           </div>
-          <div className="h-8 w-px bg-border/50" />
+          <div className="h-8 w-px" style={{ background: "hsl(var(--glass-border) / 0.15)" }} />
           <div className="text-center">
             <p className="text-xl font-bold text-foreground">{minutes}:{seconds.toString().padStart(2, '0')}</p>
             <p className="text-xs text-muted-foreground mt-0.5">Time</p>
@@ -57,11 +57,11 @@ const Results = () => {
       <div className="grid grid-cols-2 gap-3">
         <button
           onClick={() => { setSessionResult(null); navigate(`/practice/${subjectId}/${topicId}`); }}
-          className="bg-primary text-primary-foreground rounded-2xl py-3.5 text-sm font-semibold flex items-center justify-center gap-2 shadow-sm active:scale-[0.98] transition-transform"
+          className="gradient-btn rounded-2xl py-3.5 text-sm flex items-center justify-center gap-2 active:scale-[0.98] transition-transform"
         >
           <RotateCcw size={16} /> Retry
         </button>
-        <Link to="/" className="bg-card border border-border/30 rounded-2xl py-3.5 text-sm font-semibold text-foreground flex items-center justify-center gap-2 shadow-sm active:scale-[0.98] transition-transform">
+        <Link to="/" className="glass-card rounded-2xl py-3.5 text-sm font-semibold text-foreground flex items-center justify-center gap-2 active:scale-[0.98] transition-transform">
           <Home size={16} /> Home
         </Link>
       </div>
@@ -71,7 +71,7 @@ const Results = () => {
         <p className="text-base font-bold text-foreground mb-3">Review</p>
         <div className="space-y-2.5">
           {questionResults.map((qr, i) => (
-            <div key={i} className={`bg-card rounded-2xl p-4 shadow-sm border-l-[3px] ${qr.correct ? "border-l-success border border-border/30" : "border-l-destructive border border-border/30"}`}>
+            <div key={i} className="glass-card p-4" style={{ borderLeft: `3px solid hsl(var(--${qr.correct ? 'success' : 'destructive'}))` }}>
               <div className="flex items-start gap-3">
                 {qr.correct ? <CheckCircle2 size={16} className="text-success shrink-0 mt-0.5" /> : <Target size={16} className="text-destructive shrink-0 mt-0.5" />}
                 <div className="flex-1 min-w-0">

@@ -7,11 +7,11 @@ export interface ThemeConfig {
 }
 
 export const THEMES: Record<ThemeName, ThemeConfig> = {
-  midnight: { name: "Mist Green", dot: "#4aa87a", isDark: false },
-  "light-paper": { name: "Warm Paper", dot: "#c9a87c", isDark: false },
-  "ocean-blue": { name: "Ocean Teal", dot: "#2ba8a0", isDark: false },
-  "royal-purple": { name: "Lavender", dot: "#9a7bcf", isDark: false },
-  "sunset-pink": { name: "Rose Mist", dot: "#d87a9e", isDark: false },
+  midnight: { name: "Deep Teal", dot: "#3dd9a0", isDark: true },
+  "light-paper": { name: "Warm Amber", dot: "#d4a44a", isDark: true },
+  "ocean-blue": { name: "Ocean Blue", dot: "#33b8e0", isDark: true },
+  "royal-purple": { name: "Royal Purple", dot: "#9a7bcf", isDark: true },
+  "sunset-pink": { name: "Rose Glass", dot: "#e06088", isDark: true },
 };
 
 export const THEME_NAMES = Object.keys(THEMES) as ThemeName[];
