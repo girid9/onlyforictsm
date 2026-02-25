@@ -1,6 +1,6 @@
 import { useMemo } from "react";
 import { Link } from "react-router-dom";
-import { ArrowRight, GraduationCap, PenTool, Lightbulb, UserCheck } from "lucide-react";
+import { ChevronRight, GraduationCap, PenTool, Lightbulb, UserCheck } from "lucide-react";
 import { useDataStore, useProgressStore } from "@/store/useAppStore";
 import { Breadcrumbs } from "@/components/Breadcrumbs";
 
@@ -21,9 +21,10 @@ const Subjects = () => {
   }, [subjects, answers, questionsBySubjectTopic]);
 
   return (
-    <div className="p-4 md:p-6 max-w-lg mx-auto pb-8">
+    <div className="p-5 md:p-8 max-w-xl mx-auto pb-10">
       <Breadcrumbs items={[{ label: "Home", to: "/" }, { label: "Subjects" }]} />
-      <h1 className="text-2xl font-bold mb-5">Subjects</h1>
+      <h1 className="text-2xl font-bold text-foreground mb-1">Subjects</h1>
+      <p className="text-sm text-muted-foreground mb-6">Choose a subject to start practicing</p>
       <div className="space-y-3">
         {subjectsWithProgress.map((s, i) => {
           const Icon = SUBJECT_ICONS[i % SUBJECT_ICONS.length];
@@ -32,26 +33,22 @@ const Subjects = () => {
             <Link
               key={s.id}
               to={`/subjects/${s.id}`}
-              className="glass-card p-4 flex items-center gap-4 group focus-ring"
+              className="bg-card rounded-2xl p-4 flex items-center gap-4 shadow-sm border border-border/30 active:scale-[0.99] transition-transform"
               aria-label={`${s.name} - ${completionPct}% complete`}
             >
-              <div className="h-11 w-11 rounded-xl bg-primary/8 flex items-center justify-center text-primary shrink-0">
-                <Icon size={20} />
+              <div className="h-12 w-12 rounded-xl bg-primary/10 flex items-center justify-center text-primary shrink-0">
+                <Icon size={22} />
               </div>
               <div className="flex-1 min-w-0">
                 <h2 className="text-sm font-bold text-foreground truncate">{s.name}</h2>
-                <div className="flex items-center gap-2 text-[10px] text-muted-foreground mt-0.5">
-                  <span>{s.topicCount} topics</span>
-                  <span>·</span>
-                  <span>{s.questionCount} Qs</span>
-                </div>
-                <div className="h-1.5 bg-secondary rounded-full overflow-hidden mt-2">
-                  <div className="h-full progress-gradient" style={{ width: `${completionPct}%` }} />
+                <p className="text-xs text-muted-foreground mt-0.5">{s.topicCount} topics · {s.questionCount} questions</p>
+                <div className="h-1.5 bg-secondary rounded-full overflow-hidden mt-2.5">
+                  <div className="h-full bg-primary rounded-full transition-all duration-500" style={{ width: `${completionPct}%` }} />
                 </div>
               </div>
-              <div className="text-right shrink-0">
+              <div className="text-right shrink-0 flex flex-col items-end gap-1">
                 <p className="text-sm font-bold text-primary">{completionPct}%</p>
-                <ArrowRight size={14} className="text-muted-foreground ml-auto mt-1" />
+                <ChevronRight size={16} className="text-muted-foreground" />
               </div>
             </Link>
           );

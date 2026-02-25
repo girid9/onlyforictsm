@@ -4,7 +4,7 @@ import { getTopicStats, getSubjectProgress, getRecentActivity, getAccuracyTrend 
 import { StreakCalendar } from "@/components/StreakCalendar";
 import { LevelBadge } from "@/components/LevelBadge";
 import ProgressRing from "@/components/ProgressRing";
-import { Target, TrendingUp, TrendingDown, Zap, Clock, CheckCircle2, XCircle, Flame } from "lucide-react";
+import { TrendingUp, TrendingDown, Zap, Clock, CheckCircle2, XCircle, Flame } from "lucide-react";
 import { LineChart, Line, XAxis, YAxis, ResponsiveContainer, Tooltip } from "recharts";
 
 const Dashboard = () => {
@@ -33,12 +33,14 @@ const Dashboard = () => {
   }, [answers]);
 
   return (
-    <div className="p-4 md:p-6 max-w-2xl mx-auto pb-8">
-      <h1 className="text-2xl font-bold text-foreground mb-1">Dashboard</h1>
-      <p className="text-xs text-muted-foreground mb-5">Your learning analytics</p>
+    <div className="p-5 md:p-8 max-w-2xl mx-auto pb-10 space-y-5">
+      <div>
+        <h1 className="text-2xl font-bold text-foreground">Dashboard</h1>
+        <p className="text-sm text-muted-foreground mt-0.5">Your learning analytics</p>
+      </div>
 
-      {/* Main stats */}
-      <div className="glass-card p-5 mb-4 flex items-center gap-5">
+      {/* Main Stats Card */}
+      <div className="bg-card rounded-2xl p-5 shadow-sm border border-border/30 flex items-center gap-5">
         <ProgressRing value={overallAccuracy} size={72} strokeWidth={6} label="Accuracy" />
         <div className="flex-1 grid grid-cols-3 gap-3">
           {[
@@ -48,35 +50,35 @@ const Dashboard = () => {
           ].map((s) => (
             <div key={s.label} className="text-center">
               <s.icon size={14} className={`${s.color} mx-auto mb-1`} />
-              <p className="text-xs font-bold text-foreground">{s.value}</p>
-              <p className="text-[9px] text-muted-foreground">{s.label}</p>
+              <p className="text-sm font-bold text-foreground">{s.value}</p>
+              <p className="text-[10px] text-muted-foreground">{s.label}</p>
             </div>
           ))}
         </div>
       </div>
 
       {/* Level */}
-      <div className="glass-card p-4 mb-4">
+      <div className="bg-card rounded-2xl p-4 shadow-sm border border-border/30">
         <LevelBadge xp={xp} />
       </div>
 
       {/* Streak Calendar */}
-      <div className="glass-card p-4 mb-4">
-        <p className="text-[10px] font-bold text-muted-foreground uppercase tracking-wider mb-3">30-Day Activity</p>
+      <div className="bg-card rounded-2xl p-4 shadow-sm border border-border/30">
+        <p className="text-xs font-semibold text-muted-foreground uppercase tracking-wider mb-3">30-Day Activity</p>
         <StreakCalendar answers={answers} />
       </div>
 
       {/* Accuracy Trend */}
       {trend.length > 1 && (
-        <div className="glass-card p-4 mb-4">
-          <p className="text-[10px] font-bold text-muted-foreground uppercase tracking-wider mb-3">Trend</p>
+        <div className="bg-card rounded-2xl p-4 shadow-sm border border-border/30">
+          <p className="text-xs font-semibold text-muted-foreground uppercase tracking-wider mb-3">Trend</p>
           <div className="h-36">
             <ResponsiveContainer width="100%" height="100%">
               <LineChart data={trend}>
-                <XAxis dataKey="label" tick={{ fontSize: 9 }} stroke="hsl(var(--muted-foreground))" />
-                <YAxis domain={[0, 100]} tick={{ fontSize: 9 }} stroke="hsl(var(--muted-foreground))" width={28} />
-                <Tooltip contentStyle={{ background: 'hsl(var(--card))', border: '1px solid hsl(var(--border))', borderRadius: 12, fontSize: 11 }} />
-                <Line type="monotone" dataKey="accuracy" stroke="hsl(var(--primary))" strokeWidth={2} dot={{ r: 2.5, fill: "hsl(var(--primary))" }} />
+                <XAxis dataKey="label" tick={{ fontSize: 10 }} stroke="hsl(var(--muted-foreground))" />
+                <YAxis domain={[0, 100]} tick={{ fontSize: 10 }} stroke="hsl(var(--muted-foreground))" width={28} />
+                <Tooltip contentStyle={{ background: 'hsl(var(--card))', border: '1px solid hsl(var(--border))', borderRadius: 16, fontSize: 12 }} />
+                <Line type="monotone" dataKey="accuracy" stroke="hsl(var(--primary))" strokeWidth={2} dot={{ r: 3, fill: "hsl(var(--primary))" }} />
               </LineChart>
             </ResponsiveContainer>
           </div>
@@ -84,59 +86,45 @@ const Dashboard = () => {
       )}
 
       {/* Strong & Weak */}
-      <div className="grid grid-cols-2 gap-3 mb-4">
-        <div className="glass-card p-4">
-          <div className="flex items-center gap-1.5 mb-3">
-            <TrendingUp size={12} className="text-success" />
-            <p className="text-[10px] font-bold text-muted-foreground uppercase">Strong</p>
-          </div>
-          {strongTopics.length === 0 ? (
-            <p className="text-[10px] text-muted-foreground">Keep practising</p>
-          ) : strongTopics.map((t) => (
-            <div key={`${t.subjectId}-${t.topicId}`} className="mb-2 last:mb-0">
-              <div className="flex items-center justify-between">
-                <p className="text-[10px] font-medium text-foreground truncate mr-2">{t.topicName}</p>
-                <span className="text-[10px] font-bold text-success">{t.accuracy}%</span>
-              </div>
-              <div className="h-1 bg-secondary rounded-full mt-1 overflow-hidden">
-                <div className="h-full bg-success rounded-full" style={{ width: `${t.accuracy}%` }} />
-              </div>
+      <div className="grid grid-cols-2 gap-3">
+        {[
+          { title: "Strong", icon: TrendingUp, items: strongTopics, color: "text-success", barColor: "bg-success" },
+          { title: "Weak", icon: TrendingDown, items: weakTopics, color: "text-destructive", barColor: "bg-destructive" },
+        ].map((section) => (
+          <div key={section.title} className="bg-card rounded-2xl p-4 shadow-sm border border-border/30">
+            <div className="flex items-center gap-1.5 mb-3">
+              <section.icon size={14} className={section.color} />
+              <p className="text-xs font-semibold text-muted-foreground">{section.title}</p>
             </div>
-          ))}
-        </div>
-        <div className="glass-card p-4">
-          <div className="flex items-center gap-1.5 mb-3">
-            <TrendingDown size={12} className="text-destructive" />
-            <p className="text-[10px] font-bold text-muted-foreground uppercase">Weak</p>
+            {section.items.length === 0 ? (
+              <p className="text-xs text-muted-foreground">Keep practising</p>
+            ) : section.items.map((t) => (
+              <div key={`${t.subjectId}-${t.topicId}`} className="mb-2.5 last:mb-0">
+                <div className="flex items-center justify-between">
+                  <p className="text-xs font-medium text-foreground truncate mr-2">{t.topicName}</p>
+                  <span className={`text-xs font-bold ${section.color}`}>{t.accuracy}%</span>
+                </div>
+                <div className="h-1.5 bg-secondary rounded-full mt-1 overflow-hidden">
+                  <div className={`h-full ${section.barColor} rounded-full`} style={{ width: `${t.accuracy}%` }} />
+                </div>
+              </div>
+            ))}
           </div>
-          {weakTopics.length === 0 ? (
-            <p className="text-[10px] text-muted-foreground">Keep practising</p>
-          ) : weakTopics.map((t) => (
-            <div key={`${t.subjectId}-${t.topicId}`} className="mb-2 last:mb-0">
-              <div className="flex items-center justify-between">
-                <p className="text-[10px] font-medium text-foreground truncate mr-2">{t.topicName}</p>
-                <span className="text-[10px] font-bold text-destructive">{t.accuracy}%</span>
-              </div>
-              <div className="h-1 bg-secondary rounded-full mt-1 overflow-hidden">
-                <div className="h-full bg-destructive rounded-full" style={{ width: `${t.accuracy}%` }} />
-              </div>
-            </div>
-          ))}
-        </div>
+        ))}
       </div>
 
       {/* Subject Progress */}
-      <div className="glass-card p-4 mb-4">
-        <p className="text-[10px] font-bold text-muted-foreground uppercase tracking-wider mb-3">Subjects</p>
+      <div className="bg-card rounded-2xl p-4 shadow-sm border border-border/30">
+        <p className="text-xs font-semibold text-muted-foreground uppercase tracking-wider mb-3">Subjects</p>
         <div className="space-y-3">
           {subjectProgress.map((s) => (
             <div key={s.subjectId}>
               <div className="flex items-center justify-between mb-1">
-                <p className="text-xs font-medium text-foreground truncate">{s.subjectName}</p>
-                <span className="text-[10px] text-muted-foreground">{s.completion}%</span>
+                <p className="text-sm font-medium text-foreground truncate">{s.subjectName}</p>
+                <span className="text-xs text-muted-foreground font-semibold">{s.completion}%</span>
               </div>
               <div className="h-1.5 bg-secondary rounded-full overflow-hidden">
-                <div className="h-full progress-gradient" style={{ width: `${s.completion}%` }} />
+                <div className="h-full bg-primary rounded-full transition-all duration-500" style={{ width: `${s.completion}%` }} />
               </div>
             </div>
           ))}
@@ -144,17 +132,17 @@ const Dashboard = () => {
       </div>
 
       {/* Recent */}
-      <div className="glass-card p-4">
-        <p className="text-[10px] font-bold text-muted-foreground uppercase tracking-wider mb-3">Recent</p>
+      <div className="bg-card rounded-2xl p-4 shadow-sm border border-border/30">
+        <p className="text-xs font-semibold text-muted-foreground uppercase tracking-wider mb-3">Recent Activity</p>
         {recentActivity.length === 0 ? (
-          <p className="text-[10px] text-muted-foreground">No activity yet</p>
+          <p className="text-xs text-muted-foreground">No activity yet</p>
         ) : (
-          <div className="space-y-1.5">
+          <div className="space-y-2">
             {recentActivity.map((a, i) => (
               <div key={i} className="flex items-center gap-2.5 py-1.5">
-                {a.correct ? <CheckCircle2 size={12} className="text-success shrink-0" /> : <XCircle size={12} className="text-destructive shrink-0" />}
-                <p className="text-[11px] font-medium text-foreground truncate flex-1">{a.topicName}</p>
-                <span className="text-[9px] text-muted-foreground shrink-0">
+                {a.correct ? <CheckCircle2 size={14} className="text-success shrink-0" /> : <XCircle size={14} className="text-destructive shrink-0" />}
+                <p className="text-sm font-medium text-foreground truncate flex-1">{a.topicName}</p>
+                <span className="text-xs text-muted-foreground shrink-0">
                   {new Date(a.answeredAt).toLocaleDateString("en-US", { month: "short", day: "numeric" })}
                 </span>
               </div>

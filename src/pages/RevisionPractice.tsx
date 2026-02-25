@@ -124,61 +124,62 @@ const RevisionPractice = () => {
 
   if (questions.length === 0) {
     return (
-      <div className="p-6 max-w-lg mx-auto text-center">
+      <div className="p-6 max-w-xl mx-auto text-center">
         <p className="text-muted-foreground mb-4">No questions available for this revision mode.</p>
-        <button onClick={() => navigate("/revision")} className="gradient-btn px-6 py-2.5 text-xs">Back to Revision</button>
+        <button onClick={() => navigate("/revision")} className="bg-primary text-primary-foreground rounded-xl px-6 py-2.5 text-sm font-semibold">Back to Revision</button>
       </div>
     );
   }
   if (!currentQuestion) return null;
 
   const modeTitle = mode === "srs" ? "📅 Spaced Repetition" : mode === "wrong" ? "🔁 Wrong Questions" : mode === "hard" ? "🧠 Hard Topics" : "⚡ Fast 20";
+  const progressPct = ((currentIndex + 1) / questions.length) * 100;
 
   return (
-    <div className="flex flex-col h-screen overflow-hidden" style={{ background: 'var(--gradient-surface)' }}>
+    <div className="flex flex-col h-screen overflow-hidden bg-background">
       {/* Header */}
-      <div className="border-b border-border/30 px-4 py-2.5 flex items-center justify-between shrink-0 glass">
-        <div className="flex items-center gap-4">
-          <button onClick={() => navigate("/revision")} className="p-2 hover:bg-muted rounded-md">
-            <ChevronLeft size={20} />
+      <div className="px-4 py-3 flex items-center justify-between shrink-0 bg-card border-b border-border/30">
+        <div className="flex items-center gap-3">
+          <button onClick={() => navigate("/revision")} className="h-9 w-9 rounded-xl bg-secondary/50 flex items-center justify-center active:scale-95 transition-transform">
+            <ChevronLeft size={18} />
           </button>
-          <span className="text-xs font-bold text-primary uppercase">{modeTitle}</span>
+          <span className="text-sm font-bold text-primary">{modeTitle}</span>
         </div>
         <div className="flex items-center gap-2">
           {isTimed && (
-            <div className={`px-3 py-1 rounded text-[11px] font-bold flex items-center gap-1.5 ${timerPct <= 20 ? 'text-destructive bg-destructive/10' : timerPct <= 50 ? 'text-warning bg-warning/10' : 'text-success bg-success/10'}`}>
+            <div className={`px-3 py-1.5 rounded-full text-xs font-bold flex items-center gap-1.5 ${timerPct <= 20 ? 'text-destructive bg-destructive/10' : timerPct <= 50 ? 'text-warning bg-warning/10' : 'text-success bg-success/10'}`}>
               <Timer size={12} />
               {timerMinutes}:{timerSeconds.toString().padStart(2, '0')}
             </div>
           )}
-          <div className="px-3 py-1 bg-muted rounded text-[11px] font-bold">
-            {currentIndex + 1} / {questions.length}
-          </div>
-          <button onClick={() => toggleBookmark(currentQuestion.id)} className={`p-2 rounded-md ${isBookmarked ? 'text-primary bg-primary/10' : 'hover:bg-muted'}`}>
-            {isBookmarked ? <BookmarkCheck size={18} /> : <Bookmark size={18} />}
+          <span className="px-3 py-1.5 bg-secondary/50 rounded-full text-xs font-semibold">
+            {currentIndex + 1}/{questions.length}
+          </span>
+          <button onClick={() => toggleBookmark(currentQuestion.id)} className={`h-9 w-9 rounded-xl flex items-center justify-center active:scale-95 transition-transform ${isBookmarked ? 'text-primary bg-primary/10' : 'bg-secondary/50'}`}>
+            {isBookmarked ? <BookmarkCheck size={16} /> : <Bookmark size={16} />}
           </button>
         </div>
       </div>
 
       {/* Progress */}
       <div className="shrink-0">
-        <div className="h-1 w-full bg-muted">
-          <div className="h-full bg-primary" style={{ width: `${((currentIndex + 1) / questions.length) * 100}%` }} />
+        <div className="h-1 w-full bg-secondary">
+          <div className="h-full bg-primary rounded-r-full transition-all duration-300" style={{ width: `${progressPct}%` }} />
         </div>
         {isTimed && (
-          <div className="h-1 w-full bg-muted">
-            <div className={`h-full ${timerPct > 50 ? 'bg-success' : timerPct > 20 ? 'bg-warning' : 'bg-destructive'}`} style={{ width: `${timerPct}%` }} />
+          <div className="h-1 w-full bg-secondary">
+            <div className={`h-full ${timerPct > 50 ? 'bg-success' : timerPct > 20 ? 'bg-warning' : 'bg-destructive'} rounded-r-full transition-all duration-300`} style={{ width: `${timerPct}%` }} />
           </div>
         )}
       </div>
 
       {/* Content */}
-      <div className="flex-1 overflow-y-auto p-4 md:p-8 custom-scrollbar">
-        <div className="max-w-3xl mx-auto">
+      <div className="flex-1 overflow-y-auto p-5 md:p-8 custom-scrollbar">
+        <div className="max-w-2xl mx-auto">
           <div className="mb-8">
             <div className="flex items-center gap-2 mb-4">
-              <span className="px-2 py-0.5 bg-primary/10 text-primary text-[10px] font-bold rounded uppercase">Question {currentIndex + 1}</span>
-              <span className="px-2 py-0.5 bg-muted text-muted-foreground text-[10px] font-bold rounded">{currentQuestion.subjectName}</span>
+              <span className="px-2.5 py-1 bg-primary/10 text-primary text-[11px] font-semibold rounded-full">Q{currentIndex + 1}</span>
+              <span className="px-2.5 py-1 bg-secondary text-muted-foreground text-[11px] font-medium rounded-full">{currentQuestion.subjectName}</span>
             </div>
             <h2 className="text-lg md:text-xl font-semibold leading-relaxed text-foreground">{currentQuestion.question}</h2>
           </div>
@@ -189,16 +190,16 @@ const RevisionPractice = () => {
             <div className="space-y-3">
               {shuffledOptions.map((option, i) => {
                 if (!option.trim()) return null;
-                let extraClass = "";
+                let styles = "bg-card border border-border/40 shadow-sm";
                 if (revealed) {
-                  if (i === shuffledAnswerIndex) extraClass = "option-btn-correct";
-                  else if (i === selectedOption) extraClass = "option-btn-wrong";
-                  else extraClass = "opacity-50";
+                  if (i === shuffledAnswerIndex) styles = "bg-success/10 border-success/40";
+                  else if (i === selectedOption) styles = "bg-destructive/10 border-destructive/40";
+                  else styles = "bg-card border border-border/20 opacity-50";
                 }
                 return (
-                  <button key={i} onClick={() => handleSelect(i)} disabled={revealed} className={`option-btn ${extraClass}`}>
-                    <span className={`h-8 w-8 rounded border border-border flex items-center justify-center text-xs font-bold shrink-0 ${revealed && i === shuffledAnswerIndex ? 'bg-success border-success text-success-foreground' : 'bg-muted/50'}`}>{OPTION_LABELS[i]}</span>
-                    <span className="text-sm md:text-base">{option}</span>
+                  <button key={i} onClick={() => handleSelect(i)} disabled={revealed} className={`w-full text-left px-4 py-4 rounded-2xl flex items-center gap-3 active:scale-[0.99] transition-all ${styles}`}>
+                    <span className={`h-9 w-9 rounded-xl flex items-center justify-center text-xs font-bold shrink-0 ${revealed && i === shuffledAnswerIndex ? 'bg-success text-success-foreground' : 'bg-secondary/60 text-foreground'}`}>{OPTION_LABELS[i]}</span>
+                    <span className="text-sm md:text-base font-medium">{option}</span>
                   </button>
                 );
               })}
@@ -207,7 +208,7 @@ const RevisionPractice = () => {
 
           {revealed && (
             <div className="mt-6 space-y-3">
-              <div className={`flex items-center gap-3 p-4 rounded-lg border ${selectedOption === shuffledAnswerIndex ? 'bg-success/10 border-success/30' : 'bg-destructive/10 border-destructive/30'}`}>
+              <div className={`flex items-center gap-3 p-4 rounded-2xl border ${selectedOption === shuffledAnswerIndex ? 'bg-success/10 border-success/30' : 'bg-destructive/10 border-destructive/30'}`}>
                 {selectedOption === shuffledAnswerIndex ? <CheckCircle2 size={20} className="text-success shrink-0" /> : <AlertTriangle size={20} className="text-destructive shrink-0" />}
                 <div>
                   <p className={`text-sm font-bold ${selectedOption === shuffledAnswerIndex ? 'text-success' : 'text-destructive'}`}>
@@ -221,10 +222,10 @@ const RevisionPractice = () => {
                 </div>
               </div>
               {currentQuestion.notes && (
-                <div className="p-4 bg-muted/30 border border-border rounded-lg">
+                <div className="p-4 bg-card border border-border/30 rounded-2xl shadow-sm">
                   <div className="flex items-center gap-2 mb-2 text-muted-foreground">
                     <Info size={14} />
-                    <span className="text-[10px] font-bold uppercase tracking-wider">Why this is correct</span>
+                    <span className="text-[11px] font-semibold uppercase tracking-wider">Explanation</span>
                   </div>
                   <p className="text-sm text-foreground/80 leading-relaxed">{currentQuestion.notes}</p>
                 </div>
@@ -235,13 +236,13 @@ const RevisionPractice = () => {
       </div>
 
       {/* Footer */}
-      <div className="border-t border-border/30 p-3 shrink-0 glass">
-        <div className="max-w-3xl mx-auto flex items-center justify-between gap-3">
-          <button onClick={handlePrev} disabled={currentIndex === 0} className="compact-btn flex items-center gap-1.5 text-xs disabled:opacity-30">
+      <div className="px-4 py-3 shrink-0 bg-card border-t border-border/30">
+        <div className="max-w-2xl mx-auto flex items-center justify-between gap-3">
+          <button onClick={handlePrev} disabled={currentIndex === 0} className="h-10 px-4 rounded-xl bg-secondary/50 text-sm font-medium flex items-center gap-1.5 disabled:opacity-30 active:scale-95 transition-transform">
             <ChevronLeft size={14} /> Prev
           </button>
-          <button onClick={handleNext} disabled={!revealed} className="gradient-btn px-5 py-2 text-xs disabled:opacity-30">
-            {currentIndex === questions.length - 1 ? "Finish" : "Next"}
+          <button onClick={handleNext} disabled={!revealed} className="h-10 px-6 rounded-xl bg-primary text-primary-foreground text-sm font-semibold disabled:opacity-30 active:scale-95 transition-transform">
+            {currentIndex === questions.length - 1 ? "Finish" : "Next →"}
           </button>
         </div>
       </div>
