@@ -1,90 +1,96 @@
 
+# Complete UI Overhaul — Deep Teal Glassmorphism
 
-# Phase 1: Core Upgrade - Score Machine Foundation
+Redesigning every page and component to match the reference images: a **deep teal/green gradient background** with **frosted glass cards**, clean white text, and a premium mobile-first feel.
 
-## Overview
-Remove broken voice/tutor features, then add the most impactful scoring features: instant explanations, mock test timer, performance dashboard, streak calendar, and smart revision modes.
+---
 
-## What gets removed
-- Voice answer hook (`useVoiceAnswer.ts`) and all mic button UI from Practice page
-- AI Tutor chat component (`TutorChat.tsx`) and its FAB button from Practice page
-- Related settings toggles (AI Tutor, Global Chat toggles in Practice settings)
-- Voice hint overlay at bottom of Practice page
+## What Changes
 
-## What gets built
+### 1. New Color System & Background (`src/index.css`)
+- Replace the current light grey-green palette with a **deep teal gradient background** (dark green-to-teal flowing gradient, like the water/nature reference)
+- Cards become **translucent white glass** (white at 10-15% opacity with strong blur)
+- Text becomes **white/light** on the dark background
+- Primary accent stays **bright teal/green** for buttons and highlights
+- All 5 theme variants get updated to this dark glassmorphism style
 
-### 1. Instant Explanation After Answer
-When a user selects an option and the answer is revealed:
-- Show a clear "Correct!" or "Incorrect" label with color coding
-- Display the existing `notes` field as "Why this is correct"
-- For wrong answers, highlight what the user picked and why the correct answer is right
-- Smooth fade-in animation for the explanation panel
+### 2. Layout & Navigation (`src/components/Layout.tsx`, `src/components/AppSidebar.tsx`)
+- Background becomes a **full-screen gradient** (deep teal to dark green, flowing diagonally)
+- Header becomes **transparent with glass blur** instead of solid card
+- Sidebar gets the same **dark glass treatment** with translucent panels
+- Add a subtle **bottom tab bar** for mobile (Home, Subjects, Revision, Dashboard) — matching the reference nav style
 
-### 2. Smart Revision Modes (new page `/revision`)
-Add a Revision page accessible from the sidebar with 3 modes:
-- **Wrong Questions Only** - pulls all incorrectly answered questions for re-practice
-- **Hard Questions Only** - questions from topics where accuracy is below 50%
-- **Fast 20 Challenge** - random 20 questions with a 10-minute countdown timer
-Each mode launches the existing Practice component with a filtered question set.
+### 3. Home Page (`src/pages/Index.tsx`)
+- Hero section with **greeting on the gradient background** (no card, just bold white text)
+- Stats pills become **glass capsules** (translucent with blur)
+- Continue card becomes a **prominent glass card** with green glow button
+- Subject cards become **horizontal glass strips** with teal progress bars
 
-### 3. Timed Mock Test Mode
-Add a timer option to the Practice page settings panel:
-- Toggle "Exam Mode" on/off
-- Set time limit (15, 30, 45, 60 minutes)
-- Countdown timer displayed in the header
-- Auto-submit when time runs out (navigates to Results)
-- Timer bar changes color as time runs low (green to amber to red)
+### 4. Subjects & Topics (`src/pages/Subjects.tsx`, `src/pages/Topics.tsx`)
+- Cards become **glass panels** with subtle white borders
+- Icons get a **teal glow background circle**
+- Progress bars use **gradient teal fill**
+- Clean spacing with larger touch targets
 
-### 4. Performance Dashboard (new page `/dashboard`)
-A dedicated analytics page showing:
-- Overall accuracy percentage (big number)
-- Strong topics (top 3 by accuracy, green badges)
-- Weak topics (bottom 3 by accuracy, red badges)
-- Speed rating (average time per question)
-- Accuracy trend line chart using Recharts (already installed)
-- Recent activity feed
+### 5. Practice/Quiz (`src/pages/Practice.tsx`, `src/pages/RevisionPractice.tsx`)
+- Header becomes **transparent glass** over the gradient
+- Option buttons become **glass cards** that glow teal on hover
+- Correct/wrong feedback uses **green/red glass overlays**
+- Footer navigation becomes a **floating glass bar**
 
-### 5. Streak Calendar + XP Levels
-Enhance the existing streak/XP system in the sidebar and dashboard:
-- Calendar heatmap showing practice days (last 30 days)
-- Level system: Beginner (0-99 XP), Learner (100-499), Skilled (500-999), Expert (1000-2499), Master (2500+)
-- Level badge displayed in sidebar next to XP
-- Streak fire icon with day count
+### 6. Results (`src/pages/Results.tsx`)
+- Score displayed in a **large glass hero card** with the progress ring
+- Action buttons become **glass or gradient teal buttons**
+- Review cards use **glass panels with colored left borders**
+
+### 7. Dashboard (`src/pages/Dashboard.tsx`)
+- Stats in **glass metric cards** with subtle icons
+- Charts get **transparent backgrounds** with teal-colored lines
+- Calendar/streak section in a **glass container**
+
+### 8. Revision, Bookmarks, Wrong Answers
+- All cards converted to **glass panels** on the dark gradient
+- Consistent rounded corners (20px), blur effects, and teal accents
+
+### 9. Tailwind Config (`tailwind.config.ts`)
+- Update shadow system for **glass glow effects** (teal-tinted shadows)
+- Add gradient background utilities
+
+---
 
 ## Technical Details
 
-### Files to delete
-- `src/hooks/useVoiceAnswer.ts`
-- `src/components/TutorChat.tsx`
+### Color Palette (CSS Variables)
+```text
+Background:  Deep teal gradient (hsl 170-190, 40-60% saturation, 12-20% lightness)
+Card:        White at 10-15% opacity + blur(20px)
+Foreground:  White (0 0% 98%)
+Muted:       White at 50-60% opacity
+Primary:     Bright teal (170 70% 50%)
+Border:      White at 15-20% opacity
+```
 
-### Files to modify
-- `src/pages/Practice.tsx` - Remove voice/tutor imports and UI, add exam timer, enhance explanation panel
-- `src/components/AppSidebar.tsx` - Add Revision and Dashboard nav links, add level badge
-- `src/App.tsx` - Add routes for `/revision` and `/dashboard`
-- `src/store/useAppStore.ts` - Add exam mode settings (timer enabled, duration)
-- `src/utils/analytics.ts` - Add speed rating calculation, daily activity heatmap data
-- `src/pages/Index.tsx` - Add streak calendar widget and level display
+### Glass Card Pattern
+```text
+background: rgba(255, 255, 255, 0.08)
+backdrop-filter: blur(24px) saturate(1.4)
+border: 1px solid rgba(255, 255, 255, 0.12)
+border-radius: 20px
+```
 
-### New files to create
-- `src/pages/Revision.tsx` - Revision mode selector with 3 cards
-- `src/pages/Dashboard.tsx` - Full performance dashboard with charts
-- `src/components/StreakCalendar.tsx` - 30-day heatmap grid component
-- `src/components/LevelBadge.tsx` - XP level indicator component
-
-### Data flow
-- All analytics derived from the existing `answers` record in the persisted store (no database changes needed)
-- Mock test timer state kept in Practice component local state
-- Streak calendar computed from `answeredAt` timestamps already stored in answer records
-
-## Sequence
-1. Remove voice + tutor code
-2. Enhance Practice page (better explanations + exam timer)
-3. Build analytics utilities
-4. Create Dashboard page
-5. Create Revision page
-6. Add StreakCalendar and LevelBadge components
-7. Update sidebar navigation and routes
-
-## Future Phases (not in this plan)
-- Phase 2: Spaced repetition system, concept mode, keyword tooltips
-- Phase 3: Multiplayer upgrades, AI mentor, simple/technical language toggle
+### Files Modified (13 files)
+1. `src/index.css` — Complete color/utility rewrite
+2. `tailwind.config.ts` — Shadow & animation updates
+3. `src/config/themes.ts` — Theme definitions update
+4. `src/components/Layout.tsx` — Gradient bg, glass header, bottom nav
+5. `src/components/AppSidebar.tsx` — Dark glass sidebar
+6. `src/pages/Index.tsx` — Glass cards, gradient hero
+7. `src/pages/Subjects.tsx` — Glass subject cards
+8. `src/pages/Topics.tsx` — Glass topic list
+9. `src/pages/Practice.tsx` — Glass quiz interface
+10. `src/pages/RevisionPractice.tsx` — Glass quiz interface
+11. `src/pages/Results.tsx` — Glass results
+12. `src/pages/Dashboard.tsx` — Glass analytics
+13. `src/pages/Revision.tsx` — Glass revision cards
+14. `src/pages/Bookmarks.tsx` — Glass bookmarks
+15. `src/pages/WrongAnswers.tsx` — Glass wrong answers
