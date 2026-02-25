@@ -43,7 +43,7 @@ const Home = () => {
           { icon: <Zap size={14} />, label: `${xp} XP`, color: "text-primary" },
           { icon: <Star size={14} />, label: `${stats.completion}%`, color: "text-primary" },
         ].map((s, i) => (
-          <div key={i} className="flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-card border border-border/40 shadow-sm">
+          <div key={i} className="glass-card flex items-center gap-1.5 px-3 py-1.5">
             <span className={s.color}>{s.icon}</span>
             <span className="text-xs font-semibold text-foreground">{s.label}</span>
           </div>
@@ -52,7 +52,7 @@ const Home = () => {
 
       {/* Continue Card */}
       {lastVisited ? (
-        <div className="bg-card rounded-2xl p-5 shadow-sm border border-border/30">
+        <div className="glass-card p-5">
           <div className="flex items-center gap-2 mb-3">
             <span className="h-2 w-2 rounded-full bg-primary animate-pulse" />
             <p className="text-[11px] font-semibold text-primary uppercase tracking-wider">Continue where you left off</p>
@@ -61,16 +61,16 @@ const Home = () => {
           <p className="text-sm text-muted-foreground mb-4">{lastVisited.subjectName}</p>
           <button
             onClick={() => navigate(`/practice/${lastVisited.subjectId}/${lastVisited.topicId}`)}
-            className="w-full bg-primary text-primary-foreground rounded-xl py-3 text-sm font-semibold flex items-center justify-center gap-2 shadow-sm active:scale-[0.98] transition-transform"
+            className="w-full gradient-btn py-3 text-sm flex items-center justify-center gap-2 active:scale-[0.98] transition-transform"
           >
             <Sparkles size={16} /> Resume Learning
           </button>
         </div>
       ) : (
-        <div className="bg-card rounded-2xl p-5 shadow-sm border border-border/30">
+        <div className="glass-card p-5">
           <h2 className="text-lg font-bold text-foreground mb-1">Start your journey</h2>
           <p className="text-sm text-muted-foreground mb-4">Pick a subject to begin learning</p>
-          <button onClick={() => navigate('/subjects')} className="w-full bg-primary text-primary-foreground rounded-xl py-3 text-sm font-semibold active:scale-[0.98] transition-transform">
+          <button onClick={() => navigate('/subjects')} className="w-full gradient-btn py-3 text-sm active:scale-[0.98] transition-transform">
             Browse Subjects
           </button>
         </div>
@@ -82,7 +82,7 @@ const Home = () => {
           {srsDueCount > 0 && (
             <button
               onClick={() => { sessionStorage.setItem("revision-mode", "srs"); navigate("/revision/practice"); }}
-              className="w-full bg-card rounded-2xl px-4 py-3.5 flex items-center gap-3 shadow-sm border border-border/30 active:scale-[0.99] transition-transform"
+              className="w-full glass-card px-4 py-3.5 flex items-center gap-3 active:scale-[0.99] transition-transform"
             >
               <span className="text-lg">📅</span>
               <p className="text-sm font-medium text-foreground flex-1 text-left">{srsDueCount} questions due for review</p>
@@ -92,7 +92,7 @@ const Home = () => {
           {weakSuggestion && (
             <button
               onClick={() => navigate(`/practice/${weakSuggestion.subjectId}/${weakSuggestion.topicId}`)}
-              className="w-full bg-card rounded-2xl px-4 py-3.5 flex items-center gap-3 shadow-sm border border-border/30 active:scale-[0.99] transition-transform"
+              className="w-full glass-card px-4 py-3.5 flex items-center gap-3 active:scale-[0.99] transition-transform"
             >
               <span className="text-lg">⚠️</span>
               <p className="text-sm font-medium text-foreground flex-1 text-left truncate">{weakSuggestion.message}</p>
@@ -114,15 +114,15 @@ const Home = () => {
           {subjectProgress.slice(0, 4).map((sub) => {
             const topicCount = Object.keys(questionsBySubjectTopic[sub.subjectId] ?? {}).length;
             return (
-              <Link key={sub.subjectId} to="/subjects" className="bg-card rounded-2xl p-4 flex items-center gap-4 shadow-sm border border-border/30 active:scale-[0.99] transition-transform">
-                <div className="h-12 w-12 rounded-xl bg-primary/10 flex items-center justify-center shrink-0">
+              <Link key={sub.subjectId} to="/subjects" className="glass-card p-4 flex items-center gap-4 active:scale-[0.99] transition-transform block">
+                <div className="h-12 w-12 rounded-xl bg-primary/15 flex items-center justify-center shrink-0">
                   <BookOpen size={20} className="text-primary" />
                 </div>
                 <div className="flex-1 min-w-0">
                   <p className="text-sm font-semibold text-foreground truncate">{sub.subjectName}</p>
                   <p className="text-xs text-muted-foreground mt-0.5">{topicCount} topics</p>
-                  <div className="h-1.5 bg-secondary rounded-full overflow-hidden mt-2">
-                    <div className="h-full bg-primary rounded-full transition-all duration-500" style={{ width: `${sub.completion}%` }} />
+                  <div className="h-1.5 rounded-full overflow-hidden mt-2" style={{ background: "hsl(var(--glass-bg) / 0.1)" }}>
+                    <div className="h-full progress-gradient transition-all duration-500" style={{ width: `${sub.completion}%` }} />
                   </div>
                 </div>
                 <span className="text-sm font-bold text-primary shrink-0">{sub.completion}%</span>
@@ -141,9 +141,9 @@ const Home = () => {
               <Link
                 key={`${topic.subjectId}-${topic.topicId}`}
                 to={`/practice/${topic.subjectId}/${topic.topicId}`}
-                className="bg-card rounded-2xl px-4 py-3.5 flex items-center gap-3 shadow-sm border border-border/30 active:scale-[0.99] transition-transform"
+                className="glass-card px-4 py-3.5 flex items-center gap-3 active:scale-[0.99] transition-transform block"
               >
-                <div className="h-10 w-10 rounded-xl bg-destructive/10 flex items-center justify-center shrink-0">
+                <div className="h-10 w-10 rounded-xl bg-destructive/15 flex items-center justify-center shrink-0">
                   <BookOpen size={16} className="text-destructive" />
                 </div>
                 <div className="flex-1 min-w-0">

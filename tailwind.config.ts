@@ -77,11 +77,11 @@ export default {
         sm: "calc(var(--radius) - 4px)",
       },
       boxShadow: {
-        'glass': '0 4px 24px hsl(200 15% 50% / 0.07), 0 1px 4px hsl(200 15% 50% / 0.03)',
-        'glass-sm': '0 2px 8px hsl(200 15% 50% / 0.05)',
-        'glass-lg': '0 8px 32px hsl(200 15% 50% / 0.09)',
-        'glow': '0 0 24px hsl(160 55% 38% / 0.15)',
-        'glow-accent': '0 0 24px hsl(175 50% 35% / 0.15)',
+        'glass': '0 4px 24px hsl(0 0% 0% / 0.2), 0 1px 4px hsl(0 0% 0% / 0.1)',
+        'glass-sm': '0 2px 8px hsl(0 0% 0% / 0.15)',
+        'glass-lg': '0 8px 32px hsl(0 0% 0% / 0.25)',
+        'glow': '0 0 24px hsl(var(--primary) / 0.25)',
+        'glow-accent': '0 0 24px hsl(var(--accent) / 0.25)',
       },
       keyframes: {
         "accordion-down": {

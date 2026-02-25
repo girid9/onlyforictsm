@@ -33,17 +33,17 @@ const Subjects = () => {
             <Link
               key={s.id}
               to={`/subjects/${s.id}`}
-              className="bg-card rounded-2xl p-4 flex items-center gap-4 shadow-sm border border-border/30 active:scale-[0.99] transition-transform"
+              className="glass-card p-4 flex items-center gap-4 active:scale-[0.99] transition-transform block"
               aria-label={`${s.name} - ${completionPct}% complete`}
             >
-              <div className="h-12 w-12 rounded-xl bg-primary/10 flex items-center justify-center text-primary shrink-0">
+              <div className="h-12 w-12 rounded-xl bg-primary/15 flex items-center justify-center text-primary shrink-0">
                 <Icon size={22} />
               </div>
               <div className="flex-1 min-w-0">
                 <h2 className="text-sm font-bold text-foreground truncate">{s.name}</h2>
                 <p className="text-xs text-muted-foreground mt-0.5">{s.topicCount} topics · {s.questionCount} questions</p>
-                <div className="h-1.5 bg-secondary rounded-full overflow-hidden mt-2.5">
-                  <div className="h-full bg-primary rounded-full transition-all duration-500" style={{ width: `${completionPct}%` }} />
+                <div className="h-1.5 rounded-full overflow-hidden mt-2.5" style={{ background: "hsl(var(--glass-bg) / 0.1)" }}>
+                  <div className="h-full progress-gradient transition-all duration-500" style={{ width: `${completionPct}%` }} />
                 </div>
               </div>
               <div className="text-right shrink-0 flex flex-col items-end gap-1">
